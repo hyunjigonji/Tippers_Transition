@@ -46,12 +46,5 @@
 			<version>1.6.4</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.graphstream/gs-core -->
-		<dependency>
-			<groupId>org.graphstream</groupId>
-			<artifactId>gs-core</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-
 	</dependencies>
 </project>

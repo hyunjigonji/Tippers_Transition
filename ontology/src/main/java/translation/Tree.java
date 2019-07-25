@@ -215,6 +215,7 @@ public class Tree {
 		return TreeUA;
 	}
 	
+	// generate from UR or UA
 	public static int count = 0;
 	public void generator0(UANode nowNode) {
 		int nowE = nowNode.values.Entity;
@@ -235,11 +236,12 @@ public class Tree {
 			// nowSen == physic or virtual인지 type 정하기 (if)
 			// newSRNode.type = types.typePSR / types.typeVSR;
 			appendChild(PlusNode,newSRNode);
-			generator1(newSRNode, nowE);
+			generator1(newSRNode, nowE); // call other function once
 		}
 		return;
 	}
 	
+	// generate from SRNode using recursive algorithm
 	public void generator1(SRNode nowNode, int nowEnt) {
 		if(nowNode.type == types.typePSR) return;
 		
@@ -260,13 +262,14 @@ public class Tree {
 				// nowSen == physic or virtual인지 type 정하기 (if)
 				// newSRNode.type = types.typePSR / types.typeVSR;
 				appendChild(PlusNode,newSRNode);
-				generator1(newSRNode, nowEnt);
+				generator1(newSRNode, nowEnt); // recursive
 			}
 		}
 		return;
 	}
 	
-	public void displayTree(Tree TreeUA) { // to display tree structure
+	// to display tree structure using BFS algorithm
+	public void displayTree(Tree TreeUA) { 
 		Graph graph = new SingleGraph("test");
 		
 		boolean[] visit = new boolean[10000];
@@ -295,7 +298,7 @@ public class Tree {
 			String par = "";
 			for(int i = 0 ; i < now.Parents.size() ; i++) {
 				parent = now.Parents.get(i);
-				System.out.println("now = " + Integer.toString(now.nodeNum) + " par = " + Integer.toString(parent.nodeNum));
+				//System.out.println("now = " + Integer.toString(now.nodeNum) + " par = " + Integer.toString(parent.nodeNum));
 				
 				if(parent.type == types.typeUA) par = "UA" + Integer.toString(parent.nodeNum);
 				else if(parent.type == types.typeUR) par = "UR" + Integer.toString(parent.nodeNum);
