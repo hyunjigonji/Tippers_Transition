@@ -33,7 +33,9 @@ public class DLQueriesWithHermiT {
 	public static void main(String[] args) throws Exception {
 		// Load an example ontology.
 		String ontologyURL = "/Users/hyunjigonji/eclipse-workspace/ontology/ontology.owl";
+		//String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
 		IRI ontologyIRI = IRI.create("/Users/hyunjigonji/eclipse-workspace/ontology/ontology.owl⁩");
+		//IRI ontologyIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(ontologyURL));
 		// We need a reasoner to do our query answering

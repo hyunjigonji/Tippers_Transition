@@ -210,6 +210,7 @@ import uk.ac.manchester.cs.owlapi.modularity.SyntacticLocalityModuleExtractor;
 
 public class App {
 	public static final String ONTOLOGY_IRI = "/Users/hyunjigonji/eclipse-workspace/ontology/ontology.owl⁩";
+	//public static final String ONTOLOGY_IRI = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
 	
 	 public void loadOntology() throws OWLOntologyCreationException {
 		 
