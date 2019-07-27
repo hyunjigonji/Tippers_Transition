@@ -170,10 +170,11 @@ public class OntologyManager {
                      .getObjectSubPropertyAxiomsForSuperProperty(subProp.getSubProperty())) {
                   if (subProp.getSuperProperty() instanceof OWLProperty
                         && subProp.getSubProperty() instanceof OWLProperty) {
-                     System.out.println(subPrope.getSubProperty());
-                     System.out.println(factory.getOWLObjectPropertyDomainAxiom(subPrope.getSubProperty(),
-                           factory.getOWLClass(
-                                 "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#Connectivity")));
+                     System.out.println("HERE2 " + subPrope.getSubProperty());
+                     OWLObjectPropertyDomainAxiom temp = factory.getOWLObjectPropertyDomainAxiom(subPrope.getSubProperty(),
+                             factory.getOWLClass(
+                                   "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#Connectivity"));
+                     System.out.println("HERE " + temp);
 
                   }
                }

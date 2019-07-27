@@ -94,11 +94,11 @@ class SRNode extends Node{
 	public SR values;
 	
 	public SRNode() {
-		type = types.typePSR;
+		type = types.typeVSR;
 	}
 	
 	public SRNode(SR SRRequest) {
-		type = types.typePSR;
+		type = types.typeVSR;
 		values = SRRequest;
 	}
 }

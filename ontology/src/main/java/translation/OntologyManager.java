@@ -49,7 +49,6 @@ public class OntologyManager {
 		ArrayList<Integer> sensors = new ArrayList<Integer>();
 		sensors.add(111);
 		sensors.add(222);
-		sensors.add(333);
 		return sensors;
 	}
 	
@@ -62,7 +61,29 @@ public class OntologyManager {
 		ArrayList<Integer> inputs = new ArrayList<Integer>();
 		inputs.add(555);
 		inputs.add(666);
-		inputs.add(777);
 		return inputs;
+	}
+	/*
+	public boolean isVS(int sensor) {
+		if(sensor%2 == 0) return true;
+		else return false;
+	}*/
+	
+	public ArrayList<Integer> getAptDevices(int sensor){
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		return temp;
+	}
+	
+	public boolean checkCoverage(int sen, int ent) {
+		if(sen%2==0) return false;
+		return true;
+	}
+	
+	public boolean checkAccess(int sen, int ent) {
+		return true;
+	}
+	
+	public boolean hasMultiInput(int sensor) {
+		return true;
 	}
 }

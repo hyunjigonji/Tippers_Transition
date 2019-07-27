@@ -19,6 +19,7 @@ public class Main {
 		Test = Test.flattening(TestUA);
 		
 		for(int i = 0 ; i < Test.URij.size() ; i++) {
+			//System.out.println("hello");
 			URNode now = Test.URij.get(i);
 			
 			UA UARequest = new UA(now.values.Entity, now.values.Condition);
@@ -35,6 +36,7 @@ public class Main {
 		//Test.displayTree(Test);
 		for(int i = 0 ; i < Test.UAij.size() ; i++) {
 			UANode now = Test.UAij.get(i);
+			
 			Test.generator0(now);
 		}
 		Test.displayTree(Test);
@@ -43,6 +45,8 @@ public class Main {
 		ArrayList<Node> leaves = Test.findLeafNode(Test);
 		for(int i = 0 ; i < leaves.size() ; i++) {
 			Node now = leaves.get(i);
+			//Test.checking(now);
+			System.out.println(now.nodeNum);
 		}
 		
 		//Generator

@@ -157,10 +157,11 @@ public class Tree {
 		
 		Parent.Children.add(Child);
 		Child.Parents.add(Parent);
+		
+		//System.out.println("Parent = " + Parent.nodeNum + ", Child = " + Child.nodeNum);
 	}
 	
 	static OntologyManager OM = new OntologyManager();
-	
 	// make a tree structure
 	public Tree flattening(UA UARequest) {
 		int E0 = UARequest.Entity;
@@ -232,9 +233,14 @@ public class Tree {
 			SR newSR = new SR(nowSen, nowObs, nowE);
 			SRNode newSRNode = newSRNode(newSR);
 			
-			if(count%3 != 0) newSRNode.type = types.typePSR;
+			//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			//else newSRNode.type = types.typePSR;
+			
+			if(count++%3 == 0) newSRNode.type = types.typePSR;
+			else newSRNode.type = types.typeVSR;
 			// nowSen == physic or virtual인지 type 정하기 (if)
 			// newSRNode.type = types.typePSR / types.typeVSR;
+			
 			appendChild(PlusNode,newSRNode);
 			generator1(newSRNode, nowE); // call other function once
 		}
@@ -258,11 +264,81 @@ public class Tree {
 				SR newSR = new SR(nowSen, nowObs, nowEnt);
 				SRNode newSRNode = newSRNode(newSR);
 				
-				if(count%3 != 0 || count>50) newSRNode.type = types.typePSR;
+				//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+				//else newSRNode.type = types.typePSR;
+				
+				if(count%3==0 || count++>20) newSRNode.type = types.typePSR;
+				else newSRNode.type = types.typeVSR;
 				// nowSen == physic or virtual인지 type 정하기 (if)
 				// newSRNode.type = types.typePSR / types.typeVSR;
 				appendChild(PlusNode,newSRNode);
 				generator1(newSRNode, nowEnt); // recursive
+			}
+		}
+		return;
+	}
+	
+	// check feasibility of each node
+	public void checking(SRNode nowSRNode) {
+		int nowS = nowSRNode.values.Sensor;
+		int nowO = nowSRNode.values.Observation;
+		int nowE = nowSRNode.values.Entity;
+		
+		ArrayList<Integer> sensors = OM.getAptDevices(nowS);
+		
+		boolean flag = false;
+		for(int i = 0 ; i < sensors.size() ; i++) {
+			int nowSI = sensors.get(i);
+			
+			if(!OM.checkAccess(nowSI, nowE)) { // always return true
+				removing(nowSRNode);
+			}
+			else if(!OM.checkCoverage(nowSI, nowE)) { // I dont know
+				removing(nowSRNode);
+			}
+			// if available, add child
+			else {
+				flag = true;
+			}
+		}
+		if(flag) {
+			// create a x node
+			Node newXNode = newXNode();
+			appendChild(nowSRNode, newXNode);
+			
+			// create a child node
+			for(int i = 0 ; i < sensors.size() ; i++) {
+				int nowSI = sensors.get(i);
+				SR newSR = new SR(nowSI, nowO, nowE);
+				Node newSRNode = newSRNode(newSR);
+				
+				appendChild(newXNode, newSRNode);
+			}
+		}
+	}
+	
+	// remove recursively
+	public void removing(Node nowNode) {
+		// if x node, there will be another chance.
+		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) {
+			if(!nowNode.Children.isEmpty()) return;
+		}
+		
+		// remove from parents' children array
+		ArrayList<Node> parents = nowNode.Parents;
+//		Node firPar = parents.get(0);
+//		if(firPar.type == types.typePlus || firPar.type == types.typeX || firPar.type == types.typeXc) {
+//			parents = firPar.Parents;
+//		}
+		for(int i = 0 ; i < parents.size() ; i++) {	
+			Node nowPar = parents.get(i);
+			
+			nowPar.Children.remove(nowNode);
+			
+			// if nowPar has empty children, remove parent
+			if(nowPar.Children.isEmpty()) {
+				removing(nowPar);
+				nowPar.isLeaf = nowNode.isLeaf;
 			}
 		}
 		return;

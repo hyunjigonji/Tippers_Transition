@@ -194,5 +194,7 @@ public class index {
 		
 		System.out.println("\n" + OntologyManager.getOntoobjProperty("captures"));		//object property
 		System.out.println("\n" + OntologyManager.getOntoDataProperty("captures"));		//data property
+		
+		OntologyManager.findSensor();
 	}
 }
