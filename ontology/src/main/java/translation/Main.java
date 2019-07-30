@@ -14,10 +14,10 @@ import java.util.*;
 public class Main {
 	public static void main(String args[]) {
 		Tree Test = new Tree();
-		UA TestUA = new UA(1,2,3);
+		UA TestUA = new UA("Room", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Capacity");
 		
 		Test = Test.flattening(TestUA);
-		
+		//Test.displayTree(Test);
 		for(int i = 0 ; i < Test.URij.size() ; i++) {
 			//System.out.println("hello");
 			URNode now = Test.URij.get(i);
@@ -36,7 +36,6 @@ public class Main {
 		//Test.displayTree(Test);
 		for(int i = 0 ; i < Test.UAij.size() ; i++) {
 			UANode now = Test.UAij.get(i);
-			
 			Test.generator0(now);
 		}
 		Test.displayTree(Test);
@@ -45,9 +44,10 @@ public class Main {
 		ArrayList<Node> leaves = Test.findLeafNode(Test);
 		for(int i = 0 ; i < leaves.size() ; i++) {
 			Node now = leaves.get(i);
-			//Test.checking(now);
-			System.out.println(now.nodeNum);
+			SRNode now2 = Test.findSRNode(Test, now.nodeNum);
+			Test.checking(now2);
 		}
+		//Test.displayTree(Test);
 		
 		//Generator
 //		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");

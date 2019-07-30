@@ -1,12 +1,12 @@
 package translation;
 
 public class UR {
-	public int Entity;
-	public int Condition;
+	public String Entity;
+	public String Condition;
 	
 	public UR() { }
 	
-	public UR(int newEntity, int newCondition) {
+	public UR(String newEntity, String newCondition) {
 		Entity = newEntity;
 		Condition = newCondition;
 	}

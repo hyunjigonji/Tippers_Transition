@@ -7,13 +7,13 @@ enum senTypes {
 public class SR {
 	//public senTypes senType;
 	
-	public int Sensor;
-	public int Observation;
-	public int Entity;
+	public String Sensor;
+	public String Observation;
+	public String Entity;
 	
 	public SR() { }
 	
-	public SR(int newSensor, int newObservation, int newEntity) {
+	public SR(String newSensor, String newObservation, String newEntity) {
 		Sensor = newSensor;
 		Observation = newObservation;
 		Entity = newEntity;

@@ -1,18 +1,18 @@
 package translation;
 
 public class UA {
-	public int Entity;
-	public int Property;
-	public int Condition;
+	public String Entity;
+	public String Property;
+	public String Condition;
 	
 	public UA() { }
 	
-	public UA(int newEntity, int newCondition) {
+	public UA(String newEntity, String newProperty) {
 		Entity = newEntity;
-		Condition = newCondition;
+		Property = newProperty;
 	}
 	
-	public UA(int newEntity, int newProperty, int newCondition) {
+	public UA(String newEntity, String newProperty, String newCondition) {
 		Entity = newEntity;
 		Property = newProperty;
 		Condition = newCondition;

@@ -6,84 +6,101 @@ public class OntologyManager {
 	/*
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
 	 */
-	public ArrayList<Integer> extractEnt(UA UARequest) { // extract Entity from UA, M
-		ArrayList<Integer> temp = new ArrayList<Integer>();
-		temp.add(11);
-		temp.add(12);
-		temp.add(13);
+	public ArrayList<String> extractEnt(UA UARequest) { // extract Entity from UA, M
+		ArrayList<String> temp = new ArrayList<String>();
+		temp.add("room1");
+		temp.add("room2");
+		temp.add("room3");
+		temp.add("room4");
 		return temp; 
 	} 
 
-	public ArrayList<Integer> extractProp(UA UARequest) { // extract Property from UA, M
-		ArrayList<Integer> temp = new ArrayList<Integer>();
-		temp.add(21);
-		temp.add(22);
-		temp.add(23);
+	public ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
+		ArrayList<String> temp = new ArrayList<String>();
+		String Prop = UARequest.Property;
+		
+		StringTokenizer ST = new StringTokenizer(Prop, ",");
+		while(ST.hasMoreTokens()) {
+			String nowToken = ST.nextToken();
+			temp.add(nowToken);
+		}
+		
 		return temp; 
 	} 
 	
-	public ArrayList<Integer> extractCond(UA UARequest) { // extract Condition from UA, M
-		ArrayList<Integer> temp = new ArrayList<Integer>();
-		temp.add(31);
-		temp.add(32);
-		temp.add(33);
+	public ArrayList<String> extractCond(UA UARequest) { // extract Condition from UA, M
+		ArrayList<String> temp = new ArrayList<String>();
+		String Cond = UARequest.Condition;
+		
+		Condition conditions = new Condition();
+		for(int i = 0 ; i < conditions.conds.size() ; i++) {
+			String nowCon = conditions.conds.get(i);
+			if(Cond.contains(nowCon)) {
+				temp.add(nowCon);
+			}
+		}
 		return temp; 
 	} 
 	/*
-	public ArrayList<Integer> extractSen(SR SRRequest){
-		ArrayList<Integer> temp = new ArrayList<Integer>();
+	public ArrayList<Stringeger> extractSen(SR SRRequest){
+		ArrayList<Stringeger> temp = new ArrayList<Stringeger>();
 		return temp;
 	}
 	
-	public ArrayList<Integer> extractObs(SR SRRequest){
-		ArrayList<Integer> temp = new ArrayList<Integer>();
+	public ArrayList<Stringeger> extractObs(SR SRRequest){
+		ArrayList<Stringeger> temp = new ArrayList<Stringeger>();
 		return temp;
 	}
 	
-	public ArrayList<Integer> extractEnt(SR SRRequest){
-		ArrayList<Integer> temp = new ArrayList<Integer>();
+	public ArrayList<Stringeger> extractEnt(SR SRRequest){
+		ArrayList<Stringeger> temp = new ArrayList<Stringeger>();
 		return temp;
 	}
 	*/
-	public ArrayList<Integer> findSensor(int Obs){
-		ArrayList<Integer> sensors = new ArrayList<Integer>();
-		sensors.add(111);
-		sensors.add(222);
+	public ArrayList<String> findSensor(String Obs){
+		ArrayList<String> sensors = new ArrayList<String>();
+		sensors.add("wifi1");
+		sensors.add("wifi2");
+		sensors.add("wifi3");
 		return sensors;
 	}
 	
-	public int findObs(int prop) {
-		int obsProp = 444;
+	public String findObs(String prop) {
+		String obsProp = "OccObs";
 		return obsProp;
 	}
 	
-	public ArrayList<Integer> findInput(int sensor){
-		ArrayList<Integer> inputs = new ArrayList<Integer>();
-		inputs.add(555);
-		inputs.add(666);
+	public ArrayList<String> findInput(String sensor){
+		ArrayList<String> inputs = new ArrayList<String>();
+		inputs.add("False");
+		inputs.add("Con2Occ");
+		inputs.add("Loc2Occ");
 		return inputs;
 	}
 	/*
-	public boolean isVS(int sensor) {
+	public boolean isVS(String sensor) {
 		if(sensor%2 == 0) return true;
 		else return false;
 	}*/
 	
-	public ArrayList<Integer> getAptDevices(int sensor){
-		ArrayList<Integer> temp = new ArrayList<Integer>();
+	public ArrayList<String> getAptDevices(String sensor){
+		ArrayList<String> temp = new ArrayList<String>();
+		temp.add("wifi1");
+		temp.add("wifi2");
+		temp.add("wifi3");
 		return temp;
 	}
 	
-	public boolean checkCoverage(int sen, int ent) {
-		if(sen%2==0) return false;
+	public boolean checkCoverage(String sen, String ent) {
+		if(sen == "wifi1" && ent == "room4") return false;
 		return true;
 	}
 	
-	public boolean checkAccess(int sen, int ent) {
+	public boolean checkAccess(String sen, String ent) {
 		return true;
 	}
 	
-	public boolean hasMultiInput(int sensor) {
+	public boolean hasMultiInput(String sensor) {
 		return true;
 	}
 }
