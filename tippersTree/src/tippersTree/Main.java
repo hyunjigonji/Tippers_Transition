@@ -38,7 +38,7 @@ public class Main {
 			UANode now = Test.UAij.get(i);
 			Test.generator0(now);
 		}
-		Test.displayTree(Test);
+		//Test.displayTree(Test);
 		
 		// print leaf nodes
 		ArrayList<Node> leaves = Test.findLeafNode(Test);
@@ -47,7 +47,7 @@ public class Main {
 			SRNode now2 = Test.findSRNode(Test, now.nodeNum);
 			Test.checking(now2);
 		}
-		//Test.displayTree(Test);
+		Test.displayTree(Test);
 		
 		//Generator
 //		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
