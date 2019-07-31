@@ -1,0 +1,197 @@
+package translation.ontology;
+
+import java.io.File;
+import java.lang.invoke.*;
+import java.lang.invoke.StringConcatFactory;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
+import java.util.TreeSet;
+
+import org.apache.jena.ontology.Ontology;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
+import org.semanticweb.HermiT.Reasoner;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.AxiomType;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLException;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.reasoner.NodeSet;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
+import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
+import org.semanticweb.owlapi.util.SimpleShortFormProvider;
+
+import com.github.andrewoma.dexx.collection.List;
+
+//import edu.uci.isg.mobipedia.parsing.HTMLParser;
+import es.unizar.semantic.DLQueryEngine;
+import es.unizar.semantic.DLQueryParser;
+
+public class OntologyManager {
+	public static OWLOntologyManager manager;
+	public static OWLDataFactory factory;
+	public static OWLOntology ontology;
+	public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
+	public static OWLReasoner reasoner;
+	public static DLQueryEngine queryEngine;
+	public static IRI ontologyIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+
+	public static BidirectionalShortFormProvider bidiShortFormProvider;
+
+	public OntologyManager() {
+		startOntologyManager();
+	}
+
+	public static void startOntologyManager() {
+		manager = OWLManager.createOWLOntologyManager();
+		factory = OWLManager.getOWLDataFactory();
+
+		System.out.println("Starting...");
+		try {
+			System.out.println("Loading ontology   " + ontologyURL + "...");
+			ontology = manager.loadOntologyFromOntologyDocument(new File(ontologyURL));
+
+			reasoner = createOWLReasoner();
+
+			queryEngine = createDLQueryEngine();
+
+			@SuppressWarnings("deprecation")
+			Set<OWLOntology> importsClosure = ontology.getImportsClosure();
+			// Create a bidirectional short form provider to do the actual
+			// mapping.
+			// It will generate names using the input
+			// short form provider.
+//			bidiShortFormProvider = new BidirectionalShortFormProviderAdapter(manager, importsClosure, queryEngine.getShortFormProvider());
+
+		} catch (OWLOntologyCreationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static OWLOntology showOntology() throws OWLOntologyCreationException {
+//		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+//		File file = new File("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+//		OWLOntology Ontology = manager.loadOntologyFromOntologyDocument(new File(ontologyURL));
+//		IRI documentIRI = manager.getOntologyDocumentIRI(Ontology);
+
+		System.out.println("Loaded ontology: " + ontology);
+//		System.out.println("from: " + ontologyIRI);
+
+		return ontology;
+	}
+
+	public static void ShowClasses() throws OWLException { // show classes
+
+//		OWLOntologyManager m = create();
+
+		OWLOntology o = showOntology();
+
+		for (OWLClass cls : o.getClassesInSignature()) {
+
+			System.out.println(cls);
+
+		}
+	}
+/*
+	public static ArrayList<OWLOntology> ShowsubClasses() throws OWLException { // show classes
+
+//		OWLOntologyManager m = create();
+
+		ArrayList<OWLOntology> s = (ArrayList<OWLOntology>)ontology.getAxioms(AxiomType<OWLAxiom>.SUBCLASS_OF)
+
+		for (int index = 0; index < s.size(); index++) {
+
+			System.out.println(s.get(index));
+
+		}
+		return s;
+	}
+	
+	
+*/
+	
+	public static OWLDataProperty getOntoDataProperty(String name) {			//입력된 스트링과 같은 이름의 data property 가 있으면 출력, 아니면 null
+		for (OWLDataProperty p : ontology.getDataPropertiesInSignature())
+			if (p.getIRI().getFragment().equals(name))
+				return p;
+		return null;
+	}
+
+	private static OWLOntologyManager create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Creates a HermiT OWLReasoner with the given ontology.
+	 * 
+	 * @param OWLOntology The ontology
+	 * @return OWLReasoner The reasoner created
+	 */
+	public static OWLReasoner createOWLReasoner() throws IllegalArgumentException {
+		return new Reasoner(ontology);
+	}
+
+	/**
+	 * Creates a query engine to process DL queries.
+	 * 
+	 * @param OWLOntology The ontology
+	 * @return DLQueryEngine The engine to process DL queries
+	 */
+
+	public static DLQueryEngine createDLQueryEngine() throws IllegalArgumentException {
+		if (reasoner == null) {
+			throw new IllegalArgumentException("OWLReasoner is null");
+		}
+		return new DLQueryEngine(reasoner, new SimpleShortFormProvider());
+	}
+
+	/*
+	 * 
+	 * public void saveOntology(String nameOntology) { // Now save a local copy of
+	 * the ontology. (Specify a path appropriate to // your setup)
+	 * 
+	 * File theDir = new File(HTMLParser.FOLDER_ONTOLOGIES);
+	 * 
+	 * if (!theDir.exists()) { try { theDir.mkdir(); } catch (SecurityException se)
+	 * { // handle it } }
+	 * 
+	 * File file = new File(theDir.getPath() + File.separator + nameOntology +
+	 * ".owl"); try { manager.saveOntology(ontology, IRI.create(file.toURI())); }
+	 * catch (OWLOntologyStorageException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * // TO CHANGE FORMAT (IF NEEDED) // // By default ontologies are saved in the
+	 * format from which they were // // loaded. In this case the ontology was
+	 * loaded from rdf/xml. We // // can get information about the format of an
+	 * ontology from its // manager // OWLDocumentFormat format =
+	 * manager.getOntologyFormat(ontology); // // We can save the ontology in a
+	 * different format. Lets save the // // ontology // // in owl/xml format //
+	 * OWLXMLDocumentFormat owlxmlFormat = new OWLXMLDocumentFormat(); // // Some
+	 * ontology formats support prefix names and prefix IRIs. In our // // case we
+	 * loaded the Koala ontology from an rdf/xml format, which // // supports
+	 * prefixes. When we save the ontology in the new format we // // will copy the
+	 * prefixes over so that we have nicely abbreviated // IRIs // // in the new
+	 * ontology document // if (format.isPrefixOWLOntologyFormat()) { //
+	 * owlxmlFormat.copyPrefixesFrom(format.asPrefixOWLOntologyFormat()); // } //
+	 * manager.saveOntology(ontology, owlxmlFormat, // IRI.create(file.toURI())); }
+	 * 
+	 */
+
+	public static void addAxiomsOntology(Set<OWLAxiom> axioms) {
+		manager.addAxioms(ontology, axioms);
+	}
+
+}

@@ -1,0 +1,16 @@
+import org.semanticweb.owlapi.*;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.*;
+
+public class test {
+	public static void main(String[] args) {
+		try {
+		final String ONTOLOGY_URL = "file:///C://Users//KIM KI MIN//Desktop//research project//ontology//exampl.owl";
+		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+//		OWLModel owlModel = ProtegeOWL.createJenaOWLModelFromURI(ONTOLOGY_URL);
+		} catch(Exception e) {
+		e.printStackTrace();
+		}
+	}
+}
