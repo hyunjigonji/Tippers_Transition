@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 import org.semanticweb.owlapi.reasoner.*;
-//import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.Node;
@@ -23,9 +22,6 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
-
-//import edu.uci.isg.mobipedia.parsing.HTMLParser;
-//import translation.ontologyManager;
 import uk.ac.manchester.cs.jfact.JFactFactory;
 
 public class OntologyManager {
@@ -37,7 +33,11 @@ public class OntologyManager {
 	public static IRI ontologyIRI = IRI
 			.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
+<<<<<<< HEAD
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
+=======
+	public static String ONTOLOGYURI = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
+>>>>>>> hotfix
 
 	public OntologyManager() {
 		startOntologyManager();
@@ -52,7 +52,10 @@ public class OntologyManager {
 		try {
 			System.out.println("Loading ontology   " + ontologyURL + "...");
 			ontology = manager.loadOntologyFromOntologyDocument(new File(ontologyURL));
+<<<<<<< HEAD
 
+=======
+>>>>>>> hotfix
 			reasoner = createOWLReasoner();
 
 			@SuppressWarnings("deprecation")
@@ -72,13 +75,17 @@ public class OntologyManager {
 	// show classes of ontology
 	public static void showClasses() throws OWLException { // show classes
 		OWLOntology o = showOntology();
+<<<<<<< HEAD
 
+=======
+>>>>>>> hotfix
 		System.out.println("\n Print classes...");
 		for (OWLClass cls : o.getClassesInSignature()) {
 			System.out.println(cls);
 		}
 	}
 
+<<<<<<< HEAD
 	// get OWL object property
 	public static OWLObjectProperty getOwlObjProp(String str) {
 		return factory.getOWLObjectProperty(IRI.create(str));
@@ -95,18 +102,38 @@ public class OntologyManager {
 		OWLClass c = getOwlClass(str);
 		for (OWLSubClassOfAxiom cls : ontology.getSubClassAxiomsForSuperClass(c)) {
 			System.out.println(cls.getSubClass());
+=======
+	// show subclasses
+	public static void showSubclasses(String str) {
+		System.out.println("\n print subclasses...");
+		for (final OWLSubClassOfAxiom subClasse : ontology.getAxioms(AxiomType.SUBCLASS_OF)) {
+			if (subClasse.getSuperClass() instanceof OWLClass && subClasse.getSubClass() instanceof OWLClass) {
+				if (subClasse.getSuperClass().toString().equals(str)) {
+					System.out.println(subClasse.getSubClass());
+				}
+			}
+>>>>>>> hotfix
 		}
 	}
 
 	// get individuals
+<<<<<<< HEAD
 	public static ArrayList<String> printIndividualsByclass(String owlClass) {
 		System.out.println("\n show individuals...");
 		ArrayList<String> instance = null;
+=======
+	public static ArrayList<String> extractEnt(String owlClass) {
+		System.out.println("\n show individuals...");
+		ArrayList<String> instance = new ArrayList<String>();
+>>>>>>> hotfix
 		for (OWLClass c : ontology.getClassesInSignature()) {
 			if (c.getIRI().toString().equals(owlClass)) {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
 				for (OWLNamedIndividual i : instances.getFlattened()) {
+<<<<<<< HEAD
 					System.out.println(i.getIRI());
+=======
+>>>>>>> hotfix
 					StringTokenizer str = new StringTokenizer(i.getIRI().toString(), "#");
 					String temp = null;
 					while (str.hasMoreElements()) {
@@ -119,8 +146,13 @@ public class OntologyManager {
 		return instance;
 	}
 
+<<<<<<< HEAD
 	// if there is object property
 	// return that property, else return null
+=======
+	// if there is objective property named String,
+	// return signature, else return null
+>>>>>>> hotfix
 	public static OWLObjectProperty getOntoobjProperty(String name) {
 		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature())
 			if (p.getIRI().getFragment().equals(name))
@@ -128,8 +160,13 @@ public class OntologyManager {
 		return null;
 	}
 
+<<<<<<< HEAD
 	// if there is data property
 	// return that property, else return null
+=======
+	// if there is data property named String,
+	// return signature, else return null
+>>>>>>> hotfix
 	public static OWLDataProperty getOntoDataProperty(String name) {
 		for (OWLDataProperty p : ontology.getDataPropertiesInSignature())
 			if (p.getIRI().getFragment().equals(name))
@@ -137,6 +174,7 @@ public class OntologyManager {
 		return null;
 	}
 
+<<<<<<< HEAD
 	// go to sub property
 	public static ArrayList<OWLObjectProperty> getsubProp(String prop) {
 		// TODO Auto-generated method stub
@@ -166,10 +204,33 @@ public class OntologyManager {
 						System.out.println(
 								reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
 						sen.addAll(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
+=======
+	// findSensor
+	// input property, output observation
+	public static OWLObjectProperty findSensor(String string) {
+		System.out.println("\n[Print Sensor by Observation]");
+		OWLObjectProperty p = factory.getOWLObjectProperty(IRI.create(ONTOLOGYURI + "captures"));
+		for (final OWLSubObjectPropertyOfAxiom subProp : ontology.getObjectSubPropertyAxiomsForSuperProperty(p)) {
+			if (subProp.getSuperProperty() instanceof OWLProperty && subProp.getSubProperty() instanceof OWLProperty) {
+				if (subProp.getSuperProperty().toString().equals("<" + ONTOLOGYURI + "captures>")) {
+					for (final OWLSubObjectPropertyOfAxiom subPrope : ontology
+							.getObjectSubPropertyAxiomsForSuperProperty(subProp.getSubProperty())) {
+						if (subProp.getSuperProperty() instanceof OWLProperty
+								&& subProp.getSubProperty() instanceof OWLProperty) {
+							for (OWLObjectProperty o : subPrope.getSubProperty().getObjectPropertiesInSignature()) {
+								if (reasoner.getObjectPropertyRanges(o, true).toString().contains(string)) {
+									System.out.println(reasoner.getObjectPropertyDomains(o, true).getFlattened()); // return node set
+									System.out.println("Sensor: " + reasoner.getObjectPropertyDomains(o, true)
+											.getFlattened().iterator().next());
+								}
+							}
+						}
+>>>>>>> hotfix
 					}
 				}
 			}
 		}
+<<<<<<< HEAD
 		return sen;
 	}
 
@@ -185,6 +246,22 @@ public class OntologyManager {
 			}
 		}
 		return obs;
+=======
+		return null;
+	}
+
+	// find observation
+	// input occupancyProp, output occupancy
+	public static ArrayList<String> findObs(String prop) {
+		for (final OWLSubClassOfAxiom subClasse : ontology.getAxioms(AxiomType.SUBCLASS_OF)) {
+			if (subClasse.getSuperClass() instanceof OWLClass && subClasse.getSubClass() instanceof OWLClass) {
+				if (subClasse.getSuperClass().toString().equals(prop)) {
+					System.out.println(subClasse.getSubClass());
+				}
+			}
+		}
+		return null;
+>>>>>>> hotfix
 	}
 
 	// is VS
@@ -200,6 +277,11 @@ public class OntologyManager {
 		}
 		return flag;
 	}
+<<<<<<< HEAD
+=======
+	// owlclass
+	// 메소드 string to class
+>>>>>>> hotfix
 
 	private static OWLOntologyManager create() {
 		// TODO Auto-generated method stub
@@ -213,7 +295,10 @@ public class OntologyManager {
 	 * @return OWLReasoner The reasoner created
 	 */
 	public static OWLReasoner createOWLReasoner() throws IllegalArgumentException {
+<<<<<<< HEAD
 
+=======
+>>>>>>> hotfix
 		OWLReasonerFactory jfact = new JFactFactory();
 		return jfact.createReasoner(ontology, new SimpleConfiguration(50000));
 	}
@@ -228,5 +313,8 @@ public class OntologyManager {
 	public static void addAxiomsOntology(Set<OWLAxiom> axioms) {
 		manager.addAxioms(ontology, axioms);
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> hotfix
 }
