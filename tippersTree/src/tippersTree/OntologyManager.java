@@ -1,6 +1,7 @@
 package tippersTree;
 
 import java.util.*;
+import tippersOntology.OntologyManager.*;
 
 public class OntologyManager {
 	/*
