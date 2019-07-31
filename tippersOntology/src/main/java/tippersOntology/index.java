@@ -7,6 +7,7 @@ public class index {
 	public static void main(String[] args) throws OWLException {
 
 		OntologyManager.startOntologyManager();
+		
 		OntologyManager.createOWLReasoner();
 		OntologyManager.showOntology();		//show ontology path
 		OntologyManager.showClasses();		//show ontology classes

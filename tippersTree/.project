@@ -3,6 +3,7 @@
 	<name>tippersTree</name>
 	<comment></comment>
 	<projects>
+		<project>tippersOntology</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

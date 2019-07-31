@@ -62,6 +62,16 @@ public class OntologyManager {
 			e.printStackTrace();
 		}
 	}
+	public static String StrToken(String string) {
+		// TODO Auto-generated method stub
+		StringTokenizer str = new StringTokenizer(string, "#");
+		String temp = null;
+		while (str.hasMoreElements()) {
+			temp = str.nextToken();
+		}
+		return temp;
+	}
+	
 
 	// show information of ontology
 	public static OWLOntology showOntology() throws OWLOntologyCreationException {
@@ -107,11 +117,7 @@ public class OntologyManager {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
 				for (OWLNamedIndividual i : instances.getFlattened()) {
 					System.out.println(i.getIRI());
-					StringTokenizer str = new StringTokenizer(i.getIRI().toString(), "#");
-					String temp = null;
-					while (str.hasMoreElements()) {
-						temp = str.nextToken();
-					}
+					String temp = StrToken(i.getIRI().toString());
 					System.out.println(temp);
 				}
 			}
@@ -153,8 +159,8 @@ public class OntologyManager {
 	}
 
 	// find Sensor
-	public static ArrayList<OWLClass> findSensor(String obs) {
-		ArrayList<OWLClass> sen = new ArrayList<OWLClass>();
+	public static ArrayList<String> findSensor(String obs) {
+		ArrayList<String> sen = new ArrayList<String>();
 		System.out.println("\n[Print Sensor by Observation]");
 		ArrayList<OWLObjectProperty> subprop = getsubProp("captures");
 		for (int i = 0; i < subprop.size(); i++) {
@@ -165,7 +171,7 @@ public class OntologyManager {
 					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(obs)) {
 						System.out.println(
 								reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
-						sen.addAll(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
+						sen.add(StrToken(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened().toString()));
 					}
 				}
 			}
