@@ -1,28 +1,16 @@
 package tippersOntology;
 
 import java.io.File;
-import java.lang.invoke.*;
-import java.lang.invoke.StringConcatFactory;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.TreeSet;
 import org.semanticweb.owlapi.reasoner.*;
-//import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
-import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
-import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
-import org.semanticweb.owlapi.util.SimpleShortFormProvider;
+
 
 //import edu.uci.isg.mobipedia.parsing.HTMLParser;
 //import translation.ontologyManager;
@@ -62,17 +50,28 @@ public class OntologyManager {
 			e.printStackTrace();
 		}
 	}
-	public static String StrToken(String string) {
+	public static String strToken0(String string) {
 		// TODO Auto-generated method stub
 		StringTokenizer str = new StringTokenizer(string, "#");
 		String temp = null;
 		while (str.hasMoreElements()) {
 			temp = str.nextToken();
 		}
+		StringTokenizer str2 = new StringTokenizer(temp,">");
+		temp = str2.nextToken();
 		return temp;
 	}
 	
-
+	public static ArrayList<String> strToken1(String string) {
+		// TODO Auto-generated method stub
+		StringTokenizer str = new StringTokenizer(string, ",");
+		ArrayList<String> temp = new ArrayList<String>();
+		while (str.hasMoreElements()) {
+			temp.add(str.nextToken());
+		}
+		return temp;
+	}
+	
 	// show information of ontology
 	public static OWLOntology showOntology() throws OWLOntologyCreationException {
 		System.out.println("Loaded ontology: " + ontology);
@@ -117,7 +116,7 @@ public class OntologyManager {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
 				for (OWLNamedIndividual i : instances.getFlattened()) {
 					System.out.println(i.getIRI());
-					String temp = StrToken(i.getIRI().toString());
+					String temp = strToken0(i.getIRI().toString());
 					System.out.println(temp);
 				}
 			}
@@ -169,9 +168,13 @@ public class OntologyManager {
 				if (subPrope.getSuperProperty() instanceof OWLProperty
 						&& subPrope.getSubProperty() instanceof OWLProperty) {
 					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(obs)) {
-						System.out.println(
-								reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
-						sen.add(StrToken(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened().toString()));
+						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened().toString());
+						for(int j=0; j<sen.size(); j++) {
+							String temp = strToken0(sen.get(j));
+							sen.remove(j);
+							sen.add(j, temp);
+							System.out.println(sen.get(j));
+						}
 					}
 				}
 			}
