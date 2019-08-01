@@ -2,7 +2,7 @@ package tippersOntology;
 
 import java.io.File;
 import java.lang.invoke.*;
-import java.lang.invoke.StringConcatFactory;
+//import java.lang.invoke.StringConcatFactory;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,10 +32,11 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
+	//public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
+	public static String ontologyURL = "/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl";
 	public static OWLReasoner reasoner;
-	public static IRI ontologyIRI = IRI
-			.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+	//public static IRI ontologyIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+	public static IRI ontologyIRI = IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
@@ -164,13 +165,10 @@ public class OntologyManager {
 		System.out.println("\n[Print Sensor by Observation]");
 		ArrayList<OWLObjectProperty> subprop = getsubProp("captures");
 		for (int i = 0; i < subprop.size(); i++) {
-			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology
-					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
-				if (subPrope.getSuperProperty() instanceof OWLProperty
-						&& subPrope.getSubProperty() instanceof OWLProperty) {
+			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
+				if (subPrope.getSuperProperty() instanceof OWLProperty && subPrope.getSubProperty() instanceof OWLProperty) {
 					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(obs)) {
-						System.out.println(
-								reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
+						System.out.println(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened());
 						sen.add(StrToken(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened().toString()));
 					}
 				}

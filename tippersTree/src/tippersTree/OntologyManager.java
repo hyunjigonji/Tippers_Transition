@@ -57,12 +57,6 @@ public class OntologyManager {
 		return temp;
 	}
 	*/
-	public ArrayList<String> findActuator(UA UARequest){
-		ArrayList<String> temp = new ArrayList<String>();
-		String Prop = UARequest.Condition;
-		
-		
-	}
 	
 	public ArrayList<String> findSensor(String Obs){
 		ArrayList<String> sensors = new ArrayList<String>();
