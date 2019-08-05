@@ -17,10 +17,13 @@ public class OntologyManager {
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
 	public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
-	//public static String ontologyURL = "/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl";
+	// public static String ontologyURL =
+	// "/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl";
 	public static OWLReasoner reasoner;
-	public static IRI ontologyIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
-	//public static IRI ontologyIRI = IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
+	public static IRI ontologyIRI = IRI
+			.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+	// public static IRI ontologyIRI =
+	// IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
@@ -47,6 +50,7 @@ public class OntologyManager {
 			e.printStackTrace();
 		}
 	}
+
 	public static String strToken0(String string) {
 		// TODO Auto-generated method stub
 		StringTokenizer str = new StringTokenizer(string, "#");
@@ -54,11 +58,11 @@ public class OntologyManager {
 		while (str.hasMoreElements()) {
 			temp = str.nextToken();
 		}
-		StringTokenizer str2 = new StringTokenizer(temp,">");
+		StringTokenizer str2 = new StringTokenizer(temp, ">");
 		temp = str2.nextToken();
 		return temp;
 	}
-	
+
 	public static ArrayList<String> strToken1(String string) {
 		// TODO Auto-generated method stub
 		StringTokenizer str = new StringTokenizer(string, ",");
@@ -68,7 +72,7 @@ public class OntologyManager {
 		}
 		return temp;
 	}
-	
+
 	// show information of ontology
 	public static OWLOntology showOntology() throws OWLOntologyCreationException {
 		System.out.println("Loaded ontology: " + ontology);
@@ -104,15 +108,16 @@ public class OntologyManager {
 		}
 	}
 
-	// get individuals
-	public static ArrayList<String> printIndividualsByclass(String owlClass) {
-		System.out.println("\n show individuals...");
+	// extract entity
+	// extract individual
+	public static ArrayList<String> extractEnt(String ent) {
+		System.out.println("[Extract Entity]");
 		ArrayList<String> instance = null;
+		String ent0 = ONTOLOGYURL+ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
-			if (c.getIRI().toString().equals(owlClass)) {
+			if (c.getIRI().toString().equals(ent0)) {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
 				for (OWLNamedIndividual i : instances.getFlattened()) {
-					System.out.println(i.getIRI());
 					String temp = strToken0(i.getIRI().toString());
 					System.out.println(temp);
 				}
@@ -153,6 +158,11 @@ public class OntologyManager {
 		}
 		return objprop;
 	}
+	
+	private void extractEnt() {
+		// TODO Auto-generated method stub
+
+	}
 
 	// find Sensor
 	public static ArrayList<String> findSensor(String obs) {
@@ -160,11 +170,14 @@ public class OntologyManager {
 		System.out.println("\n[Print Sensor by Observation]");
 		ArrayList<OWLObjectProperty> subprop = getsubProp("captures");
 		for (int i = 0; i < subprop.size(); i++) {
-			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
-				if (subPrope.getSuperProperty() instanceof OWLProperty && subPrope.getSubProperty() instanceof OWLProperty) {
+			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology
+					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
+				if (subPrope.getSuperProperty() instanceof OWLProperty
+						&& subPrope.getSubProperty() instanceof OWLProperty) {
 					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(obs)) {
-						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true).getFlattened().toString());
-						for(int j=0; j<sen.size(); j++) {
+						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true)
+								.getFlattened().toString());
+						for (int j = 0; j < sen.size(); j++) {
 							String temp = strToken0(sen.get(j));
 							sen.remove(j);
 							sen.add(j, temp);
@@ -178,14 +191,13 @@ public class OntologyManager {
 	}
 
 	// find Observation
-	public static ArrayList<OWLClass> findObs(String prop) {
-		ArrayList<OWLClass> obs = new ArrayList<OWLClass>();
+	public static ArrayList<String> findObs(String prop) {
+		ArrayList<String> obs = new ArrayList<String>();
 		System.out.println("\n[Print Observation by Observation Property]");
 		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");
 		for (int i = 0; i < subprop.size(); i++) {
 			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(prop)) {
-				System.out.println(reasoner.getObjectPropertyRanges(subprop.get(i), true).getFlattened());
-				obs.addAll(reasoner.getObjectPropertyRanges(subprop.get(i), true).getFlattened());
+				obs.add(strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString()));
 			}
 		}
 		return obs;
@@ -193,6 +205,7 @@ public class OntologyManager {
 
 	// is VS
 	// find a type of specific sensor
+	// to do - 이거 input individual임  **수정 바람**
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
 		System.out.println("\n[Find Sensor Type]\n" + Sensor + "  is Virtual Sensor?");
