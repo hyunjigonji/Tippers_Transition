@@ -208,7 +208,7 @@ public class OntologyManager {
 	// to do - 이거 input individual임  **수정 바람**
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
-		System.out.println("\n[Find Sensor Type]\n" + Sensor + "  is Virtual Sensor?");
+		System.out.println("\n[Find Sensor Type]\n" + Sensor + "  is Virtual Sensor??");
 		OWLClass cls = factory.getOWLClass(IRI.create(Sensor));
 		for (OWLSubClassOfAxiom sub : ontology.getSubClassAxiomsForSubClass(cls)) {
 			if (sub.toString().contains("VirSensor")) {
