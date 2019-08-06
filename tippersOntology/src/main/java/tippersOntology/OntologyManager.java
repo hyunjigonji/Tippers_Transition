@@ -11,6 +11,7 @@ import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import uk.ac.manchester.cs.jfact.JFactFactory;
+import uk.ac.manchester.cs.jfact.kernel.Individual;
 
 public class OntologyManager {
 	public static OWLOntologyManager manager;
@@ -100,12 +101,13 @@ public class OntologyManager {
 	}
 
 	// show subclasses
-	public static void showSubclasses(String str) {
-		System.out.println("\n print subclasses...");
+	public static ArrayList<OWLClassExpression> showSubclasses(String str) {
+		ArrayList<OWLClassExpression> sub = new ArrayList<OWLClassExpression>();
 		OWLClass c = getOwlClass(str);
 		for (OWLSubClassOfAxiom cls : ontology.getSubClassAxiomsForSuperClass(c)) {
-			System.out.println(cls.getSubClass());
+			sub.add(cls.getSubClass());
 		}
+		return sub;
 	}
 
 	// extract entity
@@ -113,7 +115,7 @@ public class OntologyManager {
 	public static ArrayList<String> extractEnt(String ent) {
 		System.out.println("[Extract Entity]");
 		ArrayList<String> instance = null;
-		String ent0 = ONTOLOGYURL+ent;
+		String ent0 = ONTOLOGYURL + ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
 			if (c.getIRI().toString().equals(ent0)) {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
@@ -158,7 +160,7 @@ public class OntologyManager {
 		}
 		return objprop;
 	}
-	
+
 	private void extractEnt() {
 		// TODO Auto-generated method stub
 
@@ -205,14 +207,15 @@ public class OntologyManager {
 
 	// is VS
 	// find a type of specific sensor
-	// to do - 이거 input individual임  **수정 바람**
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
-		System.out.println("\n[Find Sensor Type]\n" + Sensor + "  is Virtual Sensor??");
-		OWLClass cls = factory.getOWLClass(IRI.create(Sensor));
-		for (OWLSubClassOfAxiom sub : ontology.getSubClassAxiomsForSubClass(cls)) {
-			if (sub.toString().contains("VirSensor")) {
-				flag = true;
+		System.out.println("\n[Find Sensor Type]\n" + Sensor + "  is Virtual Sensor?");
+		ArrayList<OWLClassExpression> cls = showSubclasses(ONTOLOGYURL + "Sensor");
+		for (int i = 0; i < cls.size(); i++) {
+			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
+				if (strToken0(idv.getIRI().toString()).equals(Sensor) && cls.get(i).toString().contains("VirSensor")) {
+					flag = true;
+				}
 			}
 		}
 		return flag;

@@ -18,7 +18,8 @@ public class index {
 		OntologyManager.findSensor("http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#Occupancy");
 		OntologyManager.findObs("http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#tempProp");
 
-		System.out.println(OntologyManager.isVS("Wifi"));
+		System.out.println(OntologyManager.isVS("Conn2occ"));
+		System.out.println(OntologyManager.isVS("Wifi2"));
 		
 		System.out.println("\n" + OntologyManager.getOntoobjProperty("captures"));		//object property
 		System.out.println("\n" + OntologyManager.getOntoDataProperty("captures"));		//data property	
