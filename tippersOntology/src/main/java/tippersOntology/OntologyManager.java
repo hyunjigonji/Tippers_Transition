@@ -37,7 +37,6 @@ public class OntologyManager {
 		factory = OWLManager.getOWLDataFactory();
 
 		System.out.println(" Starting...");
-		System.out.println("test");
 		try {
 			System.out.println("Loading ontology   " + ontologyURL + "...");
 			ontology = manager.loadOntologyFromOntologyDocument(new File(ontologyURL));
@@ -83,8 +82,7 @@ public class OntologyManager {
 	// show classes of ontology
 	public static void showClasses() throws OWLException { // show classes
 		OWLOntology o = showOntology();
-
-		System.out.println("\n Print classes...");
+		System.out.println("\n[Print all classes]");
 		for (OWLClass cls : o.getClassesInSignature()) {
 			System.out.println(cls);
 		}
@@ -96,14 +94,15 @@ public class OntologyManager {
 	}
 
 	// get OWL class
-	public static OWLClass getOwlClass(String str) {
-		return factory.getOWLClass(IRI.create(str));
-	}
+//	public static OWLClass getOwlClass(String str) {
+//		return factory.getOWLClass(IRI.create(str));
+//	}
 
 	// show subclasses
 	public static ArrayList<OWLClassExpression> showSubclasses(String str) {
+		System.out.println("\n[Print subclasses]");
 		ArrayList<OWLClassExpression> sub = new ArrayList<OWLClassExpression>();
-		OWLClass c = getOwlClass(str);
+		OWLClass c = factory.getOWLClass(IRI.create(ONTOLOGYURL+str));
 		for (OWLSubClassOfAxiom cls : ontology.getSubClassAxiomsForSuperClass(c)) {
 			sub.add(cls.getSubClass());
 		}
@@ -113,15 +112,15 @@ public class OntologyManager {
 	// extract entity
 	// extract individual
 	public static ArrayList<String> extractEnt(String ent) {
-		System.out.println("[Extract Entity]");
-		ArrayList<String> instance = null;
+		System.out.println("\n[Extract Entity]");
+		ArrayList<String> instance = new ArrayList<String>();
 		String ent0 = ONTOLOGYURL + ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
 			if (c.getIRI().toString().equals(ent0)) {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
 				for (OWLNamedIndividual i : instances.getFlattened()) {
 					String temp = strToken0(i.getIRI().toString());
-					System.out.println(temp);
+					instance.add(temp);
 				}
 			}
 		}
@@ -161,11 +160,6 @@ public class OntologyManager {
 		return objprop;
 	}
 
-	private void extractEnt() {
-		// TODO Auto-generated method stub
-
-	}
-
 	// find Sensor
 	public static ArrayList<String> findSensor(String obs) {
 		ArrayList<String> sen = new ArrayList<String>();
@@ -176,14 +170,13 @@ public class OntologyManager {
 					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
 				if (subPrope.getSuperProperty() instanceof OWLProperty
 						&& subPrope.getSubProperty() instanceof OWLProperty) {
-					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(obs)) {
+					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(ONTOLOGYURL+obs)) {
 						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true)
 								.getFlattened().toString());
 						for (int j = 0; j < sen.size(); j++) {
 							String temp = strToken0(sen.get(j));
 							sen.remove(j);
 							sen.add(j, temp);
-							System.out.println(sen.get(j));
 						}
 					}
 				}
@@ -196,9 +189,9 @@ public class OntologyManager {
 	public static ArrayList<String> findObs(String prop) {
 		ArrayList<String> obs = new ArrayList<String>();
 		System.out.println("\n[Print Observation by Observation Property]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");
+		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");																//ok
 		for (int i = 0; i < subprop.size(); i++) {
-			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(prop)) {
+			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL+prop)) {
 				obs.add(strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString()));
 			}
 		}
