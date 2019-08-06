@@ -8,7 +8,7 @@ import java.util.*;
 //c = condition
 
 enum types{
-	typeUA, typeUR, typePlus, typeX, typeXc, typeVSR, typePSR,
+	typeUA, typeUR, typePlus, typeX, typeXc, typeVSR, typePSR, typeAC,
 };
 
 public class Node {

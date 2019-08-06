@@ -11,7 +11,6 @@ public class OntologyManager {
 		ArrayList<String> temp = new ArrayList<String>();
 		temp.add("room1");
 		temp.add("room2");
-		temp.add("room3");
 		return temp; 
 	} 
 
@@ -90,7 +89,7 @@ public class OntologyManager {
 	
 	public String findAct(String Prop) {
 		String actProp = "";
-		if(Prop.contains("Turn On")) {
+		if(Prop.contains("Turn on")) {
 			actProp = "TurnOnProp";
 		}
 		return actProp;
@@ -98,9 +97,9 @@ public class OntologyManager {
 	
 	public ArrayList<String> findSensor(String Obs){
 		ArrayList<String> sensors = new ArrayList<String>();
-		sensors.add("wifi1");
-		sensors.add("wifi2");
-		sensors.add("wifi3");
+		sensors.add("Wifi1");
+		sensors.add("Wifi2");
+		//sensors.add("wifi3");
 		return sensors;
 	}
 	
@@ -113,20 +112,21 @@ public class OntologyManager {
 		ArrayList<String> inputs = new ArrayList<String>();
 		inputs.add("False");
 		inputs.add("Con2Occ");
-		inputs.add("Loc2Occ");
+		//inputs.add("Loc2Occ");
 		return inputs;
 	}
-	/*
+	
 	public boolean isVS(String sensor) {
-		if(sensor%2 == 0) return true;
-		else return false;
-	}*/
+		//if(sensor.contains("wifi")) return false;
+		//else return true;
+		return tippersOntology.OntologyManager.isVS(sensor);
+	}
 	
 	public ArrayList<String> getAptDevices(String sensor){
 		ArrayList<String> temp = new ArrayList<String>();
-		temp.add("wifi1");
-		temp.add("wifi2");
-		temp.add("wifi3");
+		temp.add("Wifi1");
+		temp.add("Wifi2");
+		temp.add("Wifi3");
 		return temp;
 	}
 	

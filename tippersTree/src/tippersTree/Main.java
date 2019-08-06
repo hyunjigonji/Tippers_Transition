@@ -2,6 +2,8 @@ package tippersTree;
 
 import java.util.*;
 
+import tippersOntology.OntologyManager;
+
 /*
  Tree level
  
@@ -13,6 +15,8 @@ import java.util.*;
  */
 public class Main {
 	public static void main(String args[]) {
+		OntologyManager.startOntologyManager();
+		
 		Tree Test = new Tree();
 		UA TestUA = new UA("Room", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Capacity");
 		
@@ -23,12 +27,12 @@ public class Main {
 			URNode now = Test.URij.get(i);
 			Test.URgenerator0(now);
 		}
-		Test.displayTree(Test);
+		//Test.displayTree(Test);
 		for(int i = 0 ; i < Test.UAij.size() ; i++) {
 			UANode now = Test.UAij.get(i);
 			Test.UAgenerator0(now);
 		}
-		//Test.displayTree(Test);
+		Test.displayTree(Test);
 		
 		// print leaf nodes
 		ArrayList<Node> leaves = Test.findLeafNode(Test);

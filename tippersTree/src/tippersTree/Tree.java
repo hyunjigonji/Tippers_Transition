@@ -275,11 +275,12 @@ public class Tree {
 			SR newSR = new SR(nowSen, nowObs, nowE);
 			SRNode newSRNode = newSRNode(newSR);
 
-			//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
-			//else newSRNode.type = types.typePSR;
+			if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			else newSRNode.type = types.typePSR;
 
-			if(count++%2 == 0) newSRNode.type = types.typePSR;
-			else newSRNode.type = types.typeVSR;
+			//if(count++%2 == 0) newSRNode.type = types.typePSR;
+			//else newSRNode.type = types.typeVSR;
+			
 			// nowSen == physic or virtual인지 type 정하기 (if)
 			// newSRNode.type = types.typePSR / types.typeVSR;
 			SRs.add(newSRNode);
@@ -305,18 +306,20 @@ public class Tree {
 			String nowSen = sens.get(i);
 			SR newSR = new SR(nowSen, nowObs, nowE);
 			SRNode newSRNode = newSRNode(newSR);
+			newSRNode.type = types.typeAC;
 
 			//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
 			//else newSRNode.type = types.typePSR;
 
-			if(count++%2 == 0) newSRNode.type = types.typePSR;
-			else newSRNode.type = types.typeVSR;
+			//if(count++%2 == 0) newSRNode.type = types.typePSR;
+			//else newSRNode.type = types.typeVSR;
+			
 			// nowSen == physic or virtual인지 type 정하기 (if)
 			// newSRNode.type = types.typePSR / types.typeVSR;
 			SRs.add(newSRNode);
 
 			appendChild(XNode,newSRNode);
-			generator1(newSRNode, nowE); // call other function once
+			//generator1(newSRNode, nowE); // call other function once
 		}
 		return;
 	}
@@ -346,11 +349,12 @@ public class Tree {
 				SR newSR = new SR(nowSen, nowObs, nowEnt);
 				SRNode newSRNode = newSRNode(newSR);
 
-				//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
-				//else newSRNode.type = types.typePSR;
+				if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+				else newSRNode.type = types.typePSR;
 
-				if(count%2==0 || count++>15) newSRNode.type = types.typePSR;
-				else newSRNode.type = types.typeVSR;
+				//if(count%2==0 || count++>5) newSRNode.type = types.typePSR;
+				//else newSRNode.type = types.typeVSR;
+				
 				// nowSen == physic or virtual인지 type 정하기 (if)
 				// newSRNode.type = types.typePSR / types.typeVSR;
 				SRs.add(newSRNode);
@@ -473,6 +477,10 @@ public class Tree {
 				str = "VSR" + Integer.toString(now2.nodeNum) + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 				//System.out.println(str);
 			}
+			else if(now.type == types.typeAC) {
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
+				str = "AC" + Integer.toString(now2.nodeNum) + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
+			}
 			if(now.isRoot) str = "Root";
 
 			graph.addNode(str);
@@ -500,6 +508,10 @@ public class Tree {
 				else if(parent.type == types.typeVSR) {
 					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "VSR" + Integer.toString(parent2.nodeNum) + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
+				}
+				else if(parent.type == types.typeAC) {
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
+					par = "AC" + Integer.toString(parent2.nodeNum) + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
 				}
 				if(parent.isRoot) par = "Root";
 
@@ -559,6 +571,10 @@ public class Tree {
 				str = "VSR" + Integer.toString(now2.nodeNum);
 				//System.out.println(str);
 			}
+			else if(now.type == types.typeAC) {
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
+				str = "AC" + Integer.toString(now2.nodeNum);
+			}
 			if(now.isRoot) str = "Root";
 
 			graph.addNode(str);
@@ -586,6 +602,10 @@ public class Tree {
 				else if(parent.type == types.typeVSR) {
 					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "VSR" + Integer.toString(parent2.nodeNum);
+				}
+				else if(parent.type == types.typeAC) {
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
+					par = "AC" + Integer.toString(parent2.nodeNum);
 				}
 				if(parent.isRoot) par = "Root";
 
