@@ -21,22 +21,12 @@ public class Main {
 		for(int i = 0 ; i < Test.URij.size() ; i++) {
 			//System.out.println("hello");
 			URNode now = Test.URij.get(i);
-			
-			UA UARequest = new UA(now.values.Entity, now.values.Condition);
-			UANode now2 = new UANode(UARequest);
-			now2.nodeNum = now.nodeNum;
-			now2.Children = now.Children;
-			now2.Parents = now.Parents;
-			now2.isLeaf = now.isLeaf;
-			now2.isRoot = now.isRoot;
-			now2.type = now.type;
-			
-			Test.generator0(now2);
+			Test.URgenerator0(now);
 		}
-		//Test.displayTree(Test);
+		Test.displayTree(Test);
 		for(int i = 0 ; i < Test.UAij.size() ; i++) {
 			UANode now = Test.UAij.get(i);
-			Test.generator0(now);
+			Test.UAgenerator0(now);
 		}
 		//Test.displayTree(Test);
 		
@@ -47,7 +37,7 @@ public class Main {
 			SRNode now2 = Test.findSRNode(Test, now.nodeNum);
 			Test.checking(now2);
 		}
-		Test.displayTree(Test);
+		//Test.displayTree(Test);
 		
 		//Generator
 //		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");

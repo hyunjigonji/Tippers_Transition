@@ -58,6 +58,44 @@ public class OntologyManager {
 	}
 	*/
 	
+	public ArrayList<String> findActuatorInd(String Prop) {
+		Prop = findActuator(Prop);
+		
+		ArrayList<String> actuators = new ArrayList<String>();
+		if(Prop.equals("TV")) {
+			actuators.add("TV1");
+			actuators.add("TV2");
+		}
+		if(Prop.equals("Light")) {
+			actuators.add("Light1");
+			actuators.add("Light2");
+		}
+		if(Prop.equals("AC")) {
+			actuators.add("AC1");
+			actuators.add("AC2");
+		}
+		return actuators;
+	}
+	
+	public String findActuator(String Prop) {
+		String act = "";
+		Actuator Act = new Actuator();
+		for(int i = 0 ; i < Act.acts.size() ; i++) {
+			if(Prop.contains(Act.acts.get(i))) {
+				act = Act.acts.get(i);
+			}
+		}
+		return act;
+	}
+	
+	public String findAct(String Prop) {
+		String actProp = "";
+		if(Prop.contains("Turn On")) {
+			actProp = "TurnOnProp";
+		}
+		return actProp;
+	}
+	
 	public ArrayList<String> findSensor(String Obs){
 		ArrayList<String> sensors = new ArrayList<String>();
 		sensors.add("wifi1");
