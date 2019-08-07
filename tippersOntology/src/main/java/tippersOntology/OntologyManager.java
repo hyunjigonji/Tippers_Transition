@@ -17,12 +17,12 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
+	public static String ontologyURL = "C:\\Users\\KIM KI MIN\\tippers_transition\\ontology.owl";
 	// public static String ontologyURL =
 	// "/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl";
 	public static OWLReasoner reasoner;
 	public static IRI ontologyIRI = IRI
-			.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+			.create("C:\\Users\\KIM KI MIN\\tippers_transition\\ontology.owl");
 	// public static IRI ontologyIRI =
 	// IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;

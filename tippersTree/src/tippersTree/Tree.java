@@ -259,7 +259,7 @@ public class Tree {
 
 	// generate from UR or UA
 	public static int count = 0;
-	public void generator0(UANode nowNode) {
+	public void URgenerator0(URNode nowNode) {
 		String nowE = nowNode.values.Entity;
 		String nowC = nowNode.values.Condition;
 		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
@@ -275,12 +275,13 @@ public class Tree {
 			SR newSR = new SR(nowSen, nowObs, nowE);
 			SRNode newSRNode = newSRNode(newSR);
 
-			//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
-			//else newSRNode.type = types.typePSR;
+			if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			else newSRNode.type = types.typePSR;
 
-			if(count++%2 == 0) newSRNode.type = types.typePSR;
-			else newSRNode.type = types.typeVSR;
-			// nowSen == physic or virtualÏù∏ÏßÄ type Ï†ïÌïòÍ∏∞ (if)
+			//if(count++%2 == 0) newSRNode.type = types.typePSR;
+			//else newSRNode.type = types.typeVSR;
+			
+			// nowSen == physic or virtual¿Œ¡ˆ type ¡§«œ±‚ (if)
 			// newSRNode.type = types.typePSR / types.typeVSR;
 			SRs.add(newSRNode);
 
@@ -289,7 +290,40 @@ public class Tree {
 		}
 		return;
 	}
+	
+	public void UAgenerator0(UANode nowNode) {
+		String nowE = nowNode.values.Entity;
+		String nowP = nowNode.values.Property;
+		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
 
+		XNode XNode = newXNode();
+		appendChild(nowNode, XNode);
+
+		String nowObs = OM.findAct(nowP);
+		ArrayList<String> sens = OM.findActuatorInd(nowP);
+
+		for(int i = 0 ; i < sens.size(); i++) {
+			String nowSen = sens.get(i);
+			SR newSR = new SR(nowSen, nowObs, nowE);
+			SRNode newSRNode = newSRNode(newSR);
+			newSRNode.type = types.typeAC;
+
+			//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			//else newSRNode.type = types.typePSR;
+
+			//if(count++%2 == 0) newSRNode.type = types.typePSR;
+			//else newSRNode.type = types.typeVSR;
+			
+			// nowSen == physic or virtual¿Œ¡ˆ type ¡§«œ±‚ (if)
+			// newSRNode.type = types.typePSR / types.typeVSR;
+			SRs.add(newSRNode);
+
+			appendChild(XNode,newSRNode);
+			//generator1(newSRNode, nowE); // call other function once
+		}
+		return;
+	}
+	
 	// generate from SRNode using recursive algorithm
 	public void generator1(SRNode nowNode, String nowEnt) {
 		if(nowNode.type == types.typePSR) return;
@@ -315,12 +349,13 @@ public class Tree {
 				SR newSR = new SR(nowSen, nowObs, nowEnt);
 				SRNode newSRNode = newSRNode(newSR);
 
-				//if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
-				//else newSRNode.type = types.typePSR;
+				if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+				else newSRNode.type = types.typePSR;
 
-				if(count%2==0 || count++>15) newSRNode.type = types.typePSR;
-				else newSRNode.type = types.typeVSR;
-				// nowSen == physic or virtualÏù∏ÏßÄ type Ï†ïÌïòÍ∏∞ (if)
+				//if(count%2==0 || count++>5) newSRNode.type = types.typePSR;
+				//else newSRNode.type = types.typeVSR;
+				
+				// nowSen == physic or virtual¿Œ¡ˆ type ¡§«œ±‚ (if)
 				// newSRNode.type = types.typePSR / types.typeVSR;
 				SRs.add(newSRNode);
 
@@ -442,6 +477,10 @@ public class Tree {
 				str = "VSR" + Integer.toString(now2.nodeNum) + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 				//System.out.println(str);
 			}
+			else if(now.type == types.typeAC) {
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
+				str = "AC" + Integer.toString(now2.nodeNum) + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
+			}
 			if(now.isRoot) str = "Root";
 
 			graph.addNode(str);
@@ -469,6 +508,10 @@ public class Tree {
 				else if(parent.type == types.typeVSR) {
 					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "VSR" + Integer.toString(parent2.nodeNum) + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
+				}
+				else if(parent.type == types.typeAC) {
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
+					par = "AC" + Integer.toString(parent2.nodeNum) + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
 				}
 				if(parent.isRoot) par = "Root";
 
@@ -528,6 +571,10 @@ public class Tree {
 				str = "VSR" + Integer.toString(now2.nodeNum);
 				//System.out.println(str);
 			}
+			else if(now.type == types.typeAC) {
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
+				str = "AC" + Integer.toString(now2.nodeNum);
+			}
 			if(now.isRoot) str = "Root";
 
 			graph.addNode(str);
@@ -555,6 +602,10 @@ public class Tree {
 				else if(parent.type == types.typeVSR) {
 					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "VSR" + Integer.toString(parent2.nodeNum);
+				}
+				else if(parent.type == types.typeAC) {
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
+					par = "AC" + Integer.toString(parent2.nodeNum);
 				}
 				if(parent.isRoot) par = "Root";
 
