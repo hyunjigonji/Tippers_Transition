@@ -1,0 +1,620 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12">
+    <Prefix name="" IRI="http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.w3.org/ns/sosa/</Import>
+    <Import>http://www.w3.org/ns/ssn/</Import>
+    <Declaration>
+        <Class IRI="#ActProperty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Actuation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Actuator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConnImg2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Connectivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Connectivity2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Device"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Entity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Extent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Image"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Image2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ImgProp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Location2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObsProperty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Observation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Occupancy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Param"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhySensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RawObs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Room"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SemObs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Space"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StaticProperty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Temperture"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Thermometer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VirSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wifi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#capacity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#connProp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#meetingRoom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#occupancyProp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#office"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#tempProp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#turnOffACProp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#turnOnAC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#turnOnACProp"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#actType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#actuates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#captures"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#capturesOccu"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#capturesPS"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#capturesVS"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasExtent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasParam"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#input"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inputC2O"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inputCI2O"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inputI2O"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#obsType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#obsTypeConn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#obsTypeImg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#obsTypeTemp"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#wifiCapturesConn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#valueType"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Conn2occ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wifi1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wifi2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wifi3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#obs123"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#office2076"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#office2082"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#ActProperty"/>
+        <Class IRI="http://www.w3.org/ns/sosa/ActuatableProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Actuation"/>
+        <Class IRI="http://www.w3.org/ns/sosa/Actuation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Actuator"/>
+        <Class IRI="#Device"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConnImg2occupancy"/>
+        <Class IRI="#VirSensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Connectivity"/>
+        <Class IRI="#RawObs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Connectivity2occupancy"/>
+        <Class IRI="#VirSensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Entity"/>
+        <Class IRI="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Image"/>
+        <Class IRI="#RawObs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Image2occupancy"/>
+        <Class IRI="#VirSensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ImgProp"/>
+        <Class IRI="#ObsProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Location"/>
+        <Class IRI="#SemObs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Location2occupancy"/>
+        <Class IRI="#VirSensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObsProperty"/>
+        <Class IRI="http://www.w3.org/ns/sosa/ObservableProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Observation"/>
+        <Class IRI="http://www.w3.org/ns/sosa/Observation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupancy"/>
+        <Class IRI="#SemObs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhySensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RawObs"/>
+        <Class IRI="#Observation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Room"/>
+        <Class IRI="#Space"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SemObs"/>
+        <Class IRI="#Observation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sensor"/>
+        <Class IRI="#Device"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sensor"/>
+        <Class IRI="http://www.w3.org/ns/sosa/Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Space"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StaticProperty"/>
+        <Class IRI="http://www.w3.org/ns/ssn/Property"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Temperture"/>
+        <Class IRI="#RawObs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thermometer"/>
+        <Class IRI="#PhySensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VirSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wifi"/>
+        <Class IRI="#PhySensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#capacity"/>
+        <Class IRI="#StaticProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#connProp"/>
+        <Class IRI="#ObsProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#meetingRoom"/>
+        <Class IRI="#Room"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#occupancyProp"/>
+        <Class IRI="#ObsProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#office"/>
+        <Class IRI="#Room"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#tempProp"/>
+        <Class IRI="#ObsProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#turnOffACProp"/>
+        <Class IRI="#ActProperty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#turnOnAC"/>
+        <Class IRI="#Actuation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#turnOnACProp"/>
+        <Class IRI="#ActProperty"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Connectivity2occupancy"/>
+        <NamedIndividual IRI="#Conn2occ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Wifi"/>
+        <NamedIndividual IRI="#Wifi1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Wifi"/>
+        <NamedIndividual IRI="#Wifi2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Wifi"/>
+        <NamedIndividual IRI="#Wifi3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Connectivity"/>
+        <NamedIndividual IRI="#obs123"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#office"/>
+        <NamedIndividual IRI="#office2076"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#office"/>
+        <NamedIndividual IRI="#office2082"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#room1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#room2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#room3"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#captures"/>
+        <NamedIndividual IRI="#Wifi1"/>
+        <NamedIndividual IRI="#obs123"/>
+    </ObjectPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <ObjectProperty IRI="#capturesVS"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#capturesPS"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#capturesVS"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#inputC2O"/>
+        <ObjectProperty IRI="#input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#inputCI2O"/>
+        <ObjectProperty IRI="#input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#obsTypeConn"/>
+        <ObjectProperty IRI="#obsType"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#obsTypeImg"/>
+        <ObjectProperty IRI="#obsType"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#obsTypeTemp"/>
+        <ObjectProperty IRI="#obsType"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#wifiCapturesConn"/>
+        <ObjectProperty IRI="#capturesPS"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#actType"/>
+        <Class IRI="#ActProperty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#actuates"/>
+        <Class IRI="#Actuator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#captures"/>
+        <Class IRI="#Sensor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#Connectivity2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#Image2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#Location2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesPS"/>
+        <Class IRI="#PhySensor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasExtent"/>
+        <Class IRI="#Space"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasParam"/>
+        <Class IRI="#Device"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#input"/>
+        <Class IRI="#VirSensor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputC2O"/>
+        <Class IRI="#Connectivity2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputCI2O"/>
+        <Class IRI="#ConnImg2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputI2O"/>
+        <Class IRI="#Image2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#obsType"/>
+        <Class IRI="#ObsProperty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#obsTypeConn"/>
+        <Class IRI="#connProp"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#obsTypeImg"/>
+        <Class IRI="#ImgProp"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#obsTypeTemp"/>
+        <Class IRI="#tempProp"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#wifiCapturesConn"/>
+        <Class IRI="#Wifi"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isObservedBy"/>
+        <Class IRI="http://www.w3.org/ns/sosa/ObservableProperty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/ssn/hasProperty"/>
+        <Class IRI="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#actType"/>
+        <Class IRI="#Actuation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#actuates"/>
+        <Class IRI="#Actuation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#captures"/>
+        <Class IRI="#Observation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#Occupancy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#capturesPS"/>
+        <Class IRI="#RawObs"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasExtent"/>
+        <Class IRI="#Extent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasParam"/>
+        <Class IRI="#Param"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#input"/>
+        <Class IRI="#Observation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputC2O"/>
+        <Class IRI="#Connectivity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputCI2O"/>
+        <Class IRI="#Connectivity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputCI2O"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputI2O"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#obsType"/>
+        <Class IRI="#Observation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#obsTypeConn"/>
+        <Class IRI="#Connectivity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#obsTypeImg"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#obsTypeTemp"/>
+        <Class IRI="#Temperture"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#wifiCapturesConn"/>
+        <Class IRI="#Connectivity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isObservedBy"/>
+        <Class IRI="http://www.w3.org/ns/sosa/Sensor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/ssn/hasProperty"/>
+        <Class IRI="http://www.w3.org/ns/ssn/Property"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#valueType"/>
+        <Class IRI="#StaticProperty"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#valueType"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
