@@ -17,9 +17,9 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "src/main/java/tippersOntology/ontology.owl";
+	public static String ontologyURL = "../ontology.owl";
 	public static OWLReasoner reasoner;
-	public static IRI ontologyIRI = IRI.create("src/main/java/tippersOntology/ontology.owl");
+	public static IRI ontologyIRI = IRI.create("../ontology.owl");
 	// public static IRI ontologyIRI =
 	// IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
@@ -182,24 +182,23 @@ public class OntologyManager {
 		return sen;
 	}
 
-	// find Observation
-	public static ArrayList<String> findObs(String prop) {
-		ArrayList<String> obs = new ArrayList<String>();
+	public static String findObs(String prop) {
+	    String result = new String();
 		System.out.println("\n[Print Observation by Observation Property]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");																//ok
+		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");                                                //ok
 		for (int i = 0; i < subprop.size(); i++) {
 			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL+prop)) {
-				obs.add(strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString()));
+				result = strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString());
 			}
 		}
-		return obs;
+		return result;
 	}
 
 	// is VS
 	// find a type of specific sensor
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
-		System.out.println("\n[Find Sensor Type]\n" + Sensor + "  is Virtual Sensor?");
+		System.out.println("\n[Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
 		ArrayList<OWLClassExpression> cls = showSubclasses(ONTOLOGYURL + "Sensor");
 		for (int i = 0; i < cls.size(); i++) {
 			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {

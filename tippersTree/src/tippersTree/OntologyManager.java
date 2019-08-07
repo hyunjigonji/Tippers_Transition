@@ -8,10 +8,11 @@ public class OntologyManager {
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
 	 */
 	public ArrayList<String> extractEnt(UA UARequest) { // extract Entity from UA, M
-		ArrayList<String> temp = new ArrayList<String>();
+		/*ArrayList<String> temp = new ArrayList<String>();
 		temp.add("room1");
 		temp.add("room2");
-		return temp; 
+		return temp; */
+		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
 	} 
 
 	public ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
@@ -96,16 +97,18 @@ public class OntologyManager {
 	}
 	
 	public ArrayList<String> findSensor(String Obs){
-		ArrayList<String> sensors = new ArrayList<String>();
+		/*ArrayList<String> sensors = new ArrayList<String>();
 		sensors.add("Wifi1");
 		sensors.add("Wifi2");
-		//sensors.add("wifi3");
-		return sensors;
+		sensors.add("wifi3");
+		return sensors;*/
+		return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
 	public String findObs(String prop) {
-		String obsProp = "OccObs";
-		return obsProp;
+		/*String obsProp = "OccObs";
+		return obsProp;*/
+		return tippersOntology.OntologyManager.findObs(prop);
 	}
 	
 	public ArrayList<String> findInput(String sensor){
