@@ -182,10 +182,11 @@ public class OntologyManager {
 		return sen;
 	}
 
+	// find Observation
 	public static String findObs(String prop) {
-	    String result = new String();
+		String result = new String();
 		System.out.println("\n[Print Observation by Observation Property]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");                                                //ok
+		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");															
 		for (int i = 0; i < subprop.size(); i++) {
 			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL+prop)) {
 				result = strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString());
@@ -208,11 +209,6 @@ public class OntologyManager {
 			}
 		}
 		return flag;
-	}
-
-	private static OWLOntologyManager create() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/**
