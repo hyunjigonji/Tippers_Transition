@@ -18,10 +18,11 @@ public class OntologyManager {
    public static OWLDataFactory factory;
    public static OWLOntology ontology;
    //public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
-   public static String ontologyURL = "/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl";
+   public static String ontologyURL = "src/main/java/tippersOntology/ontology.owl";
    public static OWLReasoner reasoner;
    //public static IRI ontologyIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
-   public static IRI ontologyIRI = IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
+   //public static IRI ontologyIRI = IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
+   public static IRI ontologyIRI = IRI.create("src/main/java/tippersOntology/ontology.owl");
    public static BidirectionalShortFormProvider bidiShortFormProvider;
    public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
@@ -241,5 +242,4 @@ public class OntologyManager {
    public static void addAxiomsOntology(Set<OWLAxiom> axioms) {
       manager.addAxioms(ontology, axioms);
    }
-
 }
