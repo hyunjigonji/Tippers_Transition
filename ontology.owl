@@ -183,10 +183,22 @@
         <ObjectProperty IRI="#wifiCapturesConn"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#wifiCapturesOccu"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#valueType"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Conn2occ"/>
+        <NamedIndividual IRI="#ConnImg2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Connectivity2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Image2occupancy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Location2occupancy"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Wifi1"/>
@@ -364,8 +376,20 @@
         <Class IRI="#ActProperty"/>
     </SubClassOf>
     <ClassAssertion>
+        <Class IRI="#ConnImg2occupancy"/>
+        <NamedIndividual IRI="#ConnImg2occupancy"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Connectivity2occupancy"/>
-        <NamedIndividual IRI="#Conn2occ"/>
+        <NamedIndividual IRI="#Connectivity2occupancy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Image2occupancy"/>
+        <NamedIndividual IRI="#Image2occupancy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Location2occupancy"/>
+        <NamedIndividual IRI="#Location2occupancy"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Wifi"/>
@@ -448,6 +472,10 @@
         <ObjectProperty IRI="#wifiCapturesConn"/>
         <ObjectProperty IRI="#capturesPS"/>
     </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#wifiCapturesOccu"/>
+        <ObjectProperty IRI="#capturesPS"/>
+    </SubObjectPropertyOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#actType"/>
         <Class IRI="#ActProperty"/>
@@ -518,6 +546,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#wifiCapturesConn"/>
+        <Class IRI="#Wifi"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#wifiCapturesOccu"/>
         <Class IRI="#Wifi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>

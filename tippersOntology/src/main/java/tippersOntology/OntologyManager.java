@@ -186,16 +186,16 @@ public class OntologyManager {
 	}
 
 	// find Observation
-	public static ArrayList<String> findObs(String prop) {
-		ArrayList<String> obs = new ArrayList<String>();
+	public static String findObs(String prop) {
+		String result = new String();
 		System.out.println("\n[Print Observation by Observation Property]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");																//ok
+		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");															
 		for (int i = 0; i < subprop.size(); i++) {
 			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL+prop)) {
-				obs.add(strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString()));
+				result = strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString());
 			}
 		}
-		return obs;
+		return result;
 	}
 
 	// is VS
@@ -212,11 +212,6 @@ public class OntologyManager {
 			}
 		}
 		return flag;
-	}
-
-	private static OWLOntologyManager create() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/**
