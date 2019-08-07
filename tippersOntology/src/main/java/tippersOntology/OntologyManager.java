@@ -97,7 +97,6 @@ public class OntologyManager {
 
 	// show subclasses
 	public static ArrayList<OWLClassExpression> showSubclasses(String str) {
-		System.out.println("\n[Print subclasses]");
 		ArrayList<OWLClassExpression> sub = new ArrayList<OWLClassExpression>();
 		OWLClass c = factory.getOWLClass(IRI.create(ONTOLOGYURL+str));
 		for (OWLSubClassOfAxiom cls : ontology.getSubClassAxiomsForSuperClass(c)) {
@@ -113,7 +112,7 @@ public class OntologyManager {
 		ArrayList<String> instance = new ArrayList<String>();
 		String ent0 = ONTOLOGYURL + ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
-			if (c.getIRI().toString().equals(ent0)) {
+			if (c.getIRI().toString().equalsIgnoreCase(ent0)) {
 				NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, false);
 				for (OWLNamedIndividual i : instances.getFlattened()) {
 					String temp = strToken0(i.getIRI().toString());
@@ -128,7 +127,7 @@ public class OntologyManager {
 	// return that property, else return null
 	public static OWLObjectProperty getOntoobjProperty(String name) {
 		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature())
-			if (p.getIRI().getFragment().equals(name))
+			if (p.getIRI().getFragment().equalsIgnoreCase(name))
 				return p;
 		return null;
 	}
@@ -137,7 +136,7 @@ public class OntologyManager {
 	// return that property, else return null
 	public static OWLDataProperty getOntoDataProperty(String name) {
 		for (OWLDataProperty p : ontology.getDataPropertiesInSignature())
-			if (p.getIRI().getFragment().equals(name))
+			if (p.getIRI().getFragment().equalsIgnoreCase(name))
 				return p;
 		return null;
 	}
@@ -149,7 +148,7 @@ public class OntologyManager {
 		OWLObjectProperty p = getOwlObjProp(ONTOLOGYURL + prop);
 		for (final OWLSubObjectPropertyOfAxiom subProp : ontology.getObjectSubPropertyAxiomsForSuperProperty(p)) {
 			if (subProp.getSuperProperty() instanceof OWLProperty && subProp.getSubProperty() instanceof OWLProperty) {
-				if (subProp.getSuperProperty().toString().equals("<" + ONTOLOGYURL + prop + ">")) {
+				if (subProp.getSuperProperty().toString().equalsIgnoreCase("<" + ONTOLOGYURL + prop + ">")) {
 					objprop.addAll(subProp.getSubProperty().getObjectPropertiesInSignature());
 				}
 			}
@@ -167,7 +166,7 @@ public class OntologyManager {
 					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
 				if (subPrope.getSuperProperty() instanceof OWLProperty
 						&& subPrope.getSubProperty() instanceof OWLProperty) {
-					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(ONTOLOGYURL+obs)) {
+					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(ONTOLOGYURL+obs)) {		//return node set
 						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true)
 								.getFlattened().toString());
 						for (int j = 0; j < sen.size(); j++) {
@@ -203,7 +202,7 @@ public class OntologyManager {
 		ArrayList<OWLClassExpression> cls = showSubclasses(ONTOLOGYURL + "Sensor");
 		for (int i = 0; i < cls.size(); i++) {
 			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
-				if (strToken0(idv.getIRI().toString()).equals(Sensor) && cls.get(i).toString().contains("VirSensor")) {
+				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor) && cls.get(i).toString().equalsIgnoreCase("VirSensor")) {
 					flag = true;
 				}
 			}
@@ -217,6 +216,7 @@ public class OntologyManager {
 	 * @param OWLOntology The ontology
 	 * @return OWLReasoner The reasoner created
 	 */
+	//create owl reasoner
 	public static OWLReasoner createOWLReasoner() throws IllegalArgumentException {
 
 		OWLReasonerFactory jfact = new JFactFactory();
