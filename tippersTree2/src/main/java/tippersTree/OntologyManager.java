@@ -41,22 +41,41 @@ public class OntologyManager {
 		}
 		return temp; 
 	}
-	/*
-	public ArrayList<Stringeger> extractSen(SR SRRequest){
-		ArrayList<Stringeger> temp = new ArrayList<Stringeger>();
-		return temp;
+	
+	public ArrayList<String> findSensor(String Obs){
+		/*ArrayList<String> sensors = new ArrayList<String>();
+		sensors.add("Wifi1");
+		sensors.add("Wifi2");
+		sensors.add("wifi3");
+		return sensors;*/
+		return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
-	public ArrayList<Stringeger> extractObs(SR SRRequest){
-		ArrayList<Stringeger> temp = new ArrayList<Stringeger>();
-		return temp;
+	public String findObs(String prop) {
+		/*String obsProp = "OccObs";
+		return obsProp;*/
+		return tippersOntology.OntologyManager.findObs(prop);
 	}
 	
-	public ArrayList<Stringeger> extractEnt(SR SRRequest){
-		ArrayList<Stringeger> temp = new ArrayList<Stringeger>();
-		return temp;
+	public ArrayList<String> findInput(String sensor){
+		ArrayList<String> inputs = new ArrayList<String>();
+		inputs.add("False");
+		inputs.add("Occupancy");
+		//inputs.add("Loc2Occ");
+		return inputs;
 	}
-	*/
+	
+	public boolean isVS(String sensor) {
+		//if(sensor.contains("wifi")) return false;
+		//else return true;
+		return tippersOntology.OntologyManager.isVS(sensor);
+	}
+
+	public boolean hasMultiInput(ArrayList<String> Obs) {
+		String determine = Obs.get(0);
+		if(determine.equals("True")) return true; // + node
+		else return false; // x node
+	}
 	
 	public ArrayList<String> findActuatorInd(String Prop) {
 		Prop = findActuator(Prop);
@@ -96,35 +115,6 @@ public class OntologyManager {
 		return actProp;
 	}
 	
-	public ArrayList<String> findSensor(String Obs){
-		/*ArrayList<String> sensors = new ArrayList<String>();
-		sensors.add("Wifi1");
-		sensors.add("Wifi2");
-		sensors.add("wifi3");
-		return sensors;*/
-		return tippersOntology.OntologyManager.findSensor(Obs);
-	}
-	
-	public String findObs(String prop) {
-		/*String obsProp = "OccObs";
-		return obsProp;*/
-		return tippersOntology.OntologyManager.findObs(prop);
-	}
-	
-	public ArrayList<String> findInput(String sensor){
-		ArrayList<String> inputs = new ArrayList<String>();
-		inputs.add("False");
-		inputs.add("Con2Occ");
-		//inputs.add("Loc2Occ");
-		return inputs;
-	}
-	
-	public boolean isVS(String sensor) {
-		//if(sensor.contains("wifi")) return false;
-		//else return true;
-		return tippersOntology.OntologyManager.isVS(sensor);
-	}
-	
 	public ArrayList<String> getAptDevices(String sensor){
 		ArrayList<String> temp = new ArrayList<String>();
 		temp.add("Wifi1");
@@ -139,10 +129,6 @@ public class OntologyManager {
 	}
 	
 	public boolean checkAccess(String sen, String ent) {
-		return true;
-	}
-	
-	public boolean hasMultiInput(String sensor) {
 		return true;
 	}
 }
