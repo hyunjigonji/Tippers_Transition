@@ -12,15 +12,16 @@ public class index {
 		OntologyManager.createOWLReasoner();
 		OntologyManager.showOntology();		//show ontology path
 		OntologyManager.showClasses();		//show ontology classes
-		System.out.println(OntologyManager.showSubclasses("Room"));	//show all of subclasses with superclasses
+		System.out.println("\n[test showSubclasses]\n"+OntologyManager.showSubclasses("Room"));		//test >> show all of subclasses with super classes
+																									//이거는 대소문자 구분 필요, 혼자 사용할 거 아니고 다른 메소드에서 불러서 쓸거라서 대소문자 구분 안해도 된다고 생각
 		System.out.println(OntologyManager.extractEnt("office"));
-		System.out.println(OntologyManager.findSensor("Occupancy"));
+		System.out.println(OntologyManager.findSensor("occupancy"));
 		System.out.println(OntologyManager.findObs("tempProp"));
 
-		System.out.println(OntologyManager.isVS("Conn2occ"));
-		System.out.println(OntologyManager.isVS("Wifi2"));
+		System.out.println(OntologyManager.isVS("conn2occ"));
+		System.out.println(OntologyManager.isVS("wifi2"));
 		
-		System.out.println("\n" + OntologyManager.getOntoobjProperty("captures"));		//object property
-		System.out.println("\n" + OntologyManager.getOntoDataProperty("captures"));		//data property	
+		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
+		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
 	}
 }

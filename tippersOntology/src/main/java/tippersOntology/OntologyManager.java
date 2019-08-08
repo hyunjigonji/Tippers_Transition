@@ -79,7 +79,7 @@ public class OntologyManager {
 	// show classes of ontology
 	public static void showClasses() throws OWLException { // show classes
 		OWLOntology o = showOntology();
-		System.out.println("\n[Print all classes]");
+		System.out.println("\n[showClasses: Print all classes]");
 		for (OWLClass cls : o.getClassesInSignature()) {
 			System.out.println(cls);
 		}
@@ -108,7 +108,7 @@ public class OntologyManager {
 	// extract entity
 	// extract individual
 	public static ArrayList<String> extractEnt(String ent) {
-		System.out.println("\n[Extract Entity]");
+		System.out.println("\n[extractEnt: Extract Entity]");
 		ArrayList<String> instance = new ArrayList<String>();
 		String ent0 = ONTOLOGYURL + ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
@@ -125,7 +125,8 @@ public class OntologyManager {
 
 	// if there is object property
 	// return that property, else return null
-	public static OWLObjectProperty getOntoobjProperty(String name) {
+	public static OWLObjectProperty getOntoObjProperty(String name) {
+		System.out.println("\n[getOntoObjProperty: get object property that has same name with input]");
 		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature())
 			if (p.getIRI().getFragment().equalsIgnoreCase(name))
 				return p;
@@ -135,6 +136,7 @@ public class OntologyManager {
 	// if there is data property
 	// return that property, else return null
 	public static OWLDataProperty getOntoDataProperty(String name) {
+		System.out.println("\n[getOntoDataProperty: get data property that has same name with input]");
 		for (OWLDataProperty p : ontology.getDataPropertiesInSignature())
 			if (p.getIRI().getFragment().equalsIgnoreCase(name))
 				return p;
@@ -157,16 +159,17 @@ public class OntologyManager {
 	}
 
 	// find Sensor
+	// return arrayList
 	public static ArrayList<String> findSensor(String obs) {
 		ArrayList<String> sen = new ArrayList<String>();
-		System.out.println("\n[Print Sensor by Observation]");
+		System.out.println("\n[findSensor: Print Sensor by Observation]");
 		ArrayList<OWLObjectProperty> subprop = getsubProp("captures");
 		for (int i = 0; i < subprop.size(); i++) {
 			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology
 					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
 				if (subPrope.getSuperProperty() instanceof OWLProperty
 						&& subPrope.getSubProperty() instanceof OWLProperty) {
-					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().contains(ONTOLOGYURL+obs)) {		//return node set
+					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().toLowerCase().contains(ONTOLOGYURL+obs.toLowerCase())) {		//return node set
 						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true)
 								.getFlattened().toString());
 						for (int j = 0; j < sen.size(); j++) {
@@ -182,9 +185,10 @@ public class OntologyManager {
 	}
 
 	// find Observation
+	// return string
 	public static String findObs(String prop) {
 		String result = new String();
-		System.out.println("\n[Print Observation by Observation Property]");
+		System.out.println("\n[findObs: Print Observation by Observation Property]");
 		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");															
 		for (int i = 0; i < subprop.size(); i++) {
 			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL+prop)) {
@@ -198,7 +202,7 @@ public class OntologyManager {
 	// find a type of specific sensor
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
-		System.out.println("\n[Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
+		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
 		ArrayList<OWLClassExpression> cls = showSubclasses(ONTOLOGYURL + "Sensor");
 		for (int i = 0; i < cls.size(); i++) {
 			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
