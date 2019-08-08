@@ -208,11 +208,13 @@ public class OntologyManager {
 			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
 				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor) && cls.get(i).toString().equalsIgnoreCase("VirSensor")) {
 					flag = true;
+					System.out.println("dddddd");
 				}
 			}
 		}
 		return flag;
 	}
+	
 
 	/**
 	 * Creates a HermiT OWLReasoner with the given ontology.
