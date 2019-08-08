@@ -18,10 +18,12 @@ public class OntologyManager {
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
 	public static String ontologyURL = "../ontology.owl";
+	//public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
 	public static OWLReasoner reasoner;
 	public static IRI ontologyIRI = IRI.create("../ontology.owl");
-	// public static IRI ontologyIRI =
-	// IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
+	//public static IRI ontoloIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
+	//public static IRI ontologyIRI =
+	//		 IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
@@ -203,12 +205,11 @@ public class OntologyManager {
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
 		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
-		ArrayList<OWLClassExpression> cls = showSubclasses(ONTOLOGYURL + "Sensor");
+		ArrayList<OWLClassExpression> cls = showSubclasses("Sensor");		
 		for (int i = 0; i < cls.size(); i++) {
 			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
-				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor) && cls.get(i).toString().equalsIgnoreCase("VirSensor")) {
+				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor) && cls.get(i).toString().contains("VirSensor")) {
 					flag = true;
-					System.out.println("dddddd");
 				}
 			}
 		}
