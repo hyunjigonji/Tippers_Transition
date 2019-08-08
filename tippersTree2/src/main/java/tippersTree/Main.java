@@ -1,6 +1,7 @@
 package tippersTree;
 
 import java.util.*;
+
 import tippersOntology.OntologyManager;
 
 /*
@@ -19,28 +20,28 @@ public class Main {
 		Tree Test = new Tree();
 		UA TestUA = new UA("office", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Capacity");
 		
-		Test = Test.flattening(TestUA);
-		//Test.displayTree(Test);
+		Test = Tree_Flattening.flattening(TestUA);
+		//Tree_Display.displayTree(Test);
 		for(int i = 0 ; i < Test.URij.size() ; i++) {
 			//System.out.println("hello");
 			URNode now = Test.URij.get(i);
-			Test.URgenerator0(now);
+			Tree_Generator.URgenerator0(now);
 		}
-		//Test.displayTree(Test);
+		//Tree_Display.displayTree(Test);
 		for(int i = 0 ; i < Test.UAij.size() ; i++) {
 			UANode now = Test.UAij.get(i);
-			Test.UAgenerator0(now);
+			Tree_Generator.UAgenerator0(now);
 		}
-		Test.displayTree(Test);
+		//Tree_Display.displayTree(Test);
 		
 		// print leaf nodes
 		ArrayList<Node> leaves = Test.findLeafNode(Test);
 		for(int i = 0 ; i < leaves.size() ; i++) {
 			Node now = leaves.get(i);
 			SRNode now2 = Test.findSRNode(Test, now.nodeNum);
-			Test.checking(now2);
+			Tree_Remove.checking(now2);
 		}
-		//Test.displayTree(Test);
+		Tree_Display.displayTree(Test);
 		
 		//Generator
 //		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
