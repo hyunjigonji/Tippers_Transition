@@ -19,7 +19,7 @@ public class index {
 		System.out.println(OntologyManager.findObs("tempProp"));
 
 		System.out.println(OntologyManager.isVS("conn2occu"));
-		System.out.println(OntologyManager.isVS("wifi2"));
+		System.out.println(OntologyManager.isVS("wifi1"));
 		
 		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
