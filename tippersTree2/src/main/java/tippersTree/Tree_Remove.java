@@ -50,10 +50,9 @@ public class Tree_Remove {
 
 	// remove recursively
 	public static void removing(Node nowNode) {
-		boolean temp = false;
 		//if(nowNode.nodeNum == 33) temp = true;
 		// if x node, there will be another chance.
-		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) {
+		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) { 
 			if(!nowNode.Children.isEmpty()) return;
 		}
 
@@ -65,12 +64,15 @@ public class Tree_Remove {
 //			}
 		for(int i = 0 ; i < parents.size() ; i++) {
 			Node nowPar = parents.get(i);
-			if(temp) System.out.println(nowPar.nodeNum);
 
 			nowPar.Children.remove(nowNode);
-			if(temp) System.out.println(nowPar.Children.get(0).nodeNum);
 			// if nowPar has empty children, remove parent
 			if(nowPar.Children.isEmpty()) {
+				nowPar.isLeaf = nowNode.isLeaf;
+				removing(nowPar);
+			}
+			if(nowPar.type == types.typePlus) { // if parent is + node, remove all children
+				nowPar.Children.clear();
 				nowPar.isLeaf = nowNode.isLeaf;
 				removing(nowPar);
 			}
