@@ -61,6 +61,10 @@ public class OntologyManager {
 			sensors.add("False");
 			sensors.add("Camera");
 		}
+		else if(Obs.equals("Location")) {
+			sensors.add("True");
+			sensors.add("GPS");
+		}
 		//System.out.println(sensors);
 		return sensors;
 		//return tippersOntology.OntologyManager.findSensor(Obs);

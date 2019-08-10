@@ -18,7 +18,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 		
 		Tree Test = new Tree();
-		UA TestUA = new UA("office", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Connectivity");
+		UA TestUA = new UA("meetingroom", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Connectivity");
 		
 		Test = Tree_Flattening.flattening(TestUA);
 		//Tree_Display.displayTree(Test);
