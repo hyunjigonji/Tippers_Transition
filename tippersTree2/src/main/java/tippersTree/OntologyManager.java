@@ -45,21 +45,21 @@ public class OntologyManager {
 		ArrayList<String> sensors = new ArrayList<String>();
 		if(Obs.equals("Occupancy")) {
 			//System.out.println("findSen Occupancy");
-			sensors.add("True");
-			sensors.add("Wifi1");
-			sensors.add("Wifi2");
-			sensors.add("Loc2Occ");
-		}
-		else if(Obs.equals("Location")) {
-			//System.out.println("findSen Location");
 			sensors.add("False");
-			sensors.add("Img2Loc");
-			sensors.add("Wifi3");
+			sensors.add("Con2Occ");
+			sensors.add("Img2Occ");
+			sensors.add("BB");
+		}
+		else if(Obs.equals("Connectivity")) {
+			//System.out.println("findSen Location");
+			sensors.add("True");
+			sensors.add("Wifi");
+			sensors.add("Loc2Con");
 		}
 		else if(Obs.equals("Image")) {
 			//System.out.println("findSen Image");
-			sensors.add("True");
-			sensors.add("Camera1");
+			sensors.add("False");
+			sensors.add("Camera");
 		}
 		//System.out.println(sensors);
 		return sensors;
@@ -69,20 +69,22 @@ public class OntologyManager {
 	public String findInput(String Sensor){
 		//System.out.println("findInput " + Sensor);
 		String inputObs = "";
-		if(Sensor.equals("Loc2Occ")) {
+		if(Sensor.equals("Loc2Con")) {
 			//System.out.println("findInput Loc2Occ");
 			inputObs = "Location";
 		}
-		if(Sensor.equals("Img2Loc")) {
+		if(Sensor.equals("Img2Occ")) {
 			//System.out.println("findInput Img2Loc");
 			inputObs = "Image";
+		}
+		if(Sensor.equals("Con2Occ")) {
+			inputObs = "Connectivity";
 		}
 		return inputObs;
 	}
 	
 	public boolean isVS(String Sensor) {
-		if(Sensor.contains("Wifi")) return false;
-		else if(Sensor.contains("Camera")) return false;
+		if(Sensor.contains("Wifi") || Sensor.equals("GPS") || Sensor.equals("Camera") || Sensor.equals("BB")) return false;
 		return true;
 		
 		//return tippersOntology.OntologyManager.isVS(sensor);
@@ -125,18 +127,19 @@ public class OntologyManager {
 		return action;
 	}
 	
-	public ArrayList<String> findActuator(String Prop) {
+	public String findActuator(String Prop) {
 		String actuator = "";
 		Actuator Acts = new Actuator();
 		for(int i = 0 ; i < Acts.acts.size() ; i++) {
 			String nowAct = Acts.acts.get(i);
 			if(Prop.contains(nowAct)) {
+				System.out.println(nowAct);
 				actuator = nowAct;
 			}
 		}
-		return findActInd(actuator);
+		return actuator;
 	}
-	
+	/*
 	public ArrayList<String> findActInd(String Actuator) {
 		ArrayList<String> acts = new ArrayList<String>();
 		if(Actuator.equals("TV")) {
@@ -152,7 +155,7 @@ public class OntologyManager {
 		}
 		return acts;
 	}
-	/*
+	
 	public String findAct(String Prop) {
 		String actProp = "";
 		if(Prop.contains("Turn on")) {

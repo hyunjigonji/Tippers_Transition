@@ -50,18 +50,17 @@ public class Tree_Generator extends Tree{
 		myTree.appendChild(nowNode, XNode);
 
 		String nowObs = OM.findAction(nowP);
-		ArrayList<String> acts = OM.findActuator(nowP);
+		String nowActuator = OM.findActuator(nowP);
+		System.out.println(nowActuator);
 
-		for(int i = 0 ; i < acts.size(); i++) {
-			String nowAct = acts.get(i);
-			SR newSR = new SR(nowAct, nowObs, nowE);
-			SRNode newSRNode = myTree.newSRNode(newSR);
+		SR newSR = new SR(nowActuator, nowObs, nowE);
+		SRNode newSRNode = myTree.newSRNode(newSR);
+		
+		newSRNode.type = types.typeAC;
+		
+		SRs.add(newSRNode);
+		myTree.appendChild(XNode,newSRNode);
 			
-			newSRNode.type = types.typeAC;
-			
-			SRs.add(newSRNode);
-			myTree.appendChild(XNode,newSRNode);
-		}
 		return;
 	}
 	

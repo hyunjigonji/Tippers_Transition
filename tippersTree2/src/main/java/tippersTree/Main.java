@@ -18,7 +18,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 		
 		Tree Test = new Tree();
-		UA TestUA = new UA("office", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Capacity");
+		UA TestUA = new UA("office", "Turn on AC,Turn on Light,Turn on TV", "Occupancy>50%Connectivity");
 		
 		Test = Tree_Flattening.flattening(TestUA);
 		//Tree_Display.displayTree(Test);
@@ -39,7 +39,7 @@ public class Main {
 		for(int i = 0 ; i < leaves.size() ; i++) {
 			Node now = leaves.get(i);
 			SRNode now2 = Test.findSRNode(Test, now.nodeNum);
-			Tree_Remove.checking(now2);
+			//Tree_Remove.checking(now2);
 		}
 		//Tree_Display.displayTree(Test);
 		

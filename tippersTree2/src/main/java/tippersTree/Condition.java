@@ -10,5 +10,6 @@ public class Condition {
 		conds.add("Occupancy");
 		//conds.add("Capacity");
 		conds.add("Location");
+		conds.add("Connectivity");
 	}
 }
