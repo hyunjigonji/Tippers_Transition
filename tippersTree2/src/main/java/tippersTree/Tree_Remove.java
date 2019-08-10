@@ -18,7 +18,7 @@ public class Tree_Remove {
 		for(int i = 0 ; i < sensors.size() ; i++) {
 			String nowSI = sensors.get(i);
 			//System.out.println(nowSI + " " + nowE);
-			if(!OntologyManager.checkAccess(nowSI, nowE) && !OntologyManager.checkCoverage(nowSI, nowE)){ // if available, add child
+			if(OntologyManager.checkAccess(nowSI, nowE) && OntologyManager.checkCoverage(nowSI, nowE)){ // if available, add child
 				//System.out.println("checking " + nowSI + " " + nowE);
 				if(!connected) {
 					Tree.appendChild(nowSRNode, newXNode);
