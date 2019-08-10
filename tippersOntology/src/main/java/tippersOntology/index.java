@@ -17,8 +17,10 @@ public class index {
 
 		System.out.println(OntologyManager.isVS("conn2occu"));
 		System.out.println(OntologyManager.isVS("wifi1"));
+		System.out.println(OntologyManager.getIndividual("meetingRoom"));
+		System.out.println(OntologyManager.getIndividual("Office"));
 		
-		OntologyManager.findInput("Location2occu");
+		System.out.println(OntologyManager.findInput("connectivity2occupancy"));
 		
 		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
