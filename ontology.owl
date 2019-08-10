@@ -15,6 +15,9 @@
     <Import>http://www.w3.org/ns/sosa/</Import>
     <Import>http://www.w3.org/ns/ssn/</Import>
     <Declaration>
+        <Class IRI="#AC"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#ActProperty"/>
     </Declaration>
     <Declaration>
@@ -22,6 +25,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Actuator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BB"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Camera"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Connectivity"/>
@@ -39,6 +48,9 @@
         <Class IRI="#Extent"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#GPS"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Image"/>
     </Declaration>
     <Declaration>
@@ -48,13 +60,13 @@
         <Class IRI="#ImgProp"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Light"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Location"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Location2connectivity"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Location2occupancy"/>
     </Declaration>
     <Declaration>
         <Class IRI="#ObsProperty"/>
@@ -91,6 +103,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#StaticProperty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TV"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Temperture"/>
@@ -144,6 +159,12 @@
         <ObjectProperty IRI="#capturesConn"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#capturesImg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#capturesLoca"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#capturesOccu"/>
     </Declaration>
     <Declaration>
@@ -183,16 +204,58 @@
         <DataProperty IRI="#valueType"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#AC1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AC2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AC3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BB1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BB2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BB3"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Conn2occu"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GPS1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GPS2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GPS3"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Image2occu"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Loca2conn"/>
+        <NamedIndividual IRI="#Light1"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Loca2occu"/>
+        <NamedIndividual IRI="#Light2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Light3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Location2conn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TV1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TV2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TV3"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Thermometer1"/>
@@ -210,6 +273,15 @@
         <NamedIndividual IRI="#Wifi3"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#camera1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#camera2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#camera3"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#connObs"/>
     </Declaration>
     <Declaration>
@@ -217,6 +289,15 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#locaObs"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#meetingroom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#meetingroom2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#meetingroom3"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#occuObs"/>
@@ -228,17 +309,12 @@
         <NamedIndividual IRI="#office2082"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#room1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#room2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#room3"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#tempObs"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="#AC"/>
+        <Class IRI="#Actuator"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#ActProperty"/>
         <Class IRI="http://www.w3.org/ns/sosa/ActuatableProperty"/>
@@ -250,6 +326,14 @@
     <SubClassOf>
         <Class IRI="#Actuator"/>
         <Class IRI="#Device"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BB"/>
+        <Class IRI="#PhySensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Camera"/>
+        <Class IRI="#PhySensor"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Connectivity"/>
@@ -264,6 +348,10 @@
         <Class IRI="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#GPS"/>
+        <Class IRI="#PhySensor"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Image"/>
         <Class IRI="#RawObs"/>
     </SubClassOf>
@@ -276,15 +364,15 @@
         <Class IRI="#ObsProperty"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Light"/>
+        <Class IRI="#Actuator"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Location"/>
         <Class IRI="#SemObs"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Location2connectivity"/>
-        <Class IRI="#VirSensor"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Location2occupancy"/>
         <Class IRI="#VirSensor"/>
     </SubClassOf>
     <SubClassOf>
@@ -336,6 +424,10 @@
         <Class IRI="http://www.w3.org/ns/ssn/Property"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#TV"/>
+        <Class IRI="#Actuator"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Temperture"/>
         <Class IRI="#RawObs"/>
     </SubClassOf>
@@ -388,20 +480,76 @@
         <Class IRI="#ActProperty"/>
     </SubClassOf>
     <ClassAssertion>
+        <Class IRI="#AC"/>
+        <NamedIndividual IRI="#AC1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AC"/>
+        <NamedIndividual IRI="#AC2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AC"/>
+        <NamedIndividual IRI="#AC3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BB"/>
+        <NamedIndividual IRI="#BB1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BB"/>
+        <NamedIndividual IRI="#BB2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BB"/>
+        <NamedIndividual IRI="#BB3"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Connectivity2occupancy"/>
         <NamedIndividual IRI="#Conn2occu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#GPS"/>
+        <NamedIndividual IRI="#GPS1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#GPS"/>
+        <NamedIndividual IRI="#GPS2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#GPS"/>
+        <NamedIndividual IRI="#GPS3"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Image2occupancy"/>
         <NamedIndividual IRI="#Image2occu"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Location2connectivity"/>
-        <NamedIndividual IRI="#Loca2conn"/>
+        <Class IRI="#Light"/>
+        <NamedIndividual IRI="#Light1"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Location2occupancy"/>
-        <NamedIndividual IRI="#Loca2occu"/>
+        <Class IRI="#Light"/>
+        <NamedIndividual IRI="#Light2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Light"/>
+        <NamedIndividual IRI="#Light3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Location2connectivity"/>
+        <NamedIndividual IRI="#Location2conn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TV"/>
+        <NamedIndividual IRI="#TV1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TV"/>
+        <NamedIndividual IRI="#TV2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TV"/>
+        <NamedIndividual IRI="#TV3"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Thermometer"/>
@@ -424,6 +572,18 @@
         <NamedIndividual IRI="#Wifi3"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Camera"/>
+        <NamedIndividual IRI="#camera1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Camera"/>
+        <NamedIndividual IRI="#camera2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Camera"/>
+        <NamedIndividual IRI="#camera3"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Connectivity"/>
         <NamedIndividual IRI="#connObs"/>
     </ClassAssertion>
@@ -434,6 +594,18 @@
     <ClassAssertion>
         <Class IRI="#Location"/>
         <NamedIndividual IRI="#locaObs"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#meetingroom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#meetingroom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#meetingroom3"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Occupancy"/>
@@ -448,18 +620,6 @@
         <NamedIndividual IRI="#office2082"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#room1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#room2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#room3"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Temperture"/>
         <NamedIndividual IRI="#tempObs"/>
     </ClassAssertion>
@@ -470,6 +630,14 @@
     </ObjectPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#capturesConn"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#capturesImg"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#capturesLoca"/>
         <ObjectProperty IRI="#captures"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -525,20 +693,24 @@
         <Class IRI="#Wifi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesImg"/>
+        <Class IRI="#Camera"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesLoca"/>
+        <Class IRI="#GPS"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#BB"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesOccu"/>
         <Class IRI="#Connectivity2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesOccu"/>
         <Class IRI="#Image2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#capturesOccu"/>
-        <Class IRI="#Location2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#capturesOccu"/>
-        <Class IRI="#Wifi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasExtent"/>
@@ -563,10 +735,6 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location2connectivity"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputL2O"/>
-        <Class IRI="#Location2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsType"/>
@@ -607,6 +775,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#capturesConn"/>
         <Class IRI="#Connectivity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#capturesImg"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#capturesLoca"/>
+        <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#capturesOccu"/>
