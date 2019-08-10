@@ -24,9 +24,6 @@
         <Class IRI="#Actuator"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ConnImg2occupancy"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Connectivity"/>
     </Declaration>
     <Declaration>
@@ -117,7 +114,7 @@
         <Class IRI="#meetingRoom"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#occupancyProp"/>
+        <Class IRI="#occuProp"/>
     </Declaration>
     <Declaration>
         <Class IRI="#office"/>
@@ -144,13 +141,10 @@
         <ObjectProperty IRI="#captures"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#capturesConn"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#capturesOccu"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#capturesPS"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#capturesVS"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasExtent"/>
@@ -165,10 +159,13 @@
         <ObjectProperty IRI="#inputC2O"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputCI2O"/>
+        <ObjectProperty IRI="#inputI2O"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inputL2O"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#obsType"/>
@@ -183,28 +180,19 @@
         <ObjectProperty IRI="#obsTypeTemp"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#wifiCapturesConn"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#wifiCapturesOccu"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#valueType"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Conn2occu"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#ConnImg2occu"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Image2occu"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Location2conn"/>
+        <NamedIndividual IRI="#Loca2conn"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Location2occu"/>
+        <NamedIndividual IRI="#Loca2occu"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Thermometer1"/>
@@ -262,10 +250,6 @@
     <SubClassOf>
         <Class IRI="#Actuator"/>
         <Class IRI="#Device"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ConnImg2occupancy"/>
-        <Class IRI="#VirSensor"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Connectivity"/>
@@ -380,7 +364,7 @@
         <Class IRI="#Room"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#occupancyProp"/>
+        <Class IRI="#occuProp"/>
         <Class IRI="#ObsProperty"/>
     </SubClassOf>
     <SubClassOf>
@@ -408,20 +392,16 @@
         <NamedIndividual IRI="#Conn2occu"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#ConnImg2occupancy"/>
-        <NamedIndividual IRI="#ConnImg2occu"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Image2occupancy"/>
         <NamedIndividual IRI="#Image2occu"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Location2connectivity"/>
-        <NamedIndividual IRI="#Location2conn"/>
+        <NamedIndividual IRI="#Loca2conn"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Location2occupancy"/>
-        <NamedIndividual IRI="#Location2occu"/>
+        <NamedIndividual IRI="#Loca2occu"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Thermometer"/>
@@ -489,15 +469,11 @@
         <NamedIndividual IRI="#connObs"/>
     </ObjectPropertyAssertion>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#capturesOccu"/>
-        <ObjectProperty IRI="#capturesVS"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#capturesPS"/>
+        <ObjectProperty IRI="#capturesConn"/>
         <ObjectProperty IRI="#captures"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#capturesVS"/>
+        <ObjectProperty IRI="#capturesOccu"/>
         <ObjectProperty IRI="#captures"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -505,11 +481,15 @@
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputCI2O"/>
+        <ObjectProperty IRI="#inputI2O"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#inputL2O"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -524,14 +504,6 @@
         <ObjectProperty IRI="#obsTypeTemp"/>
         <ObjectProperty IRI="#obsType"/>
     </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#wifiCapturesConn"/>
-        <ObjectProperty IRI="#capturesPS"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#wifiCapturesOccu"/>
-        <ObjectProperty IRI="#capturesPS"/>
-    </SubObjectPropertyOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#actType"/>
         <Class IRI="#ActProperty"/>
@@ -543,6 +515,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#captures"/>
         <Class IRI="#Sensor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesConn"/>
+        <Class IRI="#Location2connectivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capturesConn"/>
+        <Class IRI="#Wifi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesOccu"/>
@@ -557,8 +537,8 @@
         <Class IRI="#Location2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#capturesPS"/>
-        <Class IRI="#PhySensor"/>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#Wifi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasExtent"/>
@@ -577,12 +557,16 @@
         <Class IRI="#Connectivity2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputCI2O"/>
-        <Class IRI="#ConnImg2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#inputI2O"/>
         <Class IRI="#Image2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputL2C"/>
+        <Class IRI="#Location2connectivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputL2O"/>
+        <Class IRI="#Location2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsType"/>
@@ -599,14 +583,6 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsTypeTemp"/>
         <Class IRI="#tempProp"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#wifiCapturesConn"/>
-        <Class IRI="#Wifi"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#wifiCapturesOccu"/>
-        <Class IRI="#Wifi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="http://www.w3.org/ns/sosa/isObservedBy"/>
@@ -629,12 +605,12 @@
         <Class IRI="#Observation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#capturesOccu"/>
-        <Class IRI="#Occupancy"/>
+        <ObjectProperty IRI="#capturesConn"/>
+        <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#capturesPS"/>
-        <Class IRI="#RawObs"/>
+        <ObjectProperty IRI="#capturesOccu"/>
+        <Class IRI="#Occupancy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasExtent"/>
@@ -653,16 +629,16 @@
         <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputCI2O"/>
+        <ObjectProperty IRI="#inputI2O"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputCI2O"/>
-        <Class IRI="#Image"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputI2O"/>
-        <Class IRI="#Image"/>
+        <ObjectProperty IRI="#inputL2O"/>
+        <Class IRI="#Occupancy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#obsType"/>
@@ -679,10 +655,6 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#obsTypeTemp"/>
         <Class IRI="#Temperture"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#wifiCapturesConn"/>
-        <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="http://www.w3.org/ns/sosa/isObservedBy"/>

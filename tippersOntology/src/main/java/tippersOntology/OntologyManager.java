@@ -7,8 +7,6 @@ import java.util.StringTokenizer;
 import org.semanticweb.owlapi.reasoner.*;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
-import org.semanticweb.owlapi.reasoner.NodeSet;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import uk.ac.manchester.cs.jfact.JFactFactory;
 import uk.ac.manchester.cs.jfact.kernel.Individual;
@@ -18,12 +16,14 @@ public class OntologyManager {
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
 	public static String ontologyURL = "../ontology.owl";
-	//public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl";
+	// public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research
+	// project\\ontology\\ontology.owl";
 	public static OWLReasoner reasoner;
 	public static IRI ontologyIRI = IRI.create("../ontology.owl");
-	//public static IRI ontoloIRI = IRI.create("C:\\Users\\KIM KI MIN\\Desktop\\research project\\ontology\\ontology.owl");
-	//public static IRI ontologyIRI =
-	//		 IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
+	// public static IRI ontoloIRI = IRI.create("C:\\Users\\KIM KI
+	// MIN\\Desktop\\research project\\ontology\\ontology.owl");
+	// public static IRI ontologyIRI =
+	// IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
@@ -89,18 +89,18 @@ public class OntologyManager {
 
 	// get OWL object property
 	public static OWLObjectProperty getOwlObjProp(String str) {
-		return factory.getOWLObjectProperty(IRI.create(str));
+		return factory.getOWLObjectProperty(IRI.create(ONTOLOGYURL + str));
 	}
 
 	// get OWL class
-//	public static OWLClass getOwlClass(String str) {
-//		return factory.getOWLClass(IRI.create(str));
-//	}
+	public static OWLClass getOwlClass(String str) {
+		return factory.getOWLClass(IRI.create(ONTOLOGYURL + str));
+	}
 
 	// show subclasses
 	public static ArrayList<OWLClassExpression> showSubclasses(String str) {
 		ArrayList<OWLClassExpression> sub = new ArrayList<OWLClassExpression>();
-		OWLClass c = factory.getOWLClass(IRI.create(ONTOLOGYURL+str));
+		OWLClass c = getOwlClass(str);
 		for (OWLSubClassOfAxiom cls : ontology.getSubClassAxiomsForSuperClass(c)) {
 			sub.add(cls.getSubClass());
 		}
@@ -110,7 +110,7 @@ public class OntologyManager {
 	// extract entity
 	// extract individual
 	public static ArrayList<String> extractEnt(String ent) {
-		System.out.println("\n[extractEnt: Extract Entity]");
+		System.out.println("\n[extractEnt: Extract Entity {"+ent+"}]");
 		ArrayList<String> instance = new ArrayList<String>();
 		String ent0 = ONTOLOGYURL + ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
@@ -149,7 +149,7 @@ public class OntologyManager {
 	public static ArrayList<OWLObjectProperty> getsubProp(String prop) {
 		// TODO Auto-generated method stub
 		ArrayList<OWLObjectProperty> objprop = new ArrayList<OWLObjectProperty>();
-		OWLObjectProperty p = getOwlObjProp(ONTOLOGYURL + prop);
+		OWLObjectProperty p = getOwlObjProp(prop);
 		for (final OWLSubObjectPropertyOfAxiom subProp : ontology.getObjectSubPropertyAxiomsForSuperProperty(p)) {
 			if (subProp.getSuperProperty() instanceof OWLProperty && subProp.getSubProperty() instanceof OWLProperty) {
 				if (subProp.getSuperProperty().toString().equalsIgnoreCase("<" + ONTOLOGYURL + prop + ">")) {
@@ -161,24 +161,19 @@ public class OntologyManager {
 	}
 
 	// find Sensor
-	// return arrayList
+	// return names of individuals in arrayList
 	public static ArrayList<String> findSensor(String obs) {
 		ArrayList<String> sen = new ArrayList<String>();
-		System.out.println("\n[findSensor: Print Sensor by Observation]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("captures");
-		for (int i = 0; i < subprop.size(); i++) {
-			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology
-					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
-				if (subPrope.getSuperProperty() instanceof OWLProperty
-						&& subPrope.getSubProperty() instanceof OWLProperty) {
-					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().toLowerCase().contains(ONTOLOGYURL+obs.toLowerCase())) {		//return node set
-						sen = strToken1(reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true)
-								.getFlattened().toString());
-						for (int j = 0; j < sen.size(); j++) {
-							String temp = strToken0(sen.get(j));
-							sen.remove(j);
-							sen.add(j, temp);
+		System.out.println("\n[findSensor: Print Sensor by {"+obs+"}]");
+		for (OWLObjectPropertyExpression p : ontology.getObjectPropertiesInSignature()) {
+			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs) & strToken0(p.toString()).contains("captures")) {
+				for (Node<OWLClass> c : reasoner.getObjectPropertyDomains(p, true)) {
+					for (Node<OWLNamedIndividual> idv : reasoner.getInstances(getOwlClass(strToken0(c.toString())),
+							false)) {
+						if (strToken0(idv.toString()).contains("Node")) {
+							continue;
 						}
+						sen.add(strToken0(idv.toString()));
 					}
 				}
 			}
@@ -186,29 +181,16 @@ public class OntologyManager {
 		return sen;
 	}
 
-	// find Observation
-	// return string
-	public static String findObs(String prop) {
-		String result = new String();
-		System.out.println("\n[findObs: Print Observation by Observation Property]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");															
-		for (int i = 0; i < subprop.size(); i++) {
-			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL+prop)) {
-				result = strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString());
-			}
-		}
-		return result;
-	}
-
 	// is VS
 	// find a type of specific sensor
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
 		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
-		ArrayList<OWLClassExpression> cls = showSubclasses("Sensor");		
+		ArrayList<OWLClassExpression> cls = showSubclasses("Sensor");
 		for (int i = 0; i < cls.size(); i++) {
 			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
-				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor) && cls.get(i).toString().contains("VirSensor")) {
+				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor)
+						&& cls.get(i).toString().contains("VirSensor")) {
 					flag = true;
 				}
 			}
@@ -216,6 +198,24 @@ public class OntologyManager {
 		return flag;
 	}
 	
+	// find input
+	// input individual
+	// return string 
+	// return 1 thing
+	public static String findInput(String vs) {
+		System.out.println("\n[findInput: find VS{"+vs+"} input]");
+		for(OWLClassExpression cls : showSubclasses("VirSensor")) {
+			System.out.println(cls);
+			System.out.println(strToken0(reasoner.getInstances(cls, false).toString()));
+			if(strToken0(reasoner.getInstances(cls, false).toString()).equalsIgnoreCase(vs)) {
+				for(OWLObjectProperty p : cls.getObjectPropertiesInSignature()) {
+					System.out.println(p);			//이거 왜 안나와?
+				}
+			}
+		}
+		
+		return null;
+	}
 
 	/**
 	 * Creates a HermiT OWLReasoner with the given ontology.
@@ -223,7 +223,7 @@ public class OntologyManager {
 	 * @param OWLOntology The ontology
 	 * @return OWLReasoner The reasoner created
 	 */
-	//create owl reasoner
+	// create owl reasoner
 	public static OWLReasoner createOWLReasoner() throws IllegalArgumentException {
 
 		OWLReasonerFactory jfact = new JFactFactory();
