@@ -50,6 +50,7 @@ public class Tree_Remove {
 
 	// remove recursively
 	public static void removing(Node nowNode) {
+		System.out.println(nowNode.nodeNum);
 		//if(nowNode.nodeNum == 33) temp = true;
 		// if x node, there will be another chance.
 		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) { 
@@ -58,10 +59,10 @@ public class Tree_Remove {
 
 		// remove from parents' children array
 		ArrayList<Node> parents = nowNode.Parents;
-//			Node firPar = parents.get(0);
-//			if(firPar.type == types.typePlus || firPar.type == types.typeX || firPar.type == types.typeXc) {
-//				parents = firPar.Parents;
-//			}
+//		Node firPar = parents.get(0);
+//		if(firPar.type == types.typePlus || firPar.type == types.typeX || firPar.type == types.typeXc) {
+//			parents = firPar.Parents;
+//		}
 		for(int i = 0 ; i < parents.size() ; i++) {
 			Node nowPar = parents.get(i);
 

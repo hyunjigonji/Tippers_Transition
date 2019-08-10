@@ -42,40 +42,58 @@ public class OntologyManager {
 	}
 	
 	public ArrayList<String> findSensor(String Obs){
-		/*ArrayList<String> sensors = new ArrayList<String>();
-		sensors.add("Wifi1");
-		sensors.add("Wifi2");
-		sensors.add("wifi3");
-		return sensors;*/
-		return tippersOntology.OntologyManager.findSensor(Obs);
+		ArrayList<String> sensors = new ArrayList<String>();
+		if(Obs.equals("Occupancy")) {
+			//System.out.println("findSen Occupancy");
+			sensors.add("True");
+			sensors.add("Wifi1");
+			sensors.add("Wifi2");
+			sensors.add("Loc2Occ");
+		}
+		else if(Obs.equals("Location")) {
+			//System.out.println("findSen Location");
+			sensors.add("False");
+			sensors.add("Img2Loc");
+			sensors.add("Wifi3");
+		}
+		else if(Obs.equals("Image")) {
+			//System.out.println("findSen Image");
+			sensors.add("True");
+			sensors.add("Camera1");
+		}
+		//System.out.println(sensors);
+		return sensors;
+		//return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
-	public String findObs(String prop) {
-		/*String obsProp = "OccObs";
-		return obsProp;*/
-		return tippersOntology.OntologyManager.findObs(prop);
+	public String findInput(String Sensor){
+		//System.out.println("findInput " + Sensor);
+		String inputObs = "";
+		if(Sensor.equals("Loc2Occ")) {
+			//System.out.println("findInput Loc2Occ");
+			inputObs = "Location";
+		}
+		if(Sensor.equals("Img2Loc")) {
+			//System.out.println("findInput Img2Loc");
+			inputObs = "Image";
+		}
+		return inputObs;
 	}
 	
-	public ArrayList<String> findInput(String sensor){
-		ArrayList<String> inputs = new ArrayList<String>();
-		inputs.add("False");
-		inputs.add("Occupancy");
-		//inputs.add("Loc2Occ");
-		return inputs;
-	}
-	
-	public boolean isVS(String sensor) {
-		//if(sensor.contains("wifi")) return false;
-		//else return true;
-		return tippersOntology.OntologyManager.isVS(sensor);
+	public boolean isVS(String Sensor) {
+		if(Sensor.contains("Wifi")) return false;
+		else if(Sensor.contains("Camera")) return false;
+		return true;
+		
+		//return tippersOntology.OntologyManager.isVS(sensor);
 	}
 
-	public boolean hasMultiInput(ArrayList<String> Obs) {
-		String determine = Obs.get(0);
+	public boolean hasMultiInput(ArrayList<String> Sensors) {
+		String determine = Sensors.get(0);
 		if(determine.equals("True")) return true; // + node
 		else return false; // x node
 	}
-	
+	/*
 	public ArrayList<String> findActuatorInd(String Prop) {
 		Prop = findActuator(Prop);
 		
@@ -93,28 +111,57 @@ public class OntologyManager {
 			actuators.add("AC2");
 		}
 		return actuators;
-	}
+	}*/
 	
-	public String findActuator(String Prop) {
-		String act = "";
-		Actuator Act = new Actuator();
-		for(int i = 0 ; i < Act.acts.size() ; i++) {
-			if(Prop.contains(Act.acts.get(i))) {
-				act = Act.acts.get(i);
+	public String findAction(String Prop) {
+		String action = "";
+		Action Action = new Action();
+		for(int i = 0 ; i < Action.actions.size() ; i++) {
+			String nowAction = Action.actions.get(i);
+			if(Prop.contains(nowAction)) {
+				action = nowAction;
 			}
 		}
-		return act;
+		return action;
 	}
 	
+	public ArrayList<String> findActuator(String Prop) {
+		String actuator = "";
+		Actuator Acts = new Actuator();
+		for(int i = 0 ; i < Acts.acts.size() ; i++) {
+			String nowAct = Acts.acts.get(i);
+			if(Prop.contains(nowAct)) {
+				actuator = nowAct;
+			}
+		}
+		return findActInd(actuator);
+	}
+	
+	public ArrayList<String> findActInd(String Actuator) {
+		ArrayList<String> acts = new ArrayList<String>();
+		if(Actuator.equals("TV")) {
+			acts.add("TV1");
+			acts.add("TV2");
+		}
+		if(Actuator.equals("Light")) {
+			acts.add("Light1");
+		}
+		if(Actuator.equals("AC")) {
+			acts.add("AC1");
+			acts.add("AC2");
+		}
+		return acts;
+	}
+	/*
 	public String findAct(String Prop) {
 		String actProp = "";
 		if(Prop.contains("Turn on")) {
 			actProp = "TurnOnProp";
 		}
 		return actProp;
-	}
+	}*/
 	
-	public ArrayList<String> getAptDevices(String sensor){
+	public ArrayList<String> getAptDevices(String Sensor){
 		ArrayList<String> temp = new ArrayList<String>();
 		temp.add("Wifi1");
 		temp.add("Wifi2");
@@ -123,7 +170,7 @@ public class OntologyManager {
 	}
 	
 	public boolean checkCoverage(String sen, String ent) {
-		if(sen == "wifi1" && ent == "room4") return false;
+		if(sen == "Wifi1" && ent == "room1") return false;
 		return true;
 	}
 	
