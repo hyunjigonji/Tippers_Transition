@@ -50,24 +50,22 @@ public class Tree_Generator extends Tree{
 		myTree.appendChild(nowNode, XNode);
 
 		String nowObs = OM.findAction(nowP);
-		ArrayList<String> acts = OM.findActuator(nowP);
-
-		for(int i = 0 ; i < acts.size(); i++) {
-			String nowAct = acts.get(i);
-			SR newSR = new SR(nowAct, nowObs, nowE);
-			SRNode newSRNode = myTree.newSRNode(newSR);
+		String nowAct = OM.findActuator(nowP);
+		
+		SR newSR = new SR(nowAct, nowObs, nowE);
+		SRNode newSRNode = myTree.newSRNode(newSR);
+		
+		newSRNode.type = types.typeAC;
+		
+		SRs.add(newSRNode);
+		myTree.appendChild(XNode,newSRNode);
 			
-			newSRNode.type = types.typeAC;
-			
-			SRs.add(newSRNode);
-			myTree.appendChild(XNode,newSRNode);
-		}
 		return;
 	}
 	
 	// generate from SRNode using recursive algorithm
 	public static void generator1(SRNode nowNode, String nowEnt) {
-		//System.out.println("nownonow  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
+		System.out.println("nownonow  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
 		if(nowNode.type == types.typePSR) return;
 		String nowObs = OM.findInput(nowNode.values.Sensor);
 		// decide if it requires multiple input
