@@ -89,7 +89,7 @@ public class OntologyManager {
 
 	// get OWL object property
 	public static OWLObjectProperty getOwlObjProp(String str) {
-		return factory.getOWLObjectProperty(IRI.create(str));
+		return factory.getOWLObjectProperty(IRI.create(ONTOLOGYURL + str));
 	}
 
 	// get OWL class
@@ -110,7 +110,7 @@ public class OntologyManager {
 	// extract entity
 	// extract individual
 	public static ArrayList<String> extractEnt(String ent) {
-		System.out.println("\n[extractEnt: Extract Entity]");
+		System.out.println("\n[extractEnt: Extract Entity {"+ent+"}]");
 		ArrayList<String> instance = new ArrayList<String>();
 		String ent0 = ONTOLOGYURL + ent;
 		for (OWLClass c : ontology.getClassesInSignature()) {
@@ -149,7 +149,7 @@ public class OntologyManager {
 	public static ArrayList<OWLObjectProperty> getsubProp(String prop) {
 		// TODO Auto-generated method stub
 		ArrayList<OWLObjectProperty> objprop = new ArrayList<OWLObjectProperty>();
-		OWLObjectProperty p = getOwlObjProp(ONTOLOGYURL + prop);
+		OWLObjectProperty p = getOwlObjProp(prop);
 		for (final OWLSubObjectPropertyOfAxiom subProp : ontology.getObjectSubPropertyAxiomsForSuperProperty(p)) {
 			if (subProp.getSuperProperty() instanceof OWLProperty && subProp.getSubProperty() instanceof OWLProperty) {
 				if (subProp.getSuperProperty().toString().equalsIgnoreCase("<" + ONTOLOGYURL + prop + ">")) {
@@ -164,43 +164,21 @@ public class OntologyManager {
 	// return names of individuals in arrayList
 	public static ArrayList<String> findSensor(String obs) {
 		ArrayList<String> sen = new ArrayList<String>();
-		System.out.println("\n[findSensor: Print Sensor by Observation]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("captures");
-		for (int i = 0; i < subprop.size(); i++) {
-			for (final OWLSubObjectPropertyOfAxiom subPrope : ontology
-					.getObjectSubPropertyAxiomsForSuperProperty(subprop.get(i))) {
-				if (subPrope.getSuperProperty() instanceof OWLProperty
-						&& subPrope.getSubProperty() instanceof OWLProperty) {
-					if (reasoner.getObjectPropertyRanges(subPrope.getSubProperty(), true).toString().toLowerCase()
-							.contains(ONTOLOGYURL + obs.toLowerCase())) { // return node set
-						for (Node<OWLClass> as : reasoner.getObjectPropertyDomains(subPrope.getSubProperty(), true)) {
-							String ind = strToken0(
-									reasoner.getInstances(getOwlClass(strToken0(as.toString())), false).toString());
-							if (ind.contains("[]")) {
-								continue;
-							}
-							sen.add(strToken0(
-									reasoner.getInstances(getOwlClass(strToken0(as.toString())), false).toString()));
+		System.out.println("\n[findSensor: Print Sensor by {"+obs+"}]");
+		for (OWLObjectPropertyExpression p : ontology.getObjectPropertiesInSignature()) {
+			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs) & strToken0(p.toString()).contains("captures")) {
+				for (Node<OWLClass> c : reasoner.getObjectPropertyDomains(p, true)) {
+					for (Node<OWLNamedIndividual> idv : reasoner.getInstances(getOwlClass(strToken0(c.toString())),
+							false)) {
+						if (strToken0(idv.toString()).contains("Node")) {
+							continue;
 						}
+						sen.add(strToken0(idv.toString()));
 					}
 				}
 			}
 		}
 		return sen;
-	}
-
-	// find Observation
-	// return string
-	public static String findObs(String prop) {
-		String result = new String();
-		System.out.println("\n[findObs: Print Observation by Observation Property]");
-		ArrayList<OWLObjectProperty> subprop = getsubProp("obsType");
-		for (int i = 0; i < subprop.size(); i++) {
-			if (reasoner.getObjectPropertyDomains(subprop.get(i), true).toString().contains(ONTOLOGYURL + prop)) {
-				result = strToken0(reasoner.getObjectPropertyRanges(subprop.get(i), true).toString());
-			}
-		}
-		return result;
 	}
 
 	// is VS
@@ -218,6 +196,25 @@ public class OntologyManager {
 			}
 		}
 		return flag;
+	}
+	
+	// find input
+	// input individual
+	// return string 
+	// return 1 thing
+	public static String findInput(String vs) {
+		System.out.println("\n[findInput: find VS{"+vs+"} input]");
+		for(OWLClassExpression cls : showSubclasses("VirSensor")) {
+			System.out.println(cls);
+			System.out.println(strToken0(reasoner.getInstances(cls, false).toString()));
+			if(strToken0(reasoner.getInstances(cls, false).toString()).equalsIgnoreCase(vs)) {
+				for(OWLObjectProperty p : cls.getObjectPropertiesInSignature()) {
+					System.out.println(p);			//이거 왜 안나와?
+				}
+			}
+		}
+		
+		return null;
 	}
 
 	/**
