@@ -165,16 +165,28 @@ public class OntologyManager {
 	}*/
 	
 	public ArrayList<String> getAptDevices(String Sensor){
-		ArrayList<String> temp = new ArrayList<String>();
-		temp.add("Wifi1");
-		temp.add("Wifi2");
-		temp.add("Wifi3");
-		return temp;
+		ArrayList<String> devices = new ArrayList<String>();
+		if(Sensor.equals("Wifi")) {
+			devices.add("Wifi1");
+			devices.add("Wifi2");
+			devices.add("Wifi3");
+		}
+		if(Sensor.equals("GPS")) {
+			devices.add("GPS1");
+			devices.add("GPS2");
+			devices.add("GPS3");
+		}
+		if(Sensor.equals("BB")) {
+			devices.add("BB1");
+			devices.add("BB2");
+			devices.add("BB3");
+		}
+		return devices;
 	}
 	
 	public boolean checkCoverage(String sen, String ent) {
-		if(sen == "Wifi1" && ent == "room1") return false;
-		return true;
+		if(sen.valueOf(sen.length()-1).equals(ent.valueOf(ent.length()-1))) return true;
+		return false;
 	}
 	
 	public boolean checkAccess(String sen, String ent) {

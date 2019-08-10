@@ -10,7 +10,7 @@ public class Tree_Generator extends Tree{
 	public static void URgenerator0(URNode nowNode) {
 		String nowE = nowNode.values.Entity;
 		String nowC = nowNode.values.Condition;
-		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
+		System.out.println("URgenerator0 " + Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
 
 		Node ConnectNode;
 		ArrayList<String> sens = OM.findSensor(nowC);
@@ -66,7 +66,7 @@ public class Tree_Generator extends Tree{
 	
 	// generate from SRNode using recursive algorithm
 	public static void generator1(SRNode nowNode, String nowEnt) {
-		//System.out.println("nownonow  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
+		System.out.println("generator1  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
 		if(nowNode.type == types.typePSR) return;
 		String nowObs = OM.findInput(nowNode.values.Sensor);
 		// decide if it requires multiple input
