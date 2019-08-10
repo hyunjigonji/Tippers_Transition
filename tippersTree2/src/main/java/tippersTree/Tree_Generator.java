@@ -4,38 +4,35 @@ import java.util.ArrayList;
 
 public class Tree_Generator extends Tree{
 	
-	static Tree myTree = new Tree();
-	static OntologyManager OM = new OntologyManager();
-	
 	public static void URgenerator0(URNode nowNode) {
 		String nowE = nowNode.values.Entity;
 		String nowC = nowNode.values.Condition;
-		System.out.println("URgenerator0 " + Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
+		//System.out.println("URgenerator0 " + Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
 
 		Node ConnectNode;
-		ArrayList<String> sens = OM.findSensor(nowC);
+		ArrayList<String> sens = OntologyManager.findSensor(nowC);
 		
-		if(OM.hasMultiInput(sens)) { // multiple input -> + node
-			ConnectNode = myTree.newPlusNode(); 
-			myTree.appendChild(nowNode, ConnectNode);
+		if(OntologyManager.hasMultiInput(sens)) { // multiple input -> + node
+			ConnectNode = Tree.newPlusNode(); 
+			Tree.appendChild(nowNode, ConnectNode);
 		} 
 		else { // not multiple input -> x node
-			ConnectNode = myTree.newXNode();
-			myTree.appendChild(nowNode, ConnectNode);
+			ConnectNode = Tree.newXNode();
+			Tree.appendChild(nowNode, ConnectNode);
 		}
 		
 		for(int i = 1 ; i < sens.size(); i++) {
 			String nowSen = sens.get(i);
 			//System.out.println(i + " "+ nowSen);
 			SR newSR = new SR(nowSen, nowC, nowE);
-			SRNode newSRNode = myTree.newSRNode(newSR);
+			SRNode newSRNode = Tree.newSRNode(newSR);
 
-			if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR;
 			else newSRNode.type = types.typePSR;
 			
 			SRs.add(newSRNode);
 
-			myTree.appendChild(ConnectNode,newSRNode);
+			Tree.appendChild(ConnectNode,newSRNode);
 			generator1(newSRNode, nowE); // call other function once
 		}
 		return;
@@ -46,52 +43,52 @@ public class Tree_Generator extends Tree{
 		String nowP = nowNode.values.Property;
 		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowP);
 
-		XNode XNode = myTree.newXNode();
-		myTree.appendChild(nowNode, XNode);
+		XNode XNode = Tree.newXNode();
+		Tree.appendChild(nowNode, XNode);
 
-		String nowObs = OM.findAction(nowP);
-		String nowActuator = OM.findActuator(nowP);
-		System.out.println(nowActuator);
+		String nowObs = OntologyManager.findAction(nowP);
+		String nowActuator = OntologyManager.findActuator(nowP);
+		//System.out.println(nowActuator);
 
 		SR newSR = new SR(nowActuator, nowObs, nowE);
-		SRNode newSRNode = myTree.newSRNode(newSR);
+		SRNode newSRNode = Tree.newSRNode(newSR);
 		
 		newSRNode.type = types.typeAC;
 		
 		SRs.add(newSRNode);
-		myTree.appendChild(XNode,newSRNode);
+		Tree.appendChild(XNode,newSRNode);
 			
 		return;
 	}
 	
 	// generate from SRNode using recursive algorithm
 	public static void generator1(SRNode nowNode, String nowEnt) {
-		System.out.println("generator1  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
+		//System.out.println("generator1  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
 		if(nowNode.type == types.typePSR) return;
-		String nowObs = OM.findInput(nowNode.values.Sensor);
+		String nowObs = OntologyManager.findInput(nowNode.values.Sensor);
 		// decide if it requires multiple input
 		Node ConnectNode; 
-		ArrayList<String> sens = OM.findSensor(nowObs);
+		ArrayList<String> sens = OntologyManager.findSensor(nowObs);
 		
-		if(OM.hasMultiInput(sens)) { // multiple input -> + node
-			ConnectNode = myTree.newPlusNode(); 
-			myTree.appendChild(nowNode, ConnectNode);
+		if(OntologyManager.hasMultiInput(sens)) { // multiple input -> + node
+			ConnectNode = Tree.newPlusNode(); 
+			Tree.appendChild(nowNode, ConnectNode);
 		} 
 		else { // not multiple input -> x node
-			ConnectNode = myTree.newXNode();
-			myTree.appendChild(nowNode, ConnectNode);
+			ConnectNode = Tree.newXNode();
+			Tree.appendChild(nowNode, ConnectNode);
 		}
 
 		for(int j = 1 ; j < sens.size() ; j++) {
 			String nowSen = sens.get(j);
 			SR newSR = new SR(nowSen, nowObs, nowEnt);
-			SRNode newSRNode = myTree.newSRNode(newSR);
+			SRNode newSRNode = Tree.newSRNode(newSR);
 
-			if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR;
 			else newSRNode.type = types.typePSR;
 			
 			SRs.add(newSRNode);
-			myTree.appendChild(ConnectNode,newSRNode);
+			Tree.appendChild(ConnectNode,newSRNode);
 			generator1(newSRNode, nowEnt); // recursive
 		}
 		

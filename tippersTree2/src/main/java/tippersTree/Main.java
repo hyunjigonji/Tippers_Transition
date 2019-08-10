@@ -22,26 +22,26 @@ public class Main {
 		
 		Test = Tree_Flattening.flattening(TestUA);
 		//Tree_Display.displayTree(Test);
-		for(int i = 0 ; i < Test.URij.size() ; i++) {
+		for(int i = 0 ; i < Tree.URij.size() ; i++) {
 			//System.out.println("hello");
-			URNode now = Test.URij.get(i);
+			URNode now = Tree.URij.get(i);
 			Tree_Generator.URgenerator0(now);
 		}
 		//Tree_Display.displayTree(Test);
-		for(int i = 0 ; i < Test.UAij.size() ; i++) {
-			UANode now = Test.UAij.get(i);
+		for(int i = 0 ; i < Tree.UAij.size() ; i++) {
+			UANode now = Tree.UAij.get(i);
 			Tree_Generator.UAgenerator0(now);
 		}
-		Tree_Display.displayTree(Test);
+		//Tree_Display.displayTree(Test);
 		
 		// print leaf nodes
-		ArrayList<Node> leaves = Test.findLeafNode(Test);
+		ArrayList<Node> leaves = Tree.findLeafNode(Test);
 		for(int i = 0 ; i < leaves.size() ; i++) {
 			Node now = leaves.get(i);
-			SRNode now2 = Test.findSRNode(Test, now.nodeNum);
-			//Tree_Remove.checking(now2);
+			SRNode now2 = Tree.findSRNode(Test, now.nodeNum);
+			Tree_Remove.checking(now2);
 		}
-		//Tree_Display.displayTree(Test);
+		Tree_Display.displayTree(Test);
 		
 		//Generator
 //		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");

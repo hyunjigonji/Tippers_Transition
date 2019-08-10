@@ -21,49 +21,49 @@ public class Tree {
 		Root.isLeaf = true;
 	}
 
-	public Node newNode() {
+	public static Node newNode() {
 		Node newNode = new Node();
 		newNode.nodeNum = ++totalNum;
 
 		return newNode;
 	}
 
-	public UANode newUANode(UA UARequest) { // create new UA node
+	public static UANode newUANode(UA UARequest) { // create new UA node
 		UANode newUANode = new UANode(UARequest);
 		newUANode.nodeNum = ++totalNum; // add 1 to totalNum and assign this node's number
 
 		return newUANode;
 	}
 
-	public URNode newURNode(UR URRequest) { // create new UR node
+	public static URNode newURNode(UR URRequest) { // create new UR node
 		URNode newURNode = new URNode(URRequest);
 		newURNode.nodeNum = ++totalNum; // add 1 to totalNum and assign this node's number
 
 		return newURNode;
 	}
 
-	public PlusNode newPlusNode() { // create new +node
+	public static PlusNode newPlusNode() { // create new +node
 		PlusNode newPlusNode = new PlusNode();
 		newPlusNode.nodeNum = ++totalNum;
 
 		return newPlusNode;
 	}
 
-	public XNode newXNode() { // create new x node
+	public static XNode newXNode() { // create new x node
 		XNode newXNode = new XNode();
 		newXNode.nodeNum = ++totalNum;
 
 		return newXNode;
 	}
 
-	public XcNode newXcNode() { // create new xc node
+	public static XcNode newXcNode() { // create new xc node
 		XcNode newXcNode = new XcNode();
 		newXcNode.nodeNum = ++totalNum;
 
 		return newXcNode;
 	}
 
-	public SRNode newSRNode(SR SRRequest) {
+	public static SRNode newSRNode(SR SRRequest) {
 		SRNode newSRNode = new SRNode(SRRequest);
 		newSRNode.nodeNum = ++totalNum;
 
@@ -85,7 +85,7 @@ public class Tree {
 	}
 	*/
 	// find leaf nodes of tree and return those leaf nodes in array list
-	public ArrayList<Node> findLeafNode(Tree TreeUA){
+	public static ArrayList<Node> findLeafNode(Tree TreeUA){
 		ArrayList<Node> leaves = new ArrayList<Node>();
 		Node temp = TreeUA.Root;
 		// DFS
@@ -117,7 +117,7 @@ public class Tree {
 	}
 
 	// find node which has same node number as input and return that node
-	public Node findNode(Tree TreeUA, int wantNum) {
+	public static Node findNode(Tree TreeUA, int wantNum) {
 		Node temp = TreeUA.Root;
 
 		boolean[] visit = new boolean[100];
@@ -147,7 +147,7 @@ public class Tree {
 		return null;
 	}
 
-	public UANode findUANode(Tree TreeUA, int wantNum) {
+	public static UANode findUANode(Tree TreeUA, int wantNum) {
 		for(int i = 0 ; i < TreeUA.UAi.size() ; i++) {
 			UANode now = TreeUA.UAi.get(i);
 			if(now.nodeNum == wantNum) {
@@ -163,7 +163,7 @@ public class Tree {
 		return null;
 	}
 
-	public URNode findURNode(Tree TreeUA, int wantNum) {
+	public static URNode findURNode(Tree TreeUA, int wantNum) {
 		for(int i = 0 ; i < TreeUA.URij.size() ; i++) {
 			URNode now = TreeUA.URij.get(i);
 			if(now.nodeNum == wantNum) {
@@ -173,7 +173,7 @@ public class Tree {
 		return null;
 	}
 
-	public SRNode findSRNode(Tree TreeUA, int wantNum) {
+	public static SRNode findSRNode(Tree TreeUA, int wantNum) {
 		for(int i = 0 ; i < TreeUA.SRs.size() ; i++) {
 			SRNode now = TreeUA.SRs.get(i);
 			if(now.nodeNum == wantNum) {
@@ -185,7 +185,7 @@ public class Tree {
 
 
 	// connect parent node and child node
-	public void appendChild(Node Parent, Node Child) {
+	public static void appendChild(Node Parent, Node Child) {
 		if(Parent.isLeaf) { // if Parent was leaf, Child should be leaf
 			Parent.isLeaf = false;
 			Child.isLeaf = true;

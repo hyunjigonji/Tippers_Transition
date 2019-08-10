@@ -3,48 +3,39 @@ package tippersTree;
 import java.util.ArrayList;
 
 public class Tree_Remove {
-	
-	static Tree myTree = new Tree();
-	static OntologyManager OM = new OntologyManager();
-	
 	// check feasibility of each node
 	public static void checking(SRNode nowSRNode) {
 		
 		String nowS = nowSRNode.values.Sensor;
 		String nowO = nowSRNode.values.Observation;
 		String nowE = nowSRNode.values.Entity;
-
-		ArrayList<String> sensors = OM.getAptDevices(nowS);
 		
-		boolean flag = false;
+		Node newXNode = Tree.newXNode();
+		boolean connected = false;
+
+		ArrayList<String> sensors = OntologyManager.getAptDevices(nowS);
+		
 		for(int i = 0 ; i < sensors.size() ; i++) {
 			String nowSI = sensors.get(i);
 			//System.out.println(nowSI + " " + nowE);
-
-			if(!OM.checkAccess(nowSI, nowE)) { // always return true
-				removing(nowSRNode);
-			}
-			else if(!OM.checkCoverage(nowSI, nowE)) { // I don't know
-				removing(nowSRNode);
-			}
-			// if available, add child
-			else {
-				//flag = true;
+			if(!OntologyManager.checkAccess(nowSI, nowE) && !OntologyManager.checkCoverage(nowSI, nowE)){ // if available, add child
+				//System.out.println("checking " + nowSI + " " + nowE);
+				if(!connected) {
+					Tree.appendChild(nowSRNode, newXNode);
+					connected = true;
+				}
+				
+				SR newSR = new SR(nowSI, nowO, nowE);
+				SRNode newSRNode = Tree.newSRNode(newSR);
+				newSRNode.type = types.typeDA;
+				
+				Tree.SRs.add(newSRNode);
+				Tree.appendChild(newXNode, newSRNode);
 			}
 		}
-		if(flag) {
-			// create a x node
-			Node newXNode = myTree.newXNode();
-			myTree.appendChild(nowSRNode, newXNode);
-
-			// create a child node
-			for(int i = 0 ; i < sensors.size() ; i++) {
-				String nowSI = sensors.get(i);
-				SR newSR = new SR(nowSI, nowO, nowE);
-				Node newSRNode = myTree.newSRNode(newSR);
-
-				myTree.appendChild(newXNode, newSRNode);
-			}
+		if(!connected) {
+			System.out.println("remove " + nowS + " " + nowE);
+			removing(nowSRNode);
 		}
 	}
 
