@@ -12,26 +12,30 @@ public class Tree_Generator extends Tree{
 		String nowC = nowNode.values.Condition;
 		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
 
-		XNode XNode = myTree.newXNode();
-		myTree.appendChild(nowNode, XNode);
-
-		String nowObs = OM.findObs(nowC);
-		ArrayList<String> sens = OM.findSensor(nowObs);
-
-		for(int i = 0 ; i < sens.size(); i++) {
+		Node ConnectNode;
+		ArrayList<String> sens = OM.findSensor(nowC);
+		
+		if(OM.hasMultiInput(sens)) { // multiple input -> + node
+			ConnectNode = myTree.newPlusNode(); 
+			myTree.appendChild(nowNode, ConnectNode);
+		} 
+		else { // not multiple input -> x node
+			ConnectNode = myTree.newXNode();
+			myTree.appendChild(nowNode, ConnectNode);
+		}
+		
+		for(int i = 1 ; i < sens.size(); i++) {
 			String nowSen = sens.get(i);
-			SR newSR = new SR(nowSen, nowObs, nowE);
+			//System.out.println(i + " "+ nowSen);
+			SR newSR = new SR(nowSen, nowC, nowE);
 			SRNode newSRNode = myTree.newSRNode(newSR);
 
 			if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
 			else newSRNode.type = types.typePSR;
-
-			//if(count++%2 == 0) newSRNode.type = types.typePSR;
-			//else newSRNode.type = types.typeVSR;
 			
 			SRs.add(newSRNode);
 
-			myTree.appendChild(XNode,newSRNode);
+			myTree.appendChild(ConnectNode,newSRNode);
 			generator1(newSRNode, nowE); // call other function once
 		}
 		return;
@@ -40,18 +44,19 @@ public class Tree_Generator extends Tree{
 	public static void UAgenerator0(UANode nowNode) {
 		String nowE = nowNode.values.Entity;
 		String nowP = nowNode.values.Property;
-		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
+		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowP);
 
 		XNode XNode = myTree.newXNode();
 		myTree.appendChild(nowNode, XNode);
 
-		String nowObs = OM.findAct(nowP);
-		ArrayList<String> sens = OM.findActuatorInd(nowP);
+		String nowObs = OM.findAction(nowP);
+		ArrayList<String> acts = OM.findActuator(nowP);
 
-		for(int i = 0 ; i < sens.size(); i++) {
-			String nowSen = sens.get(i);
-			SR newSR = new SR(nowSen, nowObs, nowE);
+		for(int i = 0 ; i < acts.size(); i++) {
+			String nowAct = acts.get(i);
+			SR newSR = new SR(nowAct, nowObs, nowE);
 			SRNode newSRNode = myTree.newSRNode(newSR);
+			
 			newSRNode.type = types.typeAC;
 			
 			SRs.add(newSRNode);
@@ -62,12 +67,14 @@ public class Tree_Generator extends Tree{
 	
 	// generate from SRNode using recursive algorithm
 	public static void generator1(SRNode nowNode, String nowEnt) {
+		//System.out.println("nownonow  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
 		if(nowNode.type == types.typePSR) return;
-
-		ArrayList<String> obs = OM.findInput(nowNode.values.Sensor);
-
+		String nowObs = OM.findInput(nowNode.values.Sensor);
+		// decide if it requires multiple input
 		Node ConnectNode; 
-		if(OM.hasMultiInput(obs)) { // multiple input -> + node
+		ArrayList<String> sens = OM.findSensor(nowObs);
+		
+		if(OM.hasMultiInput(sens)) { // multiple input -> + node
 			ConnectNode = myTree.newPlusNode(); 
 			myTree.appendChild(nowNode, ConnectNode);
 		} 
@@ -76,28 +83,19 @@ public class Tree_Generator extends Tree{
 			myTree.appendChild(nowNode, ConnectNode);
 		}
 
-		for(int i = 1 ; i < obs.size() ; i++) {
-			String nowObs = obs.get(i);
-			ArrayList<String> sens = OM.findSensor(nowObs);
+		for(int j = 1 ; j < sens.size() ; j++) {
+			String nowSen = sens.get(j);
+			SR newSR = new SR(nowSen, nowObs, nowEnt);
+			SRNode newSRNode = myTree.newSRNode(newSR);
 
-			for(int j = 0 ; j < sens.size() ; j++) {
-				String nowSen = sens.get(j);
-				SR newSR = new SR(nowSen, nowObs, nowEnt);
-				SRNode newSRNode = myTree.newSRNode(newSR);
-
-				if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
-				else newSRNode.type = types.typePSR;
-
-				//if(count%2==0 || count++>5) newSRNode.type = types.typePSR;
-				//else newSRNode.type = types.typeVSR;
-				
-				SRs.add(newSRNode);
-
-				if(OM.hasMultiInput(obs)) myTree.appendChild(ConnectNode, newSRNode);
-				else myTree.appendChild(ConnectNode, newSRNode);
-				generator1(newSRNode, nowEnt); // recursive
-			}
+			if(OM.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			else newSRNode.type = types.typePSR;
+			
+			SRs.add(newSRNode);
+			myTree.appendChild(ConnectNode,newSRNode);
+			generator1(newSRNode, nowEnt); // recursive
 		}
+		
 		return;
 	}
 }

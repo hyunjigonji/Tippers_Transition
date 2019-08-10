@@ -8,7 +8,7 @@ public class Condition {
 	public Condition() {
 		conds = new ArrayList<String>();
 		conds.add("Occupancy");
-		conds.add("Capacity");
+		//conds.add("Capacity");
 		conds.add("Location");
 	}
 }
