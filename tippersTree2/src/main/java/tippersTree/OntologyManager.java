@@ -2,6 +2,8 @@ package tippersTree;
 
 import java.util.*;
 
+import org.semanticweb.owlapi.io.SystemOutDocumentTarget;
+
 public class OntologyManager {
 	/*
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
@@ -43,7 +45,7 @@ public class OntologyManager {
 	
 	public static ArrayList<String> findSensor(String Obs){
 		ArrayList<String> sensors = new ArrayList<String>();
-		if(Obs.equals("Occupancy")) {
+		/*if(Obs.equals("Occupancy")) {
 			//System.out.println("findSen Occupancy");
 			sensors.add("False");
 			sensors.add("Con2Occ");
@@ -66,8 +68,10 @@ public class OntologyManager {
 			sensors.add("GPS");
 		}
 		//System.out.println(sensors);
-		return sensors;
-		//return tippersOntology.OntologyManager.findSensor(Obs);
+		return sensors; */
+		sensors = tippersOntology.OntologyManager.findSensor(Obs);
+		System.out.println("???" + Obs + " %%% " + sensors);
+		return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
 	public static String findInput(String Sensor){
