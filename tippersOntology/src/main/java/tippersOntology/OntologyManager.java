@@ -176,7 +176,6 @@ public class OntologyManager {
 	// return names of classes in arrayList
 	public static ArrayList<String> findSensor(String obs) {
 		ArrayList<String> sen = new ArrayList<String>();
-		String chk = "false"; // 하나만 있으
 		System.out.println("\n[findSensor: Print Sensor by {" + obs + "}]");
 		for (OWLObjectPropertyExpression p : ontology.getObjectPropertiesInSignature()) {
 			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs)
@@ -193,8 +192,7 @@ public class OntologyManager {
 	}
 
 	// check multiple or plus
-	// 원소 1개는 true
-	// git test
+	// if there is only 1 thing in array, return true
 	public static ArrayList<String> checkdup(ArrayList<String> arr) {
 		String chk = "True";
 		if(arr.size()>=2) {
