@@ -42,7 +42,7 @@ public class OntologyManager {
 	}
 	
 	public static ArrayList<String> findSensor(String Obs){
-		ArrayList<String> sensors = new ArrayList<String>();
+		/*ArrayList<String> sensors = new ArrayList<String>();
 		if(Obs.equals("Occupancy")) {
 			//System.out.println("findSen Occupancy");
 			sensors.add("False");
@@ -66,25 +66,26 @@ public class OntologyManager {
 			sensors.add("GPS");
 		}
 		//System.out.println(sensors);
-		return sensors; 
-		//return tippersOntology.OntologyManager.findSensor(Obs);
+		return sensors; */
+		return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
 	public static String findInput(String Sensor){
-		//System.out.println("findInput " + Sensor);
 		String inputObs = "";
-		if(Sensor.equals("Loc2Con")) {
+		//System.out.println("findInput " + Sensor);
+		if(Sensor.equals("Location2connectivity")) {
 			//System.out.println("findInput Loc2Occ");
 			inputObs = "Location";
 		}
-		if(Sensor.equals("Img2Occ")) {
+		if(Sensor.equals("Image2occupancy")) {
 			//System.out.println("findInput Img2Loc");
 			inputObs = "Image";
 		}
-		if(Sensor.equals("Con2Occ")) {
+		if(Sensor.equals("Connectivity2occupancy")) {
 			inputObs = "Connectivity";
 		}
 		return inputObs;
+		//return tippersOntology.OntologyManager.findInput(Sensor);
 	}
 	
 	public static boolean isVS(String Sensor) {
@@ -209,7 +210,7 @@ public class OntologyManager {
 	}
 	
 	public static boolean checkCoverage(String sen, String ent) {
-		if(sen.contains("GPS")) return false;
+		//if(sen.contains("AC")) return false;
 		if((sen.contains("1") && ent.contains("1")) || (sen.contains("2") && ent.contains("2")) || (sen.contains("3") && ent.contains("3"))) return true;
 		return false;
 	}

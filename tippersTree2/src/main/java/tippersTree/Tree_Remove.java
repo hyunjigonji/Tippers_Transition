@@ -35,7 +35,7 @@ public class Tree_Remove {
 		}
 		if(!connected) {
 			System.out.println("remove " + nowS + " " + nowE);
-			// remove(nowSRNode);
+			remove(nowSRNode);
 		}
 	}
 
@@ -65,7 +65,7 @@ public class Tree_Remove {
 			nowPar.Children.remove(nowNode);
 			
 			// if parent is + node, remove all children
-			if(nowPar.type == types.typePlus) { 
+			if(nowPar.type == types.typePlus || nowPar.type == types.typeUR) { 
 				//System.out.println("nowPar " + nowPar.nodeNum);
 				nowPar.Children.clear();
 				nowPar.isLeaf = nowNode.isLeaf;
