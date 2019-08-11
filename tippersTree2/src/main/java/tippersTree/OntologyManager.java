@@ -2,8 +2,6 @@ package tippersTree;
 
 import java.util.*;
 
-import org.semanticweb.owlapi.io.SystemOutDocumentTarget;
-
 public class OntologyManager {
 	/*
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
@@ -45,7 +43,7 @@ public class OntologyManager {
 	
 	public static ArrayList<String> findSensor(String Obs){
 		ArrayList<String> sensors = new ArrayList<String>();
-		/*if(Obs.equals("Occupancy")) {
+		if(Obs.equals("Occupancy")) {
 			//System.out.println("findSen Occupancy");
 			sensors.add("False");
 			sensors.add("Con2Occ");
@@ -54,7 +52,7 @@ public class OntologyManager {
 		}
 		else if(Obs.equals("Connectivity")) {
 			//System.out.println("findSen Location");
-			sensors.add("False");
+			sensors.add("True");
 			sensors.add("Wifi");
 			sensors.add("Loc2Con");
 		}
@@ -68,10 +66,8 @@ public class OntologyManager {
 			sensors.add("GPS");
 		}
 		//System.out.println(sensors);
-		return sensors; */
-		sensors = tippersOntology.OntologyManager.findSensor(Obs);
-		System.out.println("???" + Obs + " %%% " + sensors);
-		return tippersOntology.OntologyManager.findSensor(Obs);
+		return sensors; 
+		//return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
 	public static String findInput(String Sensor){
@@ -189,12 +185,32 @@ public class OntologyManager {
 			devices.add("BB2");
 			devices.add("BB3");
 		}
+		if(Sensor.equals("Camera")) {
+			devices.add("Camera1");
+			devices.add("Camera2");
+			devices.add("Camera3");
+		}
+		if(Sensor.equals("TV")) {
+			devices.add("TV1");
+			devices.add("TV2");
+			devices.add("TV3");
+		}
+		if(Sensor.equals("Light")) {
+			devices.add("Light1");
+			devices.add("Light2");
+			devices.add("Light3");
+		}
+		if(Sensor.equals("AC")) {
+			devices.add("AC1");
+			devices.add("AC2");
+			devices.add("AC3");
+		}
 		return devices;
 	}
 	
 	public static boolean checkCoverage(String sen, String ent) {
+		if(sen.contains("GPS")) return false;
 		if((sen.contains("1") && ent.contains("1")) || (sen.contains("2") && ent.contains("2")) || (sen.contains("3") && ent.contains("3"))) return true;
-		if(sen.contains("Wifi")) return true;
 		return false;
 	}
 	

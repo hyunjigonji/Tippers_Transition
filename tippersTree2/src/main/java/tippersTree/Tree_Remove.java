@@ -35,38 +35,46 @@ public class Tree_Remove {
 		}
 		if(!connected) {
 			System.out.println("remove " + nowS + " " + nowE);
-			removing(nowSRNode);
+			remove(nowSRNode);
 		}
 	}
 
 	// remove recursively
-	public static void removing(Node nowNode) {
+	public static void remove(Node nowNode) {
 		System.out.println(nowNode.nodeNum);
-		//if(nowNode.nodeNum == 33) temp = true;
+		
 		// if x node, there will be another chance.
 		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) { 
 			if(!nowNode.Children.isEmpty()) return;
 		}
 
-		// remove from parents' children array
+		// remove nowNode from children' parents array
+		ArrayList<Node> children = nowNode.Children;
+		if(!children.isEmpty()) {
+			for(int i = 0 ; i < children.size() ; i++) {
+				Node nowChild = children.get(i);
+				nowChild.Parents.remove(nowNode);
+			}
+		}
+		
+		// remove nowNode from parents' children array
 		ArrayList<Node> parents = nowNode.Parents;
-//		Node firPar = parents.get(0);
-//		if(firPar.type == types.typePlus || firPar.type == types.typeX || firPar.type == types.typeXc) {
-//			parents = firPar.Parents;
-//		}
 		for(int i = 0 ; i < parents.size() ; i++) {
 			Node nowPar = parents.get(i);
-
+			//System.out.println(nowPar.nodeNum);
 			nowPar.Children.remove(nowNode);
-			// if nowPar has empty children, remove parent
-			if(nowPar.Children.isEmpty()) {
-				nowPar.isLeaf = nowNode.isLeaf;
-				removing(nowPar);
-			}
-			if(nowPar.type == types.typePlus) { // if parent is + node, remove all children
+			
+			// if parent is + node, remove all children
+			if(nowPar.type == types.typePlus) { 
+				//System.out.println("nowPar " + nowPar.nodeNum);
 				nowPar.Children.clear();
 				nowPar.isLeaf = nowNode.isLeaf;
-				removing(nowPar);
+			}
+			
+			// if parent has empty children, remove parent
+			if(nowPar.Children.isEmpty()) {
+				nowPar.isLeaf = nowNode.isLeaf;
+				remove(nowPar);
 			}
 		}
 		return;
