@@ -35,13 +35,13 @@ public class Tree_Remove {
 		}
 		if(!connected) {
 			System.out.println("remove " + nowS + " " + nowE);
-			remove(nowSRNode);
+			// remove(nowSRNode);
 		}
 	}
 
 	// remove recursively
 	public static void remove(Node nowNode) {
-		System.out.println(nowNode.nodeNum);
+		//System.out.println(nowNode.nodeNum);
 		
 		// if x node, there will be another chance.
 		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) { 
@@ -61,7 +61,7 @@ public class Tree_Remove {
 		ArrayList<Node> parents = nowNode.Parents;
 		for(int i = 0 ; i < parents.size() ; i++) {
 			Node nowPar = parents.get(i);
-			//System.out.println(nowPar.nodeNum);
+			//System.out.println("nowPar " + nowPar.nodeNum);
 			nowPar.Children.remove(nowNode);
 			
 			// if parent is + node, remove all children
@@ -73,6 +73,7 @@ public class Tree_Remove {
 			
 			// if parent has empty children, remove parent
 			if(nowPar.Children.isEmpty()) {
+				//System.out.println("nowPar " + nowPar.nodeNum);
 				nowPar.isLeaf = nowNode.isLeaf;
 				remove(nowPar);
 			}

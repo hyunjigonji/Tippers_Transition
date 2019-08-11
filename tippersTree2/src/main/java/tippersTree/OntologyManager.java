@@ -58,11 +58,11 @@ public class OntologyManager {
 		}
 		else if(Obs.equals("Image")) {
 			//System.out.println("findSen Image");
-			sensors.add("False");
+			sensors.add("True");
 			sensors.add("Camera");
 		}
 		else if(Obs.equals("Location")) {
-			sensors.add("False");
+			sensors.add("True");
 			sensors.add("GPS");
 		}
 		//System.out.println(sensors);
