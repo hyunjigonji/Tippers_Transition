@@ -194,6 +194,7 @@ public class OntologyManager {
 
 	// check multiple or plus
 	// 원소 1개는 true
+	// git test
 	public static ArrayList<String> checkdup(ArrayList<String> arr) {
 		String chk = "True";
 		if(arr.size()>=2) {
