@@ -195,9 +195,6 @@
         <ObjectProperty IRI="#inputL2C"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputL2O"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#obsType"/>
     </Declaration>
     <Declaration>
@@ -678,10 +675,6 @@
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputL2O"/>
-        <ObjectProperty IRI="#input"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#obsTypeConn"/>
         <ObjectProperty IRI="#obsType"/>
     </SubObjectPropertyOf>
@@ -855,11 +848,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#inputL2C"/>
-        <Class IRI="#Connectivity"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputL2O"/>
-        <Class IRI="#Occupancy"/>
+        <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#obsType"/>

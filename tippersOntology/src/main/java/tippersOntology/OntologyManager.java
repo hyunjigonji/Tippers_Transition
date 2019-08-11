@@ -238,7 +238,8 @@ public class OntologyManager {
 		System.out.println("\n[findInput: find VS{" + vs + "} input]");
 		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature()) {
 			if (strToken0(reasoner.getObjectPropertyDomains(p, true).toString()).equalsIgnoreCase(vs)
-					&& p.toString().contains("input")) {
+					& p.toString().contains("input")) {
+				System.out.println(strToken0(reasoner.getObjectPropertyDomains(p, true).toString()));
 				obs = strToken0(reasoner.getObjectPropertyRanges(p, true).toString());
 			}
 		}

@@ -41,7 +41,7 @@ public class Main {
 			SRNode now2 = Tree.findSRNode(Test, now.nodeNum);
 			Tree_Remove.checking(now2);
 		}
-		Tree_Display.displayTree2(Test);
+		Tree_Display.displayTree(Test);
 		
 		//Generator
 //		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
