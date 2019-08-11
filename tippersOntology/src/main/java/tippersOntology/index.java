@@ -14,6 +14,7 @@ public class index {
 																									//이거는 대소문자 구분 필요, 혼자 사용할 거 아니고 다른 메소드에서 불러서 쓸거라서 대소문자 구분 안해도 된다고 생각
 		System.out.println(OntologyManager.extractEnt("office"));
 		System.out.println(OntologyManager.findSensor("occupancy"));
+		System.out.println(OntologyManager.findSensor("connectivity"));
 
 		System.out.println(OntologyManager.isVS("conn2occu"));
 		System.out.println(OntologyManager.isVS("wifi1"));
