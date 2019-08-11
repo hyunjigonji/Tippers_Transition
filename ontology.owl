@@ -147,6 +147,15 @@
         <Class IRI="#turnOnACProp"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#BBcapturesOccu"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Conn2OccucapturesOccu"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Img2OccucapturesOccu"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#actType"/>
     </Declaration>
     <Declaration>
@@ -629,6 +638,18 @@
         <NamedIndividual IRI="#connObs"/>
     </ObjectPropertyAssertion>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#BBcapturesOccu"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Conn2OccucapturesOccu"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Img2OccucapturesOccu"/>
+        <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#capturesConn"/>
         <ObjectProperty IRI="#captures"/>
     </SubObjectPropertyOf>
@@ -672,6 +693,18 @@
         <ObjectProperty IRI="#obsTypeTemp"/>
         <ObjectProperty IRI="#obsType"/>
     </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#BBcapturesOccu"/>
+        <Class IRI="#BB"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Conn2OccucapturesOccu"/>
+        <Class IRI="#Connectivity2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Img2OccucapturesOccu"/>
+        <Class IRI="#Image2occupancy"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#actType"/>
         <Class IRI="#ActProperty"/>
@@ -760,6 +793,18 @@
         <ObjectProperty IRI="http://www.w3.org/ns/ssn/hasProperty"/>
         <Class IRI="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#BBcapturesOccu"/>
+        <Class IRI="#Occupancy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Conn2OccucapturesOccu"/>
+        <Class IRI="#Occupancy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Img2OccucapturesOccu"/>
+        <Class IRI="#Occupancy"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#actType"/>
         <Class IRI="#Actuation"/>

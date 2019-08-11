@@ -159,16 +159,15 @@ public class OntologyManager {
 		}
 		return objprop;
 	}
-	
-	
-	//get individual of class
-	//대소문자 구분 X
+
+	// get individual of class
+	// 대소문자 구분 X
 	public static ArrayList<String> getIndividual(String cls) {
 		// TODO Auto-generated method stub
-		System.out.println("\n[getIndividuals: get individuals of {"+cls+"} ]");
+		System.out.println("\n[getIndividuals: get individuals of {" + cls + "} ]");
 		ArrayList<String> idv = new ArrayList<String>();
 		for (Node<OWLNamedIndividual> i : reasoner.getInstances(getOwlClass(cls), false)) {
-			idv.add(strToken0(i.toString())); 
+			idv.add(strToken0(i.toString()));
 		}
 		return idv;
 	}
@@ -177,17 +176,39 @@ public class OntologyManager {
 	// return names of classes in arrayList
 	public static ArrayList<String> findSensor(String obs) {
 		ArrayList<String> sen = new ArrayList<String>();
+		String chk = "false"; // 하나만 있으
 		System.out.println("\n[findSensor: Print Sensor by {" + obs + "}]");
 		for (OWLObjectPropertyExpression p : ontology.getObjectPropertiesInSignature()) {
 			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs)
 					& strToken0(p.toString()).contains("captures")) {
 				for (Node<OWLClass> c : reasoner.getObjectPropertyDomains(p, true)) {
-					if(strToken0(c.toString()).contains("Node")) continue;
+					if (strToken0(c.toString()).contains("Node"))
+						continue;
 					sen.add(strToken0(c.toString()));
 				}
 			}
 		}
+		checkdup(sen);
 		return sen;
+	}
+
+	// check multiple or plus
+	// 원소 1개는 true
+	public static ArrayList<String> checkdup(ArrayList<String> arr) {
+		String chk = "True";
+		if(arr.size()>=2) {
+			for (int i =0; i<arr.size(); i++) {
+				for(int j=i+1; j<arr.size(); j++) {
+					if(arr.get(i).equals(arr.get(j))) {
+						chk = "False";
+						arr.remove(j);
+					}
+				}	
+			}
+		} else if(arr.isEmpty()) return null;
+		
+		arr.add(0, chk);
+		return arr;
 	}
 
 	// is VS
