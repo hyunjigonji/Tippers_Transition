@@ -7,11 +7,10 @@ public class OntologyManager {
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
 	 */
 	public static ArrayList<String> extractEnt(UA UARequest) { // extract Entity from UA, M
-		/*ArrayList<String> temp = new ArrayList<String>();
+		ArrayList<String> temp = new ArrayList<String>();
 		temp.add("room1");
-		temp.add("room2");
-		return temp; */
-		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		return temp;
+		//return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
 	} 
 
 	public static ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
@@ -71,7 +70,7 @@ public class OntologyManager {
 	}
 	
 	public static String findInput(String Sensor){
-		String inputObs = "";
+		/*String inputObs = "";
 		//System.out.println("findInput " + Sensor);
 		if(Sensor.equals("Location2connectivity")) {
 			//System.out.println("findInput Loc2Occ");
@@ -84,8 +83,8 @@ public class OntologyManager {
 		if(Sensor.equals("Connectivity2occupancy")) {
 			inputObs = "Connectivity";
 		}
-		return inputObs;
-		//return tippersOntology.OntologyManager.findInput(Sensor);
+		return inputObs;*/
+		return tippersOntology.OntologyManager.findInput(Sensor);
 	}
 	
 	public static boolean isVS(String Sensor) {
@@ -210,7 +209,7 @@ public class OntologyManager {
 	}
 	
 	public static boolean checkCoverage(String sen, String ent) {
-		//if(sen.contains("AC")) return false;
+		//if(sen.contains("Wifi1")) return false;
 		if((sen.contains("1") && ent.contains("1")) || (sen.contains("2") && ent.contains("2")) || (sen.contains("3") && ent.contains("3"))) return true;
 		return false;
 	}
