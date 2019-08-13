@@ -28,12 +28,13 @@ public class OntologyManager {
 	public static IRI ontologyIRI = IRI.create("../ontology1.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
-
 	public OntologyManager() {
 		startOntologyManager();
 	}
 
 	public static void startOntologyManager() {
+		
+		System.out.println("test");
 		manager = OWLManager.createOWLOntologyManager();
 		factory = OWLManager.getOWLDataFactory();
 
