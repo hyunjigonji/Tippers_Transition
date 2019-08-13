@@ -7,10 +7,10 @@ public class OntologyManager {
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
 	 */
 	public static ArrayList<String> extractEnt(UA UARequest) { // extract Entity from UA, M
-		ArrayList<String> temp = new ArrayList<String>();
-		temp.add("room1");
-		return temp;
-		//return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		/*ArrayList<String> temp = new ArrayList<String>();
+		temp.add("meetingroom1");
+		return temp;*/
+		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
 	} 
 
 	public static ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
@@ -24,7 +24,7 @@ public class OntologyManager {
 		}
 		
 		return temp; 
-	} 
+	}
 	
 	public static ArrayList<String> extractCond(UA UARequest) { // extract Condition from UA, M
 		ArrayList<String> temp = new ArrayList<String>();
@@ -69,29 +69,30 @@ public class OntologyManager {
 		return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
-	public static String findInput(String Sensor){
-		/*String inputObs = "";
+	public static ArrayList<String> findInput(String Sensor){
+		ArrayList<String> inputObs = new ArrayList<String>();
 		//System.out.println("findInput " + Sensor);
 		if(Sensor.equals("Location2connectivity")) {
 			//System.out.println("findInput Loc2Occ");
-			inputObs = "Location";
+			inputObs.add("Location");
 		}
-		if(Sensor.equals("Image2occupancy")) {
+		if(Sensor.equals("LocationImage2occupancy")) {
 			//System.out.println("findInput Img2Loc");
-			inputObs = "Image";
+			inputObs.add("Location");
+			inputObs.add("Image");
 		}
 		if(Sensor.equals("Connectivity2occupancy")) {
-			inputObs = "Connectivity";
+			inputObs.add("Connectivity");
 		}
-		return inputObs;*/
-		return tippersOntology.OntologyManager.findInput(Sensor);
+		return inputObs;
+		//return tippersOntology.OntologyManager.findInput(Sensor);
 	}
 	
 	public static boolean isVS(String Sensor) {
 		if(Sensor.contains("Wifi") || Sensor.equals("GPS") || Sensor.equals("Camera") || Sensor.equals("BB")) return false;
 		return true;
-		
-		//return tippersOntology.OntologyManager.isVS(sensor);
+		//System.out.println(tippersOntology.OntologyManager.isVS(Sensor));
+		//return tippersOntology.OntologyManager.isVS(Sensor);
 	}
 
 	public static boolean hasMultiInput(ArrayList<String> Sensors) {
@@ -212,6 +213,8 @@ public class OntologyManager {
 		//if(sen.contains("Wifi1")) return false;
 		if((sen.contains("1") && ent.contains("1")) || (sen.contains("2") && ent.contains("2")) || (sen.contains("3") && ent.contains("3"))) return true;
 		return false;
+		//System.out.println("check " +sen + " " + ent + " " + tippersOntology.OntologyManager.checkCoverage(sen, ent));
+		//return tippersOntology.OntologyManager.checkCoverage(sen, ent);
 	}
 	
 	public static boolean checkAccess(String sen, String ent) {
