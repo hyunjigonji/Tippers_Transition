@@ -7,17 +7,20 @@ import java.util.*;
  */
 
 public class Tree_Calculate extends Tree {
+	public final static int MAX = 987654321;
+	
 	public final static int Wm = 1;
 	public final static int Wt = 2;
 	
-	public static ArrayList<Node> leaves;
+	public int Costs[] = {MAX,};
+	public static ArrayList<Node> Leaves;
 	
 	public static Tree check(Tree myTree) {
 		Tree newTree = new Tree();
-		leaves = findLeafNode(myTree);
+		Leaves = findLeafNode(myTree);
 		
-		for(int i = 0 ; i < leaves.size() ; i++) {
-			Node nowNode = leaves.get(i);
+		for(int i = 0 ; i < Leaves.size() ; i++) {
+			Node nowNode = Leaves.get(i);
 			SRNode nowSRNode = findSRNode(myTree, nowNode.nodeNum);
 			
 			calcul(nowSRNode);

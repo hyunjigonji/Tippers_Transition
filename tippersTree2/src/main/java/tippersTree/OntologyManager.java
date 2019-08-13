@@ -7,10 +7,10 @@ public class OntologyManager {
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
 	 */
 	public static ArrayList<String> extractEnt(UA UARequest) { // extract Entity from UA, M
-		ArrayList<String> temp = new ArrayList<String>();
+		/*ArrayList<String> temp = new ArrayList<String>();
 		temp.add("meetingroom1");
-		return temp;
-		//return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		return temp;*/
+		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
 	} 
 
 	public static ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
@@ -165,7 +165,7 @@ public class OntologyManager {
 	}*/
 	
 	public static ArrayList<String> getAptDevices(String Sensor){
-		ArrayList<String> devices = new ArrayList<String>();
+		/*ArrayList<String> devices = new ArrayList<String>();
 		if(Sensor.equals("Wifi")) {
 			devices.add("Wifi1");
 			devices.add("Wifi2");
@@ -201,7 +201,8 @@ public class OntologyManager {
 			devices.add("AC2");
 			devices.add("AC3");
 		}
-		return devices;
+		return devices;*/
+		return tippersOntology.OntologyManager.getAptDevice(Sensor);
 	}
 	
 	public static boolean checkCoverage(String sen, String ent) {

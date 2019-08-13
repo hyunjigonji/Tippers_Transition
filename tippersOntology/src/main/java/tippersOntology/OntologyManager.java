@@ -23,9 +23,9 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology4.owl";
+	public static String ontologyURL = "../ontology1.owl";
 	public static OWLReasoner reasoner;
-	public static IRI ontologyIRI = IRI.create("../ontology4.owl");
+	public static IRI ontologyIRI = IRI.create("../ontology1.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
