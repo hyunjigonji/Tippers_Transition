@@ -195,17 +195,18 @@ public class OntologyManager {
 	// if there is only 1 thing in array, return true
 	public static ArrayList<String> checkdup(ArrayList<String> arr) {
 		String chk = "True";
-		if(arr.size()>=2) {
-			for (int i =0; i<arr.size(); i++) {
-				for(int j=i+1; j<arr.size(); j++) {
-					if(arr.get(i).equals(arr.get(j))) {
+		if (arr.size() >= 2) {
+			for (int i = 0; i < arr.size(); i++) {
+				for (int j = i + 1; j < arr.size(); j++) {
+					if (arr.get(i).equals(arr.get(j))) {
 						chk = "False";
 						arr.remove(j);
 					}
-				}	
+				}
 			}
-		} else if(arr.isEmpty()) return null;
-		
+		} else if (arr.isEmpty())
+			return null;
+
 		arr.add(0, chk);
 		return arr;
 	}
@@ -242,6 +243,22 @@ public class OntologyManager {
 			}
 		}
 		return obs;
+	}
+
+	// check a sensor in a room
+	// both are individual name
+	public static boolean checkCoverage(String sen, String ent) {
+		boolean chk = false;
+		System.out.println("\n[checkCoverage: check a sensor{" + sen + "} in a room{" + ent + "}]");
+		for (OWLIndividual i : ontology.getIndividualsInSignature()) {
+			if (strToken0(i.toString()).equalsIgnoreCase(ent)) {
+				for (OWLObjectPropertyAssertionAxiom o : ontology.getObjectPropertyAssertionAxioms(i)) {
+					if (strToken0(o.toString()).equalsIgnoreCase(sen))
+						chk = true;
+				}
+			}
+		}
+		return chk;
 	}
 
 	/**

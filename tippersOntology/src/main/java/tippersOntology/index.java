@@ -23,8 +23,13 @@ public class index {
 		System.out.println(OntologyManager.getIndividual("GPS"));
 		
 		System.out.println(OntologyManager.findInput("location2connectivity"));
+
+		System.out.println(OntologyManager.checkCoverage("camera1", "meetingroom1"));		//true
+		System.out.println(OntologyManager.checkCoverage("camera1", "meetingroom2"));		//false
+		System.out.println(OntologyManager.checkCoverage("camera2", "meetingroom2"));		//true
+		System.out.println(OntologyManager.checkCoverage("camera3", "meetingroom2"));		//true
 		
-		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
-		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
+//		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
+//		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
 	}
 }

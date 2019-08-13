@@ -177,10 +177,19 @@
         <ObjectProperty IRI="#capturesOccu"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#hasActuator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDevice"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasExtent"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasParam"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSensor"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#input"/>
@@ -634,6 +643,21 @@
         <NamedIndividual IRI="#Wifi1"/>
         <NamedIndividual IRI="#connObs"/>
     </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSensor"/>
+        <NamedIndividual IRI="#meetingroom1"/>
+        <NamedIndividual IRI="#camera1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSensor"/>
+        <NamedIndividual IRI="#meetingroom2"/>
+        <NamedIndividual IRI="#camera2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSensor"/>
+        <NamedIndividual IRI="#meetingroom2"/>
+        <NamedIndividual IRI="#camera3"/>
+    </ObjectPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#BBcapturesOccu"/>
         <ObjectProperty IRI="#captures"/>
@@ -661,6 +685,14 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#capturesOccu"/>
         <ObjectProperty IRI="#captures"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasActuator"/>
+        <ObjectProperty IRI="#hasDevice"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSensor"/>
+        <ObjectProperty IRI="#hasDevice"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#inputC2O"/>
@@ -737,6 +769,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesOccu"/>
         <Class IRI="#Image2occupancy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDevice"/>
+        <Class IRI="#Space"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasExtent"/>
@@ -825,6 +861,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#capturesOccu"/>
         <Class IRI="#Occupancy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDevice"/>
+        <Class IRI="#Device"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasExtent"/>

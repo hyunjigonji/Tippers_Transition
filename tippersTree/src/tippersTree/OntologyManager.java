@@ -108,7 +108,7 @@ public class OntologyManager {
 	public String findObs(String prop) {
 		/*String obsProp = "OccObs";
 		return obsProp;*/
-		return tippersOntology.OntologyManager.findObs(prop);
+		return null;
 	}
 	
 	public ArrayList<String> findInput(String sensor){
