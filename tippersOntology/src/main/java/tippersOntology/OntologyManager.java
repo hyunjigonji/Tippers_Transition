@@ -9,21 +9,23 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import uk.ac.manchester.cs.jfact.JFactFactory;
-import uk.ac.manchester.cs.jfact.kernel.Individual;
+
+/*
+ * File Description
+ * ontology.owl has all of sensors and rooms
+ * ontology1.owl has all of sensors in a room
+ * ontology2.owl has no Wifi sensor in a room
+ * ontology3.owl has  only GPS, Camera in a room
+ * ontology4.owl has no Camera in a room 
+ */
 
 public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology.owl";
-	// public static String ontologyURL = "C:\\Users\\KIM KI MIN\\Desktop\\research
-	// project\\ontology\\ontology.owl";
+	public static String ontologyURL = "../ontology4.owl";
 	public static OWLReasoner reasoner;
-	public static IRI ontologyIRI = IRI.create("../ontology.owl");
-	// public static IRI ontoloIRI = IRI.create("C:\\Users\\KIM KI
-	// MIN\\Desktop\\research project\\ontology\\ontology.owl");
-	// public static IRI ontologyIRI =
-	// IRI.create("/Users/hyunjigonji/tippers_transition/tippersOntology/src/main/java/tippersOntology/ontology.owl");
+	public static IRI ontologyIRI = IRI.create("../ontology4.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 
@@ -42,8 +44,8 @@ public class OntologyManager {
 
 			reasoner = createOWLReasoner();
 
-			@SuppressWarnings("deprecation")
-			Set<OWLOntology> importsClosure = ontology.getImportsClosure();
+//			@SuppressWarnings("deprecation")
+//			Set<OWLOntology> importsClosure = ontology.getImportsClosure();
 		} catch (OWLOntologyCreationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
