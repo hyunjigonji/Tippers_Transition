@@ -10,16 +10,9 @@ public class Tree_Generator extends Tree{
 		//System.out.println("URgenerator0 " + Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
 
 		Node ConnectNode = newXNode();
-		ArrayList<String> sens = OntologyManager.findSensor(nowC);
+		appendChild(nowNode, ConnectNode);
 		
-//		if(OntologyManager.hasMultiInput(sens)) { // multiple input -> + node
-//			ConnectNode = Tree.newPlusNode(); 
-//			Tree.appendChild(nowNode, ConnectNode);
-//		} 
-//		else { // not multiple input -> x node
-//			ConnectNode = Tree.newXNode();
-//			Tree.appendChild(nowNode, ConnectNode);
-//		}
+		ArrayList<String> sens = OntologyManager.findSensor(nowC);
 		
 		for(int i = 0 ; i < sens.size(); i++) {
 			String nowSen = sens.get(i);
@@ -43,20 +36,20 @@ public class Tree_Generator extends Tree{
 		String nowP = nowNode.values.Property;
 		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowP);
 
-		XNode XNode = Tree.newXNode();
-		Tree.appendChild(nowNode, XNode);
+		XNode XNode = newXNode();
+		appendChild(nowNode, XNode);
 
 		String nowObs = OntologyManager.findAction(nowP);
 		String nowActuator = OntologyManager.findActuator(nowP);
 		//System.out.println(nowActuator);
 
 		SR newSR = new SR(nowActuator, nowObs, nowE);
-		SRNode newSRNode = Tree.newSRNode(newSR);
+		SRNode newSRNode = newSRNode(newSR);
 		
 		newSRNode.type = types.typeAC;
 		
 		SRs.add(newSRNode);
-		Tree.appendChild(XNode,newSRNode);
+		appendChild(XNode,newSRNode);
 			
 		return;
 	}
@@ -70,6 +63,7 @@ public class Tree_Generator extends Tree{
 		Node ConnectNode;
 		if(obs.size() == 1) ConnectNode = newXNode();
 		else ConnectNode = newPlusNode();
+		appendChild(nowNode, ConnectNode);
 		
 		for(int i = 0 ; i < obs.size() ; i++) {
 			String nowObs = obs.get(i);
@@ -90,16 +84,6 @@ public class Tree_Generator extends Tree{
 				generator1(newSRNode, nowEnt); // recursive
 			}
 		}
-		
-		
-//		if(OntologyManager.hasMultiInput(sens)) { // multiple input -> + node
-//			ConnectNode = Tree.newPlusNode(); 
-//			Tree.appendChild(nowNode, ConnectNode);
-//		} 
-//		else { // not multiple input -> x node
-//			ConnectNode = Tree.newXNode();
-//			Tree.appendChild(nowNode, ConnectNode);
-//		}
 		
 		return;
 	}

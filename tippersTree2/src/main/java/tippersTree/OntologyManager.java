@@ -70,7 +70,7 @@ public class OntologyManager {
 	}
 	
 	public static ArrayList<String> findInput(String Sensor){
-		ArrayList<String> inputObs = new ArrayList<String>();
+		/*ArrayList<String> inputObs = new ArrayList<String>();
 		//System.out.println("findInput " + Sensor);
 		if(Sensor.equals("Location2connectivity")) {
 			//System.out.println("findInput Loc2Occ");
@@ -84,22 +84,17 @@ public class OntologyManager {
 		if(Sensor.equals("Connectivity2occupancy")) {
 			inputObs.add("Connectivity");
 		}
-		return inputObs;
-		//return tippersOntology.OntologyManager.findInput(Sensor);
+		return inputObs;*/
+		return tippersOntology.OntologyManager.findInput(Sensor);
 	}
 	
 	public static boolean isVS(String Sensor) {
-		if(Sensor.contains("Wifi") || Sensor.equals("GPS") || Sensor.equals("Camera") || Sensor.equals("BB")) return false;
-		return true;
-		//System.out.println(tippersOntology.OntologyManager.isVS(Sensor));
-		//return tippersOntology.OntologyManager.isVS(Sensor);
+		/*if(Sensor.contains("Wifi") || Sensor.equals("GPS") || Sensor.equals("Camera") || Sensor.equals("BB")) return false;
+		return true;*/
+		System.out.println(tippersOntology.OntologyManager.isVS(Sensor));
+		return tippersOntology.OntologyManager.isVS(Sensor);
 	}
-
-	public static boolean hasMultiInput(ArrayList<String> Sensors) {
-		String determine = Sensors.get(0);
-		if(determine.equals("True")) return true; // + node
-		else return false; // x node
-	}
+	
 	/*
 	public ArrayList<String> findActuatorInd(String Prop) {
 		Prop = findActuator(Prop);
@@ -210,11 +205,11 @@ public class OntologyManager {
 	}
 	
 	public static boolean checkCoverage(String sen, String ent) {
-		//if(sen.contains("Wifi1")) return false;
+		/*if(sen.contains("Wifi1")) return false;
 		if((sen.contains("1") && ent.contains("1")) || (sen.contains("2") && ent.contains("2")) || (sen.contains("3") && ent.contains("3"))) return true;
-		return false;
+		return false;*/
 		//System.out.println("check " +sen + " " + ent + " " + tippersOntology.OntologyManager.checkCoverage(sen, ent));
-		//return tippersOntology.OntologyManager.checkCoverage(sen, ent);
+		return tippersOntology.OntologyManager.checkCoverage(sen, ent);
 	}
 	
 	public static boolean checkAccess(String sen, String ent) {
