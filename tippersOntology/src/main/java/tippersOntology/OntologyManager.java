@@ -194,12 +194,12 @@ public class OntologyManager {
 	// check multiple or plus
 	// if there is only 1 thing in array, return true
 	public static ArrayList<String> checkdup(ArrayList<String> arr) {
-		String chk = "True";
+//		String chk = "True";
 		if (arr.size() >= 2) {
 			for (int i = 0; i < arr.size(); i++) {
 				for (int j = i + 1; j < arr.size(); j++) {
 					if (arr.get(i).equals(arr.get(j))) {
-						chk = "False";
+//						chk = "False";
 						arr.remove(j);
 					}
 				}
@@ -207,7 +207,7 @@ public class OntologyManager {
 		} else if (arr.isEmpty())
 			return null;
 
-		arr.add(0, chk);
+//		arr.add(0, chk);
 		return arr;
 	}
 
@@ -218,10 +218,10 @@ public class OntologyManager {
 		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
 		ArrayList<OWLClassExpression> cls = showSubclasses("Sensor");
 		for (int i = 0; i < cls.size(); i++) {
-			for (OWLNamedIndividual idv : reasoner.getInstances(cls.get(i), false).getFlattened()) {
-				if (strToken0(idv.getIRI().toString()).equalsIgnoreCase(Sensor)
-						&& cls.get(i).toString().contains("VirSensor")) {
-					flag = true;
+			if (strToken0(cls.get(i).toString()).equalsIgnoreCase("VirSensor")) {
+				for (OWLClassExpression e : showSubclasses(strToken0(cls.get(i).toString()))) {
+					if (strToken0(e.toString()).equalsIgnoreCase(Sensor))
+						flag = true;
 				}
 			}
 		}
@@ -229,20 +229,22 @@ public class OntologyManager {
 	}
 
 	// find input
-	// input class name
-	// return string , class name
-	// return only 1 thing
-	public static String findInput(String vs) {
-		String obs = new String();
+	// input array of class name
+	public static ArrayList<String> findInput(String vs) {
+		ArrayList<String> arr = new ArrayList<String>();
 		System.out.println("\n[findInput: find VS{" + vs + "} input]");
 		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature()) {
 			if (strToken0(reasoner.getObjectPropertyDomains(p, true).toString()).equalsIgnoreCase(vs)
 					& p.toString().contains("input")) {
-				System.out.println(strToken0(reasoner.getObjectPropertyDomains(p, true).toString()));
-				obs = strToken0(reasoner.getObjectPropertyRanges(p, true).toString());
+				for (Node<OWLClass> c : reasoner.getObjectPropertyRanges(p, true)) {
+//					System.out.println(strToken0(c.toString()));
+					if (strToken0(c.toString()).contains("Node"))
+						continue;
+					arr.add(strToken0(c.toString()));
+				}
 			}
 		}
-		return obs;
+		return arr;
 	}
 
 	// check a sensor in a room

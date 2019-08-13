@@ -16,13 +16,18 @@ public class index {
 		System.out.println(OntologyManager.findSensor("occupancy"));
 		System.out.println(OntologyManager.findSensor("connectivity"));
 
-		System.out.println(OntologyManager.isVS("conn2occu"));
-		System.out.println(OntologyManager.isVS("wifi1"));
+		System.out.println(OntologyManager.isVS("Location2connectivity"));
+		System.out.println(OntologyManager.isVS("LocationImage2occupancy"));
+		System.out.println(OntologyManager.isVS("Wifi"));
+		System.out.println(OntologyManager.isVS("GPS"));
+		
 		System.out.println(OntologyManager.getIndividual("meetingRoom"));
 		System.out.println(OntologyManager.getIndividual("office"));
 		System.out.println(OntologyManager.getIndividual("GPS"));
 		
+		System.out.println(OntologyManager.findInput("connectivity2occupancy"));
 		System.out.println(OntologyManager.findInput("location2connectivity"));
+		System.out.println(OntologyManager.findInput("locationimage2occupancy"));
 
 		System.out.println(OntologyManager.checkCoverage("camera1", "meetingroom1"));		//true
 		System.out.println(OntologyManager.checkCoverage("camera1", "meetingroom2"));		//false
