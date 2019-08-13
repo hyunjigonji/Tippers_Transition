@@ -34,6 +34,8 @@ public class index {
 		System.out.println(OntologyManager.checkCoverage("camera2", "meetingroom2"));		//true
 		System.out.println(OntologyManager.checkCoverage("camera3", "meetingroom2"));		//true
 		
+		System.out.println(OntologyManager.checkCoverage("GPS2", "meetingroom2"));	
+		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
 	}
