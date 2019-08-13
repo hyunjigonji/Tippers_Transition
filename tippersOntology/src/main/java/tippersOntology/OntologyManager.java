@@ -160,11 +160,12 @@ public class OntologyManager {
 		return objprop;
 	}
 
+	// getAptDevice
 	// get individual of class
 	// 대소문자 구분 X
-	public static ArrayList<String> getIndividual(String cls) {
+	public static ArrayList<String> getAptDevice(String cls) {
 		// TODO Auto-generated method stub
-		System.out.println("\n[getIndividuals: get individuals of {" + cls + "} ]");
+		System.out.println("\n[getAptDevice: get individuals of {" + cls + "} ]");
 		ArrayList<String> idv = new ArrayList<String>();
 		for (Node<OWLNamedIndividual> i : reasoner.getInstances(getOwlClass(cls), false)) {
 			idv.add(strToken0(i.toString()));
@@ -194,20 +195,16 @@ public class OntologyManager {
 	// check multiple or plus
 	// if there is only 1 thing in array, return true
 	public static ArrayList<String> checkdup(ArrayList<String> arr) {
-//		String chk = "True";
 		if (arr.size() >= 2) {
 			for (int i = 0; i < arr.size(); i++) {
 				for (int j = i + 1; j < arr.size(); j++) {
 					if (arr.get(i).equals(arr.get(j))) {
-//						chk = "False";
 						arr.remove(j);
 					}
 				}
 			}
-		} else if (arr.isEmpty())
-			return null;
+		} else if (arr.isEmpty()) return null;
 
-//		arr.add(0, chk);
 		return arr;
 	}
 
@@ -238,7 +235,6 @@ public class OntologyManager {
 			if (strToken0(reasoner.getObjectPropertyDomains(p, true).toString()).equalsIgnoreCase(vs)
 					& p.toString().contains("input")) {
 				for (Node<OWLClass> c : reasoner.getObjectPropertyRanges(p, true)) {
-//					System.out.println(strToken0(c.toString()));
 					if (strToken0(c.toString()).contains("Node"))
 						continue;
 					arr.add(strToken0(c.toString()));

@@ -21,9 +21,9 @@ public class index {
 		System.out.println(OntologyManager.isVS("Wifi"));
 		System.out.println(OntologyManager.isVS("GPS"));
 		
-		System.out.println(OntologyManager.getIndividual("meetingRoom"));
-		System.out.println(OntologyManager.getIndividual("office"));
-		System.out.println(OntologyManager.getIndividual("GPS"));
+		System.out.println(OntologyManager.getAptDevice("meetingRoom"));
+		System.out.println(OntologyManager.getAptDevice("office"));
+		System.out.println(OntologyManager.getAptDevice("GPS"));
 		
 		System.out.println(OntologyManager.findInput("connectivity2occupancy"));
 		System.out.println(OntologyManager.findInput("location2connectivity"));
