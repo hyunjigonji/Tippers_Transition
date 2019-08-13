@@ -68,7 +68,7 @@ public class Tree_Generator extends Tree{
 		ArrayList<String> obs = OntologyManager.findInput(nowNode.values.Sensor);
 		// decide if it requires multiple input
 		Node ConnectNode;
-		if(obs.size() == 1)  ConnectNode = newXNode();
+		if(obs.size() == 1) ConnectNode = newXNode();
 		else ConnectNode = newPlusNode();
 		
 		for(int i = 0 ; i < obs.size() ; i++) {
