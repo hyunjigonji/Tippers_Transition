@@ -25,32 +25,32 @@ public class Tree_Display extends Tree {
 
 			String str = "";
 			if(now.type == types.typeUA) {
-				UANode now2 = Tree.findUANode(TreeUA, now.nodeNum);
+				UANode now2 = findUANode(TreeUA, now.nodeNum);
 				str = "UA"+ now2.nodeNum + "<" + now2.values.Entity + "," + now2.values.Property + "," + now2.values.Condition + ">";
 			}
 			else if(now.type == types.typeUR) {
-				URNode now2 = Tree.findURNode(TreeUA, now.nodeNum);
+				URNode now2 = findURNode(TreeUA, now.nodeNum);
 				str = "UR" + now2.nodeNum + "<" + now2.values.Entity + "," + now2.values.Condition + ">";
 			}
 			else if(now.type == types.typePlus) str = "+" + now.nodeNum;
 			else if(now.type == types.typeX) str = "x" + now.nodeNum;
 			else if(now.type == types.typeXc) str = "Xc" + now.nodeNum;
 			else if(now.type == types.typePSR) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "PSR" + now2.nodeNum + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 				//System.out.println(str);
 			}
 			else if(now.type == types.typeVSR) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "VSR" + now2.nodeNum + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 				//System.out.println(str);
 			}
 			else if(now.type == types.typeAC) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "AC" + now2.nodeNum + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 			}
 			else if(now.type == types.typeDA) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "DA" + now2.nodeNum + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 			}
 			if(now.isRoot) str = "Root";
@@ -63,30 +63,30 @@ public class Tree_Display extends Tree {
 				//System.out.prStringln("now = " + Integer.toString(now.nodeNum) + " par = " + Integer.toString(parent.nodeNum));
 
 				if(parent.type == types.typeUA) {
-					UANode parent2 = Tree.findUANode(TreeUA, parent.nodeNum);
+					UANode parent2 = findUANode(TreeUA, parent.nodeNum);
 					par = "UA" + parent2.nodeNum + "<" + parent2.values.Entity + "," + parent2.values.Property + "," + parent2.values.Condition + ">";
 				}
 				else if(parent.type == types.typeUR) {
-					URNode parent2 = Tree.findURNode(TreeUA, parent.nodeNum);
+					URNode parent2 = findURNode(TreeUA, parent.nodeNum);
 					par = "UR" + parent2.nodeNum + "<" + parent2.values.Entity + "," + parent2.values.Condition + ">";
 				}
 				else if(parent.type == types.typePlus) par = "+" + parent.nodeNum;
 				else if(parent.type == types.typeX) par = "x" + parent.nodeNum;
 				else if(parent.type == types.typeXc) par = "Xc" + parent.nodeNum;
 				else if(parent.type == types.typePSR) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "PSR" + parent2.nodeNum + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
 				}
 				else if(parent.type == types.typeVSR) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "VSR" + parent2.nodeNum + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
 				}
 				else if(parent.type == types.typeAC) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "AC" + parent2.nodeNum + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
 				}
 				else if(parent.type == types.typeDA) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "AC" + parent2.nodeNum + "<" + parent2.values.Sensor + "," + parent2.values.Observation + "," + parent2.values.Entity + ">";
 				}
 				if(parent.isRoot) par = "Root";
@@ -127,32 +127,32 @@ public class Tree_Display extends Tree {
 
 			String str = "";
 			if(now.type == types.typeUA) {
-				UANode now2 = Tree.findUANode(TreeUA, now.nodeNum);
+				UANode now2 = findUANode(TreeUA, now.nodeNum);
 				str = "UA"+ now2.nodeNum;
 			}
 			else if(now.type == types.typeUR) {
-				URNode now2 = Tree.findURNode(TreeUA, now.nodeNum);
+				URNode now2 = findURNode(TreeUA, now.nodeNum);
 				str = "UR" + now2.nodeNum;
 			}
 			else if(now.type == types.typePlus) str = "+" + now.nodeNum;
 			else if(now.type == types.typeX) str = "x" + now.nodeNum;
 			else if(now.type == types.typeXc) str = "Xc" + now.nodeNum;
 			else if(now.type == types.typePSR) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "PSR" + now2.nodeNum;
 				//System.out.println(str);
 			}
 			else if(now.type == types.typeVSR) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "VSR" + now2.nodeNum;
 				//System.out.println(str);
 			}
 			else if(now.type == types.typeAC) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "AC" + now2.nodeNum;
 			}
 			else if(now.type == types.typeDA) {
-				SRNode now2 = Tree.findSRNode(TreeUA, now.nodeNum);
+				SRNode now2 = findSRNode(TreeUA, now.nodeNum);
 				str = "DA" + now2.nodeNum;
 			}
 			if(now.isRoot) str = "Root";
@@ -165,30 +165,30 @@ public class Tree_Display extends Tree {
 				//System.out.prStringln("now = " + Integer.toString(now.nodeNum) + " par = " + Integer.toString(parent.nodeNum));
 
 				if(parent.type == types.typeUA) {
-					UANode parent2 = Tree.findUANode(TreeUA, parent.nodeNum);
+					UANode parent2 = findUANode(TreeUA, parent.nodeNum);
 					par = "UA" + parent2.nodeNum;
 				}
 				else if(parent.type == types.typeUR) {
-					URNode parent2 = Tree.findURNode(TreeUA, parent.nodeNum);
+					URNode parent2 = findURNode(TreeUA, parent.nodeNum);
 					par = "UR" + parent2.nodeNum;
 				}
 				else if(parent.type == types.typePlus) par = "+" + parent.nodeNum;
 				else if(parent.type == types.typeX) par = "x" + parent.nodeNum;
 				else if(parent.type == types.typeXc) par = "Xc" + parent.nodeNum;
 				else if(parent.type == types.typePSR) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "PSR" + parent2.nodeNum;
 				}
 				else if(parent.type == types.typeVSR) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "VSR" + parent2.nodeNum;
 				}
 				else if(parent.type == types.typeAC) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "AC" + parent2.nodeNum;
 				}
 				else if(parent.type == types.typeDA) {
-					SRNode parent2 = Tree.findSRNode(TreeUA, parent.nodeNum);
+					SRNode parent2 = findSRNode(TreeUA, parent.nodeNum);
 					par = "DA" + parent2.nodeNum;
 				}
 				if(parent.isRoot) par = "Root";

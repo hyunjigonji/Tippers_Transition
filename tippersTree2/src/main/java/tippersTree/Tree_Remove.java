@@ -2,7 +2,7 @@ package tippersTree;
 
 import java.util.ArrayList;
 
-public class Tree_Remove {
+public class Tree_Remove extends Tree{
 	// check feasibility of each node
 	public static void checking(SRNode nowSRNode) {
 		
@@ -10,7 +10,7 @@ public class Tree_Remove {
 		String nowO = nowSRNode.values.Observation;
 		String nowE = nowSRNode.values.Entity;
 		
-		Node newXNode = Tree.newXNode();
+		Node newXNode = newXNode();
 		boolean connected = false;
 
 		ArrayList<String> sensors = OntologyManager.getAptDevices(nowS);
@@ -21,16 +21,16 @@ public class Tree_Remove {
 			if(OntologyManager.checkAccess(nowSI, nowE) && OntologyManager.checkCoverage(nowSI, nowE)){ // if available, add child
 				//System.out.println("checking " + nowSI + " " + nowE);
 				if(!connected) {
-					Tree.appendChild(nowSRNode, newXNode);
+					appendChild(nowSRNode, newXNode);
 					connected = true;
 				}
 				
 				SR newSR = new SR(nowSI, nowO, nowE);
-				SRNode newSRNode = Tree.newSRNode(newSR);
+				SRNode newSRNode = newSRNode(newSR);
 				newSRNode.type = types.typeDA;
 				
-				Tree.SRs.add(newSRNode);
-				Tree.appendChild(newXNode, newSRNode);
+				SRs.add(newSRNode);
+				appendChild(newXNode, newSRNode);
 			}
 		}
 		if(!connected) {

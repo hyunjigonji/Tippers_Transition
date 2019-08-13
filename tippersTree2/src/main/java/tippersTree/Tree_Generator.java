@@ -2,7 +2,7 @@ package tippersTree;
 
 import java.util.ArrayList;
 
-public class Tree_Generator extends Tree{
+public class Tree_Generator extends Tree {
 	
 	public static void URgenerator0(URNode nowNode) {
 		String nowE = nowNode.values.Entity;
@@ -73,14 +73,14 @@ public class Tree_Generator extends Tree{
 			for(int j = 0 ; j < sens.size() ; j++) {
 				String nowSen = sens.get(j);
 				SR newSR = new SR(nowSen, nowObs, nowEnt);
-				SRNode newSRNode = Tree.newSRNode(newSR);
+				SRNode newSRNode = newSRNode(newSR);
 
 				if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR;
 				else newSRNode.type = types.typePSR;
 				
 				SRs.add(newSRNode);
 				
-				Tree.appendChild(ConnectNode,newSRNode);
+				appendChild(ConnectNode,newSRNode);
 				generator1(newSRNode, nowEnt); // recursive
 			}
 		}
