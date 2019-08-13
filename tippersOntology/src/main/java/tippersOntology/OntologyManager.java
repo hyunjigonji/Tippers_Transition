@@ -247,7 +247,7 @@ public class OntologyManager {
 		return arr;
 	}
 
-	// check a sensor in a room
+	// check a device in a room
 	// both are individual name
 	public static boolean checkCoverage(String sen, String ent) {
 		boolean chk = false;
