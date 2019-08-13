@@ -7,10 +7,10 @@ public class OntologyManager {
 	 *  Modify it!!! Extract values from Domain Model (Ontology) !!!
 	 */
 	public static ArrayList<String> extractEnt(UA UARequest) { // extract Entity from UA, M
-		/*ArrayList<String> temp = new ArrayList<String>();
+		ArrayList<String> temp = new ArrayList<String>();
 		temp.add("meetingroom1");
-		return temp;*/
-		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		return temp;
+		//return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
 	} 
 
 	public static ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
