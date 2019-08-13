@@ -213,6 +213,7 @@ public class OntologyManager {
 
 	// is VS
 	// find a type of specific sensor
+	// A parameter(Sensor) is class name
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
 		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
