@@ -37,9 +37,14 @@ public class index {
 		
 		System.out.println(OntologyManager.checkCoverage("GPS2", "meetingroom2"));	
 		
-		System.out.println(OntologyManager.getTimecost("wifi1"));
-		System.out.println(OntologyManager.getTimecost("wifi2"));
-		System.out.println(OntologyManager.getTimecost("wifi3"));
+		System.out.println(OntologyManager.getTime("Wifi1"));		//대소문자 구분 필요함
+		System.out.println(OntologyManager.getTime("Wifi2"));
+		System.out.println(OntologyManager.getTime("Wifi3"));
+		System.out.println(OntologyManager.getTime("GPS3"));
+		
+		System.out.println(OntologyManager.getMoney("Wifi1"));		//대소문자 구분 필요함
+		System.out.println(OntologyManager.getMoney("Wifi2"));
+		System.out.println(OntologyManager.getMoney("Wifi3"));
 		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
