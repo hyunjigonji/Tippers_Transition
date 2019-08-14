@@ -24,6 +24,7 @@ public class Tree_Calculate extends Tree {
 			result.remove(0);
 			Selected.addAll(result);
 		}
+		
 		Leaves = findLeafNode(myTree);
 		for(int i = 0 ; i < Leaves.size() ; i++) {
 			Node nowNode = Leaves.get(i);
@@ -35,7 +36,7 @@ public class Tree_Calculate extends Tree {
 	
 	public static ArrayList<Integer> calcul(Tree myTree, Node nowNode) {
 		//System.out.println("calcul " + nowNode.nodeNum);
-		if(nowNode.type == types.typeDA) {
+		if(nowNode.type == types.typeDA) { // if DA, it is final node, so get cost and return.
 			SRNode nowDANode = findSRNode(myTree, nowNode.nodeNum);
 			int nowMoney = OntologyManager.getMoney(nowDANode.values.Sensor);
 			int nowTime = OntologyManager.getTime(nowDANode.values.Sensor);
@@ -49,11 +50,11 @@ public class Tree_Calculate extends Tree {
 			return temp;
 		}
 		
-		if(nowNode.type == types.typePSR || nowNode.type == types.typeVSR || nowNode.type == types.typeAC) {
+		if(nowNode.type == types.typePSR || nowNode.type == types.typeVSR || nowNode.type == types.typeAC) { // if PSR, VSR, or AC, it is in the middle, so skip.
 			return calcul(myTree, nowNode.Children.get(0));
 		}
 		
-		if(nowNode.type == types.typeX) {
+		if(nowNode.type == types.typeX) { // if x node, it needs to pick one branch which has the cheapest cost.
 			int minCost = MAX;
 			ArrayList<Integer> minNodes = new ArrayList<Integer>();
 			
@@ -73,9 +74,8 @@ public class Tree_Calculate extends Tree {
 			return minNodes;
 		}
 		
-		if(nowNode.type == types.typePlus) {
+		if(nowNode.type == types.typePlus) { // if + node, it needs to combine all branches.
 			ArrayList<Integer> temp = new ArrayList<Integer>();
-			
 			temp = calcul(myTree, nowNode.Children.get(0));
 			
 			for(int i = 1 ; i < nowNode.Children.size() ; i++) {
@@ -98,10 +98,10 @@ public class Tree_Calculate extends Tree {
 			return temp;
 		}
 		
-		if(nowNode.type == types.typeUR) {
+		if(nowNode.type == types.typeUR) { // if UR node, index 0 = xc, so return index 1.
 			return calcul(myTree, nowNode.Children.get(1));
 		}
-		if(nowNode.type == types.typeUA) {
+		if(nowNode.type == types.typeUA) { // if UA node, return index 0.
 			return calcul(myTree, nowNode.Children.get(0));
 		}
 		return null;
