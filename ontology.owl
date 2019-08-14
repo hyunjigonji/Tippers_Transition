@@ -372,15 +372,71 @@
         <NamedIndividual IRI="#tempObs"/>
     </Declaration>
     <EquivalentClasses>
+        <Class IRI="#BB"/>
+        <DataExactCardinality cardinality="3">
+            <DataProperty IRI="#moneyValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BB"/>
+        <DataExactCardinality cardinality="4">
+            <DataProperty IRI="#timeValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Camera"/>
+        <DataExactCardinality cardinality="5">
+            <DataProperty IRI="#moneyValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Camera"/>
+        <DataExactCardinality cardinality="6">
+            <DataProperty IRI="#timeValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GPS"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#moneyValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GPS"/>
+        <DataExactCardinality cardinality="2">
+            <DataProperty IRI="#timeValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Thermometer"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#moneyValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Thermometer"/>
+        <DataExactCardinality cardinality="2">
+            <DataProperty IRI="#timeValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
         <Class IRI="#Wifi"/>
-        <DataExactCardinality cardinality="100">
+        <DataExactCardinality cardinality="4">
             <DataProperty IRI="#moneyValue"/>
             <Datatype abbreviatedIRI="xsd:int"/>
         </DataExactCardinality>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Wifi"/>
-        <DataExactCardinality cardinality="44">
+        <DataExactCardinality cardinality="3">
             <DataProperty IRI="#timeValue"/>
             <Datatype abbreviatedIRI="xsd:int"/>
         </DataExactCardinality>
@@ -830,23 +886,143 @@
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#BB1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#BB1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#BB2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#BB2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#BB3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#BB3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#Camera1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#Camera1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#Camera2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#Camera2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#Camera3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#Camera3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#GPS1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#GPS1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#GPS2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#GPS2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#GPS3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#GPS3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#Thermometer1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#Thermometer1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#Thermometer2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#Thermometer2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
         <NamedIndividual IRI="#Wifi1"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">8</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#timeValue"/>
         <NamedIndividual IRI="#Wifi1"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#moneyValue"/>
         <NamedIndividual IRI="#Wifi2"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">22</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#timeValue"/>
         <NamedIndividual IRI="#Wifi2"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#moneyValue"/>
+        <NamedIndividual IRI="#Wifi3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeValue"/>
+        <NamedIndividual IRI="#Wifi3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#BBcapturesOccu"/>
