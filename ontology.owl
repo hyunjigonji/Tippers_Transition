@@ -371,6 +371,20 @@
     <Declaration>
         <NamedIndividual IRI="#tempObs"/>
     </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Wifi"/>
+        <DataExactCardinality cardinality="100">
+            <DataProperty IRI="#moneyValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Wifi"/>
+        <DataExactCardinality cardinality="44">
+            <DataProperty IRI="#timeValue"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#AC"/>
         <Class IRI="#Actuator"/>
