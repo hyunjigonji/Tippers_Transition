@@ -46,6 +46,10 @@ public class index {
 		System.out.println(OntologyManager.getMoney("Wifi2"));
 		System.out.println(OntologyManager.getMoney("Wifi3"));
 		
+
+		System.out.println(OntologyManager.getMoney("Camera3"));
+		System.out.println(OntologyManager.getTime("Camera3"));
+		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
 	}
