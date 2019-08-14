@@ -219,7 +219,7 @@ public class OntologyManager {
 	}
 	
 	public static int getMoney(String Sen) {
-		if(Sen.contains("camera")) return -5;
+		if(Sen.contains("camera")) return 5;
 		if(Sen.contains("Wifi")) return 10;
 		if(Sen.contains("BB")) return 15;
 		if(Sen.contains("GPS")) return 0;
@@ -229,7 +229,7 @@ public class OntologyManager {
 	}
 	
 	public static int getTime(String Sen) {
-		if(Sen.contains("camera")) return -3;
+		if(Sen.contains("camera")) return 3;
 		if(Sen.contains("Wifi")) return 6;
 		if(Sen.contains("BB")) return 9;
 		if(Sen.contains("GPS")) return 0;
