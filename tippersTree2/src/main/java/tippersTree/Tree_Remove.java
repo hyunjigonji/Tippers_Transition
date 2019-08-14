@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tree_Remove extends Tree{
 	// check feasibility of each node
-	public static void checking(SRNode nowSRNode) {
+	public static void check(SRNode nowSRNode) {
 		
 		String nowS = nowSRNode.values.Sensor;
 		String nowO = nowSRNode.values.Observation;

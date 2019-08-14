@@ -66,6 +66,7 @@ public class OntologyManager {
 		}
 		//System.out.println(sensors);
 		return sensors; */
+		//System.out.println("Find sensor of " + Obs + " = " + tippersOntology.OntologyManager.findSensor(Obs));
 		return tippersOntology.OntologyManager.findSensor(Obs);
 	}
 	
@@ -205,15 +206,35 @@ public class OntologyManager {
 		return tippersOntology.OntologyManager.getAptDevice(Sensor);
 	}
 	
-	public static boolean checkCoverage(String sen, String ent) {
+	public static boolean checkCoverage(String Sen, String Ent) {
 		/*if(sen.contains("Wifi1")) return false;
 		if((sen.contains("1") && ent.contains("1")) || (sen.contains("2") && ent.contains("2")) || (sen.contains("3") && ent.contains("3"))) return true;
 		return false;*/
 		//System.out.println("check " +sen + " " + ent + " " + tippersOntology.OntologyManager.checkCoverage(sen, ent));
-		return tippersOntology.OntologyManager.checkCoverage(sen, ent);
+		return tippersOntology.OntologyManager.checkCoverage(Sen, Ent);
 	}
 	
-	public static boolean checkAccess(String sen, String ent) {
+	public static boolean checkAccess(String Sen, String Ent) {
 		return true;
+	}
+	
+	public static int getMoney(String Sen) {
+		if(Sen.contains("camera")) return -5;
+		if(Sen.contains("Wifi")) return 10;
+		if(Sen.contains("BB")) return 15;
+		if(Sen.contains("GPS")) return 0;
+		if(Sen.contains("Light")) return 25;
+		if(Sen.contains("AC")) return 30;
+		return 2;
+	}
+	
+	public static int getTime(String Sen) {
+		if(Sen.contains("camera")) return -3;
+		if(Sen.contains("Wifi")) return 6;
+		if(Sen.contains("BB")) return 9;
+		if(Sen.contains("GPS")) return 0;
+		if(Sen.contains("Light")) return 15;
+		if(Sen.contains("AC")) return 18;
+		return 5;
 	}
 }
