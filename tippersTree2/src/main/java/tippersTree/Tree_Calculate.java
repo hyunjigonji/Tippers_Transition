@@ -9,40 +9,22 @@ public class Tree_Calculate extends Tree {
 	public final static int Wt = 2;
 	
 	public static ArrayList<Node> Leaves;
-	
-	public static int Costs[] = new int[Tree.totalNum+1];
-	public static ArrayList<Integer> LeafNode[] = new ArrayList[Tree.totalNum+1];
 	public static ArrayList<Integer> Selected = new ArrayList<Integer>();
 	
 	public static Tree check(Tree myTree) {
-		for(int i = 1 ; i <= Tree.totalNum ; i++) { // initialize the array with MAX value
-			Costs[i] = MAX;
-			LeafNode[i] = new ArrayList<Integer>();
-		}
-		
-		//Tree newTree = new Tree(); // How to generate newTree !!!
-		Leaves = findLeafNode(myTree);
-		
-		for(int i = 0 ; i < Leaves.size() ; i++) {
-			Node nowNode = Leaves.get(i);
-			calcul(myTree, nowNode, MAX, nowNode.nodeNum, new ArrayList<Integer>());
-		}
-		
+		ArrayList<Integer> result = new ArrayList<Integer>();
 		for(int i = 0 ; i < URij.size() ; i++) {
-			for(int j = 0 ; j < LeafNode[URij.get(i).nodeNum].size() ; j++) {
-				Selected.add(LeafNode[URij.get(i).nodeNum].get(j));
-			}
+			result = calcul(myTree, URij.get(i));
+			result.remove(0);
+			Selected.addAll(result);
+			//System.out.println("result " + Selected);
 		}
 		for(int i = 0 ; i < UAij.size() ; i++) {
-			for(int j = 0 ; j < LeafNode[UAij.get(i).nodeNum].size() ; j++) {
-				Selected.add(LeafNode[UAij.get(i).nodeNum].get(j));
-			}
+			result = calcul(myTree, UAij.get(i));
+			result.remove(0);
+			Selected.addAll(result);
 		}
-		System.out.println(Selected);
-		//Selected.remove(Selected.indexOf(43));
-		//Selected.add(47);
-		//Selected.add(49);
-		
+		Leaves = findLeafNode(myTree);
 		for(int i = 0 ; i < Leaves.size() ; i++) {
 			Node nowNode = Leaves.get(i);
 			if(!Selected.contains(nowNode.nodeNum)) remove(nowNode);
@@ -51,73 +33,78 @@ public class Tree_Calculate extends Tree {
 		return myTree;
 	}
 	
-	public static void calcul(Tree myTree, Node nowNode, int nowCost, int leafNum, ArrayList<Integer> leafNodeNum) {
-		//System.out.println("now node : " + nowNode.nodeNum + " now cost: " + nowCost + " now leaf : " + leafNodeNum);
-		if(nowNode.type == types.typeDA) { // if DA, it is leaf and get cost.
+	public static ArrayList<Integer> calcul(Tree myTree, Node nowNode) {
+		//System.out.println("calcul " + nowNode.nodeNum);
+		if(nowNode.type == types.typeDA) {
 			SRNode nowDANode = findSRNode(myTree, nowNode.nodeNum);
 			int nowMoney = OntologyManager.getMoney(nowDANode.values.Sensor);
 			int nowTime = OntologyManager.getTime(nowDANode.values.Sensor);
 			
-			nowCost = nowMoney*Wm + nowTime*Wt;
+			int nowCost = nowMoney*Wm + nowTime*Wt;
 			
-			Costs[nowNode.nodeNum] = nowCost;
+			ArrayList<Integer> temp = new ArrayList<Integer>();
+			temp.add(nowCost);
+			temp.add(nowNode.nodeNum);
 			
-			leafNodeNum.add(leafNum);
-			LeafNode[nowNode.nodeNum] = leafNodeNum;
-			//System.out.println("calcul: now num " + nowNode.nodeNum + ", nowCost = " + nowCost);
-			calcul(myTree, nowNode.Parents.get(0), nowCost, leafNum, leafNodeNum);
+			return temp;
 		}
 		
-		if(nowNode.type == types.typePSR || nowNode.type == types.typeVSR || nowNode.type == types.typeAC) { // if PSR or VSR, it is just middle of way, so update and continue.
-			Costs[nowNode.nodeNum] = nowCost;
-			LeafNode[nowNode.nodeNum] = leafNodeNum;
-			//System.out.println("calcul: now num " + nowNode.nodeNum + ", nowCost = " + nowCost);
-			calcul(myTree, nowNode.Parents.get(0), nowCost, leafNum, leafNodeNum);
+		if(nowNode.type == types.typePSR || nowNode.type == types.typeVSR || nowNode.type == types.typeAC) {
+			return calcul(myTree, nowNode.Children.get(0));
 		}
 		
 		if(nowNode.type == types.typeX) {
-			int xCost = Costs[nowNode.nodeNum];
-			if(nowCost < xCost) {
-				Costs[nowNode.nodeNum] = nowCost;
-				LeafNode[nowNode.nodeNum] = leafNodeNum;
-			}
-			else {
-				nowCost = xCost;
-			}
-			//System.out.println("calcul: now num " + nowNode.nodeNum + ", nowCost = " + nowCost);
-			calcul(myTree, nowNode.Parents.get(0), nowCost, leafNum, leafNodeNum);
-		}
-		
-		if(nowNode.type == types.typePlus) { // if + node, it has to integrate each branch.
-			int plusCost = Costs[nowNode.nodeNum];
+			int minCost = MAX;
+			ArrayList<Integer> minNodes = new ArrayList<Integer>();
 			
-			if(plusCost >= MAX) {
-				Costs[nowNode.nodeNum] = nowCost;
-				LeafNode[nowNode.nodeNum] = leafNodeNum;
+			for(int i = 0 ; i < nowNode.Children.size() ; i++) {
+				ArrayList<Integer> nowNodes = calcul(myTree, nowNode.Children.get(i));
+				//System.out.println("minNodes " + minNodes + " nowNoes " + nowNodes);
+				int nowCost = nowNodes.get(0);
+				nowNodes.remove(0);
+				
+				if(nowCost < minCost) {
+					minCost = nowCost;
+					minNodes.clear();
+					minNodes.add(minCost);
+					minNodes.addAll(nowNodes);
+				}
 			}
-			else {
-				Costs[nowNode.nodeNum] = plusCost + nowCost;
-				nowCost = plusCost + nowCost;
-				LeafNode[nowNode.nodeNum].add(leafNum);
-				leafNodeNum = LeafNode[nowNode.nodeNum];
-			}
-			//System.out.println("calcul: now num " + nowNode.nodeNum + ", nowCost = " + nowCost);
-			calcul(myTree, nowNode.Parents.get(0), nowCost, leafNum, leafNodeNum);
+			return minNodes;
 		}
 		
-		if(nowNode.type == types.typeUR || nowNode.type == types.typeUA) { // if UR node, it is final node of this recursive function, so it has to find the cheapest one.
-			int URCost = Costs[nowNode.nodeNum];
-			if(nowCost < URCost) {
-				Costs[nowNode.nodeNum] = nowCost;
-				LeafNode[nowNode.nodeNum] = leafNodeNum;
+		if(nowNode.type == types.typePlus) {
+			ArrayList<Integer> temp = new ArrayList<Integer>();
+			
+			temp = calcul(myTree, nowNode.Children.get(0));
+			
+			for(int i = 1 ; i < nowNode.Children.size() ; i++) {
+				ArrayList<Integer> nowNodes = calcul(myTree, nowNode.Children.get(i));
+				int nowCost = nowNodes.get(0);
+				nowNodes.remove(0);
+				
+				ArrayList<Integer> originNodes = temp;
+				int originCost = temp.get(0);
+				originNodes.remove(0);
+				
+				int newCost = nowCost + originCost;
+				ArrayList<Integer> newNodes = new ArrayList<Integer>();
+				newNodes.add(newCost);
+				newNodes.addAll(nowNodes);
+				newNodes.addAll(originNodes);
+				
+				temp = newNodes;
 			}
-			else {
-				nowCost = URCost;
-			}
-			//System.out.println("feasible UR = " + nowNode.nodeNum + " " + LeafNode[nowNode.nodeNum]);
-			//System.out.println("calcul: now num " + nowNode.nodeNum + ", nowCost = " + nowCost);
-			return;
+			return temp;
 		}
+		
+		if(nowNode.type == types.typeUR) {
+			return calcul(myTree, nowNode.Children.get(1));
+		}
+		if(nowNode.type == types.typeUA) {
+			return calcul(myTree, nowNode.Children.get(0));
+		}
+		return null;
 	}
 	
 	public static void remove(Node nowNode) { // similar to previous remove algorithm
