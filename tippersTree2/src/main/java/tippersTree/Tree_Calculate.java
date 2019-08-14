@@ -52,7 +52,7 @@ public class Tree_Calculate extends Tree {
 	}
 	
 	public static void calcul(Tree myTree, Node nowNode, int nowCost, int leafNum, ArrayList<Integer> leafNodeNum) {
-		System.out.println("now node : " + nowNode.nodeNum + " now cost: " + nowCost + " now leaf : " + leafNodeNum);
+		//System.out.println("now node : " + nowNode.nodeNum + " now cost: " + nowCost + " now leaf : " + leafNodeNum);
 		if(nowNode.type == types.typeDA) { // if DA, it is leaf and get cost.
 			SRNode nowDANode = findSRNode(myTree, nowNode.nodeNum);
 			int nowMoney = OntologyManager.getMoney(nowDANode.values.Sensor);
