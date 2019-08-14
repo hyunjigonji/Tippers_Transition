@@ -23,18 +23,17 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology1.owl";
+	public static String ontologyURL = "../ontology.owl";
 	public static OWLReasoner reasoner;
-	public static IRI ontologyIRI = IRI.create("../ontology1.owl");
+	public static IRI ontologyIRI = IRI.create("../ontology.owl");
 	public static BidirectionalShortFormProvider bidiShortFormProvider;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
+
 	public OntologyManager() {
 		startOntologyManager();
 	}
 
 	public static void startOntologyManager() {
-		
-		System.out.println("test");
 		manager = OWLManager.createOWLOntologyManager();
 		factory = OWLManager.getOWLDataFactory();
 
@@ -184,6 +183,8 @@ public class OntologyManager {
 		for (OWLObjectPropertyExpression p : ontology.getObjectPropertiesInSignature()) {
 			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs)
 					& strToken0(p.toString()).contains("captures")) {
+				System.out.println("p" + p);
+				System.out.println(strToken0(reasoner.getObjectPropertyDomains(p, true).toString()));
 				for (Node<OWLClass> c : reasoner.getObjectPropertyDomains(p, true)) {
 					if (strToken0(c.toString()).contains("Node"))
 						continue;
@@ -206,7 +207,8 @@ public class OntologyManager {
 					}
 				}
 			}
-		} else if (arr.isEmpty()) return null;
+		} else if (arr.isEmpty())
+			return null;
 
 		return arr;
 	}
@@ -261,6 +263,32 @@ public class OntologyManager {
 			}
 		}
 		return chk;
+	}
+
+	// check a cost of time
+	// parameter type is individual
+	// if the individual has no data, check a class of individual
+	public static Integer getTimecost(String dev) {
+		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
+		String time = new String();
+		int num = 0;					//default
+		for (OWLIndividual i : ontology.getIndividualsInSignature()) {
+			if (strToken0(i.toString()).equalsIgnoreCase(dev)) {
+				for (OWLDataPropertyAssertionAxiom d : ontology.getDataPropertyAssertionAxioms(i)) {
+					if (d.toString().contains("timeValue")) {
+						StringTokenizer tok = new StringTokenizer(d.toString(), "\"");
+						time = tok.nextToken();
+						while (tok.hasMoreElements()) {
+							time = tok.nextToken();
+							break;
+						}
+						num = Integer.parseInt(time);
+					}
+				}
+			}
+		}
+
+		return num;
 	}
 
 	/**

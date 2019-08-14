@@ -15,6 +15,7 @@ public class index {
 		System.out.println(OntologyManager.extractEnt("office"));
 		System.out.println(OntologyManager.findSensor("occupancy"));
 		System.out.println(OntologyManager.findSensor("connectivity"));
+		System.out.println(OntologyManager.findSensor("image"));
 
 		System.out.println(OntologyManager.isVS("Location2connectivity"));
 		System.out.println(OntologyManager.isVS("LocationImage2occupancy"));
@@ -35,6 +36,10 @@ public class index {
 		System.out.println(OntologyManager.checkCoverage("camera3", "meetingroom2"));		//true
 		
 		System.out.println(OntologyManager.checkCoverage("GPS2", "meetingroom2"));	
+		
+		System.out.println(OntologyManager.getTimecost("wifi1"));
+		System.out.println(OntologyManager.getTimecost("wifi2"));
+		System.out.println(OntologyManager.getTimecost("wifi3"));
 		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
