@@ -265,73 +265,73 @@ public class OntologyManager {
 		return chk;
 	}
 	
-	public static Integer getTime(String dev) {
-		String tType = "timeValue";
-		int tnum = getIdv(dev, tType);
-		return tnum;
-	}
-	
-	public static Integer getMoney(String dev) {
-		String mType = "moneyValue";
-		int mnum = getIdv(dev, mType);
-		return mnum;
-	}
-
-	// check a cost of time
-	// parameter type is individual
-	// if the individual has no data, check a class of individual
-	// getTime2()
-	public static Integer getIdv(String dev, String Type) {
-		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
-		String time = new String();
-		int num = -9999; // default
-		try {
-			for (OWLIndividual i : ontology.getIndividualsInSignature()) {
-				if (strToken0(i.toString()).equalsIgnoreCase(dev)) {
-					for (OWLDataPropertyAssertionAxiom d : ontology.getDataPropertyAssertionAxioms(i)) {
-						if (d.toString().contains(Type)) {
-							StringTokenizer tok = new StringTokenizer(d.toString(), "\"");
-							time = tok.nextToken();
-							while (tok.hasMoreElements()) {
-								time = tok.nextToken();
-								break;
-							}
-							num = Integer.parseInt(time);
-						}
-					}
-				}
-			}
-			if (num == -9999) {
-				num = Integer.parseInt(getCls(dev, Type));
-			}
-		} catch (NumberFormatException e) {
-			System.out.println(e);
-			System.out.println("There is no cost data. Default return is -9999:");
-		}
-		return num;
-	}
-
-	// if individual has no cost data
-	// check super class of individual
-	public static String getCls(String dev, String Type) {
-		String temp2 = new String();
-		for (OWLAxiom c : ontology.getAxioms()) {
-			for (OWLClassExpression e : c.getNestedClassExpressions()) {
-				if (e.getClassExpressionType() == ClassExpressionType.DATA_EXACT_CARDINALITY
-						& reasoner.getInstances(e, false).toString().contains(dev)
-						& e.toString().contains(Type)) {
-					StringTokenizer tok = new StringTokenizer(e.toString(), "(");
-					while (tok.hasMoreElements()) {
-						temp2 = tok.nextElement().toString();
-					}
-					StringTokenizer tok2 = new StringTokenizer(temp2, "<");
-					temp2 = tok2.nextToken();
-				}
-			}
-		}
-		temp2 = temp2.replaceAll(" ", "");
-		return temp2;
-	}
+//	public static Integer getTime(String dev) {
+//		String tType = "timeCost";
+//		int tnum = getIdv(dev, tType);
+//		return tnum;
+//	}
+//	
+//	public static Integer getMoney(String dev) {
+//		String mType = "moneyCost";
+//		int mnum = getIdv(dev, mType);
+//		return mnum;
+//	}
+//
+//	// check a cost of time
+//	// parameter type is individual
+//	// if the individual has no data, check a class of individual
+//	// getTime2()
+//	public static Integer getIdv(String dev, String Type) {
+//		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
+//		String time = new String();
+//		int num = -9999; // default
+//		try {
+//			for (OWLIndividual i : ontology.getIndividualsInSignature()) {
+//				if (strToken0(i.toString()).equalsIgnoreCase(dev)) {
+//					for (OWLDataPropertyAssertionAxiom d : ontology.getDataPropertyAssertionAxioms(i)) {
+//						if (d.toString().contains(Type)) {
+//							StringTokenizer tok = new StringTokenizer(d.toString(), "\"");
+//							time = tok.nextToken();
+//							while (tok.hasMoreElements()) {
+//								time = tok.nextToken();
+//								break;
+//							}
+//							num = Integer.parseInt(time);
+//						}
+//					}
+//				}
+//			}
+//			if (num == -9999) {
+//				num = Integer.parseInt(getCls(dev, Type));
+//			}
+//		} catch (NumberFormatException e) {
+//			System.out.println(e);
+//			System.out.println("There is no cost data. Default return is -9999:");
+//		}
+//		return num;
+//	}
+//
+//	// if individual has no cost data
+//	// check super class of individual
+//	public static String getCls(String dev, String Type) {
+//		String temp2 = new String();
+//		for (OWLAxiom c : ontology.getAxioms()) {
+//			for (OWLClassExpression e : c.getNestedClassExpressions()) {
+//				if (e.getClassExpressionType() == ClassExpressionType.DATA_EXACT_CARDINALITY
+//						& reasoner.getInstances(e, false).toString().contains(dev)
+//						& e.toString().contains(Type)) {
+//					StringTokenizer tok = new StringTokenizer(e.toString(), "(");
+//					while (tok.hasMoreElements()) {
+//						temp2 = tok.nextElement().toString();
+//					}
+//					StringTokenizer tok2 = new StringTokenizer(temp2, "<");
+//					temp2 = tok2.nextToken();
+//				}
+//			}
+//		}
+//		temp2 = temp2.replaceAll(" ", "");
+//		return temp2;
+//	}
 
 	/**
 	 * Creates a HermiT OWLReasoner with the given ontology.
