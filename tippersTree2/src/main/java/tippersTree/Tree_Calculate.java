@@ -15,12 +15,13 @@ public class Tree_Calculate extends Tree {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		for(int i = 0 ; i < URij.size() ; i++) {
 			result = calcul(myTree, URij.get(i));
+			System.out.println("UR" + URij.get(i).nodeNum + "cost " + result.get(0));
 			result.remove(0);
 			Selected.addAll(result);
-			//System.out.println("result " + Selected);
 		}
 		for(int i = 0 ; i < UAij.size() ; i++) {
 			result = calcul(myTree, UAij.get(i));
+			System.out.println("UA" + UAij.get(i).nodeNum + "cost " + result.get(0));
 			result.remove(0);
 			Selected.addAll(result);
 		}
@@ -50,7 +51,24 @@ public class Tree_Calculate extends Tree {
 			return temp;
 		}
 		
-		if(nowNode.type == types.typePSR || nowNode.type == types.typeVSR || nowNode.type == types.typeAC) { // if PSR, VSR, or AC, it is in the middle, so skip.
+		if(nowNode.type == types.typeVSR) { // if VSR, it needs to add its cost.
+			SRNode nowVSRNode = findSRNode(myTree, nowNode.nodeNum);
+			int nowMoney = OntologyManager.getMoney(nowVSRNode.values.Sensor);
+			int nowTime = OntologyManager.getTime(nowVSRNode.values.Sensor);
+			
+			int nowCost = nowMoney*Wm + nowTime*Wt;
+			
+			ArrayList<Integer> temp = new ArrayList<Integer>();
+			temp = calcul(myTree, nowNode.Children.get(0));
+			
+			int tempCost = temp.get(0);
+			temp.remove(0);
+			temp.add(0, nowCost+tempCost);
+			
+			return temp;
+		}
+		
+		if(nowNode.type == types.typePSR || nowNode.type == types.typeAC) { // if PSR, VSR, or AC, it is in the middle, so skip.
 			return calcul(myTree, nowNode.Children.get(0));
 		}
 		
