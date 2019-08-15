@@ -123,9 +123,6 @@
         <Class IRI="#Time"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Unit"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#VirSensor"/>
     </Declaration>
     <Declaration>
@@ -138,9 +135,6 @@
         <Class IRI="#connProp"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#dollars"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#meetingRoom"/>
     </Declaration>
     <Declaration>
@@ -148,9 +142,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#office"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#seconds"/>
     </Declaration>
     <Declaration>
         <Class IRI="#tempProp"/>
@@ -201,22 +192,13 @@
         <ObjectProperty IRI="#hasDevice"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasDollars"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#hasExtent"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasParam"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasSecs"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#hasSensor"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasUnit"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#input"/>
@@ -252,10 +234,10 @@
         <ObjectProperty IRI="#obsTypeTemp"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#moneyValue"/>
+        <DataProperty IRI="#moneyCost"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#timeValue"/>
+        <DataProperty IRI="#timeCost"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#valueType"/>
@@ -520,10 +502,6 @@
         <Class IRI="#ObsProperty"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#dollars"/>
-        <Class IRI="#Unit"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#meetingRoom"/>
         <Class IRI="#Room"/>
     </SubClassOf>
@@ -534,10 +512,6 @@
     <SubClassOf>
         <Class IRI="#office"/>
         <Class IRI="#Room"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#seconds"/>
-        <Class IRI="#Unit"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#tempProp"/>
@@ -814,26 +788,6 @@
         <NamedIndividual IRI="#meetingroom3"/>
         <NamedIndividual IRI="#Wifi3"/>
     </ObjectPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#moneyValue"/>
-        <NamedIndividual IRI="#Wifi1"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#timeValue"/>
-        <NamedIndividual IRI="#Wifi1"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#moneyValue"/>
-        <NamedIndividual IRI="#Wifi2"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">22</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#timeValue"/>
-        <NamedIndividual IRI="#Wifi2"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#BBcapturesOccu"/>
         <ObjectProperty IRI="#captures"/>
@@ -867,20 +821,8 @@
         <ObjectProperty IRI="#captures"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasDollars"/>
-        <ObjectProperty IRI="#hasUnit"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasSecs"/>
-        <ObjectProperty IRI="#hasUnit"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasSensor"/>
         <ObjectProperty IRI="#hasDevice"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasUnit"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#inputC2O"/>
@@ -971,24 +913,12 @@
         <Class IRI="#Space"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasDollars"/>
-        <Class IRI="#Money"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasExtent"/>
         <Class IRI="#Space"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasParam"/>
         <Class IRI="#Device"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasSecs"/>
-        <Class IRI="#Time"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasUnit"/>
-        <Class IRI="#Cost"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#input"/>
@@ -1087,24 +1017,12 @@
         <Class IRI="#Device"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasDollars"/>
-        <Class IRI="#dollars"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasExtent"/>
         <Class IRI="#Extent"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasParam"/>
         <Class IRI="#Param"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasSecs"/>
-        <Class IRI="#seconds"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasUnit"/>
-        <Class IRI="#Unit"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#input"/>
@@ -1163,19 +1081,19 @@
         <Class IRI="http://www.w3.org/ns/ssn/Property"/>
     </ObjectPropertyRange>
     <SubDataPropertyOf>
-        <DataProperty IRI="#moneyValue"/>
+        <DataProperty IRI="#moneyCost"/>
         <DataProperty IRI="#valueTypeofCost"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#timeValue"/>
+        <DataProperty IRI="#timeCost"/>
         <DataProperty IRI="#valueTypeofCost"/>
     </SubDataPropertyOf>
     <DataPropertyDomain>
-        <DataProperty IRI="#moneyValue"/>
+        <DataProperty IRI="#moneyCost"/>
         <Class IRI="#Money"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#timeValue"/>
+        <DataProperty IRI="#timeCost"/>
         <Class IRI="#Time"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1187,11 +1105,11 @@
         <Class IRI="#Cost"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="#moneyValue"/>
+        <DataProperty IRI="#moneyCost"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#timeValue"/>
+        <DataProperty IRI="#timeCost"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
