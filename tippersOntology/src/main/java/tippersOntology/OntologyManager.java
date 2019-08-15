@@ -265,6 +265,11 @@ public class OntologyManager {
 		return chk;
 	}
 	
+	private void getTime() {
+		// TODO Auto-generated method stub
+
+	}
+	
 //	public static Integer getTime(String dev) {
 //		String tType = "timeCost";
 //		int tnum = getIdv(dev, tType);
