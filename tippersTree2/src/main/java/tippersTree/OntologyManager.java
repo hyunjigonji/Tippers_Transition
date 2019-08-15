@@ -219,8 +219,7 @@ public class OntologyManager {
 	}
 	
 	public static int getMoney(String Sen) {
-		/*
-		if(Sen.contains("Camera")) return -5;
+		/*if(Sen.contains("Camera")) return -5;
 		if(Sen.contains("Wifi")) return 10;
 		if(Sen.contains("BB")) return 15;
 		if(Sen.contains("GPS")) return 0;
