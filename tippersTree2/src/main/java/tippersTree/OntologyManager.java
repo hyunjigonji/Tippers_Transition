@@ -219,23 +219,26 @@ public class OntologyManager {
 	}
 	
 	public static int getMoney(String Sen) {
+		/*
 		if(Sen.contains("Camera")) return -5;
 		if(Sen.contains("Wifi")) return 10;
 		if(Sen.contains("BB")) return 15;
 		if(Sen.contains("GPS")) return 0;
 		if(Sen.contains("Light")) return 25;
 		if(Sen.contains("AC")) return 30;
-		return 2;
+		return 2;*/
+		return tippersOntology.OntologyManager.getMoney(Sen);
 	}
 	
 	public static int getTime(String Sen) {
-		if(Sen.contains("Camera2")) return -10;
+		/*if(Sen.contains("Camera2")) return -10;
 		if(Sen.contains("Camera")) return -3;
 		if(Sen.contains("Wifi")) return 6;
 		if(Sen.contains("BB")) return 9;
 		if(Sen.contains("GPS")) return 0;
 		if(Sen.contains("Light")) return 15;
 		if(Sen.contains("AC")) return 18;
-		return 5;
+		return 5;*/
+		return tippersOntology.OntologyManager.getTime(Sen);
 	}
 }
