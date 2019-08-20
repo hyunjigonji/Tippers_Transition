@@ -69,25 +69,11 @@ public class Tree {
 
 		return newSRNode;
 	}
-	/*
-	public VSRNode newVSRNode(SR SRRequest) { // create new VSR node
-		VSRNode newVSRNode = new VSRNode(SRRequest);
-		newVSRNode.nodeNum = ++totalNum;
-
-		return newVSRNode;
-	}
-
-	public PSRNode newPSRNode(SR SRRequest) { // create new PSR node
-		PSRNode newPSRNode = new PSRNode(SRRequest);
-		newPSRNode.nodeNum = ++totalNum;
-
-		return newPSRNode;
-	}
-	*/
+	
 	// find leaf nodes of tree and return those leaf nodes in array list
-	public static ArrayList<Node> findLeafNode(Tree TreeUA){
+	public static ArrayList<Node> findLeafNode(Tree myTree){
 		ArrayList<Node> leaves = new ArrayList<Node>();
-		Node temp = TreeUA.Root;
+		Node temp = myTree.Root;
 		// DFS
 		boolean[] visit = new boolean[10000]; // MAXIMUM = 100?????? -> modify it!
 		Stack<Node> stack = new Stack<Node>(); // initialize stack
@@ -96,7 +82,7 @@ public class Tree {
 
 		while(!stack.isEmpty()) {
 			Node now = stack.pop();
-			int nowNum = now.nodeNum;
+			//int nowNum = now.nodeNum;
 			//System.out.prStringln("now = " +nowNum);
 
 			if(now.isLeaf) { // if leaf, add to leaves.
@@ -117,8 +103,8 @@ public class Tree {
 	}
 
 	// find node which has same node number as input and return that node
-	public static Node findNode(Tree TreeUA, int wantNum) {
-		Node temp = TreeUA.Root;
+	public static Node findNode(Tree myTree, int wantNum) {
+		Node temp = myTree.Root;
 
 		boolean[] visit = new boolean[100];
 		Stack<Node> stack = new Stack<Node>();
@@ -147,25 +133,15 @@ public class Tree {
 		return null;
 	}
 
-	public static UANode findUANode(Tree TreeUA, int wantNum) {
-		for(int i = 0 ; i < TreeUA.UAi.size() ; i++) {
-			UANode now = TreeUA.UAi.get(i);
+	public static UANode findUANode(Tree myTree, int wantNum) {
+		for(int i = 0 ; i < Tree.UAi.size() ; i++) {
+			UANode now = Tree.UAi.get(i);
 			if(now.nodeNum == wantNum) {
 				return now;
 			}
 		}
-		for(int i = 0 ; i < TreeUA.UAij.size() ; i++) {
-			UANode now = TreeUA.UAij.get(i);
-			if(now.nodeNum == wantNum) {
-				return now;
-			}
-		}
-		return null;
-	}
-
-	public static URNode findURNode(Tree TreeUA, int wantNum) {
-		for(int i = 0 ; i < TreeUA.URij.size() ; i++) {
-			URNode now = TreeUA.URij.get(i);
+		for(int i = 0 ; i < Tree.UAij.size() ; i++) {
+			UANode now = Tree.UAij.get(i);
 			if(now.nodeNum == wantNum) {
 				return now;
 			}
@@ -173,9 +149,9 @@ public class Tree {
 		return null;
 	}
 
-	public static SRNode findSRNode(Tree TreeUA, int wantNum) {
-		for(int i = 0 ; i < TreeUA.SRs.size() ; i++) {
-			SRNode now = TreeUA.SRs.get(i);
+	public static URNode findURNode(Tree myTree, int wantNum) {
+		for(int i = 0 ; i < Tree.URij.size() ; i++) {
+			URNode now = Tree.URij.get(i);
 			if(now.nodeNum == wantNum) {
 				return now;
 			}
@@ -183,6 +159,15 @@ public class Tree {
 		return null;
 	}
 
+	public static SRNode findSRNode(Tree myTree, int wantNum) {
+		for(int i = 0 ; i < Tree.SRs.size() ; i++) {
+			SRNode now = Tree.SRs.get(i);
+			if(now.nodeNum == wantNum) {
+				return now;
+			}
+		}
+		return null;
+	}
 
 	// connect parent node and child node
 	public static void appendChild(Node Parent, Node Child) {
