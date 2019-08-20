@@ -1,9 +1,5 @@
 package tippersTree;
-/*
-enum senTypes {
-	typeVir, typePhy,
-};
-*/
+
 public class SR {
 	//public senTypes senType;
 	

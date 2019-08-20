@@ -1,8 +1,6 @@
 package tippersTree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
+import java.util.*;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
 

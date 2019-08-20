@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Tree_Flattening extends Tree{
 	// make a tree structure
 	public static Tree flattening(UA UARequest) {
-		String E0 = UARequest.Entity;
+		//String E0 = UARequest.Entity;
 		String P0 = UARequest.Property;
 		String C0 = UARequest.Condition;
 

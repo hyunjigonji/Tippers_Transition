@@ -3,33 +3,30 @@ package tippersTree;
 import java.util.*;
 
 public class Tree_Calculate extends Tree {
-	public final static int MAX = 987654321;
+	public final static int MAX = 987654321; 
 	
-	public final static int Wm = 1;
-	public final static int Wt = 2;
-	
-	public static ArrayList<Node> Leaves;
-	public static ArrayList<Integer> Selected = new ArrayList<Integer>();
+	public static ArrayList<Node> Leaves; // contains every leaf nodes
+	public static ArrayList<Integer> Selected = new ArrayList<Integer>(); // contains all leaf node number to remain from tree
 	
 	public static Tree check(Tree myTree) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		for(int i = 0 ; i < URij.size() ; i++) {
-			result = calcul(myTree, URij.get(i));
-			System.out.println("UR" + URij.get(i).nodeNum + "cost " + result.get(0));
-			result.remove(0);
+			result = calcul(myTree, URij.get(i)); // calcul cost of each nodes
+			System.out.println("UR " + URij.get(i).nodeNum + " cost " + result.get(0));
+			result.remove(0); // result array[0] is cost, and the rest contains leaf node number of feasible branch
 			Selected.addAll(result);
 		}
 		for(int i = 0 ; i < UAij.size() ; i++) {
-			result = calcul(myTree, UAij.get(i));
-			System.out.println("UA" + UAij.get(i).nodeNum + "cost " + result.get(0));
-			result.remove(0);
+			result = calcul(myTree, UAij.get(i)); // calcul cost of each nodes
+			System.out.println("UA " + UAij.get(i).nodeNum + " cost " + result.get(0));
+			result.remove(0); // result array[0] is cost, and the rest contains leaf node number of feasible branch
 			Selected.addAll(result);
 		}
 		
 		Leaves = findLeafNode(myTree);
 		for(int i = 0 ; i < Leaves.size() ; i++) {
 			Node nowNode = Leaves.get(i);
-			if(!Selected.contains(nowNode.nodeNum)) remove(nowNode);
+			if(!Selected.contains(nowNode.nodeNum)) remove(nowNode); // remove not feasible node from tree
 		}
 		
 		return myTree;
@@ -39,10 +36,7 @@ public class Tree_Calculate extends Tree {
 		//System.out.println("calcul " + nowNode.nodeNum);
 		if(nowNode.type == types.typeDA) { // if DA, it is final node, so get cost and return.
 			SRNode nowDANode = findSRNode(myTree, nowNode.nodeNum);
-			int nowMoney = OntologyManager.getMoney(nowDANode.values.Sensor);
-			int nowTime = OntologyManager.getTime(nowDANode.values.Sensor);
-			
-			int nowCost = nowMoney*Wm + nowTime*Wt;
+			int nowCost = OntologyManager.getCost(nowDANode.values.Sensor);
 			
 			ArrayList<Integer> temp = new ArrayList<Integer>();
 			temp.add(nowCost);
@@ -53,10 +47,7 @@ public class Tree_Calculate extends Tree {
 		
 		if(nowNode.type == types.typeVSR) { // if VSR, it needs to add its cost.
 			SRNode nowVSRNode = findSRNode(myTree, nowNode.nodeNum);
-			int nowMoney = OntologyManager.getMoney(nowVSRNode.values.Sensor);
-			int nowTime = OntologyManager.getTime(nowVSRNode.values.Sensor);
-			
-			int nowCost = nowMoney*Wm + nowTime*Wt;
+			int nowCost = OntologyManager.getCost(nowVSRNode.values.Sensor);
 			
 			ArrayList<Integer> temp = new ArrayList<Integer>();
 			temp = calcul(myTree, nowNode.Children.get(0));
@@ -68,7 +59,7 @@ public class Tree_Calculate extends Tree {
 			return temp;
 		}
 		
-		if(nowNode.type == types.typePSR || nowNode.type == types.typeAC) { // if PSR, VSR, or AC, it is in the middle, so skip.
+		if(nowNode.type == types.typePSR || nowNode.type == types.typeAC) { // if PSR, or AC, it is in the middle, so skip.
 			return calcul(myTree, nowNode.Children.get(0));
 		}
 		
