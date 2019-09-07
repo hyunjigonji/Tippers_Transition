@@ -30,6 +30,20 @@ public class Node {
 		isRoot = true;
 		isLeaf = true;
 	}
+	/*
+	public Node(UA UARequest) {
+		type = types.typeUA;
+		
+		isRoot = false;
+		isLeaf = false;
+	}
+	
+	public Node(UR URRequest) {
+		type = types.typeUR;
+		
+		isRoot = false;
+		isLeaf = false;
+	}*/
 }
 
 class UANode extends Node{
@@ -59,7 +73,7 @@ class URNode extends Node{
 }
 
 class PlusNode extends Node{
-	public PlusNode() { 
+	public PlusNode() {
 		type = types.typePlus;
 	}
 }
@@ -88,3 +102,29 @@ class SRNode extends Node{
 		values = SRRequest;
 	}
 }
+
+/*
+class VSRNode extends Node{
+	public SR values;
+	
+	public VSRNode() {
+		type = types.typeVSR;
+	}
+	
+	public VSRNode(SR SRRequest) {
+		type = types.typeVSR;
+		values = SRRequest;
+	}
+}
+class PSRNode extends Node{
+	public SR values;
+	
+	public PSRNode() {
+		type = types.typePSR;
+	}
+	
+	public PSRNode(SR SRRequest) {
+		type = types.typePSR;
+		values = SRRequest;
+	}
+}*/

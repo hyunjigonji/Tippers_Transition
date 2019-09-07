@@ -4,51 +4,52 @@ import java.util.ArrayList;
 
 public class Tree_Generator extends Tree {
 	
-	public static void URgenerator0(URNode nowNode) { // generate branches for sensors from UR node
+	public static void URgenerator0(URNode nowNode) {
 		String nowE = nowNode.values.Entity;
 		String nowC = nowNode.values.Condition;
 		//System.out.println("URgenerator0 " + Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowC);
 
 		Node ConnectNode = newXNode();
-		appendChild(nowNode, ConnectNode); // connect X node with UR node
+		appendChild(nowNode, ConnectNode);
 		
-		ArrayList<String> sens = OntologyManager.findSensor(nowC); // Condition -> Virtual/Physical Sensors
+		ArrayList<String> sens = OntologyManager.findSensor(nowC);
 		
 		for(int i = 0 ; i < sens.size(); i++) {
 			String nowSen = sens.get(i);
 			//System.out.println(i + " "+ nowSen);
 			SR newSR = new SR(nowSen, nowC, nowE);
-			SRNode newSRNode = newSRNode(newSR); 
+			SRNode newSRNode = newSRNode(newSR);
 
-			if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR; // decide if it is Virtual or Physical sensor
-			else newSRNode.type = types.typePSR; // set node's type 
+			if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR;
+			else newSRNode.type = types.typePSR;
 			
 			SRs.add(newSRNode);
 
-			appendChild(ConnectNode,newSRNode); // connect SR node with X node
+			appendChild(ConnectNode,newSRNode);
 			generator1(newSRNode, nowE); // call other function once
 		}
 		return;
 	}
 	
-	public static void UAgenerator0(UANode nowNode) { // generate branches for sensors from UA node
+	public static void UAgenerator0(UANode nowNode) {
 		String nowE = nowNode.values.Entity;
 		String nowP = nowNode.values.Property;
 		//System.out.println(Integer.toString(nowNode.nodeNum)+ " " + nowE + " " + nowP);
 
 		XNode XNode = newXNode();
-		appendChild(nowNode, XNode); // connect X node with UA node
+		appendChild(nowNode, XNode);
 
-		String nowAct = OntologyManager.findAction(nowP); // Property -> Action
-		String nowActuator = OntologyManager.findActuator(nowP); // Property -> Actuator
+		String nowObs = OntologyManager.findAction(nowP);
+		String nowActuator = OntologyManager.findActuator(nowP);
 		//System.out.println(nowActuator);
 
-		SR newSR = new SR(nowActuator, nowAct, nowE);
+		SR newSR = new SR(nowActuator, nowObs, nowE);
 		SRNode newSRNode = newSRNode(newSR);
-		newSRNode.type = types.typeAC; // set node's type as AC
+		
+		newSRNode.type = types.typeAC;
 		
 		SRs.add(newSRNode);
-		appendChild(XNode,newSRNode); // connect SR node with X node
+		appendChild(XNode,newSRNode);
 			
 		return;
 	}
@@ -56,31 +57,31 @@ public class Tree_Generator extends Tree {
 	// generate from SRNode using recursive algorithm
 	public static void generator1(SRNode nowNode, String nowEnt) {
 		//System.out.println("generator1  " + nowNode.values.Observation + " " + nowNode.values.Sensor);
-		if(nowNode.type == types.typePSR) return; // if PSR, then finish
+		if(nowNode.type == types.typePSR) return;
 		ArrayList<String> obs = OntologyManager.findInput(nowNode.values.Sensor);
 		// decide if it requires multiple input
 		Node ConnectNode;
-		if(obs.size() == 1) ConnectNode = newXNode(); // if there is only one input, it needs X node
-		else ConnectNode = newPlusNode(); // if there are two or more inputs, it needs + node
-		appendChild(nowNode, ConnectNode); // connect this node to now SRnode
+		if(obs.size() == 1) ConnectNode = newXNode();
+		else ConnectNode = newPlusNode();
+		appendChild(nowNode, ConnectNode);
 		
 		for(int i = 0 ; i < obs.size() ; i++) {
 			String nowObs = obs.get(i);
 			
-			ArrayList<String> sens = OntologyManager.findSensor(nowObs); // Observation -> Virtual/Physical Sensor
+			ArrayList<String> sens = OntologyManager.findSensor(nowObs);
 			
 			for(int j = 0 ; j < sens.size() ; j++) {
 				String nowSen = sens.get(j);
 				SR newSR = new SR(nowSen, nowObs, nowEnt);
 				SRNode newSRNode = newSRNode(newSR);
 
-				if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR; // decide if it is Virtual or Physical sensor
-				else newSRNode.type = types.typePSR; // set node's type 
+				if(OntologyManager.isVS(nowSen)) newSRNode.type = types.typeVSR;
+				else newSRNode.type = types.typePSR;
 				
 				SRs.add(newSRNode);
 				
-				appendChild(ConnectNode,newSRNode); // connect SR node with X/+ node
-				generator1(newSRNode, nowEnt); // call recursive
+				appendChild(ConnectNode,newSRNode);
+				generator1(newSRNode, nowEnt); // recursive
 			}
 		}
 		

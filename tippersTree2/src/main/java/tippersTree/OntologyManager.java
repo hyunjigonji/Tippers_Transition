@@ -279,14 +279,4 @@ public class OntologyManager {
 		return 10;
 		//return tippersOntology.OntologyManager.getTime(Sen);
 	}
-	
-	public final static int Wm = 1;
-	public final static int Wt = 2;
-	
-	public static int getCost(String Sen) {
-		int Money = getMoney(Sen);
-		int Time = getTime(Sen);
-		
-		return Money*Wm+Time*Wt;
-	}
 }

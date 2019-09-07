@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Tree_Remove extends Tree{
 	// check feasibility of each node
 	public static void check(SRNode nowSRNode) {
+		
 		String nowS = nowSRNode.values.Sensor;
 		String nowO = nowSRNode.values.Observation;
 		String nowE = nowSRNode.values.Entity;
@@ -17,18 +18,19 @@ public class Tree_Remove extends Tree{
 		for(int i = 0 ; i < sensors.size() ; i++) {
 			String nowSI = sensors.get(i);
 			//System.out.println(nowSI + " " + nowE);
-			if(OntologyManager.checkAccess(nowSI, nowE) && OntologyManager.checkCoverage(nowSI, nowE)){ // if available, add children
+			if(OntologyManager.checkAccess(nowSI, nowE) && OntologyManager.checkCoverage(nowSI, nowE)){ // if available, add child
 				//System.out.println("checking " + nowSI + " " + nowE);
 				if(!connected) {
 					appendChild(nowSRNode, newXNode);
 					connected = true;
 				}
+				
 				SR newSR = new SR(nowSI, nowO, nowE);
 				SRNode newSRNode = newSRNode(newSR);
-				newSRNode.type = types.typeDA; // set node's type as DA
+				newSRNode.type = types.typeDA;
 				
-				SRs.add(newSRNode); 
-				appendChild(newXNode, newSRNode); // connect X node with this new SR node
+				SRs.add(newSRNode);
+				appendChild(newXNode, newSRNode);
 			}
 		}
 		if(!connected) {
@@ -39,6 +41,8 @@ public class Tree_Remove extends Tree{
 
 	// remove recursively
 	public static void remove(Node nowNode) {
+		//System.out.println(nowNode.nodeNum);
+		
 		// if x node, there will be another chance.
 		if(nowNode.type == types.typeX || nowNode.type == types.typeXc) { 
 			if(!nowNode.Children.isEmpty()) return;
