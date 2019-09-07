@@ -189,9 +189,6 @@
         <ObjectProperty IRI="#hasActuator"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasCost"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#hasDevice"/>
     </Declaration>
     <Declaration>
@@ -216,6 +213,15 @@
         <ObjectProperty IRI="#inputL2C"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#needCost"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#needMoney"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#needTime"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#obsType"/>
     </Declaration>
     <Declaration>
@@ -228,211 +234,79 @@
         <ObjectProperty IRI="#obsTypeTemp"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#hasCostValue"/>
+        <DataProperty IRI="#moneyCost"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#timeCost"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#valueType"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#valueTypeofCost"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#AC1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#AC1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#AC1Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#AC2"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#AC2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#AC2Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#AC3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#AC3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#AC3Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BB1"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#BB1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#BB1Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#BB2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#BB2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#BB2Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BB3"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#BB3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#BB3Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Camera1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Camera1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Camera1Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Camera2"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Camera2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Camera2Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Camera3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Camera3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Camera3Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Conn2occu"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Conn2occuMoney"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Conn2occuTime"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#GPS1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#GPS1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#GPS1Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#GPS2"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#GPS2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#GPS2Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#GPS3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#GPS3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#GPS3Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Light1"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Light1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Light1Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Light2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Light2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Light2Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Light3"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Light3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Light3Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Location2conn"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Location2connMoney"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Location2connTime"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#LocationImage2occu"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#LocationImage2occuMoney"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#LocationImage2occuTime"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#TV1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TV1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TV1Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#TV2"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#TV2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TV2Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#TV3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TV3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TV3Time"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther1Time"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther2Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Thermometer1"/>
@@ -444,28 +318,10 @@
         <NamedIndividual IRI="#Wifi1"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Wifi1Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Wifi1Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Wifi2"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Wifi2Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Wifi2Time"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Wifi3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Wifi3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Wifi3Time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#connObs"/>
@@ -678,14 +534,6 @@
         <NamedIndividual IRI="#AC1"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#AC1Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#AC1Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#AC"/>
         <NamedIndividual IRI="#AC2"/>
     </ClassAssertion>
@@ -698,72 +546,24 @@
         <NamedIndividual IRI="#BB1"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#BB1Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#BB1Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#BB"/>
         <NamedIndividual IRI="#BB2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#BB2Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#BB2Time"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#BB"/>
         <NamedIndividual IRI="#BB3"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#BB3Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#BB3Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Camera"/>
         <NamedIndividual IRI="#Camera1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Camera1Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Camera1Time"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Camera"/>
         <NamedIndividual IRI="#Camera2"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Camera2Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Camera2Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Camera"/>
         <NamedIndividual IRI="#Camera3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Camera3Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Camera3Time"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Connectivity2occupancy"/>
@@ -774,36 +574,12 @@
         <NamedIndividual IRI="#GPS1"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#GPS1Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#GPS1Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#GPS"/>
         <NamedIndividual IRI="#GPS2"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#GPS2Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#GPS2Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#GPS"/>
         <NamedIndividual IRI="#GPS3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#GPS3Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#GPS3Time"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Light"/>
@@ -838,22 +614,6 @@
         <NamedIndividual IRI="#TV3"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Ther1Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Ther1Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Ther2Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Ther2Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Thermometer"/>
         <NamedIndividual IRI="#Thermometer1"/>
     </ClassAssertion>
@@ -866,36 +626,12 @@
         <NamedIndividual IRI="#Wifi1"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Wifi1Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Wifi1Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Wifi"/>
         <NamedIndividual IRI="#Wifi2"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Wifi2Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Wifi2Time"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Wifi"/>
         <NamedIndividual IRI="#Wifi3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Money"/>
-        <NamedIndividual IRI="#Wifi3Money"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Time"/>
-        <NamedIndividual IRI="#Wifi3Time"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Connectivity"/>
@@ -938,266 +674,6 @@
         <NamedIndividual IRI="#tempObs"/>
     </ClassAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#AC1"/>
-        <NamedIndividual IRI="#AC1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#AC1"/>
-        <NamedIndividual IRI="#AC1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#AC2"/>
-        <NamedIndividual IRI="#AC2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#AC2"/>
-        <NamedIndividual IRI="#AC2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#AC3"/>
-        <NamedIndividual IRI="#AC3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#AC3"/>
-        <NamedIndividual IRI="#AC3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#BB1"/>
-        <NamedIndividual IRI="#BB1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#BB1"/>
-        <NamedIndividual IRI="#BB1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#BB2"/>
-        <NamedIndividual IRI="#BB2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#BB2"/>
-        <NamedIndividual IRI="#BB2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#BB3"/>
-        <NamedIndividual IRI="#BB3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#BB3"/>
-        <NamedIndividual IRI="#BB3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Camera1"/>
-        <NamedIndividual IRI="#Camera1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Camera1"/>
-        <NamedIndividual IRI="#Camera1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Camera2"/>
-        <NamedIndividual IRI="#Camera2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Camera2"/>
-        <NamedIndividual IRI="#Camera2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Camera3"/>
-        <NamedIndividual IRI="#Camera3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Camera3"/>
-        <NamedIndividual IRI="#Camera3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Conn2occu"/>
-        <NamedIndividual IRI="#Conn2occuMoney"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Conn2occu"/>
-        <NamedIndividual IRI="#Conn2occuTime"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#GPS1"/>
-        <NamedIndividual IRI="#GPS1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#GPS1"/>
-        <NamedIndividual IRI="#GPS1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#GPS2"/>
-        <NamedIndividual IRI="#GPS2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#GPS2"/>
-        <NamedIndividual IRI="#GPS2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#GPS3"/>
-        <NamedIndividual IRI="#GPS3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#GPS3"/>
-        <NamedIndividual IRI="#GPS3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Light1"/>
-        <NamedIndividual IRI="#Light1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Light1"/>
-        <NamedIndividual IRI="#Light1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Light2"/>
-        <NamedIndividual IRI="#Light2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Light2"/>
-        <NamedIndividual IRI="#Light2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Light3"/>
-        <NamedIndividual IRI="#Light3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Light3"/>
-        <NamedIndividual IRI="#Light3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Location2conn"/>
-        <NamedIndividual IRI="#Location2connMoney"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Location2conn"/>
-        <NamedIndividual IRI="#Location2connTime"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#LocationImage2occu"/>
-        <NamedIndividual IRI="#LocationImage2occuMoney"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#LocationImage2occu"/>
-        <NamedIndividual IRI="#LocationImage2occuTime"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#TV1"/>
-        <NamedIndividual IRI="#TV1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#TV1"/>
-        <NamedIndividual IRI="#TV1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#TV2"/>
-        <NamedIndividual IRI="#TV2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#TV2"/>
-        <NamedIndividual IRI="#TV2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#TV3"/>
-        <NamedIndividual IRI="#TV3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#TV3"/>
-        <NamedIndividual IRI="#TV3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer1"/>
-        <NamedIndividual IRI="#Ther1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer1"/>
-        <NamedIndividual IRI="#Ther1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer2"/>
-        <NamedIndividual IRI="#Ther2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer2"/>
-        <NamedIndividual IRI="#Ther2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Wifi1"/>
-        <NamedIndividual IRI="#Wifi1Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Wifi1"/>
-        <NamedIndividual IRI="#Wifi1Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Wifi2"/>
-        <NamedIndividual IRI="#Wifi2Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Wifi2"/>
-        <NamedIndividual IRI="#Wifi2Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Wifi3"/>
-        <NamedIndividual IRI="#Wifi3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Wifi3"/>
-        <NamedIndividual IRI="#Wifi3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasActuator"/>
         <NamedIndividual IRI="#meetingroom1"/>
         <NamedIndividual IRI="#AC1"/>
@@ -1312,266 +788,6 @@
         <NamedIndividual IRI="#meetingroom3"/>
         <NamedIndividual IRI="#Wifi3"/>
     </ObjectPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#AC1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#AC1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#AC2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#AC2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#AC3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#AC3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">62</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#BB1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#BB1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#BB2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#BB2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#BB3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">40</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#BB3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Camera1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Camera1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Camera2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Camera2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">40</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Camera3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Camera3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Conn2occuMoney"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Conn2occuTime"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">40</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#GPS1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#GPS1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#GPS2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#GPS2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#GPS3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#GPS3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Light1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">23</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Light1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">34</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Light2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">61</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Light2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">54</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Light3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">12</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Light3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">11</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Location2connMoney"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">33</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Location2connTime"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">17</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#LocationImage2occuMoney"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">47</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#LocationImage2occuTime"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#TV1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">31</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#TV1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">12</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#TV2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#TV2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">23</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#TV3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">41</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#TV3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">9</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">65</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Wifi1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Wifi1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">60</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Wifi2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Wifi2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">45</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Wifi3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">60</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Wifi3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
-    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#BBcapturesOccu"/>
         <ObjectProperty IRI="#captures"/>
@@ -1619,6 +835,14 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#inputL2C"/>
         <ObjectProperty IRI="#input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#needMoney"/>
+        <ObjectProperty IRI="#needCost"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#needTime"/>
+        <ObjectProperty IRI="#needCost"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#obsTypeConn"/>
@@ -1685,10 +909,6 @@
         <Class IRI="#LocationImage2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasCost"/>
-        <Class IRI="#Device"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasDevice"/>
         <Class IRI="#Space"/>
     </ObjectPropertyDomain>
@@ -1715,6 +935,18 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location2connectivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#needCost"/>
+        <Class IRI="#Device"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#needMoney"/>
+        <Class IRI="#Device"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#needTime"/>
+        <Class IRI="#Device"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsType"/>
@@ -1781,10 +1013,6 @@
         <Class IRI="#Occupancy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasCost"/>
-        <Class IRI="#Cost"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasDevice"/>
         <Class IRI="#Device"/>
     </ObjectPropertyRange>
@@ -1817,6 +1045,18 @@
         <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#needCost"/>
+        <Class IRI="#Cost"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#needMoney"/>
+        <Class IRI="#Money"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#needTime"/>
+        <Class IRI="#Time"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#obsType"/>
         <Class IRI="#Observation"/>
     </ObjectPropertyRange>
@@ -1840,21 +1080,45 @@
         <ObjectProperty IRI="http://www.w3.org/ns/ssn/hasProperty"/>
         <Class IRI="http://www.w3.org/ns/ssn/Property"/>
     </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#moneyCost"/>
+        <DataProperty IRI="#valueTypeofCost"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#timeCost"/>
+        <DataProperty IRI="#valueTypeofCost"/>
+    </SubDataPropertyOf>
     <DataPropertyDomain>
-        <DataProperty IRI="#hasCostValue"/>
-        <Class IRI="#Cost"/>
+        <DataProperty IRI="#moneyCost"/>
+        <Class IRI="#Money"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#timeCost"/>
+        <Class IRI="#Time"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#valueType"/>
         <Class IRI="#StaticProperty"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#valueTypeofCost"/>
+        <Class IRI="#Cost"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="#hasCostValue"/>
+        <DataProperty IRI="#moneyCost"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#timeCost"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#valueType"/>
         <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#valueTypeofCost"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
 </Ontology>
 

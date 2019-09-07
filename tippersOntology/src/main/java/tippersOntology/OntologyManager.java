@@ -9,7 +9,6 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import uk.ac.manchester.cs.jfact.JFactFactory;
-import uk.ac.manchester.cs.jfact.kernel.Ontology;
 
 /*
  * File Description
@@ -108,17 +107,6 @@ public class OntologyManager {
 			sub.add(cls.getSubClass());
 		}
 		return sub;
-	}
-
-	public static OWLIndividual getidv(String str) {
-		OWLIndividual idv = null;
-		for (OWLIndividual i : ontology.getIndividualsInSignature()) {
-			if (strToken0(i.toString()).equalsIgnoreCase(str)) {
-				idv = i;
-			}
-		}
-		return idv;
-
 	}
 
 	// extract entity
@@ -276,75 +264,79 @@ public class OntologyManager {
 		}
 		return chk;
 	}
+	
+	private void getTime() {
+		// TODO Auto-generated method stub
 
-	// get Time
-	// get time cost of device
-	// Virtual Sensor input is class name
-	// Rest of device are individual name
-	public static Integer getTime(String dev) {
-		NodeSet<OWLNamedIndividual> idv;
-		String in = new String();
-		int num = -9999;
-		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
-		if (showSubclasses("VirSensor").toString().contains(dev)) {
-			for (OWLClass c : ontology.getClassesInSignature()) {
-				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
-					idv = reasoner.getInstances(c, false);
-					in = strToken0(idv.toString());
-					num = Integer.parseInt(getCost(in, "Time"));
-				}
-			}
-		} else {
-			num = Integer.parseInt(getCost(dev, "Time"));
-		}
-		return num;
 	}
-
-	// get Money
-	// get money cost of device
-	// Virtual Sensor input is class name
-	// Rest of device are individual name
-	public static Integer getMoney(String dev) {
-		NodeSet<OWLNamedIndividual> idv;
-		String in = new String();
-		int num = -9999;
-		System.out.println("\n[getTimecost: get a money cost of {" + dev + "}]");
-		if (showSubclasses("VirSensor").toString().contains(dev)) {
-			for (OWLClass c : ontology.getClassesInSignature()) {
-				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
-					idv = reasoner.getInstances(c, false);
-					in = strToken0(idv.toString());
-					num = Integer.parseInt(getCost(in, "Money"));
-				}
-			}
-		} else {
-			num = Integer.parseInt(getCost(dev, "Money"));
-		}
-		return num;
-	}
-
-	// get both time and money
-	public static String getCost(String dev, String cost) {
-		String time = new String();
-		for (OWLIndividual i : ontology.getIndividualsInSignature()) {
-			for (OWLObjectPropertyAssertionAxiom p : ontology.getObjectPropertyAssertionAxioms(i)) {
-				if (p.toString().contains("hasCost") && p.toString().contains(dev)) {
-					if (ontology.getDataPropertyAssertionAxioms(getidv(strToken0(p.toString()))).toString()
-							.contains(cost)) {
-						time = ontology.getDataPropertyAssertionAxioms(getidv(strToken0(p.toString()))).toString();
-						StringTokenizer tok = new StringTokenizer(time, "\"");
-						time = tok.nextToken();
-						while (tok.hasMoreElements()) {
-							time = tok.nextToken();
-							break;
-						}
-					}
-				}
-			}
-		}
-		time.replaceAll(" ", "");
-		return time;
-	}
+	
+//	public static Integer getTime(String dev) {
+//		String tType = "timeCost";
+//		int tnum = getIdv(dev, tType);
+//		return tnum;
+//	}
+//	
+//	public static Integer getMoney(String dev) {
+//		String mType = "moneyCost";
+//		int mnum = getIdv(dev, mType);
+//		return mnum;
+//	}
+//
+//	// check a cost of time
+//	// parameter type is individual
+//	// if the individual has no data, check a class of individual
+//	// getTime2()
+//	public static Integer getIdv(String dev, String Type) {
+//		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
+//		String time = new String();
+//		int num = -9999; // default
+//		try {
+//			for (OWLIndividual i : ontology.getIndividualsInSignature()) {
+//				if (strToken0(i.toString()).equalsIgnoreCase(dev)) {
+//					for (OWLDataPropertyAssertionAxiom d : ontology.getDataPropertyAssertionAxioms(i)) {
+//						if (d.toString().contains(Type)) {
+//							StringTokenizer tok = new StringTokenizer(d.toString(), "\"");
+//							time = tok.nextToken();
+//							while (tok.hasMoreElements()) {
+//								time = tok.nextToken();
+//								break;
+//							}
+//							num = Integer.parseInt(time);
+//						}
+//					}
+//				}
+//			}
+//			if (num == -9999) {
+//				num = Integer.parseInt(getCls(dev, Type));
+//			}
+//		} catch (NumberFormatException e) {
+//			System.out.println(e);
+//			System.out.println("There is no cost data. Default return is -9999:");
+//		}
+//		return num;
+//	}
+//
+//	// if individual has no cost data
+//	// check super class of individual
+//	public static String getCls(String dev, String Type) {
+//		String temp2 = new String();
+//		for (OWLAxiom c : ontology.getAxioms()) {
+//			for (OWLClassExpression e : c.getNestedClassExpressions()) {
+//				if (e.getClassExpressionType() == ClassExpressionType.DATA_EXACT_CARDINALITY
+//						& reasoner.getInstances(e, false).toString().contains(dev)
+//						& e.toString().contains(Type)) {
+//					StringTokenizer tok = new StringTokenizer(e.toString(), "(");
+//					while (tok.hasMoreElements()) {
+//						temp2 = tok.nextElement().toString();
+//					}
+//					StringTokenizer tok2 = new StringTokenizer(temp2, "<");
+//					temp2 = tok2.nextToken();
+//				}
+//			}
+//		}
+//		temp2 = temp2.replaceAll(" ", "");
+//		return temp2;
+//	}
 
 	/**
 	 * Creates a HermiT OWLReasoner with the given ontology.
