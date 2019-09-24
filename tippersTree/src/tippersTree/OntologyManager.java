@@ -96,7 +96,7 @@ public class OntologyManager {
 		return actProp;
 	}
 	
-	public ArrayList<String> findSensor(String Obs){
+	public Set<String> findSensor(String Obs){
 		/*ArrayList<String> sensors = new ArrayList<String>();
 		sensors.add("Wifi1");
 		sensors.add("Wifi2");

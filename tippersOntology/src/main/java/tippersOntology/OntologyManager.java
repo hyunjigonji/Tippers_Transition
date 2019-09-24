@@ -188,7 +188,6 @@ public class OntologyManager {
 	// return names of classes in hashSet
 	public static Set<String> findSensor(String obs) {
 		Set<String> sen = new HashSet<String>();
-		//ArrayList<String> sen = new ArrayList<String>();
 		System.out.println("\n[findSensor: Print Sensor by {" + obs + "}]");
 		for (OWLObjectPropertyExpression p : getsubProp("captures")) {
 			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs)
@@ -200,7 +199,6 @@ public class OntologyManager {
 				}
 			}
 		}
-//		checkdup(sen);
 		return sen;
 	}
 	// getrange false 하나이상 반환 ㅡ> more issue
