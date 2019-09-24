@@ -12,7 +12,7 @@ public class index {
 		OntologyManager.showClasses();		//show ontology classes
 		System.out.println("\n[test showSubclasses]\n"+OntologyManager.showSubclasses("Sensor"));		//test >> show all of subclasses with super classes
 																									//이거는 대소문자 구분 필요, 혼자 사용할 거 아니고 다른 메소드에서 불러서 쓸거라서 대소문자 구분 안해도 된다고 생각
-		System.out.println(OntologyManager.extractEnt("office"));
+		System.out.println(OntologyManager.getIndividuals("office"));
 		System.out.println(OntologyManager.findSensor("occupancy"));
 		System.out.println(OntologyManager.findSensor("connectivity"));
 		System.out.println(OntologyManager.findSensor("image"));
@@ -40,6 +40,7 @@ public class index {
 		System.out.println(OntologyManager.getTime("Connectivity2occupancy"));
 		System.out.println(OntologyManager.getTime("Wifi2"));
 		System.out.println(OntologyManager.getTime("Wifi3"));
+		System.out.println(OntologyManager.getTime("Location2connectivity"));
 		System.out.println(OntologyManager.getTime("GPS3"));
 		System.out.println(OntologyManager.getTime("AC1"));
 		System.out.println(OntologyManager.getTime("AC2"));
@@ -47,10 +48,12 @@ public class index {
 		System.out.println(OntologyManager.getMoney("Connectivity2occupancy"));
 		System.out.println(OntologyManager.getMoney("Wifi2"));
 		System.out.println(OntologyManager.getMoney("Wifi3"));
+		System.out.println(OntologyManager.getMoney("Location2connectivity"));
 		System.out.println(OntologyManager.getMoney("GPS3"));
 		System.out.println(OntologyManager.getMoney("AC1"));
 		System.out.println(OntologyManager.getMoney("AC2"));
-
+		
+		System.out.println(OntologyManager.getsubProp("captures"));
 		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	

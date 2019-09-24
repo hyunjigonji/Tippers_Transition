@@ -12,7 +12,7 @@ public class OntologyManager {
 		temp.add("room1");
 		temp.add("room2");
 		return temp; */
-		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		return tippersOntology.OntologyManager.getIndividuals(UARequest.Entity);
 	} 
 
 	public ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
