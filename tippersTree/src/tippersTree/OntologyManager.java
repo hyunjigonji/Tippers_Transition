@@ -12,7 +12,7 @@ public class OntologyManager {
 		temp.add("room1");
 		temp.add("room2");
 		return temp; */
-		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		return tippersOntology.OntologyManager.getIndividuals(UARequest.Entity);
 	} 
 
 	public ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
@@ -96,7 +96,7 @@ public class OntologyManager {
 		return actProp;
 	}
 	
-	public ArrayList<String> findSensor(String Obs){
+	public Set<String> findSensor(String Obs){
 		/*ArrayList<String> sensors = new ArrayList<String>();
 		sensors.add("Wifi1");
 		sensors.add("Wifi2");

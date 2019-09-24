@@ -10,7 +10,7 @@ public class OntologyManager {
 		/*ArrayList<String> temp = new ArrayList<String>();
 		temp.add("meetingroom1");
 		return temp;*/
-		return tippersOntology.OntologyManager.extractEnt(UARequest.Entity);
+		return tippersOntology.OntologyManager.getIndividuals(UARequest.Entity);
 	} 
 
 	public static ArrayList<String> extractProp(UA UARequest) { // extract Property from UA, M
@@ -40,7 +40,7 @@ public class OntologyManager {
 		return temp; 
 	}
 	
-	public static ArrayList<String> findSensor(String Obs){
+	public static Set<String> findSensor(String Obs){
 		/*ArrayList<String> sensors = new ArrayList<String>();
 		if(Obs.equals("Occupancy")) {
 			//System.out.println("findSen Occupancy");
