@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 import org.semanticweb.owlapi.reasoner.*;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
-import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import uk.ac.manchester.cs.jfact.JFactFactory;
 
 public class OntologyManager {
@@ -202,9 +201,8 @@ public class OntologyManager {
 
 	// find Sensor
 	// return names of classes in hashSet
-	public static ArrayList<String> findSensor(String obs) {
-		// Set<String> sen = new HashSet<String>();
-		ArrayList<String> sen = new ArrayList<String>();
+	public static Set<String> findSensor(String obs) {
+		Set<String> sen = new HashSet<String>();
 		System.out.println("\n[findSensor: Print Sensor by {" + obs + "}]");
 		for (OWLObjectPropertyExpression p : getsubProp("captures")) {
 			if (strToken0(reasoner.getObjectPropertyRanges(p, true).toString()).equalsIgnoreCase(obs)
@@ -216,7 +214,6 @@ public class OntologyManager {
 				}
 			}
 		}
-//		checkdup(sen);
 		return sen;
 	}
 	// getrange false 하나이상 반환 ㅡ> more issue
