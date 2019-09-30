@@ -1,5 +1,7 @@
 package tippersOntology;
 
+import java.io.ObjectInputStream.GetField;
+
 import org.semanticweb.owlapi.model.OWLException;
 
 public class index {
@@ -55,6 +57,7 @@ public class index {
 		System.out.println(OntologyManager.getMoney("AC2"));
 		
 		System.out.println(OntologyManager.getsubProp("captures"));
+		System.out.println("getCost  "+ OntologyManager.getCost("Location2conn", "Time"));
 		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	

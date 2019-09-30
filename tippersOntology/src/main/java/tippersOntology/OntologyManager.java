@@ -165,13 +165,9 @@ public class OntologyManager {
 	public static ArrayList<OWLObjectProperty> getsubProp(String prop) {
 		ArrayList<OWLObjectProperty> objprop = new ArrayList<OWLObjectProperty>();
 		OWLObjectProperty p = getOwlObjProp(prop);
-		System.out.println("test    "+reasoner.getSubObjectProperties(getOwlObjProp(prop), true));
-		
 		String str = reasoner.getSubObjectProperties(getOwlObjProp(prop), true).toString();
-		System.out.println("0000000"+strToken0(str));
-
 		for(Node<OWLObjectPropertyExpression> o : reasoner.getSubObjectProperties(getOwlObjProp(prop), true)) {
-			System.out.println();
+			System.out.println(o);
 		}
 		
 		for (final OWLSubObjectPropertyOfAxiom subProp : ontology.getObjectSubPropertyAxiomsForSuperProperty(p)) {
@@ -315,14 +311,19 @@ public class OntologyManager {
 		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
 		if (showSubclasses("VirSensor").toString().contains(dev)) {
 			for (OWLClass c : ontology.getClassesInSignature()) {
+				System.out.println("cccc"+c);
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
 					idv = reasoner.getInstances(c, false);
+					System.out.println("idv" + idv);
 					in = strToken0(idv.toString());
-					num = Integer.parseInt(getCost(in, "Time"));
+					System.out.println("in   "+in);
+//					num = Integer.parseInt(getCost(in, "Time"));
+					System.out.println("1111"+getCost(in, "Time"));
 				}
 			}
 		} else {
-			num = Integer.parseInt(getCost(dev, "Time"));
+//			num = Integer.parseInt(getCost(dev, "Time"));
+			System.out.println("2222"+getCost(dev, "Time"));
 		}
 		return num;
 	}
@@ -342,11 +343,13 @@ public class OntologyManager {
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
 					idv = reasoner.getInstances(c, false);
 					in = strToken0(idv.toString());
-					num = Integer.parseInt(getCost(in, "Money"));
+					//num = Integer.parseInt(getCost(in, "Money"));
+					System.out.println("3333"+getCost(in, "Money"));
 				}
 			}
 		} else {
-			num = Integer.parseInt(getCost(dev, "Money"));
+//			num = Integer.parseInt(getCost(dev, "Money"));
+			System.out.println("4444"+getCost(dev, "Money"));
 		}
 		return num;
 	}
