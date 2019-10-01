@@ -23,6 +23,10 @@ public class index {
 		System.out.println(OntologyManager.isVS("LocationImage2occupancy"));
 		System.out.println(OntologyManager.isVS("Wifi"));
 		System.out.println(OntologyManager.isVS("GPS"));
+		System.out.println(OntologyManager.isVS("Camera"));
+		System.out.println(OntologyManager.isVS("Thermometer"));
+		System.out.println(OntologyManager.isVS("BB"));
+		System.out.println(OntologyManager.isVS("Connectivity2occupancy"));
 		
 		System.out.println(OntologyManager.getAptDevice("meetingRoom"));
 		System.out.println(OntologyManager.getAptDevice("office"));
@@ -56,10 +60,20 @@ public class index {
 		System.out.println(OntologyManager.getMoney("AC1"));
 		System.out.println(OntologyManager.getMoney("AC2"));
 		
-		System.out.println(OntologyManager.getsubProp("captures"));
+		System.out.println("test222"+OntologyManager.getsubProp("captures"));
+		System.out.println("test444"+OntologyManager.getsubProp("hasDevice"));
+		System.out.println("test222"+OntologyManager.getsubProp("input"));
 		System.out.println("getCost  "+ OntologyManager.getCost("Location2conn", "Time"));
 		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	
+		
+		System.out.println(OntologyManager.getRange("inputC2O")); 
+		System.out.println(OntologyManager.getRange("inputL2C"));
+		System.out.println(OntologyManager.getRange("inputL2O")); 
+		
+		System.out.println(OntologyManager.getDomain("inputC2O")); 
+		System.out.println(OntologyManager.getDomain("inputL2C"));
+		System.out.println(OntologyManager.getDomain("inputL2O")); 
 	}
 }

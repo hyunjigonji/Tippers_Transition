@@ -166,21 +166,15 @@ public class OntologyManager {
 		ArrayList<OWLObjectProperty> objprop = new ArrayList<OWLObjectProperty>();
 		OWLObjectProperty p = getOwlObjProp(prop);
 		String str = reasoner.getSubObjectProperties(getOwlObjProp(prop), true).toString();
-		for(Node<OWLObjectPropertyExpression> o : reasoner.getSubObjectProperties(getOwlObjProp(prop), true)) {
-			System.out.println(o);
-		}
-		
 		for (final OWLSubObjectPropertyOfAxiom subProp : ontology.getObjectSubPropertyAxiomsForSuperProperty(p)) {
 			if (subProp.getSuperProperty() instanceof OWLProperty && subProp.getSubProperty() instanceof OWLProperty) {
 				if (subProp.getSuperProperty().toString().equalsIgnoreCase("<" + ONTOLOGYURL + prop + ">")) {
-					objprop.addAll(subProp.getSubProperty().getObjectPropertiesInSignature()); 
+					objprop.addAll(subProp.getSubProperty().getObjectPropertiesInSignature());
 				}
 			}
 		}
 		return objprop;
 	}
-//reasoner 사용하기
-	//다시 짜기 
 
 	// getAptDevice
 	// get individual of class
@@ -212,27 +206,48 @@ public class OntologyManager {
 		}
 		return sen;
 	}
-	// getrange false 하나이상 반환 ㅡ> more issue
-	// capture의 서브 프로퍼티만 찾을것!
-	// captures 를 위에 정의할 것
-	// getDomain false로 할 것
-	// set 은 중복이 안됌
 
-	// check multiple or plus
-	// if there is only 1 thing in array, return true
-	public static ArrayList<String> checkdup(ArrayList<String> arr) {
-		if (arr.size() >= 2) {
-			for (int i = 0; i < arr.size(); i++) {
-				for (int j = i + 1; j < arr.size(); j++) {
-					if (arr.get(i).equals(arr.get(j))) {
-						arr.remove(j);
+	// find input
+	// input array of class name
+	public static ArrayList<String> findInput(String vs) {
+		ArrayList<String> input = new ArrayList<String>();
+		System.out.println("\n[findInput: find VS{" + vs + "} input]");
+		OWLObjectProperty p = getOwlObjProp("input");
+		for (Node<OWLObjectPropertyExpression> subProp : reasoner.getSubObjectProperties(p, false)) {
+			if (!strToken0(subProp.toString()).contains("Node")) {
+				ArrayList<String> domain = getDomain(strToken0(subProp.toString()));
+				for (int i = 0; i < domain.size(); i++) {
+					if (domain.get(i).equalsIgnoreCase(vs)) {
+						input = getRange(strToken0(subProp.toString()));
 					}
 				}
 			}
-		} else if (arr.isEmpty())
-			return null;
+		}
+		return input;
+	}
 
-		return arr;
+	// get range of property
+	public static ArrayList<String> getRange(String property) {
+		ArrayList<String> Range = new ArrayList<String>();
+//		System.out.println("\n[find Range]: " + property);
+		OWLObjectProperty p = getOwlObjProp(property); // find property
+		for (Node<OWLClass> r : reasoner.getObjectPropertyRanges(p, true)) { // find range
+			if (!strToken0(r.toString()).contains("Node"))
+				Range.add(strToken0(r.toString()));
+		}
+		return Range;
+	}
+
+	// get domain of property
+	public static ArrayList<String> getDomain(String property) {
+		ArrayList<String> Domain = new ArrayList<String>();
+//		System.out.println("\n[find Domain]: " + property);
+		OWLObjectProperty p = getOwlObjProp(property); // find property
+		for (Node<OWLClass> r : reasoner.getObjectPropertyDomains(p, true)) { // find range
+			if (!strToken0(r.toString()).contains("Node"))
+				Domain.add(strToken0(r.toString()));
+		}
+		return Domain;
 	}
 
 	// is VS
@@ -241,45 +256,11 @@ public class OntologyManager {
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
 		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
-		ArrayList<OWLClassExpression> cls = showSubclasses("Sensor");
-		for (int i = 0; i < cls.size(); i++) {
-			if (strToken0(cls.get(i).toString()).equalsIgnoreCase("VirSensor")) {
-				for (OWLClassExpression e : showSubclasses(strToken0(cls.get(i).toString()))) {
-					if (strToken0(e.toString()).equalsIgnoreCase(Sensor))
-						flag = true;
-					// reasoner.getSuperClasses(ce, direct)
-				}
-			}
-		}
+		if (reasoner.getSuperClasses(getOwlClass(Sensor), true).toString().contains("VirSensor"))
+			flag = true;
+
 		return flag;
 	}
-	// reasoner.getSuperClasses(ce, direct)
-	// 클래스의 슈퍼클래스가 벌추얼이면 그거의 인디비주얼을 확인한다? 쨋든 저거 써서 코드 간단하게 바꾸기
-
-	// find input
-	// input array of class name
-	public static ArrayList<String> findInput(String vs) {
-		ArrayList<String> arr = new ArrayList<String>();
-		System.out.println("\n[findInput: find VS{" + vs + "} input]");
-		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature()) {
-			if (strToken0(reasoner.getObjectPropertyDomains(p, true).toString()).equalsIgnoreCase(vs)
-					& p.toString().contains("input")) {
-				for (Node<OWLClass> c : reasoner.getObjectPropertyRanges(p, true)) {
-					if (strToken0(c.toString()).contains("Node"))
-						continue;
-					arr.add(strToken0(c.toString()));
-				}
-			}
-		}
-		return arr;
-	}
-	// input 의 서브클래스에서만 찾을 것
-	// false로 바꿀 것
-	// find sensor 랑 매우 비슷함
-	// domain -> property -> range
-	// range -> property -> domain
-
-	// get Domain(String prop, String Range) & get Range 로 제너럴하게 바꿀것
 
 	// check a device in a room
 	// both are individual name
@@ -311,19 +292,19 @@ public class OntologyManager {
 		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
 		if (showSubclasses("VirSensor").toString().contains(dev)) {
 			for (OWLClass c : ontology.getClassesInSignature()) {
-				System.out.println("cccc"+c);
+				System.out.println("cccc" + c);
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
 					idv = reasoner.getInstances(c, false);
 					System.out.println("idv" + idv);
 					in = strToken0(idv.toString());
-					System.out.println("in   "+in);
+					System.out.println("in   " + in);
 //					num = Integer.parseInt(getCost(in, "Time"));
-					System.out.println("1111"+getCost(in, "Time"));
+					System.out.println("1111" + getCost(in, "Time"));
 				}
 			}
 		} else {
 //			num = Integer.parseInt(getCost(dev, "Time"));
-			System.out.println("2222"+getCost(dev, "Time"));
+			System.out.println("2222" + getCost(dev, "Time"));
 		}
 		return num;
 	}
@@ -343,13 +324,13 @@ public class OntologyManager {
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
 					idv = reasoner.getInstances(c, false);
 					in = strToken0(idv.toString());
-					//num = Integer.parseInt(getCost(in, "Money"));
-					System.out.println("3333"+getCost(in, "Money"));
+					// num = Integer.parseInt(getCost(in, "Money"));
+					System.out.println("3333" + getCost(in, "Money"));
 				}
 			}
 		} else {
 //			num = Integer.parseInt(getCost(dev, "Money"));
-			System.out.println("4444"+getCost(dev, "Money"));
+			System.out.println("4444" + getCost(dev, "Money"));
 		}
 		return num;
 	}
