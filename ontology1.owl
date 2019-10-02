@@ -210,10 +210,10 @@
         <ObjectProperty IRI="#inputC2O"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputL2O"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#obsType"/>
@@ -1605,11 +1605,11 @@
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputL2O"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -1623,6 +1623,10 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#obsTypeTemp"/>
         <ObjectProperty IRI="#obsType"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isHostedBy"/>
+        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isActedOnBy"/>
     </SubObjectPropertyOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#BBcapturesOccu"/>
@@ -1701,12 +1705,12 @@
         <Class IRI="#Connectivity2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputI2O"/>
-        <Class IRI="#LocationImage2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location2connectivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputL2O"/>
+        <Class IRI="#LocationImage2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsType"/>
@@ -1797,15 +1801,15 @@
         <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputI2O"/>
-        <Class IRI="#Image"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputL2O"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputL2O"/>
         <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>

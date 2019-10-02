@@ -1,7 +1,5 @@
 package tippersOntology;
 
-import java.io.ObjectInputStream.GetField;
-
 import org.semanticweb.owlapi.model.OWLException;
 
 public class index {
@@ -36,14 +34,20 @@ public class index {
 		System.out.println(OntologyManager.findInput("location2connectivity"));
 		System.out.println(OntologyManager.findInput("locationimage2occupancy"));
 
-		System.out.println(OntologyManager.checkCoverage("camera1", "meetingroom1"));		//true
-		System.out.println(OntologyManager.checkCoverage("camera1", "meetingroom2"));		//false
-		System.out.println(OntologyManager.checkCoverage("camera2", "meetingroom2"));		//true
-		System.out.println(OntologyManager.checkCoverage("camera3", "meetingroom2"));		//true
+		System.out.println(OntologyManager.checkCoverage("Camera1", "meetingroom1"));		//true
+		System.out.println(OntologyManager.checkCoverage("Camera1", "meetingroom2"));		//false
+		System.out.println(OntologyManager.checkCoverage("Camera2", "meetingroom2"));		//true
+		System.out.println(OntologyManager.checkCoverage("Camera3", "meetingroom2"));		//true
 		
-		System.out.println(OntologyManager.checkCoverage("GPS2", "meetingroom2"));	
+		System.out.println(OntologyManager.checkCoverage("GPS2", "meetingroom2"));
+		System.out.println(OntologyManager.checkCoverage("GPS1", "meetingroom1"));
+		System.out.println(OntologyManager.checkCoverage("GPS1", "meetingroom2"));
+		System.out.println(OntologyManager.checkCoverage("BB3", "meetingroom2"));
+		System.out.println(OntologyManager.checkCoverage("BB3", "meetingroom3"));
+		System.out.println(OntologyManager.checkCoverage("Light2", "meetingroom2"));
+		System.out.println(OntologyManager.checkCoverage("Light1", "meetingroom1"));
+		System.out.println(OntologyManager.checkCoverage("Thermometer3", "meetingroom3"));
 		
-
 		System.out.println(OntologyManager.getTime("Connectivity2occupancy"));
 		System.out.println(OntologyManager.getTime("Wifi2"));
 		System.out.println(OntologyManager.getTime("Wifi3"));
