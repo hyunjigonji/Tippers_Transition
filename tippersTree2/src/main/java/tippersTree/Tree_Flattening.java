@@ -9,7 +9,7 @@ public class Tree_Flattening extends Tree{
 		String P0 = UARequest.Property;
 		String C0 = UARequest.Condition;
 
-		ArrayList<String> E = OntologyManager.extractEnt(UARequest);
+		ArrayList<String> E = OntologyManager.extractEnt(UARequest);		//meetingroom1, meetingroom2, ...
 		ArrayList<String> P = OntologyManager.extractProp(UARequest);
 		ArrayList<String> C = OntologyManager.extractCond(UARequest);
 

@@ -48,26 +48,26 @@ public class index {
 		System.out.println(OntologyManager.checkCoverage("Light1", "meetingroom1"));
 		System.out.println(OntologyManager.checkCoverage("Thermometer3", "meetingroom3"));
 		
-		System.out.println(OntologyManager.getTime("Connectivity2occupancy"));
-		System.out.println(OntologyManager.getTime("Wifi2"));
-		System.out.println(OntologyManager.getTime("Wifi3"));
-		System.out.println(OntologyManager.getTime("Location2connectivity"));
-		System.out.println(OntologyManager.getTime("GPS3"));
-		System.out.println(OntologyManager.getTime("AC1"));
-		System.out.println(OntologyManager.getTime("AC2"));
+		System.out.println(OntologyManager.getTime("Connectivity2occupancy"));		//40
+		System.out.println(OntologyManager.getTime("Wifi2"));		//45
+		System.out.println(OntologyManager.getTime("Wifi3"));		//30
+		System.out.println(OntologyManager.getTime("Location2connectivity"));		//17
+		System.out.println(OntologyManager.getTime("GPS3"));	//
+		System.out.println(OntologyManager.getTime("AC1"));		//	
+		System.out.println(OntologyManager.getTime("AC2"));		//
 		
-		System.out.println(OntologyManager.getMoney("Connectivity2occupancy"));
-		System.out.println(OntologyManager.getMoney("Wifi2"));
-		System.out.println(OntologyManager.getMoney("Wifi3"));
-		System.out.println(OntologyManager.getMoney("Location2connectivity"));
-		System.out.println(OntologyManager.getMoney("GPS3"));
-		System.out.println(OntologyManager.getMoney("AC1"));
-		System.out.println(OntologyManager.getMoney("AC2"));
+		System.out.println(OntologyManager.getMoney("Connectivity2occupancy"));		//30
+		System.out.println(OntologyManager.getMoney("Wifi2"));		//50
+		System.out.println(OntologyManager.getMoney("Wifi3"));		//60
+		System.out.println(OntologyManager.getMoney("Location2connectivity"));		//33
+		System.out.println(OntologyManager.getMoney("GPS3"));		//
+		System.out.println(OntologyManager.getMoney("AC1"));		//
+		System.out.println(OntologyManager.getMoney("AC2"));		//
 		
-		System.out.println("test222"+OntologyManager.getsubProp("captures"));
-		System.out.println("test444"+OntologyManager.getsubProp("hasDevice"));
-		System.out.println("test222"+OntologyManager.getsubProp("input"));
-		System.out.println("getCost  "+ OntologyManager.getCost("Location2conn", "Time"));
+//		System.out.println(OntologyManager.getsubProp("captures"));
+//		System.out.println(OntologyManager.getsubProp("hasDevice"));
+//		System.out.println(OntologyManager.getsubProp("input"));
+//		System.out.println(OntologyManager.getCost("Location2conn", "Time"));
 		
 //		System.out.println(OntologyManager.getOntoObjProperty("captures"));		//object property
 //		System.out.println(OntologyManager.getOntoDataProperty("captures"));		//data property	

@@ -14,7 +14,7 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology1.owl";
+	public static String ontologyURL = "../ontology.owl";
 	public static OWLReasoner reasoner;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 	public static String Captures = "captures";
@@ -111,6 +111,7 @@ public class OntologyManager {
 		return sub;
 	}
 
+	// get object of individual that has same name with input
 	public static OWLIndividual getIdv(String str) {
 		OWLIndividual idv = null;
 		for (OWLIndividual i : ontology.getIndividualsInSignature()) {
@@ -232,7 +233,7 @@ public class OntologyManager {
 	// get range of property
 	public static ArrayList<String> getRange(String property) {
 		ArrayList<String> Range = new ArrayList<String>();
-//		System.out.println("\n[find Range]: " + property);
+		System.out.println("\n[find Range]: " + property);
 		OWLObjectProperty p = getOwlObjProp(property); // find property
 		for (Node<OWLClass> r : reasoner.getObjectPropertyRanges(p, true)) { // find range
 			if (!strToken0(r.toString()).contains("Node"))
@@ -244,7 +245,7 @@ public class OntologyManager {
 	// get domain of property
 	public static ArrayList<String> getDomain(String property) {
 		ArrayList<String> Domain = new ArrayList<String>();
-//		System.out.println("\n[find Domain]: " + property);
+		System.out.println("\n[find Domain]: " + property);
 		OWLObjectProperty p = getOwlObjProp(property); // find property
 		for (Node<OWLClass> r : reasoner.getObjectPropertyDomains(p, true)) { // find range
 			if (!strToken0(r.toString()).contains("Node"))
@@ -258,10 +259,10 @@ public class OntologyManager {
 	// A parameter(Sensor) is class name
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
-		System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
+		//System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
 		if (reasoner.getSuperClasses(getOwlClass(Sensor), true).toString().contains("VirSensor"))
 			flag = true;
-
+		
 		return flag;
 	}
 
@@ -284,28 +285,22 @@ public class OntologyManager {
 	// Rest of device are individual name
 	public static Integer getTime(String dev) {
 		NodeSet<OWLNamedIndividual> idv;
-		String in = new String();
+		String in = "";
 		int num = -9999;
-		System.out.println("\n[getTimecost: get a time cost of {" + dev + "}]");
-		if (showSubclasses("VirSensor").toString().contains(dev)) {
+		System.out.println("\n[getTimecost] " + dev);
+		if (isVS(dev)) {
 			for (OWLClass c : ontology.getClassesInSignature()) {
-				// System.out.println("cccc" + c);
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
 					idv = reasoner.getInstances(c, false);
-					// System.out.println("idv" + idv);
 					in = strToken0(idv.toString());
-					// System.out.println("in " + in);
-//					num = Integer.parseInt(getCost(in, "Time"));
-					// System.out.println("1111" + getCost(in, "Time"));
+					num = Integer.parseInt(getCost(in, "Time"));
 				}
 			}
 		} else {
-//			num = Integer.parseInt(getCost(dev, "Time"));
-			System.out.println("2222" + getCost(dev, "Time"));
+			num = Integer.parseInt(getCost(dev, "Time"));
 		}
 		return num;
 	}
-//isVS 활용할 것
 
 	// get Money
 	// get money cost of device
@@ -313,32 +308,29 @@ public class OntologyManager {
 	// Rest of device are individual name
 	public static Integer getMoney(String dev) {
 		NodeSet<OWLNamedIndividual> idv;
-		String in = new String();
+		String in = "";
 		int num = -9999;
-		System.out.println("\n[getTimecost: get a money cost of {" + dev + "}]");
-		if (showSubclasses("VirSensor").toString().contains(dev)) {
+		System.out.println("\n[getMoneycost] " + dev);
+		if (isVS(dev)) {
 			for (OWLClass c : ontology.getClassesInSignature()) {
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
 					idv = reasoner.getInstances(c, false);
 					in = strToken0(idv.toString());
-					// num = Integer.parseInt(getCost(in, "Money"));
-					System.out.println("3333" + getCost(in, "Money"));
+					num = Integer.parseInt(getCost(in, "Money"));
 				}
 			}
 		} else {
-//			num = Integer.parseInt(getCost(dev, "Money"));
-			System.out.println("4444" + getCost(dev, "Money"));
+			num = Integer.parseInt(getCost(dev, "Money"));
 		}
 		return num;
 	}
 
 	// get both time and money
 	public static String getCost(String dev, String cost) {
-		String time = new String();
-		for (OWLIndividual i : ontology.getIndividualsInSignature()) {
+		String time = "";
+		OWLIndividual i = getIdv(dev);
 			for (OWLObjectPropertyAssertionAxiom p : ontology.getObjectPropertyAssertionAxioms(i)) {
 				if (p.toString().contains("hasCost") && p.toString().contains(dev)) {
-					System.out.println("123123123" + p.getIndividualsInSignature());
 					if (ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString()
 							.contains(cost)) {
 						time = ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString();
@@ -351,12 +343,9 @@ public class OntologyManager {
 					}
 				}
 			}
-		}
 		time.replaceAll(" ", "");
 		return time;
 	}
-	// 위에 있는 인디비주얼 불러온ㄴ 메소드 사용할 것
-	// hasCost 위에 정의
 
 	/**
 	 * Creates a query engine to process DL queries.
