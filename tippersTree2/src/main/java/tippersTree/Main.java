@@ -47,5 +47,7 @@ public class Main {
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
 		Tree_Display.displayTree(feasibleTree);
+		
+		Tree_Execute.executeTree(feasibleTree);
 	}
 }
