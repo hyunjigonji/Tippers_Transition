@@ -1,19 +1,20 @@
 package tippersTree;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tree_Execute extends Tree {
-	public static ArrayList<Node> Leaves;
-	
+	public static Stack<Node> nodes = new Stack<Node>();
+
 	public static void executeTree(Tree feasibleTree) {
-		
-		
-		Leaves = findLeafNode(feasibleTree);
-		for(int i = 0; i <Leaves.size(); i++) {
-			Node nowNode = Leaves.get(i);
+
+		for (int i = 0; i < URij.size(); i++) {
+			URNode nowURNode = findURNode(feasibleTree, URij.get(i).nodeNum);
 			
+			for(int j = 0; j < nowURNode.Children.size(); j++) {
+				System.out.println("힘들어  " + nowURNode.Children.get(j));
+			}
 			
+
 		}
-		
 	}
 }
