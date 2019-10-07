@@ -16,16 +16,18 @@ public class Tree_Execute extends Tree {
 			while (!st.isEmpty()) {
 				Node now = st.pop();
 				int nowNum = now.nodeNum;
+				String action = "prepare";
 
-				SRNode now2 = findSRNode(feasibleTree, nowNum);
-				nowState = new Statement(now2.values.Sensor, now2.values.Observation, now2.values.Entity, temp);
-				
-				System.out.println(now2.type + " <" + nowState.Sensor + " " + nowState.Observation + " "
-						+ nowState.Entity + " " + nowState.Former + ">");
-//				System.out.println(now2.type + " <" + now2.nodeNum + "  " + now2.values.Entity + "  "
-//						+ now2.values.Observation + "  " + now2.values.Sensor + ">");
-				System.out.println(nowState);
-				
+				if (now.type == types.typeUR) {
+					action = "call";
+				} else {
+					SRNode now2 = findSRNode(feasibleTree, nowNum);
+					nowState = new Statement(now2.values.Sensor, now2.values.Observation, now2.values.Entity, temp);
+				}
+				System.out.println(action + " " + now.nodeNum + " <" + nowState.Sensor + " " + nowState.Observation
+						+ " " + nowState.Entity + " " + nowState.Former + ">");
+				System.out.println("State Num	" + nowState);
+
 				temp.add(nowState);
 			}
 		}
@@ -35,7 +37,7 @@ public class Tree_Execute extends Tree {
 		Stack<Node> reverse = new Stack<Node>();
 		Queue<Node> temp = new LinkedList<Node>();
 
-		// reverse.add(nowURNode); // add URNode to stack
+		reverse.add(nowURNode); // add URNode to stack
 
 		for (int j = 0; j < nowURNode.Children.size(); j++) {
 			if (nowURNode.Children.get(j).type != types.typeXc)
