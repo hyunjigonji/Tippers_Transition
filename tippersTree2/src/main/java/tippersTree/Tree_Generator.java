@@ -17,7 +17,7 @@ public class Tree_Generator extends Tree {
 
 		Set<String> sens = OntologyManager.findSensor(nowC);
 
-//		for(int i = 0 ; i < sens.size(); i++) {
+		// for(int i = 0 ; i < sens.size(); i++) {
 		// String nowSen = sens<i>.toString();
 		Iterator<String> value = sens.iterator();
 		while (value.hasNext()) {

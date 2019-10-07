@@ -14,7 +14,7 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology1.owl";
+	public static String ontologyURL = "../ontology.owl";
 	public static OWLReasoner reasoner;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 	public static String Captures = "captures";
