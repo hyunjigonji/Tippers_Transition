@@ -59,7 +59,7 @@ public class Tree_Calculate extends Tree {
 			int nowCost = nowMoney*Wm + nowTime*Wt;
 			
 			ArrayList<Integer> temp = new ArrayList<Integer>();
-			temp = calcul(myTree, nowNode.Children.get(0));
+			temp = calcul(myTree, nowNode.Children.get(0));			
 			
 			int tempCost = temp.get(0);
 			temp.remove(0);

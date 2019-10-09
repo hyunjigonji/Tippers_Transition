@@ -914,14 +914,6 @@
         <NamedIndividual IRI="#meetingroom1"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#meetingroom2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#meetingroom3"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Occupancy"/>
         <NamedIndividual IRI="#occuObs"/>
     </ClassAssertion>
@@ -1345,12 +1337,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">60</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">80</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1375,12 +1367,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Camera1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Camera1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1415,12 +1407,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#GPS1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#GPS1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1485,12 +1477,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#LocationImage2occuMoney"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">47</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#LocationImage2occuTime"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1631,6 +1623,10 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#obsTypeTemp"/>
         <ObjectProperty IRI="#obsType"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isHostedBy"/>
+        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isActedOnBy"/>
     </SubObjectPropertyOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#BBcapturesOccu"/>

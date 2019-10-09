@@ -14,6 +14,7 @@ import tippersOntology.OntologyManager;
  3. UAj = <ei, p, c> <- computed c
  */
 public class Main {
+	
 	public static void main(String args[]) {
 		OntologyManager.startOntologyManager();
 		
@@ -47,5 +48,13 @@ public class Main {
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
 		//Tree_Display.displayTree(feasibleTree);
+	
+		// execute sensor data
+		for (int i = 0; i < Tree.URij.size(); i++) {
+			URNode nowURNode = Tree.findURNode(feasibleTree, Tree.URij.get(i).nodeNum); // get URNode
+			myThread th = new myThread(feasibleTree, nowURNode);
+			th.start();
+		}
+		//Tree_Execute.executeTree(feasibleTree);
 	}
 }
