@@ -21,7 +21,7 @@ public class Main {
 		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy>50%Connectivity");
 		
 		myTree = Tree_Flattening.flattening(myUA);
-		//Tree_Display.displayTree(myTree);
+		Tree_Display.displayTree(myTree);
 		for(int i = 0 ; i < Tree.URij.size() ; i++) {
 			//System.out.println("hello");
 			URNode now = Tree.URij.get(i);
@@ -41,7 +41,7 @@ public class Main {
 			SRNode now2 = Tree.findSRNode(myTree, now.nodeNum);
 			Tree_Remove.check(now2);
 		}
-		Tree_Display.displayTree(myTree);
+		//Tree_Display.displayTree(myTree);
 		
 		// find feasible plan
 		Tree feasibleTree = new Tree(myUA);

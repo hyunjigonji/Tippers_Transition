@@ -55,7 +55,6 @@ public class Tree_Display extends Tree {
 			}
 			if(now.isRoot) str = "Root";
 
-			graph.addNode(str);
 
 			String par = "";
 			for(int i = 0 ; i < now.Parents.size() ; i++) {
