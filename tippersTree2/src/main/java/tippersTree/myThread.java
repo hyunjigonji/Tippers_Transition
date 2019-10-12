@@ -3,19 +3,21 @@ package tippersTree;
 public class myThread extends Thread {
 
 	private Tree feasibleTree;
-	private URNode ur;
+	private SRNode nowSRNode;
 
-	public myThread(Tree feasibleTree, URNode ur) {
+	public myThread() {}
+	
+	public myThread(Tree feasibleTree, SRNode newNode) {
 		this.feasibleTree = feasibleTree;
-		this.ur = ur;
+		this.nowSRNode = newNode;
 	}
 
 	@Override
 	public void run() {
 		try {
 			System.out.println("Start Threading...");
-			Tree_Execute.executeTree(feasibleTree, ur);
-			// Thread.sleep(500);
+			//System.out.println(Tree_Execute.executeTree(feasibleTree, nowSRNode));
+			// Thread.sleep(1000);
 		} catch (Exception e) {}
 	}
 }
