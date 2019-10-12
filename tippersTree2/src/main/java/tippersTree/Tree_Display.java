@@ -54,7 +54,8 @@ public class Tree_Display extends Tree {
 				str = "DA" + now2.nodeNum + "<" + now2.values.Sensor + "," + now2.values.Observation + "," + now2.values.Entity + ">";
 			}
 			if(now.isRoot) str = "Root";
-
+			
+			graph.addNode(str);
 
 			String par = "";
 			for(int i = 0 ; i < now.Parents.size() ; i++) {

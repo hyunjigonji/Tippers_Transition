@@ -26,7 +26,7 @@ public class Tree_Calculate extends Tree {
 			Selected.addAll(result);
 		}
 		
-		Leaves = findLeafNode(myTree);
+		Leaves = findLeafNode(myTree.Root);
 		for(int i = 0 ; i < Leaves.size() ; i++) {
 			Node nowNode = Leaves.get(i);
 			if(!Selected.contains(nowNode.nodeNum)) remove(nowNode);

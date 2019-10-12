@@ -22,15 +22,9 @@ public class Main {
 		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy>50%Connectivity");
 
 		myTree = Tree_Flattening.flattening(myUA);
-<<<<<<< HEAD
-		Tree_Display.displayTree(myTree);
-		for(int i = 0 ; i < Tree.URij.size() ; i++) {
-			//System.out.println("hello");
-=======
 		// Tree_Display.displayTree(myTree);
 		for (int i = 0; i < Tree.URij.size(); i++) {
 			// System.out.println("hello");
->>>>>>> master
 			URNode now = Tree.URij.get(i);
 			Tree_Generator.URgenerator0(now);
 		}
@@ -42,26 +36,34 @@ public class Main {
 		// Tree_Display.displayTree(myTree);
 
 		// print leaf nodes
-		ArrayList<Node> leaves = Tree.findLeafNode(myTree);
+		ArrayList<Node> leaves = Tree.findLeafNode(myTree.Root);
 		for (int i = 0; i < leaves.size(); i++) {
 			Node now = leaves.get(i);
 			SRNode now2 = Tree.findSRNode(myTree, now.nodeNum);
 			Tree_Remove.check(now2);
 		}
-		// Tree_Display.displayTree(myTree);
+		Tree_Display.displayTree(myTree);
+		for(int i = 0 ; i < Tree.URij.size() ; i++) {
+			ArrayList<Node> URLeaves = Tree.findLeafNode(Tree.URij.get(i));
+			System.out.println(Tree.URij.get(i).nodeNum);
+			for(int j = 0 ; j < URLeaves.size() ; j++) {
+				System.out.println(URLeaves.get(j).nodeNum);
+			}
+			System.out.println();
+		}
 
 		// find feasible plan
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
-		Tree_Display.displayTree(feasibleTree);
+		//Tree_Display.displayTree(feasibleTree);
 
 		// execute sensor data
-		ArrayList<Node> leaves2 = Tree.findLeafNode(feasibleTree);
+		ArrayList<Node> leaves2 = Tree.findLeafNode(feasibleTree.Root);
 		for (int i = 0; i < leaves2.size(); i++) {
 			Node now = leaves2.get(i);
 			SRNode now2 = Tree.findSRNode(feasibleTree, now.nodeNum);
 			System.out.println(now2.nodeNum);
 		} 
-		Tree_Execute.executeTree(feasibleTree);
+		//Tree_Execute.executeTree(feasibleTree);
 	}
 }

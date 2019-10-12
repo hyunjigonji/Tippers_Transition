@@ -82,9 +82,9 @@ public class Tree {
 	}
 	*/
 	// find leaf nodes of tree and return those leaf nodes in array list
-	public static ArrayList<Node> findLeafNode(Tree TreeUA){
+	public static ArrayList<Node> findLeafNode(Node RootNode){
 		ArrayList<Node> leaves = new ArrayList<Node>();
-		Node temp = TreeUA.Root;
+		Node temp = RootNode;
 		// DFS
 		boolean[] visit = new boolean[10000]; // MAXIMUM = 100?????? -> modify it!
 		Stack<Node> stack = new Stack<Node>(); // initialize stack
@@ -106,6 +106,7 @@ public class Tree {
 
 				if(visit[nextNum] == false) { // if not visited, push it in the stack
 					visit[nextNum] = true;
+					if(RootNode.type == types.typeUR && nextNum < RootNode.nodeNum) continue;
 					stack.push(next);
 				}
 			}
@@ -192,6 +193,6 @@ public class Tree {
 		Parent.Children.add(Child);
 		Child.Parents.add(Parent);
 
-		//System.out.prStringln("Parent = " + Parent.nodeNum + ", Child = " + Child.nodeNum);
+		//System.out.println("Parent = " + Parent.nodeNum + ", Child = " + Child.nodeNum);
 	}
 }
