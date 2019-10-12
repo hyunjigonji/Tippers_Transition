@@ -219,7 +219,7 @@ public class OntologyManager {
 	}
 	
 	public static int getMoney(String Sen) {
-		if(Sen.equals("GPS1")) return 1;
+		/*if(Sen.equals("GPS1")) return 1;
 		if(Sen.equals("GPS2")) return 2;
 		if(Sen.equals("GPS3")) return 3;
 		if(Sen.equals("BB1")) return 4;
@@ -245,12 +245,12 @@ public class OntologyManager {
 		if(Sen.equals("Light2")) return 7;
 		if(Sen.equals("Light3")) return 8;
 		
-		return 10;
-		//return tippersOntology.OntologyManager.getMoney(Sen);
+		return 10;*/
+		return tippersOntology.OntologyManager.getMoney(Sen);
 	}
 	
 	public static int getTime(String Sen) {
-		if(Sen.equals("GPS1")) return 2;
+		/*if(Sen.equals("GPS1")) return 2;
 		if(Sen.equals("GPS2")) return 3;
 		if(Sen.equals("GPS3")) return 4;
 		if(Sen.equals("BB1")) return 5;
@@ -276,7 +276,7 @@ public class OntologyManager {
 		if(Sen.equals("Light2")) return 8;
 		if(Sen.equals("Light3")) return 9;
 		
-		return 10;
-		//return tippersOntology.OntologyManager.getTime(Sen);
+		return 10;*/
+		return tippersOntology.OntologyManager.getTime(Sen);
 	}
 }
