@@ -43,10 +43,10 @@ public class Main {
 			Tree_Remove.check(now2);
 		}
 		// Tree_Display.displayTree(myTree);
-		for(int i = 0 ; i < Tree.URij.size() ; i++) {
+		for (int i = 0; i < Tree.URij.size(); i++) {
 			ArrayList<Node> URLeaves = Tree.findLeafNode(Tree.URij.get(i));
 			System.out.println(Tree.URij.get(i).nodeNum);
-			for(int j = 0 ; j < URLeaves.size() ; j++) {
+			for (int j = 0; j < URLeaves.size(); j++) {
 				System.out.println(URLeaves.get(j).nodeNum);
 			}
 			System.out.println();
@@ -58,13 +58,12 @@ public class Main {
 		Tree_Display.displayTree(feasibleTree);
 
 		// execute sensor data
-		ArrayList<Node> leaves2 = Tree.findLeafNode(feasibleTree.Root);
-		for (int i = 0; i < leaves2.size(); i++) {
-			Node now = leaves2.get(i);
-			SRNode now2 = Tree.findSRNode(feasibleTree, now.nodeNum);
-			System.out.println(now2.nodeNum);
-		} 
-		//Tree_Execute.executeTree(feasibleTree);
-
+		for (int i = 0; i < Tree.URij.size(); i++) {
+			ArrayList<Node> URLeaf = Tree.findLeafNode(Tree.URij.get(i));
+			for (int j = 0; j < URLeaf.size(); j++) {
+				SRNode nowSR = Tree.findSRNode(feasibleTree, URLeaf.get(j).nodeNum);
+				Tree_Execute.executeTree(feasibleTree, nowSR);
+			}
+		}
 	}
 }
