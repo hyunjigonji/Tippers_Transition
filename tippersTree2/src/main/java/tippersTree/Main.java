@@ -53,9 +53,11 @@ public class Main {
 		ArrayList<Node> leaves2 = Tree.findLeafNode(feasibleTree);
 		for (int i = 0; i < leaves2.size(); i++) {
 			Node now = leaves2.get(i);
-			SRNode now2 = Tree.findSRNode(feasibleTree, now.nodeNum);
-			System.out.println(now2.nodeNum);
-		} 
-		Tree_Execute.executeTree(feasibleTree);
+			if (now.Parents.get(0).Parents.get(0).type != types.typeAC) {
+				SRNode now2 = Tree.findSRNode(feasibleTree, now.nodeNum);
+				Tree_Execute.executeTree(feasibleTree, now2);
+			}
+		}
+		// Tree_Execute.executeTree(feasibleTree);
 	}
 }
