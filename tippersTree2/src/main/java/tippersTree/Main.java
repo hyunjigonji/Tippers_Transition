@@ -42,7 +42,7 @@ public class Main {
 			SRNode now2 = Tree.findSRNode(myTree, now.nodeNum);
 			Tree_Remove.check(now2);
 		}
-		Tree_Display.displayTree(myTree);
+		// Tree_Display.displayTree(myTree);
 		for(int i = 0 ; i < Tree.URij.size() ; i++) {
 			ArrayList<Node> URLeaves = Tree.findLeafNode(Tree.URij.get(i));
 			System.out.println(Tree.URij.get(i).nodeNum);
@@ -55,7 +55,7 @@ public class Main {
 		// find feasible plan
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
-		//Tree_Display.displayTree(feasibleTree);
+		Tree_Display.displayTree(feasibleTree);
 
 		// execute sensor data
 		ArrayList<Node> leaves2 = Tree.findLeafNode(feasibleTree.Root);
@@ -65,5 +65,6 @@ public class Main {
 			System.out.println(now2.nodeNum);
 		} 
 		//Tree_Execute.executeTree(feasibleTree);
+
 	}
 }
