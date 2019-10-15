@@ -19,7 +19,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 
 		Tree myTree = new Tree();
-		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy is greater than 50% of Connectivity");
+		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Temperture is greater than 50% of Occupancy");
 
 		myTree = Tree_Flattening.flattening(myUA);
 		// Tree_Display.displayTree(myTree);
@@ -42,7 +42,7 @@ public class Main {
 			SRNode now2 = Tree.findSRNode(myTree, now.nodeNum);
 			Tree_Remove.check(now2);
 		}
-		// Tree_Display.displayTree(myTree);
+		 Tree_Display.displayTree(myTree);
 		for (int i = 0; i < Tree.URij.size(); i++) {
 			ArrayList<Node> URLeaves = Tree.findLeafNode(Tree.URij.get(i));
 			System.out.println(Tree.URij.get(i).nodeNum);

@@ -3,7 +3,7 @@ package tippersTree;
 import java.util.*;
 
 public class Condition {
-	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity")); // contains condition property
+	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity", "Temperture")); // contains condition property
 	//public ArrayList<String> conjunction = new ArrayList<String>(Arrays.asList("if","when","where")); // contains conjunction like if, when, where
 	//public ArrayList<String> connect = new ArrayList<String>(Arrays.asList("and","or")); // contains connective like and, or -> AND/OR
 	public ArrayList<String> compare1 = new ArrayList<String>(Arrays.asList("is greater than", "is higher than", "is bigger than", "is better than")); // contains compare words which represents bigger left -> >
