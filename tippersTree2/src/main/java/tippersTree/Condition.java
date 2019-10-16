@@ -6,12 +6,14 @@ public class Condition {
 	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity")); // contains condition property
 	//public ArrayList<String> conjunction = new ArrayList<String>(Arrays.asList("if","when","where")); // contains conjunction like if, when, where
 	//public ArrayList<String> connect = new ArrayList<String>(Arrays.asList("and","or")); // contains connective like and, or -> AND/OR
-	public ArrayList<String> compare1 = new ArrayList<String>(Arrays.asList("is greater than", "is higher than", "is bigger than", "is better than")); // contains compare words which represents bigger left -> >
-	public ArrayList<String> compare2 = new ArrayList<String>(Arrays.asList("is smaller than", "is lower than", "is less than")); // contains compare words which represents bigger right -> <
-	public ArrayList<String> compare3 = new ArrayList<String>(Arrays.asList("is same as")); // contains compare words which represents both same -> =
+	public ArrayList<String> compare1 = new ArrayList<String>(Arrays.asList("is greater than", "is higher than", "is bigger than", "is better than", "is above", "is over")); // contains compare words which represents bigger left -> >
+	public ArrayList<String> compare2 = new ArrayList<String>(Arrays.asList("is more than"));
+	public ArrayList<String> compare3 = new ArrayList<String>(Arrays.asList("is smaller than", "is lower than", "is under", "is below")); // contains compare words which represents bigger right -> <
+	public ArrayList<String> compare4 = new ArrayList<String>(Arrays.asList("is less than"));
+	public ArrayList<String> compare5 = new ArrayList<String>(Arrays.asList("is same as", "is equal to")); // contains compare words which represents both same -> =
 	//public ArrayList<String> rate = new ArrayList<String>(Arrays.asList("% of", "percent of", "half of", "quarter of")); // contains rate words -> N%
 	
-	String test = convertingCond("Occupancy is greater than 50% of Capacity and Connectivity is lower than 10");
+	String test = convertingCond("Occupancy is more than half of Capacity and Connectivity is lower than 10");
 	
 	public String convertingCond(String Cond) {
 		//Cond = Cond.toLowerCase();
@@ -32,15 +34,27 @@ public class Condition {
 					break;
 				}
 			}
-			for(int i = 0 ; i < compare2.size() ; i++) { // check if it contains smaller or lower
+			for(int i = 0 ; i < compare2.size() ; i++) { // check if it contains greater or higher
 				if(nowCond.contains(compare2.get(i))) {
-					nowCond = nowCond.replace(compare2.get(i), "<");
+					nowCond = nowCond.replace(compare2.get(i), ">=");
 					break;
 				}
 			}
-			for(int i = 0 ; i < compare3.size() ; i++) { // check if it contains same
+			for(int i = 0 ; i < compare3.size() ; i++) { // check if it contains smaller or lower
 				if(nowCond.contains(compare3.get(i))) {
-					nowCond = nowCond.replace(compare3.get(i), "=");
+					nowCond = nowCond.replace(compare3.get(i), "<");
+					break;
+				}
+			}
+			for(int i = 0 ; i < compare4.size() ; i++) { // check if it contains greater or higher
+				if(nowCond.contains(compare4.get(i))) {
+					nowCond = nowCond.replace(compare4.get(i), "<=");
+					break;
+				}
+			}
+			for(int i = 0 ; i < compare5.size() ; i++) { // check if it contains same
+				if(nowCond.contains(compare5.get(i))) {
+					nowCond = nowCond.replace(compare5.get(i), "=");
 					break;
 				}
 			}

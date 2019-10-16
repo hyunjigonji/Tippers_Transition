@@ -31,6 +31,7 @@ public class OntologyManager {
 		String Cond = UARequest.Condition;
 		
 		Condition conditions = new Condition();
+		System.out.println(conditions.test);
 		for(int i = 0 ; i < conditions.conds.size() ; i++) {
 			String nowCon = conditions.conds.get(i);
 			if(Cond.contains(nowCon)) {
