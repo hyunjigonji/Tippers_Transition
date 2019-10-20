@@ -210,10 +210,10 @@
         <ObjectProperty IRI="#inputC2O"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputI2O"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputL2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#obsType"/>
@@ -1337,12 +1337,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">60</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">80</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1367,12 +1367,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Camera1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Camera1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1407,12 +1407,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#GPS1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#GPS1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1477,12 +1477,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#LocationImage2occuMoney"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">47</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#LocationImage2occuTime"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1605,11 +1605,11 @@
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputI2O"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputL2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -1623,10 +1623,6 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#obsTypeTemp"/>
         <ObjectProperty IRI="#obsType"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isHostedBy"/>
-        <ObjectProperty IRI="http://www.w3.org/ns/sosa/isActedOnBy"/>
     </SubObjectPropertyOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#BBcapturesOccu"/>
@@ -1705,12 +1701,12 @@
         <Class IRI="#Connectivity2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputL2C"/>
-        <Class IRI="#Location2connectivity"/>
+        <ObjectProperty IRI="#inputI2O"/>
+        <Class IRI="#LocationImage2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputL2O"/>
-        <Class IRI="#LocationImage2occupancy"/>
+        <ObjectProperty IRI="#inputL2C"/>
+        <Class IRI="#Location2connectivity"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsType"/>
@@ -1801,15 +1797,15 @@
         <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputL2C"/>
-        <Class IRI="#Location"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputL2O"/>
+        <ObjectProperty IRI="#inputI2O"/>
         <Class IRI="#Image"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputL2O"/>
+        <ObjectProperty IRI="#inputI2O"/>
+        <Class IRI="#Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>

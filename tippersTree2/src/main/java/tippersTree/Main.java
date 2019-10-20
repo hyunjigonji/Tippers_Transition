@@ -19,7 +19,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 
 		Tree myTree = new Tree();
-		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy is greater than 50% of Connectivity");
+		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Connectivity is greater than 50% of Occupancy"); 
 
 		myTree = Tree_Flattening.flattening(myUA);
 		// Tree_Display.displayTree(myTree);
@@ -42,28 +42,36 @@ public class Main {
 			SRNode now2 = Tree.findSRNode(myTree, now.nodeNum);
 			Tree_Remove.check(now2);
 		}
-		Tree_Display.displayTree(myTree);
-		for(int i = 0 ; i < Tree.URij.size() ; i++) {
+		// Tree_Display.displayTree(myTree);
+		for (int i = 0; i < Tree.URij.size(); i++) {
 			ArrayList<Node> URLeaves = Tree.findLeafNode(Tree.URij.get(i));
 			System.out.println(Tree.URij.get(i).nodeNum);
-			for(int j = 0 ; j < URLeaves.size() ; j++) {
+			for (int j = 0; j < URLeaves.size(); j++) {
 				System.out.println(URLeaves.get(j).nodeNum);
 			}
-			System.out.println();
 		}
 
 		// find feasible plan
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
-		//Tree_Display.displayTree(feasibleTree);
+		Tree_Display.displayTree(feasibleTree);
 
 		// execute sensor data
-		ArrayList<Node> leaves2 = Tree.findLeafNode(feasibleTree.Root);
-		for (int i = 0; i < leaves2.size(); i++) {
-			Node now = leaves2.get(i);
-			SRNode now2 = Tree.findSRNode(feasibleTree, now.nodeNum);
-			System.out.println(now2.nodeNum);
-		} 
-		//Tree_Execute.executeTree(feasibleTree);
+		for (int i = 0; i < Tree.URij.size(); i++) {
+			ArrayList<Node> URLeaf = Tree.findLeafNode(Tree.URij.get(i));
+			for (int j = 0; j < URLeaf.size(); j++) {
+				SRNode now = Tree.findSRNode(feasibleTree, URLeaf.get(j).nodeNum);
+				Tree_Execute.executeTree(feasibleTree, now);
+			}
+		}
+
+		// if comparison is True
+		for (int i = 0; i < Tree.UAij.size(); i++) {
+			ArrayList<Node> UALeaf = Tree.findLeafNode(Tree.UAij.get(i));
+			for (int j = 0; j < UALeaf.size(); j++) {
+				SRNode now = Tree.findSRNode(feasibleTree, UALeaf.get(j).nodeNum);
+				Tree_Execute.executeTree(feasibleTree, now);
+			}
+		}
 	}
 }

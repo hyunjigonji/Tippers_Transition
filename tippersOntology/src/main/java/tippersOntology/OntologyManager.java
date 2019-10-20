@@ -14,7 +14,7 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology1.owl";
+	public static String ontologyURL = "../ontology3.owl";
 	public static OWLReasoner reasoner;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 	public static String Captures = "captures";
@@ -111,6 +111,18 @@ public class OntologyManager {
 		return sub;
 	}
 
+	// get all Observation 
+	public static ArrayList<String> getObservation() {
+		ArrayList<String> observation = new ArrayList<String>();
+		for(OWLClassExpression obs1 : showSubclasses("Observation")) {
+			for (OWLClassExpression obs2 : showSubclasses(strToken0(obs1.toString()))) {
+				observation.add(strToken0(obs2.toString()));
+				System.out.println(strToken0(obs2.toString()));
+			}
+		}
+		return observation;
+	}
+	
 	// get object of individual that has same name with input
 	public static OWLIndividual getIdv(String str) {
 		OWLIndividual idv = null;
