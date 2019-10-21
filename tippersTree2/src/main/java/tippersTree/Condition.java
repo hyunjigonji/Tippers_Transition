@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Condition {
 	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity","Temperature")); // contains condition property
-	
 	public ArrayList<String> Property = OntologyManager.getCondObs();
 	
 	public boolean test = calculCond("((Temperture+Connectivity)/2>10 || Occupancy<2*Capacity) && Temperture>40");
