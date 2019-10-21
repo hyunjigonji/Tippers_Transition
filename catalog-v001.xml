@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1571174132705" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1571174132705" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology1.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1571174132705" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology2.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1571174132705" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1571699273422" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1571699273422" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology1.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1571699273422" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1571699273422" name="duplicate:http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12" uri="ontology3.owl"/>
     </group>
 </catalog>
