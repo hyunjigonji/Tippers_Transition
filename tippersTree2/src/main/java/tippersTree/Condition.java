@@ -6,7 +6,7 @@ public class Condition {
 	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity","Temperature")); // contains condition property
 	public ArrayList<String> Property = OntologyManager.getCondObs();
 	
-	public boolean test = calculCond("((Temperture+Connectivity)/2>10 || Occupancy<2*Capacity) && Temperture>40");
+	public boolean test = calculCond("((Temperture+Connectivity)/2>=10 || Occupancy<2*Capacity) && Temperture>40");
 	
 	public boolean calculCond(String input){ 
 		System.out.println("START : " + input);
@@ -305,7 +305,7 @@ public class Condition {
 	public String calculator3(String input) {
 		int ind = 0;
 		String result = "FALSE";
-		if(input.contains(">")) {
+		if(input.contains(">") && !input.contains("=")) {
 			ind = input.indexOf(">");
 			
 			int left = Integer.parseInt(input.substring(0,ind-1));
@@ -321,7 +321,7 @@ public class Condition {
 			
 			if(left >= right) result = "TRUE";
 		}
-		else if(input.contains("<")) {
+		else if(input.contains("<") && !input.contains("=")) {
 			ind = input.indexOf("<");
 			
 			int left = Integer.parseInt(input.substring(0,ind-1));
