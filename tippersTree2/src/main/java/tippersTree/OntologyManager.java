@@ -29,11 +29,10 @@ public class OntologyManager {
 	public static ArrayList<String> extractCond(UA UARequest) { // extract Condition from UA, M
 		ArrayList<String> temp = new ArrayList<String>();
 		String Cond = UARequest.Condition;
-		
-		Condition conditions = new Condition();
+
 //		System.out.println(conditions.test);
-		for(int i = 0 ; i < conditions.conds.size() ; i++) {
-			String nowCon = conditions.conds.get(i);
+		for(int i = 0 ; i < Condition.Property.size() ; i++) {
+			String nowCon = Condition.Property.get(i);
 			if(Cond.contains(nowCon)) {
 				temp.add(nowCon);
 			}

@@ -3,10 +3,9 @@ package tippersTree;
 import java.util.*;
 
 public class Condition {
-	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity","Temperature")); // contains condition property
 	public static ArrayList<String> Property = OntologyManager.getCondObs();
 	
-//	public boolean test = calculCond("((Temperature+Connectivity)/2>=10 || Occupancy<2*Capacity) && Temperature>40");
+	public boolean test = calculCond("Occupancy>0.5*Connectivity");
 	
 	public static boolean calculCond(String input){ 
 		System.out.println("START : " + input);
@@ -29,8 +28,8 @@ public class Condition {
 			String nowExp = processing(now); // 띄어쓰기나 괄호 있으면 없애기 
 			//System.out.println("STEP 2 : " + nowExp);
 			
-			int nowResult = calculator(nowExp); // 사칙연산 계산하기 
-			input = input.replace(nowExp, Integer.toString(nowResult));
+			float nowResult = calculator(nowExp); // 사칙연산 계산하기 
+			input = input.replace(nowExp, Float.toString(nowResult));
 			//System.out.println(nowExp);
 		}
 		System.out.println("STEP 2 : " + input);
@@ -83,7 +82,7 @@ public class Condition {
 		return input;
 	}
 	
-	public static ArrayList<String> makePostfix(String input){
+	public static ArrayList<String> makePostfix(String input){ // makes calculating expression to postfix expression
 		Stack<Character> stack = new Stack<Character>();
 		ArrayList<String >newExp = new ArrayList<String>();
 		
@@ -166,7 +165,7 @@ public class Condition {
 		return newExp;
 	}
 	
-	public static int calculator(String input) { // 괄호, 사칙연산 처리하는 계산기 + 만약 사칙연산이 없으면 값을 그대로 리
+	public static float calculator(String input) { // 괄호, 사칙연산 처리하는 계산기 + 만약 사칙연산이 없으면 값을 그대로 리
 		// 후위표기법으로 변환 
 		ArrayList<String> postfix = makePostfix(input);
 		int i = 0;
@@ -176,10 +175,10 @@ public class Condition {
 			String oper = postfix.get(i+2);
 				
 			if(oper.equals("+") || oper.equals("-") || oper.equals("*") || oper.equals("/")) {
-				int leftNum = Integer.parseInt(left);
-				int rightNum = Integer.parseInt(right);
+				float leftNum = Float.parseFloat(left);
+				float rightNum = Float.parseFloat(right);
 					
-				int resultNum = 0;
+				float resultNum = 0;
 				if(oper.equals("+")) resultNum = leftNum + rightNum;
 				else if(oper.equals("-")) resultNum = leftNum - rightNum;
 				else if(oper.equals("*")) resultNum = leftNum * rightNum;
@@ -189,7 +188,7 @@ public class Condition {
 				postfix.remove(i);
 				postfix.remove(i);
 	
-				postfix.add(i, Integer.toString(resultNum));
+				postfix.add(i, Float.toString(resultNum));
 				
 				i = 0;
 			}
@@ -197,12 +196,12 @@ public class Condition {
 				i++;
 			}
 		}
-		int result = Integer.parseInt(postfix.get(0));
+		float result = Float.parseFloat(postfix.get(0));
 		// System.out.println("result === " + result);
 		return result;
 	}
 	
-	public static ArrayList<String> makePostfix2(String input) {
+	public static ArrayList<String> makePostfix2(String input) { // makes boolean expression to postfix expression
 		Stack<Character> stack = new Stack<Character>();
 		ArrayList<String> newExp = new ArrayList<String>();
 		
@@ -216,7 +215,7 @@ public class Condition {
 			}
 			
 			else {
-				if(!bool.isEmpty()) { // 숫자 어레이에 넣기 
+				if(!bool.isEmpty()) { // 알파벳 어레이에 넣기 
 					newExp.add(bool);
 					bool = "";
 				}
@@ -308,32 +307,32 @@ public class Condition {
 		if(input.contains(">") && !input.contains("=")) {
 			ind = input.indexOf(">");
 			
-			int left = Integer.parseInt(input.substring(0,ind-1));
-			int right = Integer.parseInt(input.substring(ind+1, input.length()-1));
+			float left = Float.parseFloat(input.substring(0,ind-1));
+			float right = Float.parseFloat(input.substring(ind+1, input.length()-1));
 			
 			if(left > right) result = "TRUE";
 		}
 		else if(input.contains(">=")) {
 			ind = input.indexOf(">=");
 			
-			int left = Integer.parseInt(input.substring(0,ind-1));
-			int right = Integer.parseInt(input.substring(ind+2, input.length()-1));
+			float left = Float.parseFloat(input.substring(0,ind-1));
+			float right = Float.parseFloat(input.substring(ind+2, input.length()-1));
 			
 			if(left >= right) result = "TRUE";
 		}
 		else if(input.contains("<") && !input.contains("=")) {
 			ind = input.indexOf("<");
 			
-			int left = Integer.parseInt(input.substring(0,ind-1));
-			int right = Integer.parseInt(input.substring(ind+1, input.length()-1));
+			float left = Float.parseFloat(input.substring(0,ind-1));
+			float right = Float.parseFloat(input.substring(ind+1, input.length()-1));
 			
 			if(left < right) result = "TRUE";
 		}
 		else if(input.contains("<=")) {
 			ind = input.indexOf("<=");
 			
-			int left = Integer.parseInt(input.substring(0,ind-1));
-			int right = Integer.parseInt(input.substring(ind+2, input.length()-1));
+			float left = Float.parseFloat(input.substring(0,ind-1));
+			float right = Float.parseFloat(input.substring(ind+2, input.length()-1));
 			
 			if(left > right) result = "TRUE";
 		}
