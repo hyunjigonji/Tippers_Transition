@@ -21,6 +21,7 @@ public class Main {
 		Tree myTree = new Tree();
 		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy>0.5*Connectivity");
 
+
 		myTree = Tree_Flattening.flattening(myUA);
 		// Tree_Display.displayTree(myTree);
 		for (int i = 0; i < Tree.URij.size(); i++) {
