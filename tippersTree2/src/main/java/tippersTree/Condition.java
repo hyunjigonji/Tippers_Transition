@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Condition {
 	public ArrayList<String> conds = new ArrayList<String>(Arrays.asList("Occupancy","Capacity","Location","Connectivity","Temperature")); // contains condition property
-	public ArrayList<String> Property = OntologyManager.getCondObs();
+	public static ArrayList<String> Property = OntologyManager.getCondObs();
 	
-	public boolean test = calculCond("((Temperture+Connectivity)/2>=10 || Occupancy<2*Capacity) && Temperture>40");
+//	public boolean test = calculCond("((Temperature+Connectivity)/2>=10 || Occupancy<2*Capacity) && Temperature>40");
 	
-	public boolean calculCond(String input){ 
+	public static boolean calculCond(String input){ 
 		System.out.println("START : " + input);
 		// 프로퍼티 모두 숫자로 변환 
 		for(int i = 0 ; i < Property.size() ; i++) { 
@@ -54,7 +54,7 @@ public class Condition {
 		return result;
 	}
 	
-	public String processing(String input) {
+	public static String processing(String input) {
 		if(input.contains(" ")) input = input.replaceAll(" ", "");
 		
 		int brackets = 0;
@@ -83,7 +83,7 @@ public class Condition {
 		return input;
 	}
 	
-	public ArrayList<String> makePostfix(String input){
+	public static ArrayList<String> makePostfix(String input){
 		Stack<Character> stack = new Stack<Character>();
 		ArrayList<String >newExp = new ArrayList<String>();
 		
@@ -166,7 +166,7 @@ public class Condition {
 		return newExp;
 	}
 	
-	public int calculator(String input) { // 괄호, 사칙연산 처리하는 계산기 + 만약 사칙연산이 없으면 값을 그대로 리
+	public static int calculator(String input) { // 괄호, 사칙연산 처리하는 계산기 + 만약 사칙연산이 없으면 값을 그대로 리
 		// 후위표기법으로 변환 
 		ArrayList<String> postfix = makePostfix(input);
 		int i = 0;
@@ -202,7 +202,7 @@ public class Condition {
 		return result;
 	}
 	
-	public ArrayList<String> makePostfix2(String input) {
+	public static ArrayList<String> makePostfix2(String input) {
 		Stack<Character> stack = new Stack<Character>();
 		ArrayList<String> newExp = new ArrayList<String>();
 		
@@ -263,7 +263,7 @@ public class Condition {
 		return newExp;
 	}
 	
-	public Boolean calculator2(String input) { // 부등호 계산 
+	public static Boolean calculator2(String input) { // 부등호 계산 
 		ArrayList<String> postfix = makePostfix2(input);
 		int i = 0;
 		while(postfix.size() > 2) {
@@ -302,7 +302,7 @@ public class Condition {
 		return resultBool;
 	}
 	
-	public String calculator3(String input) {
+	public static String calculator3(String input) {
 		int ind = 0;
 		String result = "FALSE";
 		if(input.contains(">") && !input.contains("=")) {
@@ -341,12 +341,12 @@ public class Condition {
 		return result;
 	}
 	
-	public int extractReal(String input) {
+	public static int extractReal(String input) {
 		if(input.equals("Location")) return 15;
 		else if(input.equals("Occupancy")) return 20;
 		else if(input.equals("Capacity")) return 25;
 		else if(input.equals("Connectivity")) return 30;
-		else if(input.equals("Temperture")) return 35;
+		else if(input.equals("Temperature")) return 35;
 		else if(input.equals("Image")) return 40;
 		else return 0;
 	}

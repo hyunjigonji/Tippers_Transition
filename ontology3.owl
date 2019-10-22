@@ -120,7 +120,7 @@
         <Class IRI="#TV"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Temperture"/>
+        <Class IRI="#Temperature"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Thermometer"/>
@@ -650,7 +650,7 @@
         <Class IRI="#Actuator"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Temperture"/>
+        <Class IRI="#Temperature"/>
         <Class IRI="#RawObs"/>
     </SubClassOf>
     <SubClassOf>
@@ -966,7 +966,7 @@
         <NamedIndividual IRI="#office2082"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Temperture"/>
+        <Class IRI="#Temperature"/>
         <NamedIndividual IRI="#tempObs"/>
     </ClassAssertion>
     <ObjectPropertyAssertion>
@@ -1834,7 +1834,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#ThercapturesTemp"/>
-        <Class IRI="#Temperture"/>
+        <Class IRI="#Temperature"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#actType"/>
@@ -1886,7 +1886,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#inputIT2L"/>
-        <Class IRI="#Temperture"/>
+        <Class IRI="#Temperature"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#inputL2C"/>
@@ -1914,7 +1914,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#obsTypeTemp"/>
-        <Class IRI="#Temperture"/>
+        <Class IRI="#Temperature"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="http://www.w3.org/ns/sosa/isObservedBy"/>

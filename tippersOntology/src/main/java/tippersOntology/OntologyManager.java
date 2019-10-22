@@ -117,7 +117,7 @@ public class OntologyManager {
 		for(OWLClassExpression obs1 : showSubclasses("Observation")) {
 			for (OWLClassExpression obs2 : showSubclasses(strToken0(obs1.toString()))) {
 				observation.add(strToken0(obs2.toString()));
-				System.out.println(strToken0(obs2.toString()));
+//				System.out.println(strToken0(obs2.toString()));
 			}
 		}
 		return observation;
