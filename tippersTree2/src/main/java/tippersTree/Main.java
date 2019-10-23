@@ -19,7 +19,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 
 		Tree myTree = new Tree();
-		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy>0.5*Connectivity");
+		UA myUA = new UA("meetingroom", "Turn on AC,Turn on Light", "Occupancy>0.5*Temperature");
 
 
 		myTree = Tree_Flattening.flattening(myUA);
@@ -59,22 +59,14 @@ public class Main {
 
 		// execute sensor data
 		for (int i = 0; i < Tree.URij.size(); i++) {
-			ArrayList<Node> URLeaf = Tree.findLeafNode(Tree.URij.get(i));
-			for (int j = 0; j < URLeaf.size(); j++) {
-				SRNode now = Tree.findSRNode(feasibleTree, URLeaf.get(j).nodeNum);
-				Tree_Execute.executeTree(feasibleTree, now);
-			}
+			Tree_Execute.executeTree(feasibleTree, Tree.URij.get(i));
 		}
 
 		// if comparison is True
 		if (Condition.calculCond(myUA.Condition)) {
 			// create statement of actuator
 			for (int i = 0; i < Tree.UAij.size(); i++) {
-				ArrayList<Node> UALeaf = Tree.findLeafNode(Tree.UAij.get(i));
-				for (int j = 0; j < UALeaf.size(); j++) {
-					SRNode now = Tree.findSRNode(feasibleTree, UALeaf.get(j).nodeNum);
-					Tree_Execute.executeTree(feasibleTree, now);
-				}
+				Tree_Execute.executeTree(feasibleTree, Tree.UAij.get(i));
 			}
 		}
 	}

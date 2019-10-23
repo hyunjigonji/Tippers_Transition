@@ -7,6 +7,7 @@ public class Statement {
 	public String Observation;
 	public String Entity;
 	public ArrayList<Statement> Former = new ArrayList<Statement>(); 
+	public float Value;
 	
 	public Statement() {}
 	
