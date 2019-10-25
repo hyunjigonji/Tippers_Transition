@@ -5,17 +5,17 @@ import java.util.*;
 public class Condition {
 	public static ArrayList<String> Property = OntologyManager.getCondObs();
 	
-	public boolean test = calculCond("Occupancy>0.5*Connectivity");
+	public static boolean test = calculCond("Occupancy<0.7*Capacity && (Temperture<30 || (25.5+Connectivity)/2>Temperature)");
 	
 	public static boolean calculCond(String input){ 
-		System.out.println("START : " + input);
+		System.out.println("Calculating Condition : " + input);
 		// 프로퍼티 모두 숫자로 변환 
 		for(int i = 0 ; i < Property.size() ; i++) { 
-			//System.out.println("now prop = " + Property.get(i));
+			System.out.println("now prop = " + Property.get(i));
 			if(input.contains(Property.get(i))) {
 				String nowProp = Property.get(i);
-				int nowNum = extractReal(nowProp);
-				input = input.replaceAll(nowProp, Integer.toString(nowNum));
+				float nowNum = extractReal(nowProp);
+				input = input.replaceAll(nowProp, Float.toString(nowNum));
 			}
 		}
 		System.out.println("STEP 1 : " + input);
@@ -26,7 +26,7 @@ public class Condition {
 			String now = token.nextToken();
 			//System.out.println("nownownowno " + now);
 			String nowExp = processing(now); // 띄어쓰기나 괄호 있으면 없애기 
-			//System.out.println("STEP 2 : " + nowExp);
+			System.out.println("STEP 2 : " + nowExp);
 			
 			float nowResult = calculator(nowExp); // 사칙연산 계산하기 
 			input = input.replace(nowExp, Float.toString(nowResult));
@@ -49,6 +49,8 @@ public class Condition {
 		System.out.println("STEP 3 : " + input);
 		
 		boolean result = calculator2(input);
+		System.out.println("result : " + result);
+		System.out.println();
 		
 		return result;
 	}
@@ -165,9 +167,8 @@ public class Condition {
 		return newExp;
 	}
 	
-	public static float calculator(String input) { // 괄호, 사칙연산 처리하는 계산기 + 만약 사칙연산이 없으면 값을 그대로 리
-		// 후위표기법으로 변환 
-		ArrayList<String> postfix = makePostfix(input);
+	public static float calculator(String input) { // calculates expression which contains only numbers and operators
+		ArrayList<String> postfix = makePostfix(input); // get array in post order
 		int i = 0;
 		while(postfix.size() > 2) {
 			String left = postfix.get(i);
@@ -188,11 +189,11 @@ public class Condition {
 				postfix.remove(i);
 				postfix.remove(i);
 	
-				postfix.add(i, Float.toString(resultNum));
+				postfix.add(i, Float.toString(resultNum)); // put result into array and remove just calculated elements
 				
 				i = 0;
 			}
-			else {
+			else { // if third one is not an operator, continue
 				i++;
 			}
 		}
@@ -202,35 +203,35 @@ public class Condition {
 	}
 	
 	public static ArrayList<String> makePostfix2(String input) { // makes boolean expression to postfix expression
-		Stack<Character> stack = new Stack<Character>();
-		ArrayList<String> newExp = new ArrayList<String>();
+		Stack<Character> stack = new Stack<Character>(); // contains operator
+		ArrayList<String> newExp = new ArrayList<String>(); // contains all elements in post order
 		
 		String bool = "";
 		for(int i = 0 ; i < input.length() ; i++) {
 			char nowChar = input.charAt(i);
-			if(nowChar == ' ') continue;
+			if(nowChar == ' ') continue; // ignore blank
 			
 			else if(Character.isAlphabetic(nowChar)) {
-				bool += nowChar;
+				bool += nowChar; // collects alphabet
 			}
 			
 			else {
-				if(!bool.isEmpty()) { // 알파벳 어레이에 넣기 
+				if(!bool.isEmpty()) { // put alphabets into array
 					newExp.add(bool);
 					bool = "";
 				}
 				
-				if(nowChar == '(') { // 그냥 스택에 푸쉬 
+				if(nowChar == '(') { // just push to stack
 					stack.push(nowChar);
 				}
-				else if(nowChar == ')') { // (를 만날 때까지 출력 
+				else if(nowChar == ')') { // print until meeting (
 					char stackChar = stack.pop();
 					while(stackChar != '(' && !stack.isEmpty()) {
 						newExp.add(Character.toString(stackChar));
 						stackChar = stack.pop();
 					}
 				}
-				else if(nowChar == '&' || nowChar == '|') {
+				else if(nowChar == '&' || nowChar == '|') { 
 					if(stack.isEmpty()) {
 						stack.push(nowChar);
 					}
@@ -252,7 +253,7 @@ public class Condition {
 				}
 			}
 		}
-		if(!bool.isEmpty()) { // 숫자 어레이에 넣기 
+		if(!bool.isEmpty()) { // put boolean values into array
 			newExp.add(bool);
 			bool = "";
 		}
@@ -262,8 +263,8 @@ public class Condition {
 		return newExp;
 	}
 	
-	public static Boolean calculator2(String input) { // 부등호 계산 
-		ArrayList<String> postfix = makePostfix2(input);
+	public static Boolean calculator2(String input) { // calculate expression which contains boolean values
+		ArrayList<String> postfix = makePostfix2(input); // get array in post order 
 		int i = 0;
 		while(postfix.size() > 2) {
 			String left = postfix.get(i);
@@ -301,7 +302,7 @@ public class Condition {
 		return resultBool;
 	}
 	
-	public static String calculator3(String input) {
+	public static String calculator3(String input) { // calculates expression which contains only > or <
 		int ind = 0;
 		String result = "FALSE";
 		if(input.contains(">") && !input.contains("=")) {
@@ -334,19 +335,20 @@ public class Condition {
 			float left = Float.parseFloat(input.substring(0,ind-1));
 			float right = Float.parseFloat(input.substring(ind+2, input.length()-1));
 			
-			if(left > right) result = "TRUE";
+			if(left <= right) result = "TRUE";
 		}
 		
 		return result;
 	}
 	
-	public static int extractReal(String input) {
-		if(input.equals("Location")) return 15;
-		else if(input.equals("Occupancy")) return 20;
-		else if(input.equals("Capacity")) return 25;
-		else if(input.equals("Connectivity")) return 30;
-		else if(input.equals("Temperature")) return 35;
-		else if(input.equals("Image")) return 40;
+	public static float extractReal(String input) { // temporarily get sensor value
+		if(input.equals("Location")) return (float)15.6;
+		else if(input.equals("Occupancy")) return (float)20.4;
+		else if(input.equals("Capacity")) return (float)0.8;
+		else if(input.equals("Connectivity")) return (float)30.9;
+		else if(input.equals("Temperature")) return (float)35;
+		else if(input.equals("Image")) return (float)40.5;
+		
 		else return 0;
 	}
 	

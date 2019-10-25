@@ -65,9 +65,6 @@
 
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.owlapi/jfact -->
 
-
-
-
 		<dependency>
 
 			<groupId>net.sourceforge.owlapi</groupId>
@@ -77,5 +74,16 @@
 			<version>4.0.4</version>
 
 		</dependency>
+		
+		<dependency>   
+
+  			<groupId>mysql</groupId>   
+
+    		<artifactId>mysql-connector-java</artifactId>
+
+    		<version>5.1.45</version>
+
+    	</dependency>
+
 	</dependencies>
 </project>

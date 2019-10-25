@@ -11,14 +11,15 @@ public class Tree_Execute extends Tree {
 		myTree = feasibleTree;
 
 		if (nowSR.Children.isEmpty()) {
-			action = "PREPARE";
+			action = "[ PREPARE ]";
 			Statement state1 = new Statement(nowSR.values.Sensor, nowSR.values.Observation, nowSR.values.Entity);
-
-			System.out.println(nowSR.nodeNum + "	:	" + state1.Entity);
-			System.out.println(nowSR.nodeNum + "	:	" + state1.Sensor);
-			System.out.println(nowSR.nodeNum + "	:	" + state1.Observation);
-			System.out.println(nowSR.nodeNum + "	:	" + state1.Former);
 			System.out.println(action + " <" + state1 + ">");
+
+			System.out.println(nowSR.nodeNum + " : " + state1.Entity);
+			System.out.println(nowSR.nodeNum + " : " + state1.Sensor);
+			System.out.println(nowSR.nodeNum + " : " + state1.Observation);
+			System.out.println(nowSR.nodeNum + " : " + state1.Former);
+			System.out.println();
 
 			checkDup.put(nowSR.nodeNum, state1);
 			createStatement(nowSR, state1);
@@ -31,7 +32,7 @@ public class Tree_Execute extends Tree {
 		Node parent = nowSR.Parents.get(0).Parents.get(0);
 
 		if (parent.type == types.typeUR || parent.type == types.typeUA) {
-			action = "CALL";
+			action = "[ CALL ]";
 			System.out.println(action + " <" + state1 + ">");
 			return;
 		} else {
@@ -49,18 +50,20 @@ public class Tree_Execute extends Tree {
 			state2.Former.add(state1);
 
 			checkDup.put(nowSR2.nodeNum, state2);
+			System.out.println(action + " <" + state2 + ">");
 
-			System.out.println(nowSR2.nodeNum + "	:	" + state2.Entity);
-			System.out.println(nowSR2.nodeNum + "	:	" + state2.Sensor);
-			System.out.println(nowSR2.nodeNum + "	:	" + state2.Observation);
-			System.out.println(nowSR2.nodeNum + "	:	" + state2.Former);
+			System.out.println(nowSR2.nodeNum + " :	" + state2.Entity);
+			System.out.println(nowSR2.nodeNum + " :	" + state2.Sensor);
+			System.out.println(nowSR2.nodeNum + " :	" + state2.Observation);
+			System.out.println(nowSR2.nodeNum + " :	" + state2.Former);
+			System.out.println();
 			for (int i = 0; i < state2.Former.size(); i++) {
 				System.out.println("ForMer");
 				System.out.println(state2.Former.get(i).Sensor);
 				System.out.println(state2.Former.get(i).Entity);
 				System.out.println(state2.Former.get(i).Observation);
+				System.out.println();
 			}
-			System.out.println(action + " <" + state2 + ">");
 
 			createStatement(nowSR2, state2);
 		}
