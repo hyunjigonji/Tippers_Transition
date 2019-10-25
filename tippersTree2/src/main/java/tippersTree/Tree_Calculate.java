@@ -15,13 +15,13 @@ public class Tree_Calculate extends Tree {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		for(int i = 0 ; i < URij.size() ; i++) {
 			result = calcul(myTree, URij.get(i));
-			System.out.println("UR" + URij.get(i).nodeNum + "cost " + result.get(0));
+			//System.out.println("UR" + URij.get(i).nodeNum + "cost " + result.get(0));
 			result.remove(0);
 			Selected.addAll(result);
 		}
 		for(int i = 0 ; i < UAij.size() ; i++) {
 			result = calcul(myTree, UAij.get(i));
-			System.out.println("UA" + UAij.get(i).nodeNum + "cost " + result.get(0));
+			//System.out.println("UA" + UAij.get(i).nodeNum + "cost " + result.get(0));
 			result.remove(0);
 			Selected.addAll(result);
 		}
