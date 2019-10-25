@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Tree_Remove extends Tree{
 	// check feasibility of each node
 	public static void check(SRNode nowSRNode) {
-		
 		String nowS = nowSRNode.values.Sensor;
 		String nowO = nowSRNode.values.Observation;
 		String nowE = nowSRNode.values.Entity;
@@ -34,7 +33,7 @@ public class Tree_Remove extends Tree{
 			}
 		}
 		if(!connected) {
-			System.out.println("remove " + nowS + " " + nowE);
+			//System.out.println("remove " + nowS + " " + nowE);
 			remove(nowSRNode);
 		}
 	}

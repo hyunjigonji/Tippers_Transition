@@ -64,6 +64,7 @@ public class Tree_Execute extends Tree {
 			state2.Former.add(state1);
 
 			checkDup.put(nowSR2.nodeNum, state2);
+			System.out.println(action + " <" + state2 + ">");
 
 			System.out.println(action + nowSR2.nodeNum + " <" + state2.Entity + ", " + state2.Observation + ", "
 					+ state2.Sensor + ">");

@@ -92,7 +92,7 @@ public class OntologyManager {
 	public static boolean isVS(String Sensor) {
 		/*if(Sensor.contains("Wifi") || Sensor.equals("GPS") || Sensor.equals("Camera") || Sensor.equals("BB")) return false;
 		return true;*/
-		System.out.println(tippersOntology.OntologyManager.isVS(Sensor));
+		//System.out.println(tippersOntology.OntologyManager.isVS(Sensor));
 		return tippersOntology.OntologyManager.isVS(Sensor);
 	}
 	
