@@ -1,4 +1,4 @@
-package tippersWrapper.tippersWrapper;
+package tippersWrapper.virtualSensors;
 
 /**
  * Hello world!

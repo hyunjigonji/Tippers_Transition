@@ -1,4 +1,4 @@
-package tippersWrapper.tippersWrapper;
+package tippersWrapper.virtualSensors;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
