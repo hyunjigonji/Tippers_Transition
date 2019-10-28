@@ -9,12 +9,16 @@ import org.semanticweb.owlapi.reasoner.*;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import uk.ac.manchester.cs.jfact.JFactFactory;
-
+/*
+ * ontology1.owl is original
+ * ontology3.owl has only one room
+ * ontology4.owl is for wrapper demo
+ */
 public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology3.owl";
+	public static String ontologyURL = "../ontology4.owl";
 	public static OWLReasoner reasoner;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 	public static String Captures = "captures";
