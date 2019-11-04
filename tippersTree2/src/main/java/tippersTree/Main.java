@@ -19,7 +19,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 
 		Tree myTree = new Tree();
-		UA myUA = new UA("meetingroom", "Turn on Light", "Occupancy>30");
+		UA myUA = new UA("meetingroom", "Turn on Light", "Occupancy>10");
 
 
 		myTree = Tree_Flattening.flattening(myUA);
@@ -43,7 +43,7 @@ public class Main {
 			SRNode now2 = Tree.findSRNode(myTree, now.nodeNum);
 			Tree_Remove.check(now2);
 		}
-		// Tree_Display.displayTree(myTree);
+		 Tree_Display.displayTree(myTree);
 		/*
 		for (int i = 0; i < Tree.URij.size(); i++) {
 			ArrayList<Node> URLeaves = Tree.findLeafNode(Tree.URij.get(i));
@@ -56,7 +56,7 @@ public class Main {
 		// find feasible plan
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
-		//Tree_Display.displayTree(feasibleTree);
+		Tree_Display.displayTree(feasibleTree);
 
 		// execute sensor data
 		for (int i = 0; i < Tree.URij.size(); i++) {

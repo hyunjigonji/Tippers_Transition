@@ -5,7 +5,7 @@ import java.util.*;
 public class Condition {
 	public static ArrayList<String> Property = OntologyManager.getCondObs();
 	
-	public static boolean test = calculCond("Temperature<40 || Occupancy*0.4<20 && Capacity/2>50 || Connectivity+Occupancy>20");
+	//public static boolean test = calculCond("Temperature<40 || Occupancy*0.4<20 && Capacity/2>50 || Connectivity+Occupancy>20");
 	
 	public static boolean calculCond(String input){ 
 		System.out.println("Calculating Condition : " + input);

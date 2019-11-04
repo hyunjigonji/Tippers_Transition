@@ -75,9 +75,6 @@
         <Class IRI="#Location2connectivity"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#LocationImage2occupancy"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Money"/>
     </Declaration>
     <Declaration>
@@ -165,9 +162,6 @@
         <Class IRI="#turnOnACProp"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#BBcapturesOccu"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#CameracapturesImg"/>
     </Declaration>
     <Declaration>
@@ -175,9 +169,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#GPScapturesLoca"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#LocImg2OccucapturesOccu"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#ThercapturesTemp"/>
@@ -243,10 +234,13 @@
         <ObjectProperty IRI="#obsTypeTemp"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#hasAddress"/>
+        <DataProperty IRI="#hasCostValue"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#hasCostValue"/>
+        <DataProperty IRI="#hasIP"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPort"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#valueType"/>
@@ -282,10 +276,16 @@
         <NamedIndividual IRI="#BB1"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#BB1IP"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#BB1Money"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BB1Time"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BB1port"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BB2"/>
@@ -304,6 +304,15 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BB3Time"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BBwrapper"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BBwrapperIP"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BBwrapperport"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Camera1"/>
@@ -336,10 +345,16 @@
         <NamedIndividual IRI="#Conn2occu"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Conn2occuIP"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Conn2occuMoney"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Conn2occuTime"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Conn2occuport"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#GPS1"/>
@@ -462,10 +477,16 @@
         <NamedIndividual IRI="#Wifi1"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Wifi1IP"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Wifi1Money"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Wifi1Time"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wifi1port"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Wifi2"/>
@@ -484,6 +505,15 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Wifi3Time"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wifiwrapper"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WifiwrapperIP"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wifiwrapperport"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#connObs"/>
@@ -577,10 +607,6 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Location2connectivity"/>
-        <Class IRI="#VirSensor"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#LocationImage2occupancy"/>
         <Class IRI="#VirSensor"/>
     </SubClassOf>
     <SubClassOf>
@@ -756,6 +782,10 @@
         <NamedIndividual IRI="#BB3Time"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#BB"/>
+        <NamedIndividual IRI="#BBwrapper"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Camera"/>
         <NamedIndividual IRI="#Camera1"/>
     </ClassAssertion>
@@ -848,10 +878,6 @@
         <NamedIndividual IRI="#Location2conn"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#LocationImage2occupancy"/>
-        <NamedIndividual IRI="#LocationImage2occu"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#TV"/>
         <NamedIndividual IRI="#TV1"/>
     </ClassAssertion>
@@ -924,6 +950,10 @@
         <NamedIndividual IRI="#Wifi3Time"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Wifi"/>
+        <NamedIndividual IRI="#Wifiwrapper"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Connectivity"/>
         <NamedIndividual IRI="#connObs"/>
     </ClassAssertion>
@@ -986,6 +1016,16 @@
         <NamedIndividual IRI="#AC3Time"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#BB1"/>
+        <NamedIndividual IRI="#BB1IP"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#BB1"/>
+        <NamedIndividual IRI="#BB1port"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasCost"/>
         <NamedIndividual IRI="#BB1"/>
         <NamedIndividual IRI="#BB1Money"/>
@@ -1016,6 +1056,16 @@
         <NamedIndividual IRI="#BB3Time"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#BBwrapper"/>
+        <NamedIndividual IRI="#BBwrapperIP"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#BBwrapper"/>
+        <NamedIndividual IRI="#BBwrapperport"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasCost"/>
         <NamedIndividual IRI="#Camera1"/>
         <NamedIndividual IRI="#Camera1Money"/>
@@ -1044,6 +1094,16 @@
         <ObjectProperty IRI="#hasCost"/>
         <NamedIndividual IRI="#Camera3"/>
         <NamedIndividual IRI="#Camera3Time"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Conn2occu"/>
+        <NamedIndividual IRI="#Conn2occuIP"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Conn2occu"/>
+        <NamedIndividual IRI="#Conn2occuport"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasCost"/>
@@ -1186,6 +1246,16 @@
         <NamedIndividual IRI="#Ther2Time"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Wifi1"/>
+        <NamedIndividual IRI="#Wifi1IP"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Wifi1"/>
+        <NamedIndividual IRI="#Wifi1port"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasCost"/>
         <NamedIndividual IRI="#Wifi1"/>
         <NamedIndividual IRI="#Wifi1Money"/>
@@ -1214,6 +1284,16 @@
         <ObjectProperty IRI="#hasCost"/>
         <NamedIndividual IRI="#Wifi3"/>
         <NamedIndividual IRI="#Wifi3Time"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Wifiwrapper"/>
+        <NamedIndividual IRI="#WifiwrapperIP"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAddress"/>
+        <NamedIndividual IRI="#Wifiwrapper"/>
+        <NamedIndividual IRI="#Wifiwrapperport"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasActuator"/>
@@ -1361,6 +1441,11 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">62</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#BB1IP"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.1.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Money"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
@@ -1369,6 +1454,11 @@
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Time"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPort"/>
+        <NamedIndividual IRI="#BB1port"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1389,6 +1479,16 @@
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB3Time"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#BBwrapperIP"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.2.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPort"/>
+        <NamedIndividual IRI="#BBwrapperport"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1421,6 +1521,11 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#Conn2occuIP"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.1.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Conn2occuMoney"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
@@ -1429,6 +1534,11 @@
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Conn2occuTime"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">40</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPort"/>
+        <NamedIndividual IRI="#Conn2occuport"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1561,14 +1671,29 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#Wifi1IP"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.2.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Wifi1Money"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#Wifi1Money"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.1.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Wifi1Time"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">60</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPort"/>
+        <NamedIndividual IRI="#Wifi1port"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1590,10 +1715,16 @@
         <NamedIndividual IRI="#Wifi3Time"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">30</Literal>
     </DataPropertyAssertion>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#BBcapturesOccu"/>
-        <ObjectProperty IRI="#captures"/>
-    </SubObjectPropertyOf>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#WifiwrapperIP"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.2.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIP"/>
+        <NamedIndividual IRI="#Wifiwrapperport"/>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#CameracapturesImg"/>
         <ObjectProperty IRI="#captures"/>
@@ -1604,10 +1735,6 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#GPScapturesLoca"/>
-        <ObjectProperty IRI="#captures"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#LocImg2OccucapturesOccu"/>
         <ObjectProperty IRI="#captures"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -1655,10 +1782,6 @@
         <ObjectProperty IRI="#obsType"/>
     </SubObjectPropertyOf>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#BBcapturesOccu"/>
-        <Class IRI="#BB"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#CameracapturesImg"/>
         <Class IRI="#Camera"/>
     </ObjectPropertyDomain>
@@ -1669,10 +1792,6 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#GPScapturesLoca"/>
         <Class IRI="#GPS"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#LocImg2OccucapturesOccu"/>
-        <Class IRI="#LocationImage2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#ThercapturesTemp"/>
@@ -1692,7 +1811,7 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesConn"/>
-        <Class IRI="#Location2connectivity"/>
+        <Class IRI="#BB"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesConn"/>
@@ -1700,15 +1819,7 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#capturesOccu"/>
-        <Class IRI="#BB"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#capturesOccu"/>
         <Class IRI="#Connectivity2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#capturesOccu"/>
-        <Class IRI="#LocationImage2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasAddress"/>
@@ -1739,10 +1850,6 @@
         <Class IRI="#Connectivity2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputI2O"/>
-        <Class IRI="#LocationImage2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location2connectivity"/>
     </ObjectPropertyDomain>
@@ -1771,10 +1878,6 @@
         <Class IRI="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#BBcapturesOccu"/>
-        <Class IRI="#Occupancy"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#CameracapturesImg"/>
         <Class IRI="#Image"/>
     </ObjectPropertyRange>
@@ -1785,10 +1888,6 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#GPScapturesLoca"/>
         <Class IRI="#Location"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#LocImg2OccucapturesOccu"/>
-        <Class IRI="#Occupancy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#ThercapturesTemp"/>
@@ -1879,24 +1978,24 @@
         <Class IRI="http://www.w3.org/ns/ssn/Property"/>
     </ObjectPropertyRange>
     <DataPropertyDomain>
-        <DataProperty IRI="#hasAddress"/>
-        <Class IRI="#Address"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="#hasCostValue"/>
         <Class IRI="#Cost"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasIP"/>
+        <Class IRI="#IP"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#valueType"/>
         <Class IRI="#StaticProperty"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="#hasAddress"/>
-        <Datatype abbreviatedIRI="rdfs:Literal"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="#hasCostValue"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasIP"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#valueType"/>

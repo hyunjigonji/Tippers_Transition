@@ -14,10 +14,10 @@ public class index {
 																									// of subclasses
 																									// with super
 																									// classes
-		System.out.println(OntologyManager.getObservation());
+		System.out.println("tsttt"+OntologyManager.getObservation());
 		
-		System.out.println("test		"+OntologyManager.getDomain("ThercapturesTemp"));
-		System.out.println("test		"+OntologyManager.getRange("ThercapturesTemp"));
+//		System.out.println("test		"+OntologyManager.getDomain("ThercapturesTemp"));
+//		System.out.println("test		"+OntologyManager.getRange("ThercapturesTemp"));
 		
 		// 이거는 대소문자 구분 필요, 혼자 사용할 거 아니고 다른 메소드에서 불러서 쓸거라서 대소문자 구분 안해도 된다고 생각
 		System.out.println(OntologyManager.getIndividuals("office"));
@@ -92,10 +92,15 @@ public class index {
 
 		System.out.println(OntologyManager.getRange("inputC2O"));
 		System.out.println(OntologyManager.getRange("inputL2C"));
-		System.out.println(OntologyManager.getRange("inputLI2O"));
+//		System.out.println(OntologyManager.getRange("inputLI2O"));
 
 		System.out.println(OntologyManager.getDomain("inputC2O"));
 		System.out.println(OntologyManager.getDomain("inputL2C"));
-		System.out.println(OntologyManager.getDomain("inputLI2O"));
+//		System.out.println(OntologyManager.getDomain("inputLI2O"));
+		
+		System.out.println(OntologyManager.getAddr("Wifi1"));
+		System.out.println(OntologyManager.getAddr("BB1"));
+		System.out.println(OntologyManager.getAddr("Connectivity2occupancy"));
+		System.out.println(OntologyManager.getAddr("BB"));
 	}
 }

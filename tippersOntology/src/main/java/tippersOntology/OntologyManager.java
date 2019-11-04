@@ -9,6 +9,7 @@ import org.semanticweb.owlapi.reasoner.*;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import uk.ac.manchester.cs.jfact.JFactFactory;
+
 /*
  * ontology1.owl is original
  * ontology3.owl has only one room
@@ -18,7 +19,7 @@ public class OntologyManager {
 	public static OWLOntologyManager manager;
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
-	public static String ontologyURL = "../ontology4.owl";
+	public static String ontologyURL = "../ontology5.owl";
 	public static OWLReasoner reasoner;
 	public static String ONTOLOGYURL = "http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12#";
 	public static String Captures = "captures";
@@ -31,15 +32,15 @@ public class OntologyManager {
 		manager = OWLManager.createOWLOntologyManager();
 		factory = OWLManager.getOWLDataFactory();
 
-		//System.out.println(" Starting...");
+		// System.out.println(" Starting...");
 
 		try {
-			//System.out.println("Loading ontology   " + ontologyURL + "...");
+			// System.out.println("Loading ontology " + ontologyURL + "...");
 			ontology = manager.loadOntologyFromOntologyDocument(new File(ontologyURL));
 			reasoner = createOWLReasoner();
 			System.out.println("< Successfully loaded ontology " + ontologyURL + " >");
 			System.out.println();
-			
+
 		} catch (OWLOntologyCreationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,7 +84,7 @@ public class OntologyManager {
 
 	// show information of ontology
 	public static OWLOntology showOntology() throws OWLOntologyCreationException {
-		//System.out.println("Loaded ontology: " + ontology);
+		// System.out.println("Loaded ontology: " + ontology);
 		return ontology;
 	}
 
@@ -116,10 +117,10 @@ public class OntologyManager {
 		return sub;
 	}
 
-	// get all Observation 
+	// get all Observation
 	public static ArrayList<String> getObservation() {
 		ArrayList<String> observation = new ArrayList<String>();
-		for(OWLClassExpression obs1 : showSubclasses("Observation")) {
+		for (OWLClassExpression obs1 : showSubclasses("Observation")) {
 			for (OWLClassExpression obs2 : showSubclasses(strToken0(obs1.toString()))) {
 				observation.add(strToken0(obs2.toString()));
 //				System.out.println(strToken0(obs2.toString()));
@@ -127,7 +128,7 @@ public class OntologyManager {
 		}
 		return observation;
 	}
-	
+
 	// get object of individual that has same name with input
 	public static OWLIndividual getIdv(String str) {
 		OWLIndividual idv = null;
@@ -142,7 +143,7 @@ public class OntologyManager {
 	// extract entity
 	// extract individual
 	public static ArrayList<String> getIndividuals(String className) {
-		//System.out.println("\n[extractEnt: Extract Entity {" + className + "}]");
+		// System.out.println("\n[extractEnt: Extract Entity {" + className + "}]");
 		ArrayList<String> instance = new ArrayList<String>();
 		String ent0 = getOwlClass(className).toString();
 		for (OWLClass c : ontology.getClassesInSignature()) {
@@ -161,7 +162,8 @@ public class OntologyManager {
 	// return that property, else return null
 	public static OWLObjectProperty getOntoObjProperty(String name) {
 		OWLObjectProperty prop = null;
-		//System.out.println("\n[getOntoObjProperty: get object property that has same name with input]");
+		// System.out.println("\n[getOntoObjProperty: get object property that has same
+		// name with input]");
 		for (OWLObjectProperty p : ontology.getObjectPropertiesInSignature())
 			if (p.getIRI().getFragment().equalsIgnoreCase(name))
 				prop = p;
@@ -171,7 +173,8 @@ public class OntologyManager {
 	// if there is data property
 	// return that property, else return null
 	public static OWLDataProperty getOntoDataProperty(String name) {
-		//System.out.println("\n[getOntoDataProperty: get data property that has same name with input]");
+		// System.out.println("\n[getOntoDataProperty: get data property that has same
+		// name with input]");
 		OWLDataProperty prop = null;
 		for (OWLDataProperty p : ontology.getDataPropertiesInSignature())
 			if (p.getIRI().getFragment().equalsIgnoreCase(name))
@@ -199,7 +202,7 @@ public class OntologyManager {
 	// 대소문자 구분 X
 	public static ArrayList<String> getAptDevice(String cls) {
 		// TODO Auto-generated method stub
-		//System.out.println("\n[getAptDevice: get individuals of {" + cls + "} ]");
+		// System.out.println("\n[getAptDevice: get individuals of {" + cls + "} ]");
 		ArrayList<String> idv = new ArrayList<String>();
 		for (Node<OWLNamedIndividual> i : reasoner.getInstances(getOwlClass(cls), false)) {
 			idv.add(strToken0(i.toString()));
@@ -211,7 +214,7 @@ public class OntologyManager {
 	// return names of classes in hashSet
 	public static Set<String> findSensor(String obs) {
 		Set<String> sen = new HashSet<String>();
-		//System.out.println("\n[findSensor: Print Sensor by {" + obs + "}]");
+		// System.out.println("\n[findSensor: Print Sensor by {" + obs + "}]");
 		OWLObjectProperty p = getOwlObjProp("captures");
 		for (Node<OWLObjectPropertyExpression> subProp : reasoner.getSubObjectProperties(p, false)) {
 			if (!strToken0(subProp.toString()).contains("Node")) {
@@ -232,7 +235,7 @@ public class OntologyManager {
 	// input array of class name
 	public static ArrayList<String> findInput(String vs) {
 		ArrayList<String> input = new ArrayList<String>();
-		//System.out.println("\n[findInput: find VS{" + vs + "} input]");
+		// System.out.println("\n[findInput: find VS{" + vs + "} input]");
 		OWLObjectProperty p = getOwlObjProp("input");
 		for (Node<OWLObjectPropertyExpression> subProp : reasoner.getSubObjectProperties(p, false)) {
 			if (!strToken0(subProp.toString()).contains("Node")) {
@@ -250,7 +253,7 @@ public class OntologyManager {
 	// get range of property
 	public static ArrayList<String> getRange(String property) {
 		ArrayList<String> Range = new ArrayList<String>();
-		//System.out.println("\n[find Range]: " + property);
+		// System.out.println("\n[find Range]: " + property);
 		OWLObjectProperty p = getOwlObjProp(property); // find property
 		for (Node<OWLClass> r : reasoner.getObjectPropertyRanges(p, true)) { // find range
 			if (!strToken0(r.toString()).contains("Node"))
@@ -262,7 +265,7 @@ public class OntologyManager {
 	// get domain of property
 	public static ArrayList<String> getDomain(String property) {
 		ArrayList<String> Domain = new ArrayList<String>();
-		//System.out.println("\n[find Domain]: " + property);
+		// System.out.println("\n[find Domain]: " + property);
 		OWLObjectProperty p = getOwlObjProp(property); // find property
 		for (Node<OWLClass> r : reasoner.getObjectPropertyDomains(p, true)) { // find range
 			if (!strToken0(r.toString()).contains("Node"))
@@ -276,10 +279,11 @@ public class OntologyManager {
 	// A parameter(Sensor) is class name
 	public static boolean isVS(String Sensor) {
 		boolean flag = false;
-		//System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual Sensor?");
+		// System.out.println("\n[isVS: Find Sensor Type]\n" + Sensor + " is Virtual
+		// Sensor?");
 		if (reasoner.getSuperClasses(getOwlClass(Sensor), true).toString().contains("VirSensor"))
 			flag = true;
-		
+
 		return flag;
 	}
 
@@ -287,7 +291,8 @@ public class OntologyManager {
 	// both are individual names
 	public static boolean checkCoverage(String dev, String ent) {
 		boolean chk = false;
-		//System.out.println("\n[checkCoverage: check a sensor{" + dev + "} in a room{" + ent + "}]");
+		// System.out.println("\n[checkCoverage: check a sensor{" + dev + "} in a room{"
+		// + ent + "}]");
 		OWLIndividual i2 = getIdv(ent);
 		if (ontology.getObjectPropertyAssertionAxioms(i2).toString().contains("hasSensor")
 				& ontology.getObjectPropertyAssertionAxioms(i2).toString().contains(dev)) {
@@ -304,7 +309,7 @@ public class OntologyManager {
 		NodeSet<OWLNamedIndividual> idv;
 		String in = "";
 		int num = -9999;
-		//System.out.println("\n[getTimecost] " + dev);
+		// System.out.println("\n[getTimecost] " + dev);
 		if (isVS(dev)) {
 			for (OWLClass c : ontology.getClassesInSignature()) {
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
@@ -327,7 +332,7 @@ public class OntologyManager {
 		NodeSet<OWLNamedIndividual> idv;
 		String in = "";
 		int num = -9999;
-		//System.out.println("\n[getMoneycost] " + dev);
+		// System.out.println("\n[getMoneycost] " + dev);
 		if (isVS(dev)) {
 			for (OWLClass c : ontology.getClassesInSignature()) {
 				if (strToken0(c.toString()).equalsIgnoreCase(dev)) {
@@ -343,25 +348,60 @@ public class OntologyManager {
 	}
 
 	// get both time and money
-	public static String getCost(String dev, String cost) {
-		String time = "";
+	public static String getCost(String dev, String costType) {
+		String cost = "";
 		OWLIndividual i = getIdv(dev);
-			for (OWLObjectPropertyAssertionAxiom p : ontology.getObjectPropertyAssertionAxioms(i)) {
-				if (p.toString().contains("hasCost") && p.toString().contains(dev)) {
-					if (ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString()
-							.contains(cost)) {
-						time = ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString();
-						StringTokenizer tok = new StringTokenizer(time, "\"");
-						time = tok.nextToken();
-						while (tok.hasMoreElements()) {
-							time = tok.nextToken();
-							break;
-						}
-					}
+		for (OWLObjectPropertyAssertionAxiom p : ontology.getObjectPropertyAssertionAxioms(i)) {
+			if (p.toString().contains("hasCost")) {
+				if (ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString()
+						.contains(costType)) {
+					cost = strToken2(
+							ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString());
 				}
 			}
-		time.replaceAll(" ", "");
-		return time;
+		}
+		cost.replaceAll(" ", "");
+		return cost;
+	}
+
+	public static String getAddr(String dev) {
+		String ip = "";
+		String port = "";
+		OWLIndividual individual = getIdv(dev);
+		System.out.println("individual" + individual);
+
+		if (individual == null) {
+			ArrayList<String> idv = getIndividuals(dev);
+			if (isVS(dev))
+				individual = getIdv(idv.get(0));
+			else
+				for (int i = 0; i < idv.size(); i++) {
+					if (idv.get(i).contains("wrapper"))
+						individual = getIdv(idv.get(i));
+				}
+		}
+
+		for (OWLObjectPropertyAssertionAxiom p : ontology.getObjectPropertyAssertionAxioms(individual)) {
+			if (p.toString().contains("hasAddress")) {
+				if (p.toString().contains("IP"))
+					ip = strToken2(ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString());
+				else if (p.toString().contains("port"))
+					port = strToken2(
+							ontology.getDataPropertyAssertionAxioms(getIdv(strToken0(p.toString()))).toString());
+			}
+		}
+		return ip + ":" + port;
+	}
+
+	public static String strToken2(String string) {
+		String s = "";
+		StringTokenizer tok = new StringTokenizer(string, "\"");
+		s = tok.nextToken();
+		while (tok.hasMoreElements()) {
+			s = tok.nextToken();
+			break;
+		}
+		return s;
 	}
 
 	/**
