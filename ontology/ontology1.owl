@@ -225,10 +225,10 @@
         <ObjectProperty IRI="#inputC2O"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputLI2O"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#obsType"/>
@@ -1207,10 +1207,6 @@
         <NamedIndividual IRI="#meetingroom2"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#meetingroom3"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Occupancy"/>
         <NamedIndividual IRI="#occuObs"/>
     </ClassAssertion>
@@ -2019,12 +2015,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">100</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB1Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">80</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasAddress"/>
@@ -2586,11 +2582,11 @@
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputLI2O"/>
         <ObjectProperty IRI="#input"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -2694,12 +2690,12 @@
         <Class IRI="#Connectivity2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#inputI2O"/>
-        <Class IRI="#LocationImage2occupancy"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location2connectivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inputLI2O"/>
+        <Class IRI="#LocationImage2occupancy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#obsType"/>
@@ -2802,15 +2798,15 @@
         <Class IRI="#Connectivity"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputI2O"/>
-        <Class IRI="#Image"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputI2O"/>
+        <ObjectProperty IRI="#inputL2C"/>
         <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#inputL2C"/>
+        <ObjectProperty IRI="#inputLI2O"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inputLI2O"/>
         <Class IRI="#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>

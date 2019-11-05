@@ -954,6 +954,14 @@
         <NamedIndividual IRI="#meetingroom1"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#meetingroom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#meetingRoom"/>
+        <NamedIndividual IRI="#meetingroom3"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Occupancy"/>
         <NamedIndividual IRI="#occuObs"/>
     </ClassAssertion>
