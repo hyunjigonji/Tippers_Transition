@@ -1443,7 +1443,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasIP"/>
         <NamedIndividual IRI="#BB1IP"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.1.1</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">128.200.218.106</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1458,7 +1458,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasPort"/>
         <NamedIndividual IRI="#BB1port"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">5000</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1483,12 +1483,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasIP"/>
         <NamedIndividual IRI="#BBwrapperIP"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.2.1</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">127.0.0.1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasPort"/>
         <NamedIndividual IRI="#BBwrapperport"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8082</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1523,7 +1523,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasIP"/>
         <NamedIndividual IRI="#Conn2occuIP"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">192.168.1.3</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">169.234.59.49</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
@@ -1538,7 +1538,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasPort"/>
         <NamedIndividual IRI="#Conn2occuport"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8083</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>

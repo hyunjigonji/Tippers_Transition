@@ -8,7 +8,7 @@ public class Tree_Execute extends Tree {
 	public static Statement request = new Statement();
 	public static String action = "PREPARE";
 	public static HashMap<Integer, Statement> checkDup = new HashMap<Integer, Statement>();
-	public static HashMap<String, String> real = new HashMap<String, String>();
+	public static HashMap<String, String> response = new HashMap<String, String>();
 
 	public static void executeTree(Tree feasibleTree, Node nowNode) {
 		myTree = feasibleTree;
@@ -22,7 +22,8 @@ public class Tree_Execute extends Tree {
 						OntologyManager.getAddr(now.values.Sensor));
 
 				System.out.println(action + now.nodeNum + " <" + state1.Entity + ", " + state1.Observation + ", "
-						+ state1.Sensor + ">");
+						+ state1.Sensor + "(" + OntologyManager.getAddr(state1.Sensor) + ")>");
+				System.out.println();
 
 				checkDup.put(now.nodeNum, state1);
 
@@ -31,13 +32,15 @@ public class Tree_Execute extends Tree {
 
 		}
 		if (request != null) {
-			System.out
-					.println(action + " <" + request.Entity + ", " + request.Observation + ", " + request.Sensor + ">"); // request
-																															// to
-																															// wrapper
-			
-			Call.callVS(request);
-//			System.out.println("hashMap "+real);
+			System.out.println(action + " <" + request.Entity + ", " + request.Observation + ", " + request.Sensor + "("
+					+ OntologyManager.getAddr(request.Sensor) + ")>"); 	// request
+																		// to
+																		// wrapper
+			System.out.println();
+
+			// System.out.println("response:	"+Call.callVS(request));
+			response.put(request.Observation, Call.callVS(request));
+			System.out.println("hashMap "+response);
 		}
 		return;
 	}
@@ -66,10 +69,10 @@ public class Tree_Execute extends Tree {
 			state2.Former.add(state1);
 
 			checkDup.put(nowSR2.nodeNum, state2);
-			System.out.println(action + " <" + state2 + ">");
 
 			System.out.println(action + nowSR2.nodeNum + " <" + state2.Entity + ", " + state2.Observation + ", "
-					+ state2.Sensor + ">");
+					+ state2.Sensor + "(" + OntologyManager.getAddr(state2.Sensor) + ")>");
+			System.out.println();
 
 			createStatement(nowSR2, state2);
 		}

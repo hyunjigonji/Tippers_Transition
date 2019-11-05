@@ -10,36 +10,40 @@ import org.restlet.resource.ResourceException;
 
 public class Call {
 	public static String callVS(Statement request) {
-		String response = "";	
+		String response = "";
 		String formerJson = getJson(request.Former);
 		StringRepresentation requestMsg = new StringRepresentation(formerJson);
-		
-		String addr = "http://"+request.Address+"/"+request.Observation;
-		
+
+		String addr = "http://" + request.Address + "/" + request.Observation;
+
+		System.out.println("< Sending request to  " + addr + " >");
+		System.out.println(formerJson);
+		System.out.println();
+
 		ClientResource client = new ClientResource(addr);
-		
+
 		try {
-			response = client.post(requestMsg).getText();	// {count = ?}
-			
+			response = client.post(requestMsg).getText(); // {count = ?}
+
 			JsonParser jp = new JsonParser();
 			response = jp.parse(response).getAsJsonObject().get("count").getAsString();
-			
+
 		} catch (ResourceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("Failed");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		// return representation
-		
-		return response;	
+			System.out.println("Failed");
+		}
+
+		return response;
 	}
-	
+
 	private static String getJson(ArrayList<Statement> request) {
 		Gson gson = new Gson();
-		
-		String s = gson.toJson(request);
-		System.out.println(s);
-		return s;
+
+		return gson.toJson(request);
 	}
 }

@@ -13,7 +13,7 @@ import uk.ac.manchester.cs.jfact.JFactFactory;
 /*
  * ontology1.owl is original
  * ontology3.owl has only one room
- * ontology4.owl is for wrapper demo
+ * ontology4-5.owl is for wrapper demo
  */
 public class OntologyManager {
 	public static OWLOntologyManager manager;
@@ -368,7 +368,6 @@ public class OntologyManager {
 		String ip = "";
 		String port = "";
 		OWLIndividual individual = getIdv(dev);
-		System.out.println("individual" + individual);
 
 		if (individual == null) {
 			ArrayList<String> idv = getIndividuals(dev);
