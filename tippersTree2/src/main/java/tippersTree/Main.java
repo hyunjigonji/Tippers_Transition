@@ -19,7 +19,7 @@ public class Main {
 		OntologyManager.startOntologyManager();
 
 		Tree myTree = new Tree();
-		UA myUA = new UA("meetingroom", "Turn on Light", "Occupancy>10");
+		UA myUA = new UA("meetingroom", "Turn on Light", "Occupancy>Temperature");
 
 
 		myTree = Tree_Flattening.flattening(myUA);
