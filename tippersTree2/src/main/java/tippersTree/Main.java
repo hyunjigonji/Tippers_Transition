@@ -57,7 +57,7 @@ public class Main {
 		// find feasible plan
 		Tree feasibleTree = new Tree(myUA);
 		feasibleTree = Tree_Calculate.check(myTree);
-		// Tree_Display.displayTree(feasibleTree);
+		 Tree_Display.displayTree(feasibleTree);
 
 		// execute sensor data
 		for (int i = 0; i < Tree.URij.size(); i++) {

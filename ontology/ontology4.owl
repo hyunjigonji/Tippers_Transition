@@ -23,7 +23,6 @@
         </dcterms:creator>
         <dcterms:license rdf:resource="http://www.opengeospatial.org/ogc/Software"/>
         <dcterms:license rdf:resource="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document"/>
-        <vann:preferredNamespacePrefix>ssn</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>http://www.w3.org/ns/ssn/</vann:preferredNamespaceUri>
         <rdfs:comment xml:lang="en">Please report any errors to the W3C Spatial Data on the Web Working Group via the SDW WG Public List public-sdw-wg@w3.org</rdfs:comment>
         <rdfs:seeAlso rdf:resource="https://www.w3.org/2015/spatial/wiki/Semantic_Sensor_Network_Ontology"/>
