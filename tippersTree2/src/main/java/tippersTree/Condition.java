@@ -5,7 +5,7 @@ import java.util.*;
 public class Condition {
 	public static ArrayList<String> Property = OntologyManager.getCondObs();
 	
-	//public static boolean test = calculCond("Temperature<40 || Occupancy*0.4<20 && Capacity/2>50 || Connectivity+Occupancy>20");
+	public static boolean test = calculCond("Temperature == 40 || Occupancy * 0.4 < 20 && Capacity / 2 > 50 || Connectivity + Occupancy > 20");
 	
 	public static boolean calculCond(String input){ 
 		System.out.println("Calculating Condition : " + input);
@@ -36,7 +36,7 @@ public class Condition {
 			}
 		}
 		input = input2;
-		System.out.println("STEP 2 : " + input2);
+		System.out.println("STEP 2 : " + input);
 		
 		// AND, OR 로 파싱해서 부등호 계산하기 
 		String input3 = "";
@@ -55,6 +55,7 @@ public class Condition {
 		input = input3;
 		System.out.println("STEP 3 : " + input);
 		
+		// AND, OR 계산하기 
 		boolean result = calculator3(input);
 		System.out.println("result : " + result);
 		System.out.println();
@@ -177,7 +178,9 @@ public class Condition {
 	public static String calculator(String input) { // calculates expression which contains only numbers and operators
 		//System.out.println("calculator input : " + input);
 		String newInput = processing(input); // remove brackets or blank
+		//System.out.println(newInput);
 		ArrayList<String> postfix = makePostfix(newInput); // get array in post order
+		//System.out.println(postfix);
 		int i = 0;
 		while(postfix.size() > 2) {
 			String left = postfix.get(i);
@@ -193,7 +196,7 @@ public class Condition {
 				else if(oper.equals("-")) resultNum = leftNum - rightNum;
 				else if(oper.equals("*")) resultNum = leftNum * rightNum;
 				else if(oper.equals("/")) resultNum = leftNum / rightNum;
-					
+				//System.out.println(resultNum);
 				postfix.remove(i);
 				postfix.remove(i);
 				postfix.remove(i);
@@ -206,11 +209,11 @@ public class Condition {
 				i++;
 			}
 		}
-		float result = Float.parseFloat(postfix.get(0)); 
+		float result = Float.parseFloat(postfix.get(0));
 		//System.out.println("result === " + result);
 		input = input.replace(newInput, Float.toString(result));
-		
-		return input;
+		//System.out.println(input);
+		return Float.toString(result);
 	}
 	
 	public static ArrayList<String> makePostfix2(String input) { // makes boolean expression to postfix expression
@@ -310,6 +313,22 @@ public class Condition {
 			float right = Float.parseFloat(newInput.substring(ind+2, newInput.length()-1));
 			
 			if(left <= right) result = "TRUE";
+		}
+		else if(newInput.contains("!=")) {
+			ind = newInput.indexOf("!=");
+			
+			float left = Float.parseFloat(newInput.substring(0,ind-1));
+			float right = Float.parseFloat(newInput.substring(ind+2, newInput.length()-1));
+			
+			if(left != right) result = "TRUE";
+		}
+		else if(newInput.contains("==")) {
+			ind = newInput.indexOf("==");
+			
+			float left = Float.parseFloat(newInput.substring(0,ind-1));
+			float right = Float.parseFloat(newInput.substring(ind+2, newInput.length()-1));
+			
+			if(left == right) result = "TRUE";
 		}
 		input = input.replace(newInput, result);
 		
