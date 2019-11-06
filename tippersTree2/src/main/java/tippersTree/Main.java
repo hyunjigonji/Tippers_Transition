@@ -13,6 +13,7 @@ import tippersOntology.OntologyManager;
  	URij = <ei, Cj>
  3. UAj = <ei, p, c> <- computed c
  */
+
 public class Main {
 
 	public static void main(String args[]) {

@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12"
+     xml:base="http://www.semanticweb.org/semIoTic"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     ontologyIRI="http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12">
+     ontologyIRI="http://www.semanticweb.org/semIoTic"
+     versionIRI="http://www.semanticweb.org/semIoTic">
     <Prefix name="" IRI="http://www.semanticweb.org/kimkimin/ontologies/2019/6/untitled-ontology-12"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -648,40 +649,10 @@
         <NamedIndividual IRI="#Ther2port"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Ther3IP"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther3Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther3Time"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther3port"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther4IP"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther4Money"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther4Time"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Ther4port"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Thermometer1"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Thermometer2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Thermometer3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Thermometer4"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Therwrapper"/>
@@ -1174,14 +1145,6 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Thermometer"/>
-        <NamedIndividual IRI="#Thermometer3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Thermometer"/>
-        <NamedIndividual IRI="#Thermometer4"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Thermometer"/>
         <NamedIndividual IRI="#Therwrapper"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -1239,14 +1202,6 @@
     <ClassAssertion>
         <Class IRI="#meetingRoom"/>
         <NamedIndividual IRI="#meetingroom1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#meetingroom2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#meetingRoom"/>
-        <NamedIndividual IRI="#meetingroom3"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Occupancy"/>
@@ -1786,46 +1741,6 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Thermometer3"/>
-        <NamedIndividual IRI="#Ther3IP"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Thermometer3"/>
-        <NamedIndividual IRI="#Ther3port"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer3"/>
-        <NamedIndividual IRI="#Ther3Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer3"/>
-        <NamedIndividual IRI="#Ther3Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Thermometer4"/>
-        <NamedIndividual IRI="#Ther4IP"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Thermometer4"/>
-        <NamedIndividual IRI="#Ther4port"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer4"/>
-        <NamedIndividual IRI="#Ther4Money"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasCost"/>
-        <NamedIndividual IRI="#Thermometer4"/>
-        <NamedIndividual IRI="#Ther4Time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasAddress"/>
         <NamedIndividual IRI="#Therwrapper"/>
         <NamedIndividual IRI="#TherwrapperIP"/>
     </ObjectPropertyAssertion>
@@ -2017,16 +1932,6 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasSensor"/>
         <NamedIndividual IRI="#meetingroom3"/>
-        <NamedIndividual IRI="#Thermometer3"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasSensor"/>
-        <NamedIndividual IRI="#meetingroom3"/>
-        <NamedIndividual IRI="#Thermometer4"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasSensor"/>
-        <NamedIndividual IRI="#meetingroom3"/>
         <NamedIndividual IRI="#Wifi3"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
@@ -2127,12 +2032,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">100</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">25</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#BB2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">60</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasAddress"/>
@@ -2551,46 +2456,6 @@
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Ther3IP"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">0.0.0.0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther3Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther3Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Ther3port"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Ther4IP"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">0.0.0.0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther4Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasCostValue"/>
-        <NamedIndividual IRI="#Ther4Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">8</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAddress"/>
-        <NamedIndividual IRI="#Ther4port"/>
-        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">8080</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAddress"/>
         <NamedIndividual IRI="#TherwrapperIP"/>
         <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">0.0.0.0</Literal>
     </DataPropertyAssertion>
@@ -2627,12 +2492,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Wifi2Money"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">50</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasCostValue"/>
         <NamedIndividual IRI="#Wifi2Time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">15</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">45</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#hasAddress"/>

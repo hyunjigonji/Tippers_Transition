@@ -21,8 +21,13 @@
         <dcterms:creator>
             <rdf:Description/>
         </dcterms:creator>
+        <dcterms:description xml:lang="en">This ontology describes sensors, actuators and observations, and related concepts. It does not describe domain concepts, time, locations, etc. these are intended to be included from other ontologies via OWL imports.</dcterms:description>
         <dcterms:license rdf:resource="http://www.opengeospatial.org/ogc/Software"/>
         <dcterms:license rdf:resource="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document"/>
+        <dcterms:rights>Copyright 2017 W3C/OGC.</dcterms:rights>
+        <dcterms:title xml:lang="en">Semantic Sensor Network Ontology</dcterms:title>
+        <vann:preferredNamespacePrefix>ssn</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>http://www.w3.org/ns/ssn/</vann:preferredNamespaceUri>
         <rdfs:comment xml:lang="en">Please report any errors to the W3C Spatial Data on the Web Working Group via the SDW WG Public List public-sdw-wg@w3.org</rdfs:comment>
         <rdfs:seeAlso rdf:resource="https://www.w3.org/2015/spatial/wiki/Semantic_Sensor_Network_Ontology"/>
     </owl:Ontology>
@@ -1181,10 +1186,6 @@
     <owl:NamedIndividual rdf:about="http://www.w3.org/ns/ssn/">
         <rdf:type rdf:resource="http://purl.org/vocommons/voaf#Vocabulary"/>
     </owl:NamedIndividual>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-        <foaf:name xml:lang="en">W3C/OGC Spatial Data on the Web Working Group</foaf:name>
-    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
         <foaf:name xml:lang="en">W3C/OGC Spatial Data on the Web Working Group</foaf:name>
