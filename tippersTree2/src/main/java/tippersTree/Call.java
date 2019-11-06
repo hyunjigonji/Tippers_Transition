@@ -22,21 +22,21 @@ public class Call {
 
 		ClientResource client = new ClientResource(addr);
 
-//		try {
-//			response = client.post(requestMsg).getText(); // {count = ?}
-//
-//			JsonParser jp = new JsonParser();
-//			response = jp.parse(response).getAsJsonObject().get("count").getAsString();
-//
-//		} catch (ResourceException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			System.out.println("Failed");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			System.out.println("Failed");
-//		}
+		try {
+			response = client.post(requestMsg).getText(); // {count = ?}
+
+			JsonParser jp = new JsonParser();
+			response = jp.parse(response).getAsJsonObject().get("count").getAsString();
+
+		} catch (ResourceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Failed");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Failed");
+		}
 
 		return response;
 	}
