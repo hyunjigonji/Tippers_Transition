@@ -2,7 +2,7 @@ package tippersOntology;
 
 import org.semanticweb.owlapi.model.OWLException;
 
-public class index {
+public class Main {
 
 	public static void main(String[] args) throws OWLException {
 		OntologyManager.startOntologyManager();
