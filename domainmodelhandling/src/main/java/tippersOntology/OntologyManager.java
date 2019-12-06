@@ -15,7 +15,7 @@ public class OntologyManager {
 	public static OWLDataFactory factory;
 	public static OWLOntology ontology;
 	public static OWLReasoner reasoner;
-	public static String ontologyURI = "../domainmodelhandling/ontology/Ontology.owl";
+	public static String ontologyURI = "../domainmodelhandling/ontology files/Ontology.owl";
 	public static String ONTOLOGYURI = "http://www.semanticweb.org/semIoTic#";
 	
 	private static String OBSERVATION = "Observation";
